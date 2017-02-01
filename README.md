@@ -231,10 +231,14 @@ the validity of an access token in seconds.
 To refresh your access token, call the `_threeLeggedApi.RefreshtokenAsyncWithHttpInfo()` method.
 
 
-<a name="documentation-for-api-endpoints"></a>
-## Documentation for API Endpoints
+## API Documentation
 
-All URIs are relative to *https://developer.api.autodesk.com/*
+You can get the full documentation for the API on the [Developer Portal](https://developer.autodesk.com/)
+
+
+### Documentation for API Endpoints
+
+All URIs are relative to *https://developer.api.autodesk.com/* (for example createBucket URI is 'https://developer.api.autodesk.com/oss/v2/buckets')
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -315,191 +319,6 @@ Class | Method | HTTP request | Description
 *WorkItemsApi* | [**DeleteWorkItem**](docs/WorkItemsApi.md#deleteworkitem) | **DELETE** /autocad.io/us-east/v2/WorkItems(&#39;{id}&#39;) | Removes a specific WorkItem.
 *WorkItemsApi* | [**GetAllWorkItems**](docs/WorkItemsApi.md#getallworkitems) | **GET** /autocad.io/us-east/v2/WorkItems | Returns the details of all WorkItems.
 *WorkItemsApi* | [**GetWorkItem**](docs/WorkItemsApi.md#getworkitem) | **GET** /autocad.io/us-east/v2/WorkItems(&#39;{id}&#39;) | Returns the details of a specific WorkItem.
-
-
-<a name="documentation-for-models"></a>
-## Documentation for Models
-
- - [Model.Activity](docs/Activity.md)
- - [Model.ActivityOptional](docs/ActivityOptional.md)
- - [Model.ActivityVersion](docs/ActivityVersion.md)
- - [Model.AppPackage](docs/AppPackage.md)
- - [Model.AppPackageOptional](docs/AppPackageOptional.md)
- - [Model.AppPackageVersion](docs/AppPackageVersion.md)
- - [Model.BadInput](docs/BadInput.md)
- - [Model.BaseAttributesCreatedUpdated](docs/BaseAttributesCreatedUpdated.md)
- - [Model.BaseAttributesCreatedUpdatedAttributes](docs/BaseAttributesCreatedUpdatedAttributes.md)
- - [Model.BaseAttributesExtensionObject](docs/BaseAttributesExtensionObject.md)
- - [Model.Bucket](docs/Bucket.md)
- - [Model.BucketObjects](docs/BucketObjects.md)
- - [Model.Buckets](docs/Buckets.md)
- - [Model.BucketsItems](docs/BucketsItems.md)
- - [Model.Conflict](docs/Conflict.md)
- - [Model.CreateItem](docs/CreateItem.md)
- - [Model.CreateItemData](docs/CreateItemData.md)
- - [Model.CreateItemDataRelationships](docs/CreateItemDataRelationships.md)
- - [Model.CreateItemDataRelationshipsTip](docs/CreateItemDataRelationshipsTip.md)
- - [Model.CreateItemDataRelationshipsTipData](docs/CreateItemDataRelationshipsTipData.md)
- - [Model.CreateItemIncluded](docs/CreateItemIncluded.md)
- - [Model.CreateItemRelationships](docs/CreateItemRelationships.md)
- - [Model.CreateItemRelationshipsStorage](docs/CreateItemRelationshipsStorage.md)
- - [Model.CreateItemRelationshipsStorageData](docs/CreateItemRelationshipsStorageData.md)
- - [Model.CreateRef](docs/CreateRef.md)
- - [Model.CreateRefData](docs/CreateRefData.md)
- - [Model.CreateRefDataMeta](docs/CreateRefDataMeta.md)
- - [Model.CreateStorage](docs/CreateStorage.md)
- - [Model.CreateStorageData](docs/CreateStorageData.md)
- - [Model.CreateStorageDataAttributes](docs/CreateStorageDataAttributes.md)
- - [Model.CreateStorageDataRelationships](docs/CreateStorageDataRelationships.md)
- - [Model.CreateStorageDataRelationshipsTarget](docs/CreateStorageDataRelationshipsTarget.md)
- - [Model.CreateVersion](docs/CreateVersion.md)
- - [Model.CreateVersionData](docs/CreateVersionData.md)
- - [Model.CreateVersionDataRelationships](docs/CreateVersionDataRelationships.md)
- - [Model.CreateVersionDataRelationshipsItem](docs/CreateVersionDataRelationshipsItem.md)
- - [Model.CreateVersionDataRelationshipsItemData](docs/CreateVersionDataRelationshipsItemData.md)
- - [Model.DesignAutomationActivities](docs/DesignAutomationActivities.md)
- - [Model.DesignAutomationAppPackages](docs/DesignAutomationAppPackages.md)
- - [Model.DesignAutomationEngines](docs/DesignAutomationEngines.md)
- - [Model.DesignAutomationWorkItems](docs/DesignAutomationWorkItems.md)
- - [Model.Diagnostics](docs/Diagnostics.md)
- - [Model.Engine](docs/Engine.md)
- - [Model.Folder](docs/Folder.md)
- - [Model.FolderAttributes](docs/FolderAttributes.md)
- - [Model.FolderRelationships](docs/FolderRelationships.md)
- - [Model.Forbidden](docs/Forbidden.md)
- - [Model.Formats](docs/Formats.md)
- - [Model.FormatsFormats](docs/FormatsFormats.md)
- - [Model.Hub](docs/Hub.md)
- - [Model.HubAttributes](docs/HubAttributes.md)
- - [Model.HubRelationships](docs/HubRelationships.md)
- - [Model.Hubs](docs/Hubs.md)
- - [Model.Item](docs/Item.md)
- - [Model.ItemAttributes](docs/ItemAttributes.md)
- - [Model.ItemCreated](docs/ItemCreated.md)
- - [Model.ItemRelationships](docs/ItemRelationships.md)
- - [Model.Job](docs/Job.md)
- - [Model.JobAcceptedJobs](docs/JobAcceptedJobs.md)
- - [Model.JobIgesOutputPayload](docs/JobIgesOutputPayload.md)
- - [Model.JobIgesOutputPayloadAdvanced](docs/JobIgesOutputPayloadAdvanced.md)
- - [Model.JobObjOutputPayload](docs/JobObjOutputPayload.md)
- - [Model.JobObjOutputPayloadAdvanced](docs/JobObjOutputPayloadAdvanced.md)
- - [Model.JobPayload](docs/JobPayload.md)
- - [Model.JobPayloadInput](docs/JobPayloadInput.md)
- - [Model.JobPayloadItem](docs/JobPayloadItem.md)
- - [Model.JobPayloadOutput](docs/JobPayloadOutput.md)
- - [Model.JobStepOutputPayload](docs/JobStepOutputPayload.md)
- - [Model.JobStepOutputPayloadAdvanced](docs/JobStepOutputPayloadAdvanced.md)
- - [Model.JobStlOutputPayload](docs/JobStlOutputPayload.md)
- - [Model.JobStlOutputPayloadAdvanced](docs/JobStlOutputPayloadAdvanced.md)
- - [Model.JobSvfOutputPayload](docs/JobSvfOutputPayload.md)
- - [Model.JobThumbnailOutputPayload](docs/JobThumbnailOutputPayload.md)
- - [Model.JobThumbnailOutputPayloadAdvanced](docs/JobThumbnailOutputPayloadAdvanced.md)
- - [Model.JsonApiAttributes](docs/JsonApiAttributes.md)
- - [Model.JsonApiCollection](docs/JsonApiCollection.md)
- - [Model.JsonApiDocument](docs/JsonApiDocument.md)
- - [Model.JsonApiDocumentBase](docs/JsonApiDocumentBase.md)
- - [Model.JsonApiError](docs/JsonApiError.md)
- - [Model.JsonApiErrorErrors](docs/JsonApiErrorErrors.md)
- - [Model.JsonApiErrorLinks](docs/JsonApiErrorLinks.md)
- - [Model.JsonApiLink](docs/JsonApiLink.md)
- - [Model.JsonApiLinks](docs/JsonApiLinks.md)
- - [Model.JsonApiLinksPaging](docs/JsonApiLinksPaging.md)
- - [Model.JsonApiLinksRelated](docs/JsonApiLinksRelated.md)
- - [Model.JsonApiLinksSelf](docs/JsonApiLinksSelf.md)
- - [Model.JsonApiMeta](docs/JsonApiMeta.md)
- - [Model.JsonApiMetaLink](docs/JsonApiMetaLink.md)
- - [Model.JsonApiRelationships](docs/JsonApiRelationships.md)
- - [Model.JsonApiRelationshipsLinksExternalResource](docs/JsonApiRelationshipsLinksExternalResource.md)
- - [Model.JsonApiRelationshipsLinksInternal](docs/JsonApiRelationshipsLinksInternal.md)
- - [Model.JsonApiRelationshipsLinksInternalResource](docs/JsonApiRelationshipsLinksInternalResource.md)
- - [Model.JsonApiRelationshipsLinksRefs](docs/JsonApiRelationshipsLinksRefs.md)
- - [Model.JsonApiRelationshipsLinksRefsLinks](docs/JsonApiRelationshipsLinksRefsLinks.md)
- - [Model.JsonApiResource](docs/JsonApiResource.md)
- - [Model.JsonApiTypeId](docs/JsonApiTypeId.md)
- - [Model.JsonApiVersion](docs/JsonApiVersion.md)
- - [Model.JsonApiVersionJsonapi](docs/JsonApiVersionJsonapi.md)
- - [Model.Manifest](docs/Manifest.md)
- - [Model.ManifestChildren](docs/ManifestChildren.md)
- - [Model.ManifestDerivative](docs/ManifestDerivative.md)
- - [Model.Message](docs/Message.md)
- - [Model.Messages](docs/Messages.md)
- - [Model.Metadata](docs/Metadata.md)
- - [Model.MetadataCollection](docs/MetadataCollection.md)
- - [Model.MetadataData](docs/MetadataData.md)
- - [Model.MetadataMetadata](docs/MetadataMetadata.md)
- - [Model.MetadataObject](docs/MetadataObject.md)
- - [Model.NotFound](docs/NotFound.md)
- - [Model.ObjectDetails](docs/ObjectDetails.md)
- - [Model.ObjectFullDetails](docs/ObjectFullDetails.md)
- - [Model.ObjectFullDetailsDeltas](docs/ObjectFullDetailsDeltas.md)
- - [Model.Permission](docs/Permission.md)
- - [Model.PostBucketsPayload](docs/PostBucketsPayload.md)
- - [Model.PostBucketsPayloadAllow](docs/PostBucketsPayloadAllow.md)
- - [Model.PostBucketsSigned](docs/PostBucketsSigned.md)
- - [Model.PostObjectSigned](docs/PostObjectSigned.md)
- - [Model.Project](docs/Project.md)
- - [Model.ProjectAttributes](docs/ProjectAttributes.md)
- - [Model.ProjectRelationships](docs/ProjectRelationships.md)
- - [Model.Projects](docs/Projects.md)
- - [Model.Reason](docs/Reason.md)
- - [Model.Refs](docs/Refs.md)
- - [Model.RelRef](docs/RelRef.md)
- - [Model.RelRefMeta](docs/RelRefMeta.md)
- - [Model.Result](docs/Result.md)
- - [Model.Storage](docs/Storage.md)
- - [Model.StorageCreated](docs/StorageCreated.md)
- - [Model.StorageRelationships](docs/StorageRelationships.md)
- - [Model.StorageRelationshipsTarget](docs/StorageRelationshipsTarget.md)
- - [Model.StorageRelationshipsTargetData](docs/StorageRelationshipsTargetData.md)
- - [Model.Version](docs/Version.md)
- - [Model.VersionAttributes](docs/VersionAttributes.md)
- - [Model.VersionCreated](docs/VersionCreated.md)
- - [Model.VersionRelationships](docs/VersionRelationships.md)
- - [Model.Versions](docs/Versions.md)
- - [Model.WorkItem](docs/WorkItem.md)
- - [Model.WorkItemResp](docs/WorkItemResp.md)
-
-
-## Documentation for Authorization
-
-### oauth2_access_code
-
-- **Type**: OAuth
-- **Flow**: accessCode
-- **Authorization URL**: /authentication/v1/authorize
-- **Scopes**: 
-  - data:read: The application will be able to read the end user’s data within the Autodesk ecosystem.
-  - data:write: The application will be able to create, update, and delete data on behalf of the end user within the Autodesk ecosystem.
-  - data:create: The application will be able to create data on behalf of the end user within the Autodesk ecosystem.
-  - data:search: The application will be able to search the end user’s data within the Autodesk ecosystem.
-  - bucket:create: The application will be able to create an OSS bucket it will own.
-  - bucket:read: The application will be able to read the metadata and list contents for OSS buckets that it has access to.
-  - bucket:update: The application will be able to set permissions and entitlements for OSS buckets that it has permission to modify.
-  - bucket:delete: The application will be able to delete a bucket that it has permission to delete.
-  - code:all: The application will be able to author and execute code on behalf of the end user (e.g., scripts processed by the Design Automation API).
-  - account:read: For Product APIs, the application will be able to read the account data the end user has entitlements to.
-  - account:write: For Product APIs, the application will be able to update the account data the end user has entitlements to.
-  - user-profile:read: The application will be able to read the end user’s profile data.
-
-### oauth2_application
-
-- **Type**: OAuth
-- **Flow**: application
-- **Authorization URL**: 
-- **Scopes**: 
-  - data:read: The application will be able to read the end user’s data within the Autodesk ecosystem.
-  - data:write: The application will be able to create, update, and delete data on behalf of the end user within the Autodesk ecosystem.
-  - data:create: The application will be able to create data on behalf of the end user within the Autodesk ecosystem.
-  - data:search: The application will be able to search the end user’s data within the Autodesk ecosystem.
-  - bucket:create: The application will be able to create an OSS bucket it will own.
-  - bucket:read: The application will be able to read the metadata and list contents for OSS buckets that it has access to.
-  - bucket:update: The application will be able to set permissions and entitlements for OSS buckets that it has permission to modify.
-  - bucket:delete: The application will be able to delete a bucket that it has permission to delete.
-  - code:all: The application will be able to author and execute code on behalf of the end user (e.g., scripts processed by the Design Automation API).
-  - account:read: For Product APIs, the application will be able to read the account data the end user has entitlements to.
-  - account:write: For Product APIs, the application will be able to update the account data the end user has entitlements to.
-  - user-profile:read: The application will be able to read the end user’s profile data.
-
 
 
 ## Support
