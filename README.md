@@ -90,7 +90,7 @@ namespace my_namespace {
                 //string token =bearer.Data.token_type + " " + bearer.Data.access_token ;
                 //DateTime dt =DateTime.Now ;
                 //dt.AddSeconds (double.Parse (bearer.Data.expires_in.ToString ())) ;
-                return (bearer.Data) ;
+                return (bearer) ;
             } catch ( Exception /*ex*/ ) {
                 return (null) ;
             }
@@ -98,7 +98,7 @@ namespace my_namespace {
 
         public void Test () {
             dynamic bearer =_2leggedSynchronous () ;
-            string token =bearer.token_type + " " + bearer.access_token ;
+            string token =bearer.Data.token_type + " " + bearer.Data.access_token ;
             // ...
         }
 
@@ -109,7 +109,7 @@ namespace my_namespace {
                 //string token =bearer.Data.token_type + " " + bearer.Data.access_token ;
                 //DateTime dt =DateTime.Now ;
                 //dt.AddSeconds (double.Parse (bearer.Data.expires_in.ToString ())) ;
-        		return (bearer.Data) ;
+        		return (bearer) ;
         	} catch ( Exception /*ex*/ ) {
         		return (null) ;
         	}
@@ -117,7 +117,7 @@ namespace my_namespace {
 
         public async void TestAsync () {
             dynamic bearer =await _2leggedAsync () ;
-            string token =bearer.token_type + " " + bearer.access_token ;
+            string token =bearer.Data.token_type + " " + bearer.Data.access_token ;
             // ...
         }
 
@@ -153,7 +153,7 @@ namespace my_namespace {
         private static HttpListener _httpListener =null ;
         internal delegate void NewBearerDelegate (dynamic bearer) ;
 
-        internal static void _3leggedAsync (NewBearerDeletegate cb) {
+        internal static void _3leggedAsync (NewBearerDelegate cb) {
             try {
                 if ( !HttpListener.IsSupported )
                     return ; // HttpListener is not supported on this platform.
@@ -203,7 +203,7 @@ Request an access token using the authorization code you received, as shown belo
                     //dt.AddSeconds (double.Parse (bearer.Data.expires_in.ToString ())) ;
 
                     // The `credentials` object contains an `access_token` and an optional `refresh_token` that you can use to call the endpoints.
-                    ((NewBearerDelegate)ar.AsyncState)?.Invoke (bearer.Data) ;
+                    ((NewBearerDelegate)ar.AsyncState).Invoke (bearer) ;
                 }
             } catch ( Exception /*ex*/ ) {
             } finally {
@@ -216,9 +216,9 @@ Request an access token using the authorization code you received, as shown belo
         }
 
         protected static void gotit (dynamic bearer) {
-            //string token =bearer.token_type + " " + bearer.access_token ;
+            //string token =bearer.Data.token_type + " " + bearer.Data.access_token ;
             //DateTime dt =DateTime.Now ;
-            //dt.AddSeconds (double.Parse (bearer.expires_in.ToString ())) ;
+            //dt.AddSeconds (double.Parse (bearer.Data.expires_in.ToString ())) ;
             // ...
         }
 
