@@ -38,9 +38,6 @@ Install-Package RestSharp
 Install-Package Newtonsoft.Json
 ```
 
-Note that RestSharp versions later than 105.1.0 have a bug which causes file uploads to fail.
-See [RestSharp#742](https://github.com/restsharp/RestSharp/issues/742)
-
 
 ### Build the SDK from sources
 Run the following command to generate the DLL:
