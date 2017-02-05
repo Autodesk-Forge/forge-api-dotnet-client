@@ -84,40 +84,40 @@ namespace my_namespace {
 		private static TwoLeggedApi _twoLeggedApi =new TwoLeggedApi () ;
 
         // Synchronous example
-        internal static ApiResponse<dynamic> _2leggedSynchronous () {
+        internal static dynamic _2leggedSynchronous () {
             try {
                 ApiResponse<dynamic> bearer =_twoLeggedApi.AuthenticateWithHttpInfo (FORGE_CLIENT_ID, FORGE_CLIENT_SECRET, oAuthConstants.CLIENT_CREDENTIALS, _scope) ;
                 //string token =bearer.Data.token_type + " " + bearer.Data.access_token ;
                 //DateTime dt =DateTime.Now ;
                 //dt.AddSeconds (double.Parse (bearer.Data.expires_in.ToString ())) ;
-                return (bearer) ;
+                return (bearer.Data) ;
             } catch ( Exception /*ex*/ ) {
                 return (null) ;
             }
         }
 
-        public void Test () {
+        public static void Test () {
             dynamic bearer =_2leggedSynchronous () ;
-            string token =bearer.Data.token_type + " " + bearer.Data.access_token ;
+            string token =bearer.token_type + " " + bearer.access_token ;
             // ...
         }
 
         // Asynchronous example (recommended)
-        internal static async Task<ApiResponse<dynamic>> _2leggedAsync () {
-        	try {
-        		ApiResponse<dynamic> bearer =await _twoLeggedApi.AuthenticateAsyncWithHttpInfo (FORGE_CLIENT_ID, FORGE_CLIENT_SECRET, oAuthConstants.CLIENT_CREDENTIALS, _scope) ;
+        internal static async Task<dynamic> _2leggedAsync () {
+            try {
+                ApiResponse<dynamic> bearer =await _twoLeggedApi.AuthenticateAsyncWithHttpInfo (FORGE_CLIENT_ID, FORGE_CLIENT_SECRET, oAuthConstants.CLIENT_CREDENTIALS, _scope) ;
                 //string token =bearer.Data.token_type + " " + bearer.Data.access_token ;
                 //DateTime dt =DateTime.Now ;
                 //dt.AddSeconds (double.Parse (bearer.Data.expires_in.ToString ())) ;
-        		return (bearer) ;
-        	} catch ( Exception /*ex*/ ) {
-        		return (null) ;
-        	}
+                return (bearer.Data) ;
+            } catch ( Exception /*ex*/ ) {
+                return (null) ;
+            }
         }
 
-        public async void TestAsync () {
+        public async static void TestAsync () {
             dynamic bearer =await _2leggedAsync () ;
-            string token =bearer.Data.token_type + " " + bearer.Data.access_token ;
+            string token =bearer.token_type + " " + bearer.access_token ;
             // ...
         }
 
@@ -203,9 +203,10 @@ Request an access token using the authorization code you received, as shown belo
                     //dt.AddSeconds (double.Parse (bearer.Data.expires_in.ToString ())) ;
 
                     // The `credentials` object contains an `access_token` and an optional `refresh_token` that you can use to call the endpoints.
-                    ((NewBearerDelegate)ar.AsyncState).Invoke (bearer) ;
+                    ((NewBearerDelegate)ar.AsyncState)?.Invoke (bearer.Data) ;
                 }
             } catch ( Exception /*ex*/ ) {
+                //((NewBearerDelegate)ar.AsyncState)?.Invoke (null) ;
             } finally {
                 _httpListener.Stop () ;
             }
@@ -216,9 +217,11 @@ Request an access token using the authorization code you received, as shown belo
         }
 
         protected static void gotit (dynamic bearer) {
-            //string token =bearer.Data.token_type + " " + bearer.Data.access_token ;
+            if ( bearer == null )
+                return ;
+            //string token =bearer.token_type + " " + bearer.access_token ;
             //DateTime dt =DateTime.Now ;
-            //dt.AddSeconds (double.Parse (bearer.Data.expires_in.ToString ())) ;
+            //dt.AddSeconds (double.Parse (bearer.expires_in.ToString ())) ;
             // ...
         }
 
