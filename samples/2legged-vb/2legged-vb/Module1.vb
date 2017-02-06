@@ -7,9 +7,13 @@ Imports Autodesk.Forge.Model
 Module Module1
 
     Sub Main()
+        ForgeTest.Test()
+        ForgeTest.TestAsync()
+        Console.WriteLine("Press any key to exit...")
+        Console.ReadKey()
     End Sub
 
-    Public Class Line
+    Public Class ForgeTest
 
         Private Shared FORGE_CLIENT_ID As String = "" ' 'your_client_id'
         Private Shared FORGE_CLIENT_SECRET As String = "" ' 'your_client_secret'
@@ -25,14 +29,14 @@ Module Module1
                 dt.AddSeconds(Double.Parse(bearer.Data.expires_in.ToString()))
                 Return (bearer.Data)
             Catch ex As Exception
-				Return (Nothing)
-			End Try
+                Return (Nothing)
+            End Try
         End Function
 
         Public Shared Sub Test()
             Dim bearer As Object = _2leggedSynchronous()
             Dim token As String = bearer.token_type + " " + bearer.access_token
-            ' ...
+            Console.WriteLine("Your synchronous token test is: " + token)
         End Sub
 
         ' Asynchronous example (recommended)
@@ -44,14 +48,14 @@ Module Module1
                 dt.AddSeconds(Double.Parse(bearer.Data.expires_in.ToString()))
                 Return (bearer.Data)
             Catch ex As Exception
-				Return (Nothing)
-			End Try
+                Return (Nothing)
+            End Try
         End Function
 
         Public Shared Async Sub TestAsync()
             Dim bearer As Object = Await _2leggedAsync()
             Dim token As String = bearer.token_type + " " + bearer.access_token
-            ' ...
+            Console.WriteLine("Your async token test is: " + token)
         End Sub
 
     End Class

@@ -11,6 +11,10 @@ using Autodesk.Forge.Model;
 namespace ConsoleApplication3 {
 	class Program {
 		static void Main (string [] args) {
+			Test () ;
+			TestAsync () ;
+			Console.WriteLine ("Press any key to exit...") ;
+			Console.ReadKey () ;
 		}
 
 		private static string FORGE_CLIENT_ID ="" ; // 'your_client_id'
@@ -34,7 +38,7 @@ namespace ConsoleApplication3 {
         public static void Test () {
             dynamic bearer =_2leggedSynchronous () ;
             string token =bearer.token_type + " " + bearer.access_token ;
-            // ...
+            Console.WriteLine("Your synchronous token test is: " + token)
         }
 
         // Asynchronous example (recommended)
@@ -53,7 +57,7 @@ namespace ConsoleApplication3 {
         public async static void TestAsync () {
             dynamic bearer =await _2leggedAsync () ;
             string token =bearer.token_type + " " + bearer.access_token ;
-            // ...
+            Console.WriteLine("Your async token test is: " + token)
         }
 
 	}
