@@ -1,18 +1,11 @@
-# Forge C# Sample App
+# Forge 3 legged C# Sample App
 
 ## Overview
 This sample app uses the Forge .Net (C#) SDK to introduce the 
 [OAuth](https://developer.autodesk.com/en/docs/oauth/v2/overview/), 
-[Data Management](https://developer.autodesk.com/en/docs/data/v2/overview/) 
-and [Model Derivative](https://developer.autodesk.com/en/docs/model-derivative/v2/overview/) Forge APIs, 
-as well as the [Viewer](https://developer.autodesk.com/en/docs/viewer/v2/overview/) JavaScript library. 
 It shows the following typical workflow:
 
-* Create a 2-legged authentication token
-* Create a bucket (an arbitrary space to store objects)
-* Upload a file to the bucket
-* Prepare the file for displaying in the Viewer (translate the file into SVF format)
-* Display the translated file in the Viewer
+* Create a 3-legged authentication token
 
 
 ### Requirements
@@ -32,22 +25,29 @@ Forge Developer portal, and ensure that you select the Data Management and Model
 Note the client ID and client secret.
 
 
-### Build the sample
-Load the project in Visual Studio 2015, and build the sample.
-
-
 ### Configure the Parameters
-Open a Console window (aka Command Prompt window).
-Create 2 environment variables `FORGE_CLIENT_ID` and `FORGE_CLIENT_SECRET` with the client ID and 
-client secret generated when creating the app.
+* Open a Console window (aka Command Prompt window).
+* Create 3 environment variables `FORGE_CLIENT_ID`, `FORGE_CLIENT_SECRET` and `FORGE_CALLBACK`
+with the client ID, client secret, and redirect URL generated when creating the app.
+
+
+### Build the sample
+* Start Visual Studio from the command prompt, typing ``` devenv ```.
+* Load the project in Visual Studio 2015, and build the sample.
 
 
 ### Run the App
-Run the app.
+* Run the app from Visual Studio.
+* If you want to run it from the command line,follow these instructions:
+
+  1. Go back on the Console window you opened previously,
+  2. Go in the directory where is the sample, for example: ``` cd "\Users\cyrille\Documents\Visual Studio 2015\Projects\forge-api-dotnet-client\samples\3legged-csharp" ```
+  3. If you built the Release version, type: ``` 3legged-csharp\bin\Release\forge.3legged-csharp ```
 
 
 ## Support
-forge.help@autodesk.com
+* [Get Help](https://developer.autodesk.com/en/support/get-help)
+* [Stackoverflow](http://stackoverflow.com/questions/tagged/forge)
 
 
 ## License

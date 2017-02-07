@@ -32,22 +32,29 @@ Forge Developer portal, and ensure that you select the Data Management and Model
 Note the client ID and client secret.
 
 
-### Build the sample
-Load the project in Visual Studio 2015, and build the sample.
-
-
 ### Configure the Parameters
-Open a Console window (aka Command Prompt window).
-Create 2 environment variables `FORGE_CLIENT_ID` and `FORGE_CLIENT_SECRET` with the client ID and 
+* Open a Console window (aka Command Prompt window).
+* Create 2 environment variables `FORGE_CLIENT_ID` and `FORGE_CLIENT_SECRET` with the client ID and 
 client secret generated when creating the app.
 
 
+### Build the sample
+* Start Visual Studio from the command prompt, typing ``` devenv ```.
+* Load the project in Visual Studio 2015, and build the sample.
+
+
 ### Run the App
-Run the app.
+* Run the app from Visual Studio.
+* If you want to run it from the command line,follow these instructions:
+
+  1. Go back on the Console window you opened previously,
+  2. Go in the directory where is the sample, for example: ``` cd "\Users\cyrille\Documents\Visual Studio 2015\Projects\forge-api-dotnet-client\samples\simple-csharp" ```
+  3. If you built the Release version, type: ``` simple-csharp\bin\Release\forge.simple-csharp ```
 
 
 ## Support
-forge.help@autodesk.com
+* [Get Help](https://developer.autodesk.com/en/support/get-help)
+* [Stackoverflow](http://stackoverflow.com/questions/tagged/forge)
 
 
 ## License
