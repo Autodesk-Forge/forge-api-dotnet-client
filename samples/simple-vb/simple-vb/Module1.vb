@@ -1,4 +1,25 @@
-﻿Option Strict Off
+﻿'
+' Copyright (c) 2017 Autodesk, Inc.
+'
+' Permission Is hereby granted, free of charge, to any person obtaining a copy
+' of this software And associated documentation files (the "Software"), to deal
+' in the Software without restriction, including without limitation the rights
+' to use, copy, modify, merge, publish, distribute, sublicense, And/Or sell
+' copies of the Software, And to permit persons to whom the Software Is
+' furnished to do so, subject to the following conditions:
+'
+' The above copyright notice And this permission notice shall be included in all
+' copies Or substantial portions of the Software.
+'
+' THE SOFTWARE Is PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS Or
+' IMPLIED, INCLUDING BUT Not LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+' FITNESS FOR A PARTICULAR PURPOSE And NONINFRINGEMENT. IN NO EVENT SHALL THE
+' AUTHORS Or COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES Or OTHER
+' LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT Or OTHERWISE, ARISING FROM,
+' OUT OF Or IN CONNECTION WITH THE SOFTWARE Or THE USE Or OTHER DEALINGS IN THE
+' SOFTWARE.
+'
+Option Strict Off
 
 Imports System.IO
 Imports System.Threading
@@ -10,8 +31,11 @@ Imports Autodesk.Forge.Client
 Module Module1
 
 	Public Class ForgeTest
-		Private Shared FORGE_CLIENT_ID As String = Environment.GetEnvironmentVariable("FORGE_CLIENT_ID")
-		Private Shared FORGE_CLIENT_SECRET As String = Environment.GetEnvironmentVariable("FORGE_CLIENT_SECRET")
+
+		' Initialize the oAuth 2.0 client configuration fron enviroment variables
+		' you can also hardcode them in the code if you want in the placeholders below
+		Private Shared FORGE_CLIENT_ID As String = If(Environment.GetEnvironmentVariable("FORGE_CLIENT_ID"), "your_client_id")
+		Private Shared FORGE_CLIENT_SECRET As String = If(Environment.GetEnvironmentVariable("FORGE_CLIENT_SECRET"), "your_client_secret")
 		Private Shared BUCKET_KEY As String = "forge-csharp-sample-app-" + FORGE_CLIENT_ID.ToLower()
 		Private Shared FILE_NAME As String = "my-elephant.obj"
 		Private Shared FILE_PATH As String = "elephant.obj"

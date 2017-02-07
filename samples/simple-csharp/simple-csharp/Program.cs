@@ -28,12 +28,14 @@ using Autodesk.Forge;
 using Autodesk.Forge.Model;
 using Autodesk.Forge.Client;
 
-namespace sample {
+namespace forge.simple_csharp {
 
 	class Program {
 
-		private static string FORGE_CLIENT_ID =Environment.GetEnvironmentVariable ("FORGE_CLIENT_ID") ;
-		private static string FORGE_CLIENT_SECRET =Environment.GetEnvironmentVariable ("FORGE_CLIENT_SECRET") ;
+		// Initialize the oAuth 2.0 client configuration fron enviroment variables
+		// you can also hardcode them in the code if you want in the placeholders below
+		private static string FORGE_CLIENT_ID =Environment.GetEnvironmentVariable ("FORGE_CLIENT_ID")?? "your_client_id" ;
+        private static string FORGE_CLIENT_SECRET =Environment.GetEnvironmentVariable ("FORGE_CLIENT_SECRET")?? "your_client_secret" ;
 		private static string BUCKET_KEY ="forge-csharp-sample-app-" + FORGE_CLIENT_ID.ToLower () ;
 		private static string FILE_NAME ="my-elephant.obj" ;
 		private static string FILE_PATH ="elephant.obj" ;
@@ -46,9 +48,7 @@ namespace sample {
 		private static TwoLeggedApi oauth2TwoLegged ;
 		private static dynamic twoLeggedCredentials ;
 
-		/**
-		 * Initialize the 2-legged OAuth 2.0 client, and optionally set specific scopes.
-		 */
+		// Initialize the 2-legged OAuth 2.0 client, and optionally set specific scopes.
 		private static void initializeOAuth () {
 			// You must provide at least one valid scope
 			Scope[] scopes =new Scope[] { Scope.DataRead, Scope.DataWrite, Scope.BucketCreate, Scope.BucketRead } ;
@@ -60,10 +60,8 @@ namespace sample {
 			derivativesApi.Configuration.AccessToken =twoLeggedCredentials.access_token ;
 		}
 
-		/**
-		 * Example of how to create a new bucket using Forge SDK.
-		 * Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
-		 */
+		// Example of how to create a new bucket using Forge SDK.
+		// Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
 		private static void createBucket () {
 			Console.WriteLine ("***** Sending createBucket request") ;
 			PostBucketsPayload payload =new PostBucketsPayload (BUCKET_KEY, null, PostBucketsPayload.PolicyKeyEnum.Persistent) ;
@@ -71,10 +69,8 @@ namespace sample {
 			Console.WriteLine ("***** Response for createBucket: " + response.ToString ()) ;
 		}
 
-		/**
-		 * Example of how to upload a file to the bucket.
-		 * Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
-		 */
+		// Example of how to upload a file to the bucket.
+		// Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
 		private static dynamic uploadFile () {
 			Console.WriteLine ("***** Sending uploadFile request") ;
 			string path =FILE_PATH ;
@@ -91,11 +87,9 @@ namespace sample {
 			}
 		}
 
-		/**
-		 * Example of how to send a translate to SVF job request.
-		 * Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
-		 * @param urn - the urn of the file to translate
-		 */
+		// Example of how to send a translate to SVF job request.
+		// Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
+		// @param urn - the urn of the file to translate
 		private static dynamic translateToSVF (string urn) {
 			Console.WriteLine ("***** Sending Derivative API translate request") ;
 			JobPayloadInput jobInput =new JobPayloadInput (
@@ -119,11 +113,9 @@ namespace sample {
 			return (response) ;
 		}
 
-		/**
-		 * Example of how to query the status of a translate job.
-		 * Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
-		 * @param base64Urn - the urn of the file to translate in base 64 format
-		 */
+		// Example of how to query the status of a translate job.
+		// Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
+		// @param base64Urn - the urn of the file to translate in base 64 format
 		private static dynamic verifyJobComplete (string base64Urn) {
 			Console.WriteLine ("***** Sending getManifest request") ;
 			while ( true ) {
@@ -138,7 +130,7 @@ namespace sample {
 					Thread.Sleep (1000) ;
 				}
 			}
-			return (null) ;
+			//return (null) ;
 		}
 
 		public static bool hasOwnProperty (dynamic obj, string name) {
@@ -150,12 +142,10 @@ namespace sample {
 			}
 		}
 
-		/**
-		 * Open translated SVF file in the viewer
-		 * Uses the twoLeggedCredentials object that you retrieved previously.
-		 * Opens the file statically from your hard drive with url parameters for the accessToken and for the urn of the file to show.
-		 * @param base64Urn
-		 */
+		// Open translated SVF file in the viewer
+		// Uses the twoLeggedCredentials object that you retrieved previously.
+		// Opens the file statically from your hard drive with url parameters for the accessToken and for the urn of the file to show.
+		// @param base64Urn
 		private static void openViewer (string base64Urn) {
 			Console.WriteLine("***** Opening SVF file in viewer with urn:" + base64Urn) ;
 			string st =_html.Replace ("__URN__", base64Urn).Replace ("__ACCESS_TOKEN__", twoLeggedCredentials.access_token) ;
@@ -163,10 +153,8 @@ namespace sample {
 			System.Diagnostics.Process.Start (new System.Diagnostics.ProcessStartInfo ("viewer.html")) ;
 		}
 
-		/**
-		 * Example of how to delete a file that was uploaded by the application.
-		 * Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
-		 */
+		// Example of how to delete a file that was uploaded by the application.
+		// Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
 		private static void deleteFile () {
 	        Console.WriteLine ("***** Sending deleteFile request") ;
 			ApiResponse<object> response =objectsApi.DeleteObjectWithHttpInfo (BUCKET_KEY, FILE_NAME) ;
@@ -174,7 +162,6 @@ namespace sample {
 		}
 
 		static void Main (string [] args) {
-
 			try {
 				initializeOAuth () ;
 
