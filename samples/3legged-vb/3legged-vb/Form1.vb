@@ -100,18 +100,18 @@ Public Class Form1
 			CType(ar.AsyncState, NewBearerDelegate)?.Invoke(Nothing)
 		Finally
 			_httpListener.Stop()
-        End Try
-    End Sub
+		End Try
+	End Sub
 
-    Delegate Sub NewBearerDelegate(bearer As Object)
+	Delegate Sub NewBearerDelegate(bearer As Object)
 
-    Public Shared Sub TestAsync()
-        _3leggedAsync(Nothing)
-    End Sub
+	Public Shared Sub TestAsync()
+		_3leggedAsync(Nothing)
+	End Sub
 
-    Private Sub OnFormLoad(sender As Object, e As EventArgs) Handles MyBase.Load
-        _3leggedAsync(New NewBearerDelegate(AddressOf gotit))
-    End Sub
+	Private Sub OnFormLoad(sender As Object, e As EventArgs) Handles MyBase.Load
+		_3leggedAsync(New NewBearerDelegate(AddressOf gotit))
+	End Sub
 
 	' This is our application delegate. It Is called upon success or failure
 	' after the process completed
@@ -122,9 +122,9 @@ Public Class Form1
 		End If
 		' The call returned successfully and you got a valid access_token.
 		Dim token As String = bearer.token_type + " " + bearer.access_token
-        Dim dt As DateTime = DateTime.Now
-        dt.AddSeconds(Double.Parse(bearer.expires_in.ToString()))
-        MessageBox.Show("You are in!", "3legged test", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
+		Dim dt As DateTime = DateTime.Now
+		dt.AddSeconds(Double.Parse(bearer.expires_in.ToString()))
+		MessageBox.Show("You are in!", "3legged test", MessageBoxButtons.OK, MessageBoxIcon.Information)
+	End Sub
 
 End Class

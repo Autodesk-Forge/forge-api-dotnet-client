@@ -16,7 +16,7 @@ It shows the following typical workflow:
 
 ### Installation
 Clone the following repository:<br />
-    ```https://github.com/Autodesk-Forge/forge-api-csharp-client.git```
+    ```https://github.com/Autodesk-Forge/forge-api-dotnet-client.git```
 
 
 ### Create an App
@@ -26,7 +26,7 @@ Note the client ID and client secret.
 
 
 ### Configure the Parameters
-* Open a Console window (aka Command Prompt window).
+* Open a Visual Studio 2015 Console window (aka Command Prompt window).
 * Create 3 environment variables `FORGE_CLIENT_ID`, `FORGE_CLIENT_SECRET` and `FORGE_CALLBACK`
 with the client ID, client secret, and redirect URL generated when creating the app.
 
@@ -38,7 +38,7 @@ with the client ID, client secret, and redirect URL generated when creating the 
 
 ### Run the App
 * Run the app from Visual Studio.
-* If you want to run it from the command line,follow these instructions:
+* If you want to run it from the command line, follow these instructions:
 
   1. Go back on the Console window you opened previously,
   2. Go in the directory where is the sample, for example: ``` cd "\Users\cyrille\Documents\Visual Studio 2015\Projects\forge-api-dotnet-client\samples\3legged-vb" ```

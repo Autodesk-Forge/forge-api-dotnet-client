@@ -28,7 +28,7 @@ namespace forge._3legged_csharp {
 		// Initialize the oAuth 2.0 client configuration fron enviroment variables
 		// you can also hardcode them in the code if you want in the placeholders below
 		private static string FORGE_CLIENT_ID =Environment.GetEnvironmentVariable ("FORGE_CLIENT_ID")?? "your_client_id" ;
-        private static string FORGE_CLIENT_SECRET =Environment.GetEnvironmentVariable ("FORGE_CLIENT_SECRET")?? "your_client_secret" ;
+		private static string FORGE_CLIENT_SECRET =Environment.GetEnvironmentVariable ("FORGE_CLIENT_SECRET")?? "your_client_secret" ;
 		private static string PORT =Environment.GetEnvironmentVariable ("PORT")?? "3006" ;
 		private static string FORGE_CALLBACK =Environment.GetEnvironmentVariable ("FORGE_CALLBACK")?? "http://localhost:" + PORT + "/oauth" ;
 		private static Scope[] _scope =new Scope[] { Scope.DataRead, Scope.DataWrite } ;
@@ -42,6 +42,8 @@ namespace forge._3legged_csharp {
 		//   ex: netsh http add urlacl url=http://+:3006/oauth user=cyrille
 		// Embedded webviews are strongly discouraged for oAuth - https://developers.google.com/identity/protocols/OAuth2InstalledApp
 		private static HttpListener _httpListener =null ;
+
+		internal delegate void NewBearerDelegate (dynamic bearer) ;
 
 		// For a synchronous example refer to the 2legged example
 
@@ -118,14 +120,8 @@ namespace forge._3legged_csharp {
 			}
 		}
 
-		internal delegate void NewBearerDelegate (dynamic bearer) ;
-
-		public void TestAsync () {
-            _3leggedAsync (null) ;
-        }
-
 		private void Window_Initialized (object sender, EventArgs e) {
-            _3leggedAsync (new NewBearerDelegate (gotit)) ;
+			_3leggedAsync (new NewBearerDelegate (gotit)) ;
 		}
 
 		// This is our application delegate. It is called upon success or failure

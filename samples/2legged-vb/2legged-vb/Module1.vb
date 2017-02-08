@@ -27,7 +27,7 @@ Imports Autodesk.Forge.Model
 
 Module Module1
 
-    Sub Main()
+	Sub Main()
 		' Run a synchronous code to obtain an access_token
 		ForgeTest.Test()
 		' Run an asynchronous code to obtain an access_token
@@ -35,10 +35,10 @@ Module Module1
 		ForgeTest.TestAsync()
 
 		Console.WriteLine("Press any key to exit...")
-        Console.ReadKey()
-    End Sub
+		Console.ReadKey()
+	End Sub
 
-    Public Class ForgeTest
+	Public Class ForgeTest
 
 		' Initialize the oAuth 2.0 client configuration fron enviroment variables
 		' you can also hardcode them in the code if you want in the placeholders below
@@ -49,8 +49,8 @@ Module Module1
 		' Intialize the 2-legged oAuth 2.0 client.
 		Private Shared _twoLeggedApi As TwoLeggedApi = New TwoLeggedApi()
 
-        ' Synchronous example
-        Public Shared Function _2leggedSynchronous() As Object
+		' Synchronous example
+		Public Shared Function _2leggedSynchronous() As Object
 			Try
 				' Call the synchronous version of the 2-legged client with HTTP information
 				' HTTP information will help you to verify if the call was successful as well
@@ -71,11 +71,11 @@ Module Module1
 				Return (bearer.Data)
 			Catch ex As Exception
 				Return (Nothing)
-            End Try
-        End Function
+			End Try
+		End Function
 
-        Public Shared Sub Test()
-            Dim bearer As Object = _2leggedSynchronous()
+		Public Shared Sub Test()
+			Dim bearer As Object = _2leggedSynchronous()
 			If bearer Is Nothing Then
 				Console.WriteLine("You were not granted a new access_token!")
 				Return
@@ -83,10 +83,10 @@ Module Module1
 			' The call returned successfully And you got a valid access_token.
 			Dim token As String = bearer.token_type + " " + bearer.access_token
 			Console.WriteLine("Your synchronous token test is: " + token)
-        End Sub
+		End Sub
 
-        ' Asynchronous example (recommended)
-        Public Shared Async Function _2leggedAsync() As Task(Of Object)
+		' Asynchronous example (recommended)
+		Public Shared Async Function _2leggedAsync() As Task(Of Object)
 			Try
 				' Call the asynchronous version of the 2-legged client with HTTP information
 				' HTTP information will help you to verify if the call was successful as well
@@ -106,16 +106,16 @@ Module Module1
 				Return (bearer.Data)
 			Catch ex As Exception
 				Return (Nothing)
-            End Try
-        End Function
+			End Try
+		End Function
 
-        Public Shared Async Sub TestAsync()
-            Dim bearer As Object = Await _2leggedAsync()
+		Public Shared Async Sub TestAsync()
+			Dim bearer As Object = Await _2leggedAsync()
 			' The call returned successfully And you got a valid access_token.
 			Dim token As String = bearer.token_type + " " + bearer.access_token
 			Console.WriteLine("Your async token test is: " + token)
-        End Sub
+		End Sub
 
-    End Class
+	End Class
 
 End Module

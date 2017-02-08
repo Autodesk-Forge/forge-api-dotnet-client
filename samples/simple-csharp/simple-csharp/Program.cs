@@ -35,7 +35,7 @@ namespace forge.simple_csharp {
 		// Initialize the oAuth 2.0 client configuration fron enviroment variables
 		// you can also hardcode them in the code if you want in the placeholders below
 		private static string FORGE_CLIENT_ID =Environment.GetEnvironmentVariable ("FORGE_CLIENT_ID")?? "your_client_id" ;
-        private static string FORGE_CLIENT_SECRET =Environment.GetEnvironmentVariable ("FORGE_CLIENT_SECRET")?? "your_client_secret" ;
+		private static string FORGE_CLIENT_SECRET =Environment.GetEnvironmentVariable ("FORGE_CLIENT_SECRET")?? "your_client_secret" ;
 		private static string BUCKET_KEY ="forge-csharp-sample-app-" + FORGE_CLIENT_ID.ToLower () ;
 		private static string FILE_NAME ="my-elephant.obj" ;
 		private static string FILE_PATH ="elephant.obj" ;
@@ -156,7 +156,7 @@ namespace forge.simple_csharp {
 		// Example of how to delete a file that was uploaded by the application.
 		// Uses the oauth2TwoLegged and twoLeggedCredentials objects that you retrieved previously.
 		private static void deleteFile () {
-	        Console.WriteLine ("***** Sending deleteFile request") ;
+			Console.WriteLine ("***** Sending deleteFile request") ;
 			ApiResponse<object> response =objectsApi.DeleteObjectWithHttpInfo (BUCKET_KEY, FILE_NAME) ;
 			Console.WriteLine ("***** Response Code for deleting File: " + response.StatusCode) ;
 		}
@@ -252,10 +252,10 @@ namespace forge.simple_csharp {
 				alert(""Load Error: "" + errorMsg) ;
 			}//,
 			//{
-            //	'oauth2AccessToken': authMee (),
-            //	'x-ads-acm-namespace': 'WIPDM',
-            //	'x-ads-acm-check-groups': 'true',
-        	//}
+			//	'oauth2AccessToken': authMe (),
+			//	'x-ads-acm-namespace': 'WIPDM',
+			//	'x-ads-acm-check-groups': 'true',
+			//}
 		) ;
 	}
 </script>
