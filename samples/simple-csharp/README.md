@@ -33,7 +33,7 @@ Note the client ID and client secret.
 
 
 ### Configure the Parameters
-* Open a Console window (aka Command Prompt window).
+* Open a Visual Studio 2015 Console window (aka Command Prompt window).
 * Create 2 environment variables `FORGE_CLIENT_ID` and `FORGE_CLIENT_SECRET` with the client ID and 
 client secret generated when creating the app.
 
