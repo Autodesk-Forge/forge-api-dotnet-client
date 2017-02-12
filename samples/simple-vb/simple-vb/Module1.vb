@@ -80,7 +80,7 @@ Module Module1
 			Using streamReader As New StreamReader(path)
 				Dim response As Object = objectsApi.UploadObject(BUCKET_KEY, FILE_NAME, CInt(streamReader.BaseStream.Length), streamReader.BaseStream, "application/octet-stream")
 				Console.WriteLine("***** Response for uploadFile: ")
-				Console.WriteLine("Uploaded object Details - Location: " + response.location + ", Size: " + response.size)
+				Console.WriteLine("Uploaded object Details - Location: " + response.location + ", Size: " + response.size.ToString())
 				Return (response)
 			End Using
 		End Function
