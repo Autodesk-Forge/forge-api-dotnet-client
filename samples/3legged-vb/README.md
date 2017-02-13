@@ -36,10 +36,13 @@ to not have the keys in code unless they are encrypted.
   * Open a Visual Studio 2015 Console window (aka Command Prompt window).
   * Create 3 environment variables `FORGE_CLIENT_ID`, `FORGE_CLIENT_SECRET`and `FORGE_CALLBACK` 
 with the client ID, client secret, and callback uri generated when creating the app.
+
     ```
     set FORGE_CLIENT_ID=<your client id>
+    
     set FORGE_CLIENT_SECRET=<your client secret>
-	set FORGE_CALLBACK=<your callback url>
+    
+    set FORGE_CALLBACK=<your callback url>
     ```
   * Start Visual Studio from the command prompt, typing ``` devenv ```, and load the project.
  
