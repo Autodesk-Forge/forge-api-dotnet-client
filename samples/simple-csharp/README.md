@@ -41,8 +41,10 @@ to not have the keys in code unless they are encrypted.
  
   * Open a Visual Studio 2015 Console window (aka Command Prompt window).
   * Create 2 environment variables `FORGE_CLIENT_ID` and `FORGE_CLIENT_SECRET` with the client ID and client secret generated when creating the app.
+  
     ```
     set FORGE_CLIENT_ID=<your client id>
+    
     set FORGE_CLIENT_SECRET=<your client secret>
     ```
   * Start Visual Studio from the command prompt, typing ``` devenv ```, and load the project.
