@@ -32,17 +32,29 @@ Forge Developer portal, and ensure that you select the Data Management and Model
 Note the client ID and client secret.
 
 
-### Configure the Parameters
-* Open a Visual Studio 2015 Console window (aka Command Prompt window).
-* Create 2 environment variables `FORGE_CLIENT_ID` and `FORGE_CLIENT_SECRET` with the client ID and 
-client secret generated when creating the app.
-
-
-### Build the sample
-* Start Visual Studio from the command prompt, typing ``` devenv ```.
-* Load the project in Visual Studio 2015, and build the sample.
-
-
+### Configure & Build the sample
+A developer can use either use environment variables or inserting the client id and secret directly
+into the code. However, the secret key should never be exposed for security reasons, so it is recommended
+to not have the keys in code unless they are encrypted.
+ 
+1. Use environment variables:
+ 
+  * Open a Visual Studio 2015 Console window (aka Command Prompt window).
+  * Create 2 environment variables `FORGE_CLIENT_ID` and `FORGE_CLIENT_SECRET` with the client ID and client secret generated when creating the app.
+    ```
+    set FORGE_CLIENT_ID=<your client id>
+    set FORGE_CLIENT_SECRET=<your client secret>
+    ```
+  * Start Visual Studio from the command prompt, typing ``` devenv ```, and load the project.
+ 
+2. Hardcode the keys in code (unsafe, but ok for testing)
+  * Open Visual Studio 2015 IDE
+  * Load the project
+  * Put the client id and secret in their respective placeholders in file Module1.vb, line #37 and #38
+ 
+3. Build the sample.
+ 
+ 
 ### Run the App
 * Run the app from Visual Studio.
 * If you want to run it from the command line, follow these instructions:

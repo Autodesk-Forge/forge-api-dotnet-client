@@ -22,18 +22,33 @@ Clone the following repository:<br />
 ### Create an App
 [Create an app](https://developer.autodesk.com/en/docs/oauth/v2/tutorials/create-app/) on the 
 Forge Developer portal, and ensure that you select the Data Management and Model Derivative APIs. 
-Note the client ID and client secret.
+Note the client ID, client secret, and redirect uri (callback uri). For this sample consider the callback 
+uri to be http://localhost:3006/oauth
 
 
-### Configure the Parameters
-* Open a Visual Studio 2015 Console window (aka Command Prompt window).
-* Create 3 environment variables `FORGE_CLIENT_ID`, `FORGE_CLIENT_SECRET` and `FORGE_CALLBACK`
-with the client ID, client secret, and redirect URL generated when creating the app.
-
-
-### Build the sample
-* Start Visual Studio from the command prompt, typing ``` devenv ```.
-* Load the project in Visual Studio 2015, and build the sample.
+### Configure & Build the sample
+A developer can use either use environment variables or inserting the client id and secret directly
+into the code. However, the secret key should never be exposed for security reasons, so it is recommended
+to not have the keys in code unless they are encrypted.
+ 
+1. Use environment variables:
+ 
+  * Open a Visual Studio 2015 Console window (aka Command Prompt window).
+  * Create 3 environment variables `FORGE_CLIENT_ID`, `FORGE_CLIENT_SECRET`and `FORGE_CALLBACK` 
+with the client ID, client secret, and callback uri generated when creating the app.
+    ```
+    set FORGE_CLIENT_ID=<your client id>
+    set FORGE_CLIENT_SECRET=<your client secret>
+	set FORGE_CALLBACK=<your callback url>
+    ```
+  * Start Visual Studio from the command prompt, typing ``` devenv ```, and load the project.
+ 
+2. Hardcode the keys in code (unsafe, but ok for testing)
+  * Open Visual Studio 2015 IDE
+  * Load the project
+  * Put the client id and secret in their respective placeholders in file MainWindow.cs, line #30, #31 and #33
+ 
+3. Build the sample.
 
 
 ### Run the App

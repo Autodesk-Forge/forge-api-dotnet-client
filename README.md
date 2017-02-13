@@ -11,7 +11,7 @@
 [![Viewer](https://img.shields.io/badge/Forge%20Viewer-v2.12-green.svg)](http://autodesk-forge.github.io/)
 
 
-# Forge .Net (C#) SDK
+# Forge .Net SDK
 
 ## Overview
 This .Net SDK enables you to easily integrate the Forge REST APIs into your application,
