@@ -76,6 +76,23 @@ namespace Autodesk.Forge.Model
         /// </summary>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+        
+        /// <summary>
+        /// Gets or Sets displayName, duplicated of Name
+        /// </summary>
+        [DataMember(Name = "displayName", EmitDefaultValue = false)]
+        public string DisplayName
+        {
+          get
+          {
+            return Name;
+          }
+          set
+          {
+            Name = value;
+          }
+        }
+    
         /// <summary>
         /// Gets or Sets Extension
         /// </summary>
