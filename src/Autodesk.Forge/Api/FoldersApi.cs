@@ -38,6 +38,16 @@ namespace Autodesk.Forge
     {
         #region Synchronous Operations
         /// <summary>
+        /// Returns a collection of items recursively in subfolders of any project accessible to you.
+        /// </summary>
+        /// <param name="query">Query to search</param>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="folderId">Folder Id</param>
+        /// <param name="pageNumber">Page Number</param>
+        /// <returns>Json Api Collection</returns>
+        ApiResponse< /*JsonApiCollection*/dynamic> SearchFolderContents(string query, string projectId, string folderId, int? pageNumber = null);
+
+        /// <summary>
         /// 
         /// </summary>
         /// <remarks>
@@ -47,7 +57,7 @@ namespace Autodesk.Forge
         /// <param name="projectId">the &#x60;project id&#x60;</param>
         /// <param name="folderId">the &#x60;folder id&#x60;</param>
         /// <returns>Folder</returns>
-        /*Folder*/dynamic GetFolder (string projectId, string folderId);
+        /*Folder*/ dynamic GetFolder (string projectId, string folderId);
 
         /// <summary>
         /// 
@@ -205,6 +215,16 @@ namespace Autodesk.Forge
         ApiResponse<Object> PostFolderRelationshipsRefWithHttpInfo (string projectId, string folderId, CreateRef body);
         #endregion Synchronous Operations
         #region Asynchronous Operations
+        /// <summary>
+        /// Returns a collection of items recursively in subfolders of any project accessible to you. 
+        /// </summary>
+        /// <param name="query">Query to search</param>
+        /// <param name="projectId">Poject Id</param>
+        /// <param name="folderId">Folder Id</param>
+        /// <param name="pageNumber">Page number</param>
+        /// <returns>Json Api Collection</returns>
+        System.Threading.Tasks.Task<ApiResponse</*JsonApiCollection*/dynamic>> SearchFolderContentsAsync(string query, string projectId, string folderId, int? pageNumber = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -503,7 +523,7 @@ namespace Autodesk.Forge
         /// <param name="projectId">the &#x60;project id&#x60;</param>
         /// <param name="folderId">the &#x60;folder id&#x60;</param>
         /// <returns>ApiResponse of Folder</returns>
-        public ApiResponse< /*Folder*/dynamic > GetFolderWithHttpInfo (string projectId, string folderId)
+        public ApiResponse< /*Folder*/dynamic> GetFolderWithHttpInfo(string projectId, string folderId)
         {
             // verify the required parameter 'projectId' is set
             if (projectId == null)
@@ -528,7 +548,7 @@ namespace Autodesk.Forge
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/vnd.api+json", 
+                "application/vnd.api+json",
                 "application/json"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
@@ -549,11 +569,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -564,7 +584,150 @@ namespace Autodesk.Forge
             return new ApiResponse</*Folder*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(Folder)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Folder)));
-            
+
+        }
+
+        /// <summary>
+        /// Returns a collection of items recursively in subfolders of any project accessible to you.
+        /// </summary>
+        /// <param name="query">Query to search</param>
+        /// <param name="projectId">Project Id</param>
+        /// <param name="folderId">Folder Id</param>
+        /// <param name="pageNumber">Page Number</param>
+        /// <returns>Json Api Collection</returns>
+        public ApiResponse< /*JsonApiCollection*/dynamic> SearchFolderContents(string query, string projectId, string folderId, int? pageNumber = null)
+        {
+            // verify the required parameter 'projectId' is set
+            if (projectId == null)
+                throw new ApiException(400, "Missing required parameter 'projectId' when calling FoldersApi->SearchFolderContents");
+            // verify the required parameter 'folderId' is set
+            if (folderId == null)
+                throw new ApiException(400, "Missing required parameter 'folderId' when calling FoldersApi->SearchFolderContents");
+
+            var localVarPath = "/data/v1/projects/{project_id}/folders/{folder_id}/search";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/vnd.api+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/vnd.api+json",
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (projectId != null) localVarPathParams.Add("project_id", Configuration.ApiClient.ParameterToString(projectId)); // path parameter
+            if (folderId != null) localVarPathParams.Add("folder_id", Configuration.ApiClient.ParameterToString(folderId)); // path parameter
+            if (pageNumber != null) localVarQueryParams.Add("page[number]", Configuration.ApiClient.ParameterToString(pageNumber)); // query parameter
+
+            // authentication (oauth2_access_code) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SearchFolderContents", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse</*JsonApiCollection*/dynamic>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                /*(JsonApiCollection)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonApiCollection)));
+
+        }
+
+        /// <summary>
+        /// Returns a collection of items recursively in subfolders of any project accessible to you. 
+        /// </summary>
+        /// <param name="query">Query to search</param>
+        /// <param name="projectId">Poject Id</param>
+        /// <param name="folderId">Folder Id</param>
+        /// <param name="pageNumber">Page number</param>
+        /// <returns>Json Api Collection</returns>
+        public async System.Threading.Tasks.Task<ApiResponse</*JsonApiCollection*/dynamic>> SearchFolderContentsAsync(string query, string projectId, string folderId, int? pageNumber = null)
+        {
+            // verify the required parameter 'projectId' is set
+            if (projectId == null)
+                throw new ApiException(400, "Missing required parameter 'projectId' when calling FoldersApi->SearchFolderContentsAsync");
+            // verify the required parameter 'folderId' is set
+            if (folderId == null)
+                throw new ApiException(400, "Missing required parameter 'folderId' when calling FoldersApi->SearchFolderContentsAsync");
+
+            const string localVarPath = "/data/v1/projects/{project_id}/folders/{folder_id}/search";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+
+            // to determine the Content-Type header
+            var localVarHttpContentTypes = new String[] {
+                "application/vnd.api+json"
+            };
+            var localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            var localVarHttpHeaderAccepts = new String[] {
+                "application/vnd.api+json",
+                "application/json"
+            };
+            var localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            localVarPathParams.Add("format", "json");
+            localVarPathParams.Add("project_id", Configuration.ApiClient.ParameterToString(projectId)); // path parameter
+            localVarPathParams.Add("folder_id", Configuration.ApiClient.ParameterToString(folderId)); // path parameter
+            if (pageNumber != null) localVarQueryParams.Add("page[number]", Configuration.ApiClient.ParameterToString(pageNumber)); // query parameter
+
+            // authentication (oauth2_access_code) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            var localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, null, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            var localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SearchFolderContentsAsync", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse</*JsonApiCollection*/dynamic>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                /*(JsonApiCollection)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonApiCollection)));
+
         }
 
         /// <summary>
