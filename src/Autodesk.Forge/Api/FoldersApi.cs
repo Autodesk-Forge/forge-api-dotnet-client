@@ -38,14 +38,15 @@ namespace Autodesk.Forge
     {
         #region Synchronous Operations
         /// <summary>
-        /// Returns a collection of items recursively in subfolders of any project accessible to you.
+        /// Returns a collection of items recursively in subfolders of any project accessible to you. 
         /// </summary>
-        /// <param name="query">Query to search</param>
-        /// <param name="projectId">Project Id</param>
+        /// <param name="projectId">Poject Id</param>
         /// <param name="folderId">Folder Id</param>
-        /// <param name="pageNumber">Page Number</param>
+        /// <param name="pageNumber">Page number</param>
+        ///<param name="filterName">filter data what contains the string</param>
+        /// <param name="filterFileType">filter data by file extension</param>
         /// <returns>Json Api Collection</returns>
-        ApiResponse< /*JsonApiCollection*/dynamic> SearchFolderContents(string query, string projectId, string folderId, int? pageNumber = null);
+        ApiResponse< /*JsonApiCollection*/dynamic> SearchFolderContents(string projectId, string folderId, int? pageNumber = null, List<string> filterName = null, List<string> filterFileType = null);
 
         /// <summary>
         /// 
@@ -214,16 +215,17 @@ namespace Autodesk.Forge
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> PostFolderRelationshipsRefWithHttpInfo (string projectId, string folderId, CreateRef body);
         #endregion Synchronous Operations
-        #region Asynchronous Operations
+        #region Asynchronous Operations    
         /// <summary>
         /// Returns a collection of items recursively in subfolders of any project accessible to you. 
         /// </summary>
-        /// <param name="query">Query to search</param>
         /// <param name="projectId">Poject Id</param>
         /// <param name="folderId">Folder Id</param>
         /// <param name="pageNumber">Page number</param>
+        ///<param name="filterName">filter data what contains the string</param>
+        /// <param name="filterFileType">filter data by file extension</param>
         /// <returns>Json Api Collection</returns>
-        System.Threading.Tasks.Task<ApiResponse</*JsonApiCollection*/dynamic>> SearchFolderContentsAsync(string query, string projectId, string folderId, int? pageNumber = null);
+        System.Threading.Tasks.Task<ApiResponse</*JsonApiCollection*/dynamic>> SearchFolderContentsAsync(string projectId, string folderId, int? pageNumber = null,List<string> filterName = null, List<string> filterFileType = null);
 
         /// <summary>
         /// 
@@ -588,14 +590,15 @@ namespace Autodesk.Forge
         }
 
         /// <summary>
-        /// Returns a collection of items recursively in subfolders of any project accessible to you.
+        /// Returns a collection of items recursively in subfolders of any project accessible to you. 
         /// </summary>
-        /// <param name="query">Query to search</param>
-        /// <param name="projectId">Project Id</param>
+        /// <param name="projectId">Poject Id</param>
         /// <param name="folderId">Folder Id</param>
-        /// <param name="pageNumber">Page Number</param>
+        /// <param name="pageNumber">Page number</param>
+        ///<param name="filterName">filter data what contains the string</param>
+        /// <param name="filterFileType">filter data by file extension</param>
         /// <returns>Json Api Collection</returns>
-        public ApiResponse< /*JsonApiCollection*/dynamic> SearchFolderContents(string query, string projectId, string folderId, int? pageNumber = null)
+        public ApiResponse< /*JsonApiCollection*/dynamic> SearchFolderContents(string projectId, string folderId, int? pageNumber = null, List<string> filterName = null, List<string> filterFileType = null)
         {
             // verify the required parameter 'projectId' is set
             if (projectId == null)
@@ -630,10 +633,12 @@ namespace Autodesk.Forge
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (projectId != null) localVarPathParams.Add("project_id", Configuration.ApiClient.ParameterToString(projectId)); // path parameter
-            if (folderId != null) localVarPathParams.Add("folder_id", Configuration.ApiClient.ParameterToString(folderId)); // path parameter
+            localVarPathParams.Add("project_id", Configuration.ApiClient.ParameterToString(projectId)); // path parameter
+            localVarPathParams.Add("folder_id", Configuration.ApiClient.ParameterToString(folderId)); // path parameter
             if (pageNumber != null) localVarQueryParams.Add("page[number]", Configuration.ApiClient.ParameterToString(pageNumber)); // query parameter
-
+            if (filterFileType != null) localVarQueryParams.Add("filter[fileType]", Configuration.ApiClient.ParameterToString(filterFileType)); // query parameter
+            if (filterName != null) localVarQueryParams.Add("filter[name]-contains", Configuration.ApiClient.ParameterToString(filterName)); // query parameter
+            
             // authentication (oauth2_access_code) required
             // oauth required
             if (!String.IsNullOrEmpty(Configuration.AccessToken))
@@ -663,12 +668,13 @@ namespace Autodesk.Forge
         /// <summary>
         /// Returns a collection of items recursively in subfolders of any project accessible to you. 
         /// </summary>
-        /// <param name="query">Query to search</param>
         /// <param name="projectId">Poject Id</param>
         /// <param name="folderId">Folder Id</param>
         /// <param name="pageNumber">Page number</param>
+        ///<param name="filterName">filter data what contains the string</param>
+        /// <param name="filterFileType">filter data by file extension</param>
         /// <returns>Json Api Collection</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*JsonApiCollection*/dynamic>> SearchFolderContentsAsync(string query, string projectId, string folderId, int? pageNumber = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*JsonApiCollection*/dynamic>> SearchFolderContentsAsync(string projectId, string folderId, int? pageNumber = null,List<string> filterName = null, List<string> filterFileType = null)
         {
             // verify the required parameter 'projectId' is set
             if (projectId == null)
@@ -703,7 +709,9 @@ namespace Autodesk.Forge
             localVarPathParams.Add("project_id", Configuration.ApiClient.ParameterToString(projectId)); // path parameter
             localVarPathParams.Add("folder_id", Configuration.ApiClient.ParameterToString(folderId)); // path parameter
             if (pageNumber != null) localVarQueryParams.Add("page[number]", Configuration.ApiClient.ParameterToString(pageNumber)); // query parameter
-
+            if (filterFileType != null) localVarQueryParams.Add("filter[fileType]", Configuration.ApiClient.ParameterToString(filterFileType)); // query parameter
+            if (filterName != null) localVarQueryParams.Add("filter[name]-contains", Configuration.ApiClient.ParameterToString(filterName)); // query parameter
+           
             // authentication (oauth2_access_code) required
             // oauth required
             if (!String.IsNullOrEmpty(Configuration.AccessToken))
