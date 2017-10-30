@@ -1646,7 +1646,7 @@ namespace Autodesk.Forge
         public /*Metadata*/dynamic GetModelviewProperties (string urn, string guid, string acceptEncoding = null)
         {
              ApiResponse</*Metadata*/dynamic> localVarResponse = GetModelviewPropertiesWithHttpInfo(urn, guid, acceptEncoding);
-             return localVarResponse.Data;
+            return localVarResponse;
         }
 
         /// <summary>
@@ -1739,7 +1739,7 @@ namespace Autodesk.Forge
         public async System.Threading.Tasks.Task</*Metadata*/dynamic> GetModelviewPropertiesAsync (string urn, string guid, string acceptEncoding = null)
         {
              ApiResponse</*Metadata*/dynamic> localVarResponse = await GetModelviewPropertiesAsyncWithHttpInfo(urn, guid, acceptEncoding);
-             return localVarResponse.Data;
+             return localVarResponse;
 
         }
 
