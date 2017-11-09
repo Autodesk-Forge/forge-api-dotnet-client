@@ -381,9 +381,15 @@ Class | Method | HTTP request | Description
 *WorkItemsApi* | [**GetWorkItem**](docs/WorkItemsApi.md#getworkitem) | **GET** /autocad.io/us-east/v2/WorkItems(&#39;{id}&#39;) | Returns the details of a specific WorkItem.
 
 
+### Thumbnail
+
+![thumbnail](/dotnet.png)
+
+
 ## Support
 
 forge.help@autodesk.com
+
 
 
 
