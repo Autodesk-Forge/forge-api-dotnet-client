@@ -8,8 +8,6 @@
 [![Data-Management](https://img.shields.io/badge/Data%20Management-v1-green.svg)](http://autodesk-forge.github.io/)
 [![OSS](https://img.shields.io/badge/OSS-v2-green.svg)](http://autodesk-forge.github.io/)
 [![Model-Derivative](https://img.shields.io/badge/Model%20Derivative-v2-green.svg)](http://autodesk-forge.github.io/)
-[![Viewer](https://img.shields.io/badge/Forge%20Viewer-v2.12-green.svg)](http://autodesk-forge.github.io/)
-
 
 # Forge .Net SDK
 
@@ -383,9 +381,15 @@ Class | Method | HTTP request | Description
 *WorkItemsApi* | [**GetWorkItem**](docs/WorkItemsApi.md#getworkitem) | **GET** /autocad.io/us-east/v2/WorkItems(&#39;{id}&#39;) | Returns the details of a specific WorkItem.
 
 
+### Thumbnail
+
+![thumbnail](/dotnet.png)
+
+
 ## Support
 
 forge.help@autodesk.com
+
 
 
 
