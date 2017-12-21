@@ -181,7 +181,7 @@ namespace Autodesk.Forge
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> GetUploadUrlWithHttpInfo ();
         /// <summary>
-        /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type&#x3D;binary/octet-stream.
+        /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type=binary/octet-stream.
         /// </summary>
         /// <remarks>
         /// 
@@ -192,7 +192,7 @@ namespace Autodesk.Forge
         void GetUploadUrlWithRequireContentType (bool? require);
 
         /// <summary>
-        /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type&#x3D;binary/octet-stream.
+        /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type=binary/octet-stream.
         /// </summary>
         /// <remarks>
         /// 
@@ -416,7 +416,7 @@ namespace Autodesk.Forge
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> GetUploadUrlAsyncWithHttpInfo ();
         /// <summary>
-        /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type&#x3D;binary/octet-stream.
+        /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type=binary/octet-stream.
         /// </summary>
         /// <remarks>
         /// 
@@ -427,7 +427,7 @@ namespace Autodesk.Forge
         System.Threading.Tasks.Task GetUploadUrlWithRequireContentTypeAsync (bool? require);
 
         /// <summary>
-        /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type&#x3D;binary/octet-stream.
+        /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type=binary/octet-stream.
         /// </summary>
         /// <remarks>
         /// 
@@ -833,7 +833,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling AppPackagesApi->DeleteAppPackage");
 
-            var localVarPath = "/autocad.io/us-east/v2/AppPackages(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -911,7 +911,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling AppPackagesApi->DeleteAppPackage");
 
-            var localVarPath = "/autocad.io/us-east/v2/AppPackages(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -988,7 +988,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling AppPackagesApi->DeleteAppPackageHistory");
 
-            var localVarPath = "/autocad.io/us-east/v2/AppPackages(&#39;{id}&#39;)/Operations.DeleteHistory";
+            var localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')/Operations.DeleteHistory";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1066,7 +1066,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling AppPackagesApi->DeleteAppPackageHistory");
 
-            var localVarPath = "/autocad.io/us-east/v2/AppPackages(&#39;{id}&#39;)/Operations.DeleteHistory";
+            var localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')/Operations.DeleteHistory";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1289,7 +1289,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling AppPackagesApi->GetAppPackage");
 
-            var localVarPath = "/autocad.io/us-east/v2/AppPackages(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1368,7 +1368,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling AppPackagesApi->GetAppPackage");
 
-            var localVarPath = "/autocad.io/us-east/v2/AppPackages(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1446,7 +1446,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling AppPackagesApi->GetAppPackageVersions");
 
-            var localVarPath = "/autocad.io/us-east/v2/AppPackages(&#39;{id}&#39;)/Operations.GetVersions";
+            var localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')/Operations.GetVersions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1525,7 +1525,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling AppPackagesApi->GetAppPackageVersions");
 
-            var localVarPath = "/autocad.io/us-east/v2/AppPackages(&#39;{id}&#39;)/Operations.GetVersions";
+            var localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')/Operations.GetVersions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1723,7 +1723,7 @@ namespace Autodesk.Forge
         }
 
         /// <summary>
-        /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type&#x3D;binary/octet-stream. 
+        /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type=binary/octet-stream. 
         /// </summary>
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="require"></param>
@@ -1734,7 +1734,7 @@ namespace Autodesk.Forge
         }
 
         /// <summary>
-        /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type&#x3D;binary/octet-stream. 
+        /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type=binary/octet-stream. 
         /// </summary>
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="require"></param>
@@ -1745,7 +1745,7 @@ namespace Autodesk.Forge
             if (require == null)
                 throw new ApiException(400, "Missing required parameter 'require' when calling AppPackagesApi->GetUploadUrlWithRequireContentType");
 
-            var localVarPath = "/autocad.io/us-east/v2/AppPackages/Operations.GetUploadUrl(RequireContentType&#x3D;{require})";
+            var localVarPath = "/autocad.io/us-east/v2/AppPackages/Operations.GetUploadUrl(RequireContentType={require})";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1800,7 +1800,7 @@ namespace Autodesk.Forge
         }
 
         /// <summary>
-        /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type&#x3D;binary/octet-stream. 
+        /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type=binary/octet-stream. 
         /// </summary>
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="require"></param>
@@ -1812,7 +1812,7 @@ namespace Autodesk.Forge
         }
 
         /// <summary>
-        /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type&#x3D;binary/octet-stream. 
+        /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type=binary/octet-stream. 
         /// </summary>
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="require"></param>
@@ -1823,7 +1823,7 @@ namespace Autodesk.Forge
             if (require == null)
                 throw new ApiException(400, "Missing required parameter 'require' when calling AppPackagesApi->GetUploadUrlWithRequireContentType");
 
-            var localVarPath = "/autocad.io/us-east/v2/AppPackages/Operations.GetUploadUrl(RequireContentType&#x3D;{require})";
+            var localVarPath = "/autocad.io/us-east/v2/AppPackages/Operations.GetUploadUrl(RequireContentType={require})";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1905,7 +1905,7 @@ namespace Autodesk.Forge
             if (appPackage == null)
                 throw new ApiException(400, "Missing required parameter 'appPackage' when calling AppPackagesApi->PatchAppPackage");
 
-            var localVarPath = "/autocad.io/us-east/v2/AppPackages(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2007,7 +2007,7 @@ namespace Autodesk.Forge
             if (appPackage == null)
                 throw new ApiException(400, "Missing required parameter 'appPackage' when calling AppPackagesApi->PatchAppPackage");
 
-            var localVarPath = "/autocad.io/us-east/v2/AppPackages(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2108,7 +2108,7 @@ namespace Autodesk.Forge
             if (appPackageVersion == null)
                 throw new ApiException(400, "Missing required parameter 'appPackageVersion' when calling AppPackagesApi->SetAppPackageVersion");
 
-            var localVarPath = "/autocad.io/us-east/v2/AppPackages(&#39;{id}&#39;)/Operations.SetVersion";
+            var localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')/Operations.SetVersion";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2210,7 +2210,7 @@ namespace Autodesk.Forge
             if (appPackageVersion == null)
                 throw new ApiException(400, "Missing required parameter 'appPackageVersion' when calling AppPackagesApi->SetAppPackageVersion");
 
-            var localVarPath = "/autocad.io/us-east/v2/AppPackages(&#39;{id}&#39;)/Operations.SetVersion";
+            var localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')/Operations.SetVersion";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2311,7 +2311,7 @@ namespace Autodesk.Forge
             if (appPackage == null)
                 throw new ApiException(400, "Missing required parameter 'appPackage' when calling AppPackagesApi->UpdateAppPackage");
 
-            var localVarPath = "/autocad.io/us-east/v2/AppPackages(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2413,7 +2413,7 @@ namespace Autodesk.Forge
             if (appPackage == null)
                 throw new ApiException(400, "Missing required parameter 'appPackage' when calling AppPackagesApi->UpdateAppPackage");
 
-            var localVarPath = "/autocad.io/us-east/v2/AppPackages(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/AppPackages('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);

@@ -707,7 +707,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ActivitiesApi->DeleteActivity");
 
-            var localVarPath = "/autocad.io/us-east/v2/Activities(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/Activities('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -785,7 +785,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ActivitiesApi->DeleteActivity");
 
-            var localVarPath = "/autocad.io/us-east/v2/Activities(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/Activities('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -862,7 +862,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ActivitiesApi->DeleteActivityHistory");
 
-            var localVarPath = "/autocad.io/us-east/v2/Activities(&#39;{id}&#39;)/Operations.DeleteHistory";
+            var localVarPath = "/autocad.io/us-east/v2/Activities('{id}')/Operations.DeleteHistory";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -940,7 +940,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ActivitiesApi->DeleteActivityHistory");
 
-            var localVarPath = "/autocad.io/us-east/v2/Activities(&#39;{id}&#39;)/Operations.DeleteHistory";
+            var localVarPath = "/autocad.io/us-east/v2/Activities('{id}')/Operations.DeleteHistory";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1018,7 +1018,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ActivitiesApi->GetActivity");
 
-            var localVarPath = "/autocad.io/us-east/v2/Activities(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/Activities('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1097,7 +1097,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ActivitiesApi->GetActivity");
 
-            var localVarPath = "/autocad.io/us-east/v2/Activities(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/Activities('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1175,7 +1175,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ActivitiesApi->GetActivityVersions");
 
-            var localVarPath = "/autocad.io/us-east/v2/Activities(&#39;{id}&#39;)/Operations.GetVersions";
+            var localVarPath = "/autocad.io/us-east/v2/Activities('{id}')/Operations.GetVersions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1254,7 +1254,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling ActivitiesApi->GetActivityVersions");
 
-            var localVarPath = "/autocad.io/us-east/v2/Activities(&#39;{id}&#39;)/Operations.GetVersions";
+            var localVarPath = "/autocad.io/us-east/v2/Activities('{id}')/Operations.GetVersions";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1481,7 +1481,7 @@ namespace Autodesk.Forge
             if (activity == null)
                 throw new ApiException(400, "Missing required parameter 'activity' when calling ActivitiesApi->PatchActivity");
 
-            var localVarPath = "/autocad.io/us-east/v2/Activities(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/Activities('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1583,7 +1583,7 @@ namespace Autodesk.Forge
             if (activity == null)
                 throw new ApiException(400, "Missing required parameter 'activity' when calling ActivitiesApi->PatchActivity");
 
-            var localVarPath = "/autocad.io/us-east/v2/Activities(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/Activities('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1684,7 +1684,7 @@ namespace Autodesk.Forge
             if (activityVersion == null)
                 throw new ApiException(400, "Missing required parameter 'activityVersion' when calling ActivitiesApi->SetActivityVersion");
 
-            var localVarPath = "/autocad.io/us-east/v2/Activities(&#39;{id}&#39;)/Operations.SetVersion";
+            var localVarPath = "/autocad.io/us-east/v2/Activities('{id}')/Operations.SetVersion";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1786,7 +1786,7 @@ namespace Autodesk.Forge
             if (activityVersion == null)
                 throw new ApiException(400, "Missing required parameter 'activityVersion' when calling ActivitiesApi->SetActivityVersion");
 
-            var localVarPath = "/autocad.io/us-east/v2/Activities(&#39;{id}&#39;)/Operations.SetVersion";
+            var localVarPath = "/autocad.io/us-east/v2/Activities('{id}')/Operations.SetVersion";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
