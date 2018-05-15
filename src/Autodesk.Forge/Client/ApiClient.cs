@@ -151,14 +151,18 @@ namespace Autodesk.Forge.Client
 
             if (postBody != null) // http body (model or byte[]) parameter
             {
-                if (postBody.GetType() == typeof(String))
-                {
-                    request.AddParameter("application/json", postBody, ParameterType.RequestBody);
-                }
-                else if (postBody.GetType() == typeof(byte[]))
+                if (!string.IsNullOrWhiteSpace(contentType))
                 {
                     request.AddParameter(contentType, postBody, ParameterType.RequestBody);
                 }
+                else if (postBody.GetType() == typeof(String))
+                {
+                    request.AddParameter("application/json", postBody, ParameterType.RequestBody);
+                }
+                //else if (postBody.GetType() == typeof(byte[]))
+                //{
+                //    request.AddParameter(contentType, postBody, ParameterType.RequestBody);
+                //}
             }
 
             return request;

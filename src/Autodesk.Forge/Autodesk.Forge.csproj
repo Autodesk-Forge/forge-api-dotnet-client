@@ -24,7 +24,7 @@ limitations under the License.
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1F96C009-0C16-429F-A3A9-1A96ECEA1F93}</ProjectGuid>
+    <ProjectGuid>{CAB5DABD-A4A1-43D3-B14A-1AFC213F76FF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Autodesk.Forge</RootNamespace>
@@ -81,4 +81,3 @@ limitations under the License.
   </ItemGroup>
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
-

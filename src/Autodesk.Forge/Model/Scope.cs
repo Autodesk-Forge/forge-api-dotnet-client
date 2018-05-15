@@ -78,7 +78,10 @@ namespace Autodesk.Forge
 		AccountWrite,
 		[ForgeScope ("userprofile:read")]
 		[Description ("The application will be able to read the end user’s profile data.")]
-		UserProfileRead
+		UserProfileRead,
+		[ForgeScope ("viewables:read")]
+		[Description ("The application will have read access to viewable resources such as thumbnails. This scope is a subset of data:read.")]
+		ViewablesRead
 	}
 
 	public static class ForgeScopeExtensions {

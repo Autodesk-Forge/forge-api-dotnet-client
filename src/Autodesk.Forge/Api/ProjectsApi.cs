@@ -113,6 +113,29 @@ namespace Autodesk.Forge
         /// 
         /// </summary>
         /// <remarks>
+        /// Returns the details of the highest level folders the user has access to for a given project
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="hubId">the &#x60;hub id&#x60; for the current operation</param>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <returns>TopFolders</returns>
+        /*TopFolders*/dynamic GetProjectTopFolders (string hubId, string projectId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns the details of the highest level folders the user has access to for a given project
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="hubId">the &#x60;hub id&#x60; for the current operation</param>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <returns>ApiResponse of TopFolders</returns>
+        ApiResponse</*TopFolders*/dynamic> GetProjectTopFoldersWithHttpInfo (string hubId, string projectId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Creates a storage location in the OSS where data can be uploaded to. 
         /// </remarks>
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
@@ -132,29 +155,6 @@ namespace Autodesk.Forge
         /// <param name="body">describe the file the storage is created for</param>
         /// <returns>ApiResponse of StorageCreated</returns>
         ApiResponse</*StorageCreated*/dynamic> PostStorageWithHttpInfo (string projectId, CreateStorage body);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Creates a new version of an item in the &#39;data&#39; domain service. 
-        /// </remarks>
-        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="projectId">the &#x60;project id&#x60;</param>
-        /// <param name="body">describe the version to be created</param>
-        /// <returns>VersionCreated</returns>
-        /*VersionCreated*/dynamic PostVersion (string projectId, CreateVersion body);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Creates a new version of an item in the &#39;data&#39; domain service. 
-        /// </remarks>
-        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="projectId">the &#x60;project id&#x60;</param>
-        /// <param name="body">describe the version to be created</param>
-        /// <returns>ApiResponse of VersionCreated</returns>
-        ApiResponse</*VersionCreated*/dynamic> PostVersionWithHttpInfo (string projectId, CreateVersion body);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -232,6 +232,29 @@ namespace Autodesk.Forge
         /// 
         /// </summary>
         /// <remarks>
+        /// Returns the details of the highest level folders the user has access to for a given project
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="hubId">the &#x60;hub id&#x60; for the current operation</param>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <returns>Task of TopFolders</returns>
+        System.Threading.Tasks.Task</*TopFolders*/dynamic> GetProjectTopFoldersAsync (string hubId, string projectId);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns the details of the highest level folders the user has access to for a given project
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="hubId">the &#x60;hub id&#x60; for the current operation</param>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <returns>Task of ApiResponse (TopFolders)</returns>
+        System.Threading.Tasks.Task<ApiResponse</*TopFolders*/dynamic>> GetProjectTopFoldersAsyncWithHttpInfo (string hubId, string projectId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Creates a storage location in the OSS where data can be uploaded to. 
         /// </remarks>
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
@@ -251,29 +274,6 @@ namespace Autodesk.Forge
         /// <param name="body">describe the file the storage is created for</param>
         /// <returns>Task of ApiResponse (StorageCreated)</returns>
         System.Threading.Tasks.Task<ApiResponse</*StorageCreated*/dynamic>> PostStorageAsyncWithHttpInfo (string projectId, CreateStorage body);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Creates a new version of an item in the &#39;data&#39; domain service. 
-        /// </remarks>
-        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="projectId">the &#x60;project id&#x60;</param>
-        /// <param name="body">describe the version to be created</param>
-        /// <returns>Task of VersionCreated</returns>
-        System.Threading.Tasks.Task</*VersionCreated*/dynamic> PostVersionAsync (string projectId, CreateVersion body);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Creates a new version of an item in the &#39;data&#39; domain service. 
-        /// </remarks>
-        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="projectId">the &#x60;project id&#x60;</param>
-        /// <param name="body">describe the version to be created</param>
-        /// <returns>Task of ApiResponse (VersionCreated)</returns>
-        System.Threading.Tasks.Task<ApiResponse</*VersionCreated*/dynamic>> PostVersionAsyncWithHttpInfo (string projectId, CreateVersion body);
         #endregion Asynchronous Operations
     }
 
@@ -894,6 +894,175 @@ namespace Autodesk.Forge
         }
 
         /// <summary>
+        ///  Returns the details of the highest level folders the user has access to for a given project
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="hubId">the &#x60;hub id&#x60; for the current operation</param>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <returns>TopFolders</returns>
+        public /*TopFolders*/dynamic GetProjectTopFolders (string hubId, string projectId)
+        {
+             ApiResponse</*TopFolders*/dynamic> localVarResponse = GetProjectTopFoldersWithHttpInfo(hubId, projectId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Returns the details of the highest level folders the user has access to for a given project
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="hubId">the &#x60;hub id&#x60; for the current operation</param>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <returns>ApiResponse of TopFolders</returns>
+        public ApiResponse< /*TopFolders*/dynamic > GetProjectTopFoldersWithHttpInfo (string hubId, string projectId)
+        {
+            // verify the required parameter 'hubId' is set
+            if (hubId == null)
+                throw new ApiException(400, "Missing required parameter 'hubId' when calling ProjectsApi->GetProjectTopFolders");
+            // verify the required parameter 'projectId' is set
+            if (projectId == null)
+                throw new ApiException(400, "Missing required parameter 'projectId' when calling ProjectsApi->GetProjectTopFolders");
+
+            var localVarPath = "/project/v1/hubs/{hub_id}/projects/{project_id}/topFolders";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/vnd.api+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/vnd.api+json", 
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (hubId != null) localVarPathParams.Add("hub_id", Configuration.ApiClient.ParameterToString(hubId)); // path parameter
+            if (projectId != null) localVarPathParams.Add("project_id", Configuration.ApiClient.ParameterToString(projectId)); // path parameter
+
+            // authentication (oauth2_access_code) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetProjectTopFolders", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse</*TopFolders*/dynamic>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                /*(TopFolders)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(TopFolders)));
+            
+        }
+
+        /// <summary>
+        ///  Returns the details of the highest level folders the user has access to for a given project
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="hubId">the &#x60;hub id&#x60; for the current operation</param>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <returns>Task of TopFolders</returns>
+        public async System.Threading.Tasks.Task</*TopFolders*/dynamic> GetProjectTopFoldersAsync (string hubId, string projectId)
+        {
+             ApiResponse</*TopFolders*/dynamic> localVarResponse = await GetProjectTopFoldersAsyncWithHttpInfo(hubId, projectId);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        ///  Returns the details of the highest level folders the user has access to for a given project
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="hubId">the &#x60;hub id&#x60; for the current operation</param>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <returns>Task of ApiResponse (TopFolders)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse</*TopFolders*/dynamic>> GetProjectTopFoldersAsyncWithHttpInfo (string hubId, string projectId)
+        {
+            // verify the required parameter 'hubId' is set
+            if (hubId == null)
+                throw new ApiException(400, "Missing required parameter 'hubId' when calling ProjectsApi->GetProjectTopFolders");
+            // verify the required parameter 'projectId' is set
+            if (projectId == null)
+                throw new ApiException(400, "Missing required parameter 'projectId' when calling ProjectsApi->GetProjectTopFolders");
+
+            var localVarPath = "/project/v1/hubs/{hub_id}/projects/{project_id}/topFolders";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/vnd.api+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/vnd.api+json", 
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (hubId != null) localVarPathParams.Add("hub_id", Configuration.ApiClient.ParameterToString(hubId)); // path parameter
+            if (projectId != null) localVarPathParams.Add("project_id", Configuration.ApiClient.ParameterToString(projectId)); // path parameter
+
+            // authentication (oauth2_access_code) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetProjectTopFolders", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse</*TopFolders*/dynamic>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                /*(TopFolders)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(TopFolders)));
+            
+        }
+
+        /// <summary>
         ///  Creates a storage location in the OSS where data can be uploaded to. 
         /// </summary>
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1095,211 +1264,6 @@ namespace Autodesk.Forge
             return new ApiResponse</*StorageCreated*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(StorageCreated)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(StorageCreated)));
-            
-        }
-
-        /// <summary>
-        ///  Creates a new version of an item in the &#39;data&#39; domain service. 
-        /// </summary>
-        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="projectId">the &#x60;project id&#x60;</param>
-        /// <param name="body">describe the version to be created</param>
-        /// <returns>VersionCreated</returns>
-        public /*VersionCreated*/dynamic PostVersion (string projectId, CreateVersion body)
-        {
-             ApiResponse</*VersionCreated*/dynamic> localVarResponse = PostVersionWithHttpInfo(projectId, body);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  Creates a new version of an item in the &#39;data&#39; domain service. 
-        /// </summary>
-        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="projectId">the &#x60;project id&#x60;</param>
-        /// <param name="body">describe the version to be created</param>
-        /// <returns>ApiResponse of VersionCreated</returns>
-        public ApiResponse< /*VersionCreated*/dynamic > PostVersionWithHttpInfo (string projectId, CreateVersion body)
-        {
-            // verify the required parameter 'projectId' is set
-            if (projectId == null)
-                throw new ApiException(400, "Missing required parameter 'projectId' when calling ProjectsApi->PostVersion");
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling ProjectsApi->PostVersion");
-
-            var localVarPath = "/data/v1/projects/{project_id}/versions";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/vnd.api+json"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/vnd.api+json", 
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-            if (projectId != null) localVarPathParams.Add("project_id", Configuration.ApiClient.ParameterToString(projectId)); // path parameter
-            if (body != null && body.GetType() == typeof(byte[])) // http body (model) parameter
-            {
-                localVarPostBody = body; // byte array
-            }
-            else if (   body != null
-                     && (   body.GetType() == typeof(System.IO.FileStream)
-                         || body.GetType() == typeof(System.IO.BinaryReader)
-                         || body.GetType() == typeof(System.IO.BufferedStream)
-                   	     || body.GetType() == typeof(System.IO.MemoryStream)
-                   	     || body.GetType() == typeof(System.IO.StreamReader)
-                   	    )
-                    )
-            {
-                localVarPostBody =Configuration.ApiClient.toByteArray(body); // byte array
-            }
-            else if ( body != null )
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(body);
-            }
-
-            // authentication (oauth2_access_code) required
-            // oauth required
-            if (!String.IsNullOrEmpty(Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PostVersion", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse</*VersionCreated*/dynamic>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                /*(VersionCreated)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(VersionCreated)));
-            
-        }
-
-        /// <summary>
-        ///  Creates a new version of an item in the &#39;data&#39; domain service. 
-        /// </summary>
-        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="projectId">the &#x60;project id&#x60;</param>
-        /// <param name="body">describe the version to be created</param>
-        /// <returns>Task of VersionCreated</returns>
-        public async System.Threading.Tasks.Task</*VersionCreated*/dynamic> PostVersionAsync (string projectId, CreateVersion body)
-        {
-             ApiResponse</*VersionCreated*/dynamic> localVarResponse = await PostVersionAsyncWithHttpInfo(projectId, body);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        ///  Creates a new version of an item in the &#39;data&#39; domain service. 
-        /// </summary>
-        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="projectId">the &#x60;project id&#x60;</param>
-        /// <param name="body">describe the version to be created</param>
-        /// <returns>Task of ApiResponse (VersionCreated)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*VersionCreated*/dynamic>> PostVersionAsyncWithHttpInfo (string projectId, CreateVersion body)
-        {
-            // verify the required parameter 'projectId' is set
-            if (projectId == null)
-                throw new ApiException(400, "Missing required parameter 'projectId' when calling ProjectsApi->PostVersion");
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling ProjectsApi->PostVersion");
-
-            var localVarPath = "/data/v1/projects/{project_id}/versions";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/vnd.api+json"
-            };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/vnd.api+json", 
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-            if (projectId != null) localVarPathParams.Add("project_id", Configuration.ApiClient.ParameterToString(projectId)); // path parameter
-            if (body != null && body.GetType() == typeof(byte[])) // http body (model) parameter
-            {
-                localVarPostBody = body; // byte array
-            }
-            else if (   body != null
-                     && (   body.GetType() == typeof(System.IO.FileStream)
-                         || body.GetType() == typeof(System.IO.BinaryReader)
-                         || body.GetType() == typeof(System.IO.BufferedStream)
-                   	     || body.GetType() == typeof(System.IO.MemoryStream)
-                   	     || body.GetType() == typeof(System.IO.StreamReader)
-                   	    )
-                    )
-            {
-                localVarPostBody =Configuration.ApiClient.toByteArray(body); // byte array
-            }
-            else if ( body != null )
-            {
-                localVarPostBody = Configuration.ApiClient.Serialize(body);
-            }
-
-            // authentication (oauth2_access_code) required
-            // oauth required
-            if (!String.IsNullOrEmpty(Configuration.AccessToken))
-            {
-                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("PostVersion", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse</*VersionCreated*/dynamic>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                /*(VersionCreated)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(VersionCreated)));
             
         }
 

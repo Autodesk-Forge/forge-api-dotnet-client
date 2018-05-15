@@ -69,7 +69,7 @@ namespace Autodesk.Forge.Model
         /// <param name="Type">Type (required).</param>
         /// <param name="Attributes">Attributes.</param>
         /// <param name="Relationships">Relationships.</param>
-        public CreateItemData(TypeEnum? Type = null, CreateStorageDataAttributes Attributes = null, CreateItemDataRelationships Relationships = null)
+        public CreateItemData(TypeEnum? Type = null, CreateItemDataAttributes Attributes = null, CreateItemDataRelationships Relationships = null)
         {
             // to ensure "Type" is required (not null)
             if (Type == null)
@@ -88,7 +88,7 @@ namespace Autodesk.Forge.Model
         /// Gets or Sets Attributes
         /// </summary>
         [DataMember(Name="attributes", EmitDefaultValue=false)]
-        public CreateStorageDataAttributes Attributes { get; set; }
+        public CreateItemDataAttributes Attributes { get; set; }
         /// <summary>
         /// Gets or Sets Relationships
         /// </summary>
