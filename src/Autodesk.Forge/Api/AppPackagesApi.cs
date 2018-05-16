@@ -169,7 +169,7 @@ namespace Autodesk.Forge
         /// </remarks>
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns></returns>
-        void GetUploadUrl ();
+        dynamic GetUploadUrl ();
 
         /// <summary>
         /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage.
@@ -179,7 +179,7 @@ namespace Autodesk.Forge
         /// </remarks>
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> GetUploadUrlWithHttpInfo ();
+        ApiResponse<dynamic> GetUploadUrlWithHttpInfo ();
         /// <summary>
         /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type=binary/octet-stream.
         /// </summary>
@@ -189,7 +189,7 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="require"></param>
         /// <returns></returns>
-        void GetUploadUrlWithRequireContentType (bool? require);
+        dynamic GetUploadUrlWithRequireContentType (bool? require);
 
         /// <summary>
         /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type=binary/octet-stream.
@@ -200,7 +200,7 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="require"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> GetUploadUrlWithRequireContentTypeWithHttpInfo (bool? require);
+        ApiResponse<dynamic> GetUploadUrlWithRequireContentTypeWithHttpInfo (bool? require);
         /// <summary>
         /// Updates an AppPackage by specifying only the changed attributes.
         /// </summary>
@@ -404,7 +404,7 @@ namespace Autodesk.Forge
         /// </remarks>
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetUploadUrlAsync ();
+        System.Threading.Tasks.Task<dynamic> GetUploadUrlAsync ();
 
         /// <summary>
         /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage.
@@ -414,7 +414,7 @@ namespace Autodesk.Forge
         /// </remarks>
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetUploadUrlAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<dynamic>> GetUploadUrlAsyncWithHttpInfo ();
         /// <summary>
         /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type=binary/octet-stream.
         /// </summary>
@@ -424,7 +424,7 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="require"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetUploadUrlWithRequireContentTypeAsync (bool? require);
+        System.Threading.Tasks.Task<dynamic> GetUploadUrlWithRequireContentTypeAsync (bool? require);
 
         /// <summary>
         /// Requests a pre-signed URL for uploading a zip file that contains the binaries for this AppPackage. Unlike the GetUploadUrl method that takes no parameters, this method allows the client to request that the pre-signed URL to be issued so that the subsequent HTTP PUT operation will require Content-Type=binary/octet-stream.
@@ -435,7 +435,7 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="require"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetUploadUrlWithRequireContentTypeAsyncWithHttpInfo (bool? require);
+        System.Threading.Tasks.Task<ApiResponse<dynamic>> GetUploadUrlWithRequireContentTypeAsyncWithHttpInfo (bool? require);
         /// <summary>
         /// Updates an AppPackage by specifying only the changed attributes.
         /// </summary>
@@ -1584,9 +1584,10 @@ namespace Autodesk.Forge
         /// </summary>
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns></returns>
-        public void GetUploadUrl ()
+        public dynamic GetUploadUrl ()
         {
-             GetUploadUrlWithHttpInfo();
+            ApiResponse</*AppPackage*/dynamic> localVarResponse = GetUploadUrlWithHttpInfo();
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1594,7 +1595,7 @@ namespace Autodesk.Forge
         /// </summary>
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetUploadUrlWithHttpInfo ()
+        public ApiResponse<dynamic> GetUploadUrlWithHttpInfo ()
         {
 
             var localVarPath = "/autocad.io/us-east/v2/AppPackages/Operations.GetUploadUrl";
@@ -1647,7 +1648,7 @@ namespace Autodesk.Forge
             
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                Configuration.ApiClient.Deserialize(localVarResponse, typeof(DynamicDictionary)));
         }
 
         /// <summary>
@@ -1655,9 +1656,10 @@ namespace Autodesk.Forge
         /// </summary>
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetUploadUrlAsync ()
+        public async System.Threading.Tasks.Task</*URL*/dynamic> GetUploadUrlAsync ()
         {
-             await GetUploadUrlAsyncWithHttpInfo();
+              ApiResponse</*AppPackage*/dynamic> localVarResponse = await GetUploadUrlAsyncWithHttpInfo();
+              return localVarResponse.Data;
 
         }
 
@@ -1666,7 +1668,7 @@ namespace Autodesk.Forge
         /// </summary>
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetUploadUrlAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<dynamic>> GetUploadUrlAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/autocad.io/us-east/v2/AppPackages/Operations.GetUploadUrl";
@@ -1719,7 +1721,7 @@ namespace Autodesk.Forge
             
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                Configuration.ApiClient.Deserialize(localVarResponse, typeof(DynamicDictionary)));
         }
 
         /// <summary>
@@ -1728,9 +1730,10 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="require"></param>
         /// <returns></returns>
-        public void GetUploadUrlWithRequireContentType (bool? require)
+        public dynamic GetUploadUrlWithRequireContentType (bool? require)
         {
-             GetUploadUrlWithRequireContentTypeWithHttpInfo(require);
+             ApiResponse</*AppPackage*/dynamic> localVarResponse = GetUploadUrlWithRequireContentTypeWithHttpInfo(require);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1739,7 +1742,7 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="require"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetUploadUrlWithRequireContentTypeWithHttpInfo (bool? require)
+        public ApiResponse<dynamic> GetUploadUrlWithRequireContentTypeWithHttpInfo (bool? require)
         {
             // verify the required parameter 'require' is set
             if (require == null)
@@ -1796,7 +1799,7 @@ namespace Autodesk.Forge
             
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                Configuration.ApiClient.Deserialize(localVarResponse, typeof(DynamicDictionary)));
         }
 
         /// <summary>
@@ -1805,10 +1808,10 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="require"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetUploadUrlWithRequireContentTypeAsync (bool? require)
+        public async System.Threading.Tasks.Task<dynamic> GetUploadUrlWithRequireContentTypeAsync (bool? require)
         {
-             await GetUploadUrlWithRequireContentTypeAsyncWithHttpInfo(require);
-
+             ApiResponse</*AppPackage*/dynamic> localVarResponse = await GetUploadUrlWithRequireContentTypeAsyncWithHttpInfo(require);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1817,7 +1820,7 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="require"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetUploadUrlWithRequireContentTypeAsyncWithHttpInfo (bool? require)
+        public async System.Threading.Tasks.Task<ApiResponse<dynamic>> GetUploadUrlWithRequireContentTypeAsyncWithHttpInfo (bool? require)
         {
             // verify the required parameter 'require' is set
             if (require == null)
@@ -1858,6 +1861,8 @@ namespace Autodesk.Forge
                 localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
             }
 
+            localVarPathParams["require"] = localVarPathParams["require"].ToLower();
+
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -1874,7 +1879,7 @@ namespace Autodesk.Forge
             
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                Configuration.ApiClient.Deserialize(localVarResponse, typeof(DynamicDictionary)));
         }
 
         /// <summary>
