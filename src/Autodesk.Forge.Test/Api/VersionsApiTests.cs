@@ -137,6 +137,19 @@ namespace Autodesk.Forge.Test
         }
         
         /// <summary>
+        /// Test PostVersion
+        /// </summary>
+        [Test]
+        public void PostVersionTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string projectId = null;
+            //CreateVersion body = null;
+            //var response = instance.PostVersion(projectId, body);
+            //Assert.IsInstanceOf<VersionCreated> (response, "response is VersionCreated");
+        }
+        
+        /// <summary>
         /// Test PostVersionRelationshipsRef
         /// </summary>
         [Test]

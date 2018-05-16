@@ -155,6 +155,19 @@ namespace Autodesk.Forge.Test
         }
         
         /// <summary>
+        /// Test PostFolder
+        /// </summary>
+        [Test]
+        public void PostFolderTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string projectId = null;
+            //CreateFolder body = null;
+            //instance.PostFolder(projectId, body);
+            
+        }
+        
+        /// <summary>
         /// Test PostFolderRelationshipsRef
         /// </summary>
         [Test]
