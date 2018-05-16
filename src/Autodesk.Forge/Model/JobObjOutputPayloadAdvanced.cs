@@ -72,7 +72,7 @@ namespace Autodesk.Forge.Model
         /// <param name="ExportFileStructure">&#x60;single&#x60; (default): creates one OBJ file for all the input files (assembly file)  &#x60;multiple&#x60;: creates a separate OBJ file for each object  (default to &quot;single&quot;).</param>
         /// <param name="ModelGuid">Required for geometry extractions. The model view ID (guid)..</param>
         /// <param name="ObjectIds">Required for geometry extractions. List object ids to be translated. -1 will extract the entire model. .</param>
-        public JobObjOutputPayloadAdvanced(ExportFileStructureEnum? ExportFileStructure = null, string ModelGuid = null, List<string> ObjectIds = null)
+        public JobObjOutputPayloadAdvanced(ExportFileStructureEnum? ExportFileStructure = null, string ModelGuid = null, List<int> ObjectIds = null)
         {
             // use default value if no "ExportFileStructure" provided
             if (ExportFileStructure == null)
@@ -98,7 +98,7 @@ namespace Autodesk.Forge.Model
         /// </summary>
         /// <value>Required for geometry extractions. List object ids to be translated. -1 will extract the entire model. </value>
         [DataMember(Name="objectIds", EmitDefaultValue=false)]
-        public List<string> ObjectIds { get; set; }
+        public List<int> ObjectIds { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
