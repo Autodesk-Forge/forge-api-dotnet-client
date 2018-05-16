@@ -117,6 +117,19 @@ namespace Autodesk.Forge.Test
         }
         
         /// <summary>
+        /// Test GetProjectTopFolders
+        /// </summary>
+        [Test]
+        public void GetProjectTopFoldersTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string hubId = null;
+            //string projectId = null;
+            //var response = instance.GetProjectTopFolders(hubId, projectId);
+            //Assert.IsInstanceOf<TopFolders> (response, "response is TopFolders");
+        }
+        
+        /// <summary>
         /// Test PostStorage
         /// </summary>
         [Test]
@@ -127,19 +140,6 @@ namespace Autodesk.Forge.Test
             //CreateStorage body = null;
             //var response = instance.PostStorage(projectId, body);
             //Assert.IsInstanceOf<StorageCreated> (response, "response is StorageCreated");
-        }
-        
-        /// <summary>
-        /// Test PostVersion
-        /// </summary>
-        [Test]
-        public void PostVersionTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string projectId = null;
-            //CreateVersion body = null;
-            //var response = instance.PostVersion(projectId, body);
-            //Assert.IsInstanceOf<VersionCreated> (response, "response is VersionCreated");
         }
         
     }
