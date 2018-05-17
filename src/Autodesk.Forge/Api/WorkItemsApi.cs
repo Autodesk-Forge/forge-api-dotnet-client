@@ -536,7 +536,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling WorkItemsApi->DeleteWorkItem");
 
-            var localVarPath = "/autocad.io/us-east/v2/WorkItems(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/WorkItems('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -614,7 +614,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling WorkItemsApi->DeleteWorkItem");
 
-            var localVarPath = "/autocad.io/us-east/v2/WorkItems(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/WorkItems('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -843,7 +843,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling WorkItemsApi->GetWorkItem");
 
-            var localVarPath = "/autocad.io/us-east/v2/WorkItems(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/WorkItems('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -922,7 +922,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling WorkItemsApi->GetWorkItem");
 
-            var localVarPath = "/autocad.io/us-east/v2/WorkItems(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/WorkItems('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);

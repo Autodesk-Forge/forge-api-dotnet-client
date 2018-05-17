@@ -48,8 +48,19 @@ namespace Autodesk.Forge.Model
         /// Initializes a new instance of the <see cref="CreateFolderDataRelationshipsParentData" /> class.
         /// </summary>
         /// <param name="Id">Id (required).</param>
-        public CreateFolderDataRelationshipsParentData(ResourceId Id = null)
+        public CreateFolderDataRelationshipsParentData(string Type = null, string Id = null)
         {
+
+            // to ensure "Type" is required (not null)
+            if (Type == null)
+            {
+                throw new InvalidDataException("Type is a required property for CreateFolderDataRelationshipsParentData and cannot be null");
+            }
+            else
+            {
+                this.Type = Type;
+            }
+
             // to ensure "Id" is required (not null)
             if (Id == null)
             {
@@ -61,11 +72,16 @@ namespace Autodesk.Forge.Model
             }
         }
         
+            /// <summary>
+        /// Gets or Sets Type
+        /// </summary>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public string Type { get; set; }
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public ResourceId Id { get; set; }
+        public string Id { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -74,6 +90,7 @@ namespace Autodesk.Forge.Model
         {
             var sb = new StringBuilder();
             sb.Append("class CreateFolderDataRelationshipsParentData {\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

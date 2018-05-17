@@ -36,6 +36,7 @@ namespace Autodesk.Forge
         public const string CLIENT_CREDENTIALS ="client_credentials" ;
         public const string CODE ="code" ;
         public const string AUTHORIZATION_CODE ="authorization_code" ;
+        public const string REFRESH_TOKEN = "refresh_token" ;
     }
 
 }

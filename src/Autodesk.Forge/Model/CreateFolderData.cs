@@ -46,10 +46,16 @@ namespace Autodesk.Forge.Model
         /// <param name="Relationships">Relationships.</param>
         public CreateFolderData(CreateFolderDataAttributes Attributes = null, CreateFolderDataRelationships Relationships = null)
         {
+      this.Type = "folders";
             this.Attributes = Attributes;
             this.Relationships = Relationships;
         }
-        
+
+        /// <summary>
+        /// Gets or Sets Attributes
+        /// </summary>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public string Type { get; set; }    
         /// <summary>
         /// Gets or Sets Attributes
         /// </summary>
@@ -68,6 +74,7 @@ namespace Autodesk.Forge.Model
         {
             var sb = new StringBuilder();
             sb.Append("class CreateFolderData {\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
             sb.Append("  Relationships: ").Append(Relationships).Append("\n");
             sb.Append("}\n");

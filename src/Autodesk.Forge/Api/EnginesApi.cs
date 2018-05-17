@@ -400,7 +400,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling EnginesApi->GetEngine");
 
-            var localVarPath = "/autocad.io/us-east/v2/Engines(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/Engines('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -479,7 +479,7 @@ namespace Autodesk.Forge
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling EnginesApi->GetEngine");
 
-            var localVarPath = "/autocad.io/us-east/v2/Engines(&#39;{id}&#39;)";
+            var localVarPath = "/autocad.io/us-east/v2/Engines('{id}')";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
