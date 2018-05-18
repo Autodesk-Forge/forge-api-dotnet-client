@@ -18,4 +18,9 @@
       <dependency id="RestSharp" version="105.2.3" />
     </dependencies>
   </metadata>
+  <files>
+	<file src="bin\Release\Autodesk.Forge.dll" target="lib\45" />
+	<file src="bin\Release\Autodesk.Forge.xml" target="lib\45" />
+	<file src="bin\**\*.*" exclude="bin\**\*.*" />
+  </files>
 </package>
