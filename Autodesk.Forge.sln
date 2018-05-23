@@ -2,9 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2011
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autodesk.Forge", "src\Autodesk.Forge\Autodesk.Forge.csproj", "{CAB5DABD-A4A1-43D3-B14A-1AFC213F76FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autodesk.Forge", "src\Autodesk.Forge\Autodesk.Forge.csproj", "{CAB5DABD-A4A1-43D3-B14A-1AFC213F76FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autodesk.Forge.Test", "src\Autodesk.Forge.Test\Autodesk.Forge.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Autodesk.Forge.Test", "src\Autodesk.Forge.Test\Autodesk.Forge.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
