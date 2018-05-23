@@ -52,6 +52,7 @@ limitations under the License.
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
     <PackageReference Include="Autodesk.Extensions.Mocking" Version="9.0.7" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
   </ItemGroup>
   
   <ItemGroup>
