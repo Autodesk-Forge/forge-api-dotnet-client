@@ -77,7 +77,7 @@ namespace Autodesk.Forge
         /// <param name="eventType">The webhook event type to delete hook for.</param>
         /// <param name="hookId">The GUID of the hook to delete.</param>
         /// <returns>Task of webhooks</returns>
-        System.Threading.Tasks.Task<dynamic> DeleteHookAsync(DerivativeWebhookEvent eventType, Guid hookId);
+        System.Threading.Tasks.Task DeleteHookAsync(DerivativeWebhookEvent eventType, Guid hookId);
         /// <summary>
         /// Deletes the webhook with the given GUID for the given model derivative event.
         /// </summary>
@@ -391,10 +391,9 @@ namespace Autodesk.Forge
         /// <param name="eventType">The webhook event type to delete hook for.</param>
         /// <param name="hookId">The GUID of the hook to delete.</param>
         /// <returns>Task of webhooks</returns>
-        public async System.Threading.Tasks.Task< dynamic> DeleteHookAsync(DerivativeWebhookEvent eventType, Guid hookId)
+        public async System.Threading.Tasks.Task DeleteHookAsync(DerivativeWebhookEvent eventType, Guid hookId)
         {
             ApiResponse<dynamic> localVarResponse = await DeleteHookAsyncWithHttpInfo(eventType, hookId);
-            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -407,14 +406,14 @@ namespace Autodesk.Forge
         /// <param name="eventType">The webhook event type to delete hook for.</param>
         /// <param name="hookId">The GUID of the hook to delete.</param>
         /// <returns>Task of ApiResponse (webhooks)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse< dynamic>> DeleteHookAsyncWithHttpInfo(DerivativeWebhookEvent eventType, Guid hookId)
+        public async System.Threading.Tasks.Task<ApiResponse<dynamic>> DeleteHookAsyncWithHttpInfo(DerivativeWebhookEvent eventType, Guid hookId)
         {
             // verify the required parameter 'hookId' is set
             if (hookId == Guid.Empty)
                 throw new ApiException(400, "Missing required parameter 'hookId' when calling DerivativeWebhooksApi->DeleteHookAsync");
 
             var enumAsString = EventEnumToString(eventType);
-            var localVarPath = "/webhooks/v1/systems/data/events/" + enumAsString + "/hooks/{hookId}";
+            var localVarPath = "/webhooks/v1/systems/derivative/events/" + enumAsString + "/hooks/" + hookId.ToString("D");
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -436,13 +435,7 @@ namespace Autodesk.Forge
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            // set "format" to json by default
-            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-            localVarPathParams.Add("event", EventEnumToString(eventType)); // path parameter
-            localVarPathParams.Add("hook_id", Configuration.ApiClient.ParameterToString(hookId)); // path parameter
-
+            
             // authentication (oauth2_access_code) required
             // oauth required
             if (!String.IsNullOrEmpty(Configuration.AccessToken))
