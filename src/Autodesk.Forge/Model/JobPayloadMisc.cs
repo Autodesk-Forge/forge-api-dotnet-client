@@ -1,7 +1,7 @@
 /* 
  * Forge SDK
  *
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodeskâ€™s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -34,39 +34,39 @@ using Newtonsoft.Json.Converters;
 namespace Autodesk.Forge.Model
 {
     /// <summary>
-    /// JobPayload
+    /// Group of miscs
     /// </summary>
     [DataContract]
-    public partial class JobPayload :  IEquatable<JobPayload>
+    public partial class JobPayloadMisc :  IEquatable<JobPayloadMisc>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobPayload" /> class.
+        /// Initializes a new instance of the <see cref="JobPayloadMisc" /> class.
         /// </summary>
-        /// <param name="Input">Input.</param>
-        /// <param name="Output">Output.</param>
-        /// <param name="Misc">Misc.</param>
-        public JobPayload(JobPayloadInput Input = null, JobPayloadOutput Output = null, JobPayloadMisc Misc = null)
+        [JsonConstructorAttribute]
+        protected JobPayloadMisc() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JobPayloadMisc" /> class.
+        /// </summary>
+        /// <param name="Workflow">Workflow ID of a set of jobs as the scope for Model Derivative events. The workflow ID of the set of jobs is designated by you to indicate that all of the jobs belong to the same workflow. (https://developer.autodesk.com/en/docs/webhooks/v1/tutorials/create-a-hook-model-derivative/). (required).</param>
+        public JobPayloadMisc(string Workflow = null)
         {
-            this.Input = Input;
-            this.Output = Output;
-            this.Misc = Misc;
+            // to ensure "Workflow" is required (not null)
+            if (Workflow == null)
+            {
+                throw new InvalidDataException("Workflow is a required property for JobPayloadMisc and cannot be null");
+            }
+            else
+            {
+                this.Workflow = Workflow;
+            }
         }
         
         /// <summary>
-        /// Gets or Sets Input
+        /// Workflow ID of a set of jobs as the scope for Model Derivative events. The workflow ID of the set of jobs is designated by you to indicate that all of the jobs belong to the same workflow. (https://developer.autodesk.com/en/docs/webhooks/v1/tutorials/create-a-hook-model-derivative/). 
         /// </summary>
-        [DataMember(Name="input", EmitDefaultValue=false)]
-        public JobPayloadInput Input { get; set; }
-        /// <summary>
-        /// Gets or Sets Output
-        /// </summary>
-        [DataMember(Name="output", EmitDefaultValue=false)]
-        public JobPayloadOutput Output { get; set; }
-        /// <summary>
-        /// Gets or Sets Misc
-        /// </summary>
-        [DataMember(Name="misc", EmitDefaultValue=false)]
-        public JobPayloadMisc Misc { get; set; }
+        /// <value>Workflow ID of a set of jobs as the scope for Model Derivative events. The workflow ID of the set of jobs is designated by you to indicate that all of the jobs belong to the same workflow. (https://developer.autodesk.com/en/docs/webhooks/v1/tutorials/create-a-hook-model-derivative/). </value>
+        [DataMember(Name="workflow", EmitDefaultValue=false)]
+        public string Workflow { get; set; }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -74,10 +74,8 @@ namespace Autodesk.Forge.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class JobPayload {\n");
-            sb.Append("  Input: ").Append(Input).Append("\n");
-            sb.Append("  Output: ").Append(Output).Append("\n");
-            sb.Append("  Misc: ").Append(Misc).Append("\n");
+            sb.Append("class JobPayloadMisc {\n");
+            sb.Append("  Workflow: ").Append(Workflow).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -99,15 +97,15 @@ namespace Autodesk.Forge.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as JobPayload);
+            return this.Equals(obj as JobPayloadMisc);
         }
 
         /// <summary>
-        /// Returns true if JobPayload instances are equal
+        /// Returns true if JobPayloadMisc instances are equal
         /// </summary>
-        /// <param name="other">Instance of JobPayload to be compared</param>
+        /// <param name="other">Instance of JobPayloadMisc to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(JobPayload other)
+        public bool Equals(JobPayloadMisc other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -115,19 +113,9 @@ namespace Autodesk.Forge.Model
 
             return 
                 (
-                    this.Input == other.Input ||
-                    this.Input != null &&
-                    this.Input.Equals(other.Input)
-                ) && 
-                (
-                    this.Output == other.Output ||
-                    this.Output != null &&
-                    this.Output.Equals(other.Output)
-                ) &&
-                (
-                    this.Misc == other.Misc ||
-                    this.Misc != null &&
-                    this.Misc.Equals(other.Misc)
+                    this.Workflow == other.Workflow ||
+                    this.Workflow != null &&
+                    this.Workflow.Equals(other.Workflow)
                 );
         }
 
@@ -142,12 +130,8 @@ namespace Autodesk.Forge.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Input != null)
-                    hash = hash * 59 + this.Input.GetHashCode();
-                if (this.Output != null)
-                    hash = hash * 59 + this.Output.GetHashCode();
-                if (this.Misc != null)
-                    hash = hash * 59 + this.Misc.GetHashCode();
+                if (this.Workflow != null)
+                    hash = hash * 59 + this.Workflow.GetHashCode();
                 return hash;
             }
         }
