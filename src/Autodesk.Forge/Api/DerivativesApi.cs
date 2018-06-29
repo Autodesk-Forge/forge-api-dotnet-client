@@ -2159,7 +2159,7 @@ namespace Autodesk.Forge
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (xAdsForce != null) localVarHeaderParams.Add("x-ads-force", Configuration.ApiClient.ParameterToString(xAdsForce)); // header parameter
+            if (xAdsForce != null) localVarHeaderParams.Add("x-ads-force", Configuration.ApiClient.ParameterToString(xAdsForce).ToLower()); // header parameter
             if (job != null && job.GetType() == typeof(byte[])) // http body (model) parameter
             {
                 localVarPostBody = job; // byte array
