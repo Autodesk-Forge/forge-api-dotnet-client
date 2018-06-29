@@ -44,10 +44,12 @@ namespace Autodesk.Forge.Model
         /// </summary>
         /// <param name="Input">Input.</param>
         /// <param name="Output">Output.</param>
-        public JobPayload(JobPayloadInput Input = null, JobPayloadOutput Output = null)
+        /// <param name="Misc">Misc.</param>
+        public JobPayload(JobPayloadInput Input = null, JobPayloadOutput Output = null, JobPayloadMisc Misc = null)
         {
             this.Input = Input;
             this.Output = Output;
+            this.Misc = Misc;
         }
         
         /// <summary>
@@ -61,6 +63,11 @@ namespace Autodesk.Forge.Model
         [DataMember(Name="output", EmitDefaultValue=false)]
         public JobPayloadOutput Output { get; set; }
         /// <summary>
+        /// Gets or Sets Misc
+        /// </summary>
+        [DataMember(Name="misc", EmitDefaultValue=false)]
+        public JobPayloadMisc Misc { get; set; }
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -70,6 +77,7 @@ namespace Autodesk.Forge.Model
             sb.Append("class JobPayload {\n");
             sb.Append("  Input: ").Append(Input).Append("\n");
             sb.Append("  Output: ").Append(Output).Append("\n");
+            sb.Append("  Misc: ").Append(Misc).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -115,6 +123,11 @@ namespace Autodesk.Forge.Model
                     this.Output == other.Output ||
                     this.Output != null &&
                     this.Output.Equals(other.Output)
+                ) &&
+                (
+                    this.Misc == other.Misc ||
+                    this.Misc != null &&
+                    this.Misc.Equals(other.Misc)
                 );
         }
 
@@ -133,6 +146,8 @@ namespace Autodesk.Forge.Model
                     hash = hash * 59 + this.Input.GetHashCode();
                 if (this.Output != null)
                     hash = hash * 59 + this.Output.GetHashCode();
+                if (this.Misc != null)
+                    hash = hash * 59 + this.Misc.GetHashCode();
                 return hash;
             }
         }
