@@ -178,6 +178,28 @@ namespace Autodesk.Forge
         /// <param name="filterExtensionType">filter by the extension type (optional)</param>
         /// <returns>ApiResponse of Refs</returns>
         ApiResponse</*Refs*/dynamic> GetFolderRelationshipsRefsWithHttpInfo (string projectId, string folderId, List<string> filterType = null, List<string> filterId = null, List<string> filterRefType = null, string filterDirection = null, List<string> filterExtensionType = null);
+
+        /// <summary>
+        ///  Deletes or renames a folder in the &#x60;data&#x60; domain service
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="body">describe the folder to be updated</param>
+        /// <returns>ApiResponse of PatchFolder</returns>
+        dynamic PatchFolder(string projectId, PatchFolder body);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        ///  Deletes or renames a folder in the &#x60;data&#x60; domain service
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="body">describe the folder to be updated</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<dynamic> PatchFolderWithHttpInfo(string projectId, PatchFolder body);
+
         /// <summary>
         /// 
         /// </summary>
@@ -369,6 +391,31 @@ namespace Autodesk.Forge
         /// <param name="filterExtensionType">filter by the extension type (optional)</param>
         /// <returns>Task of ApiResponse (Refs)</returns>
         System.Threading.Tasks.Task<ApiResponse</*Refs*/dynamic>> GetFolderRelationshipsRefsAsyncWithHttpInfo (string projectId, string folderId, List<string> filterType = null, List<string> filterId = null, List<string> filterRefType = null, string filterDirection = null, List<string> filterExtensionType = null);
+
+        /// <summary>
+        /// </summary>
+        /// <remarks>
+        ///  Deletes or renames a folder in the &#x60;data&#x60; domain service
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="body">describe the folder to be updated</param>
+        /// <returns></returns>
+        System.Threading.Tasks.Task<dynamic> PatchFolderAsync(string projectId, PatchFolder body);
+
+
+        /// <summary>
+        /// </summary>
+        /// <remarks>
+        ///  Deletes or renames a folder in the &#x60;data&#x60; domain service
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="body">describe the folder to be updated</param>
+        /// <returns></returns>
+        System.Threading.Tasks.Task<ApiResponse<dynamic>> PatchFolderAsyncWithHttpInfo(string projectId, PatchFolder body);
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -1450,6 +1497,203 @@ namespace Autodesk.Forge
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(Refs)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Refs)));
             
+        }
+
+        public dynamic PatchFolder(string projectId, PatchFolder body)
+        {
+            return PatchFolderWithHttpInfo(projectId, body).Data;
+        }
+
+        public ApiResponse<dynamic> PatchFolderWithHttpInfo(string projectId, PatchFolder body)
+        {
+            // verify the required parameter 'projectId' is set
+            if (projectId == null)
+                throw new ApiException(400, "Missing required parameter 'projectId' when calling FoldersApi->PatchFolder");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling FoldersApi->PatchFolder");
+
+            var localVarPath = "/data/v1/projects/{project_id}/folders/{folder_id}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/vnd.api+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/vnd.api+json",
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (projectId != null) localVarPathParams.Add("project_id", Configuration.ApiClient.ParameterToString(projectId)); // path parameter
+            if (body.Data != null && body.Data.Id != null) localVarPathParams.Add("folder_id", Configuration.ApiClient.ParameterToString(body.Data.Id)); // path parameter
+
+            if (body != null && body.GetType() == typeof(byte[])) // http body (model) parameter
+            {
+                localVarPostBody = body; // byte array
+            }
+            else if (body != null
+                     && (body.GetType() == typeof(System.IO.FileStream)
+                         || body.GetType() == typeof(System.IO.BinaryReader)
+                         || body.GetType() == typeof(System.IO.BufferedStream)
+                            || body.GetType() == typeof(System.IO.MemoryStream)
+                            || body.GetType() == typeof(System.IO.StreamReader)
+                           )
+                    )
+            {
+                localVarPostBody = Configuration.ApiClient.toByteArray(body); // byte array
+            }
+            else if (body != null)
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body);
+            }
+
+            // authentication (oauth2_access_code) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
+                Method.PATCH, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PatchFolder", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+
+            return new ApiResponse</*Folder*/dynamic>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                /*(Folder)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Folder)));
+        }
+
+
+
+        /// <summary>
+        ///  Deletes or renames a folder in the &#x60;data&#x60; domain service
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="body">describe the folder to be updated</param>
+        /// <returns>Task of DynamicJsonResponse</returns>
+        public async System.Threading.Tasks.Task<dynamic> PatchFolderAsync(string projectId, PatchFolder body)
+        {
+            ApiResponse<dynamic> localVarResponse = await PatchFolderAsyncWithHttpInfo(projectId, body);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Deletes or renames a folder in the &#x60;data&#x60; domain service
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="body">describe the folder to be updated</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<dynamic>> PatchFolderAsyncWithHttpInfo(string projectId, PatchFolder body)
+        {
+            // verify the required parameter 'projectId' is set
+            if (projectId == null)
+                throw new ApiException(400, "Missing required parameter 'projectId' when calling FoldersApi->PatchFolder");
+            // verify the required parameter 'folderId' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling FoldersApi->PatchFolder");
+
+            var localVarPath = "/data/v1/projects/{project_id}/folders/{folder_id}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/vnd.api+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/vnd.api+json",
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (projectId != null) localVarPathParams.Add("project_id", Configuration.ApiClient.ParameterToString(projectId)); // path parameter
+            if (body.Data != null && body.Data.Id != null) localVarPathParams.Add("folder_id", Configuration.ApiClient.ParameterToString(body.Data.Id)); // path parameter
+            if (body != null && body.GetType() == typeof(byte[])) // http body (model) parameter
+            {
+                localVarPostBody = body; // byte array
+            }
+            else if (body != null
+                     && (body.GetType() == typeof(System.IO.FileStream)
+                         || body.GetType() == typeof(System.IO.BinaryReader)
+                         || body.GetType() == typeof(System.IO.BufferedStream)
+                            || body.GetType() == typeof(System.IO.MemoryStream)
+                            || body.GetType() == typeof(System.IO.StreamReader)
+                           )
+                    )
+            {
+                localVarPostBody = Configuration.ApiClient.toByteArray(body); // byte array
+            }
+            else if (body != null)
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body);
+            }
+
+
+
+            // authentication (oauth2_access_code) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.PATCH, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PatchFolder", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse</*JsonApiCollection*/dynamic>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                /*(JsonApiCollection)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonApiCollection)));
+
+
         }
 
         /// <summary>
