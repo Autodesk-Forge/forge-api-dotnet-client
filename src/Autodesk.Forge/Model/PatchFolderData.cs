@@ -18,9 +18,10 @@ namespace Autodesk.Forge.Model
         /// </summary>
         /// <param name="Attributes">Attributes.</param>
 
-        public PatchFolderData(PatchFolderDataAttributes attributes = null)
+        public PatchFolderData(string folderId, PatchFolderDataAttributes attributes = null)
         {
             this.Type = "folders";
+            this.Id = folderId;
             this.Attributes = attributes;
         }
 

@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Autodesk.Forge</id>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
     <authors>adsk-forge</authors>
     <owners>adsk-forge</owners>
     <licenseUrl>https://github.com/Autodesk-Forge/forge-api-dotnet-client/blob/master/LICENSE</licenseUrl>
@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.</description>
     <releaseNotes>Improvements and fixes</releaseNotes>
-    <copyright>Copyright 2017</copyright>
+    <copyright>Copyright 2018</copyright>
     <tags>autodesk autodesk-forge rest restful api</tags>
     <dependencies>
       <dependency id="Newtonsoft.Json" version="11.0.2" />

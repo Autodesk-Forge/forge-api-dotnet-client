@@ -763,11 +763,11 @@ namespace Autodesk.Forge
         /// </summary>
         /// <param name="projectId">Poject Id</param>
         /// <param name="folderId">Folder Id</param>
-        /// <param name="pageNumber">Page number</param>
+        /// <param name="pageNumber">Page number, starts with 0</param>
         ///<param name="filterName">filter data what contains the string</param>
         /// <param name="filterFileType">filter data by file extension</param>
         /// <returns>Json Api Collection</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*JsonApiCollection*/dynamic>> SearchFolderContentsAsync(string projectId, string folderId, int? pageNumber = null,List<string> filterName = null, List<string> filterFileType = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*JsonApiCollection*/dynamic>> SearchFolderContentsAsync(string projectId, string folderId, int? pageNumber = 0,List<string> filterName = null, List<string> filterFileType = null)
         {
             // verify the required parameter 'projectId' is set
             if (projectId == null)
