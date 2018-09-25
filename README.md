@@ -392,7 +392,7 @@ Class | Method | HTTP request | Description
 
 ### Thumbnail
 
-![thumbnail](/dotnet.png)
+![thumbnail](/thumbnail.png)
 
 
 ## Support
