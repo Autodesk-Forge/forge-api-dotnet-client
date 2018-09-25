@@ -1669,6 +1669,7 @@ namespace Autodesk.Forge
             var localVarPath = "/modelderivative/v2/designdata/{urn}/metadata/{guid}/properties";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
+            localVarQueryParams.Add("forceget", "true");
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
@@ -1763,6 +1764,7 @@ namespace Autodesk.Forge
             var localVarPath = "/modelderivative/v2/designdata/{urn}/metadata/{guid}/properties";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
+            localVarQueryParams.Add("forceget", "true");
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
