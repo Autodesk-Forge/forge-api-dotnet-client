@@ -247,6 +247,10 @@ namespace Autodesk.Forge.Model {
 
 		#endregion
 
+    public T ToObject<T>(){
+      return (T)this.ToJson().ToObject(typeof(T));
+    }
+
 		#region Reading object utilities
 		internal static void ProcessElement (XElement obj, DynamicDictionary dict) {
 			var elList =from el in obj.Elements () select el ;
