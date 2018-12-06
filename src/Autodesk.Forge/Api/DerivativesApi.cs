@@ -46,7 +46,8 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <returns>Result</returns>
-        /*Result*/dynamic DeleteManifest (string urn);
+        /*Result*/
+        dynamic DeleteManifest(string urn);
 
         /// <summary>
         /// 
@@ -57,7 +58,7 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <returns>ApiResponse of Result</returns>
-        ApiResponse</*Result*/dynamic> DeleteManifestWithHttpInfo (string urn);
+        ApiResponse</*Result*/dynamic> DeleteManifestWithHttpInfo(string urn);
         /// <summary>
         /// 
         /// </summary>
@@ -69,7 +70,7 @@ namespace Autodesk.Forge
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
         /// <returns></returns>
-        void GetDerivativeManifest (string urn, string derivativeUrn, int? range = null);
+        void GetDerivativeManifest(string urn, string derivativeUrn, int? range = null);
 
         /// <summary>
         /// 
@@ -82,7 +83,7 @@ namespace Autodesk.Forge
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> GetDerivativeManifestWithHttpInfo (string urn, string derivativeUrn, int? range = null);
+        ApiResponse<Object> GetDerivativeManifestWithHttpInfo(string urn, string derivativeUrn, int? range = null);
         /// <summary>
         /// 
         /// </summary>
@@ -93,7 +94,8 @@ namespace Autodesk.Forge
         /// <param name="ifModifiedSince">The supported formats are only returned if they were modified since the specified date. An invalid date returns the latest supported format list. If the supported formats have not been modified since the specified date, the endpoint returns a &#x60;NOT MODIFIED&#x60; (304) response.  (optional)</param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Formats</returns>
-        /*Formats*/dynamic GetFormats (DateTime? ifModifiedSince = null, string acceptEncoding = null);
+        /*Formats*/
+        dynamic GetFormats(DateTime? ifModifiedSince = null, string acceptEncoding = null);
 
         /// <summary>
         /// 
@@ -105,7 +107,7 @@ namespace Autodesk.Forge
         /// <param name="ifModifiedSince">The supported formats are only returned if they were modified since the specified date. An invalid date returns the latest supported format list. If the supported formats have not been modified since the specified date, the endpoint returns a &#x60;NOT MODIFIED&#x60; (304) response.  (optional)</param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>ApiResponse of Formats</returns>
-        ApiResponse</*Formats*/dynamic> GetFormatsWithHttpInfo (DateTime? ifModifiedSince = null, string acceptEncoding = null);
+        ApiResponse</*Formats*/dynamic> GetFormatsWithHttpInfo(DateTime? ifModifiedSince = null, string acceptEncoding = null);
         /// <summary>
         /// 
         /// </summary>
@@ -116,7 +118,8 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Manifest</returns>
-        /*Manifest*/dynamic GetManifest (string urn, string acceptEncoding = null);
+        /*Manifest*/
+        dynamic GetManifest(string urn, string acceptEncoding = null);
 
         /// <summary>
         /// 
@@ -128,7 +131,7 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>ApiResponse of Manifest</returns>
-        ApiResponse</*Manifest*/dynamic> GetManifestWithHttpInfo (string urn, string acceptEncoding = null);
+        ApiResponse</*Manifest*/dynamic> GetManifestWithHttpInfo(string urn, string acceptEncoding = null);
         /// <summary>
         /// 
         /// </summary>
@@ -139,7 +142,8 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Metadata</returns>
-        /*Metadata*/dynamic GetMetadata (string urn, string acceptEncoding = null);
+        /*Metadata*/
+        dynamic GetMetadata(string urn, string acceptEncoding = null);
 
         /// <summary>
         /// 
@@ -151,7 +155,7 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>ApiResponse of Metadata</returns>
-        ApiResponse</*Metadata*/dynamic> GetMetadataWithHttpInfo (string urn, string acceptEncoding = null);
+        ApiResponse</*Metadata*/dynamic> GetMetadataWithHttpInfo(string urn, string acceptEncoding = null);
         /// <summary>
         /// 
         /// </summary>
@@ -163,7 +167,8 @@ namespace Autodesk.Forge
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Metadata</returns>
-        /*Metadata*/dynamic GetModelviewMetadata (string urn, string guid, string acceptEncoding = null);
+        /*Metadata*/
+        dynamic GetModelviewMetadata(string urn, string guid, string acceptEncoding = null);
 
         /// <summary>
         /// 
@@ -176,7 +181,7 @@ namespace Autodesk.Forge
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>ApiResponse of Metadata</returns>
-        ApiResponse</*Metadata*/dynamic> GetModelviewMetadataWithHttpInfo (string urn, string guid, string acceptEncoding = null);
+        ApiResponse</*Metadata*/dynamic> GetModelviewMetadataWithHttpInfo(string urn, string guid, string acceptEncoding = null);
         /// <summary>
         /// 
         /// </summary>
@@ -188,7 +193,8 @@ namespace Autodesk.Forge
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Metadata</returns>
-        /*Metadata*/dynamic GetModelviewProperties (string urn, string guid, string acceptEncoding = null);
+        /*Metadata*/
+        dynamic GetModelviewProperties(string urn, string guid, string acceptEncoding = null);
 
         /// <summary>
         /// 
@@ -201,7 +207,7 @@ namespace Autodesk.Forge
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>ApiResponse of Metadata</returns>
-        ApiResponse</*Metadata*/dynamic> GetModelviewPropertiesWithHttpInfo (string urn, string guid, string acceptEncoding = null);
+        ApiResponse</*Metadata*/dynamic> GetModelviewPropertiesWithHttpInfo(string urn, string guid, string acceptEncoding = null);
         /// <summary>
         /// 
         /// </summary>
@@ -213,7 +219,8 @@ namespace Autodesk.Forge
         /// <param name="width">The desired width of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <param name="height">The desired height of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <returns>System.IO.Stream</returns>
-        /*System.IO.Stream*/dynamic GetThumbnail (string urn, int? width = null, int? height = null);
+        /*System.IO.Stream*/
+        dynamic GetThumbnail(string urn, int? width = null, int? height = null);
 
         /// <summary>
         /// 
@@ -226,7 +233,7 @@ namespace Autodesk.Forge
         /// <param name="width">The desired width of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <param name="height">The desired height of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <returns>ApiResponse of System.IO.Stream</returns>
-        ApiResponse</*System.IO.Stream*/dynamic> GetThumbnailWithHttpInfo (string urn, int? width = null, int? height = null);
+        ApiResponse</*System.IO.Stream*/dynamic> GetThumbnailWithHttpInfo(string urn, int? width = null, int? height = null);
         /// <summary>
         /// 
         /// </summary>
@@ -237,7 +244,8 @@ namespace Autodesk.Forge
         /// <param name="job"></param>
         /// <param name="xAdsForce">&#x60;true&#x60;: the endpoint replaces previously translated output file types with the newly generated derivatives  &#x60;false&#x60; (default): previously created derivatives are not replaced  (optional, default to false)</param>
         /// <returns>Job</returns>
-        /*Job*/dynamic Translate (JobPayload job, bool? xAdsForce = null);
+        /*Job*/
+        dynamic Translate(JobPayload job, bool? xAdsForce = null);
 
         /// <summary>
         /// 
@@ -249,7 +257,7 @@ namespace Autodesk.Forge
         /// <param name="job"></param>
         /// <param name="xAdsForce">&#x60;true&#x60;: the endpoint replaces previously translated output file types with the newly generated derivatives  &#x60;false&#x60; (default): previously created derivatives are not replaced  (optional, default to false)</param>
         /// <returns>ApiResponse of Job</returns>
-        ApiResponse</*Job*/dynamic> TranslateWithHttpInfo (JobPayload job, bool? xAdsForce = null);
+        ApiResponse</*Job*/dynamic> TranslateWithHttpInfo(JobPayload job, bool? xAdsForce = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -261,7 +269,7 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <returns>Task of Result</returns>
-        System.Threading.Tasks.Task</*Result*/dynamic> DeleteManifestAsync (string urn);
+        System.Threading.Tasks.Task</*Result*/dynamic> DeleteManifestAsync(string urn);
 
         /// <summary>
         /// 
@@ -272,7 +280,7 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <returns>Task of ApiResponse (Result)</returns>
-        System.Threading.Tasks.Task<ApiResponse</*Result*/dynamic>> DeleteManifestAsyncWithHttpInfo (string urn);
+        System.Threading.Tasks.Task<ApiResponse</*Result*/dynamic>> DeleteManifestAsyncWithHttpInfo(string urn);
         /// <summary>
         /// 
         /// </summary>
@@ -284,7 +292,7 @@ namespace Autodesk.Forge
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetDerivativeManifestAsync (string urn, string derivativeUrn, int? range = null);
+        System.Threading.Tasks.Task GetDerivativeManifestAsync(string urn, string derivativeUrn, int? range = null);
 
         /// <summary>
         /// 
@@ -297,7 +305,7 @@ namespace Autodesk.Forge
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetDerivativeManifestAsyncWithHttpInfo (string urn, string derivativeUrn, int? range = null);
+        System.Threading.Tasks.Task<ApiResponse<Object>> GetDerivativeManifestAsyncWithHttpInfo(string urn, string derivativeUrn, int? range = null);
         /// <summary>
         /// 
         /// </summary>
@@ -308,7 +316,7 @@ namespace Autodesk.Forge
         /// <param name="ifModifiedSince">The supported formats are only returned if they were modified since the specified date. An invalid date returns the latest supported format list. If the supported formats have not been modified since the specified date, the endpoint returns a &#x60;NOT MODIFIED&#x60; (304) response.  (optional)</param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of Formats</returns>
-        System.Threading.Tasks.Task</*Formats*/dynamic> GetFormatsAsync (DateTime? ifModifiedSince = null, string acceptEncoding = null);
+        System.Threading.Tasks.Task</*Formats*/dynamic> GetFormatsAsync(DateTime? ifModifiedSince = null, string acceptEncoding = null);
 
         /// <summary>
         /// 
@@ -320,7 +328,7 @@ namespace Autodesk.Forge
         /// <param name="ifModifiedSince">The supported formats are only returned if they were modified since the specified date. An invalid date returns the latest supported format list. If the supported formats have not been modified since the specified date, the endpoint returns a &#x60;NOT MODIFIED&#x60; (304) response.  (optional)</param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse (Formats)</returns>
-        System.Threading.Tasks.Task<ApiResponse</*Formats*/dynamic>> GetFormatsAsyncWithHttpInfo (DateTime? ifModifiedSince = null, string acceptEncoding = null);
+        System.Threading.Tasks.Task<ApiResponse</*Formats*/dynamic>> GetFormatsAsyncWithHttpInfo(DateTime? ifModifiedSince = null, string acceptEncoding = null);
         /// <summary>
         /// 
         /// </summary>
@@ -331,7 +339,7 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of Manifest</returns>
-        System.Threading.Tasks.Task</*Manifest*/dynamic> GetManifestAsync (string urn, string acceptEncoding = null);
+        System.Threading.Tasks.Task</*Manifest*/dynamic> GetManifestAsync(string urn, string acceptEncoding = null);
 
         /// <summary>
         /// 
@@ -343,7 +351,7 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse (Manifest)</returns>
-        System.Threading.Tasks.Task<ApiResponse</*Manifest*/dynamic>> GetManifestAsyncWithHttpInfo (string urn, string acceptEncoding = null);
+        System.Threading.Tasks.Task<ApiResponse</*Manifest*/dynamic>> GetManifestAsyncWithHttpInfo(string urn, string acceptEncoding = null);
         /// <summary>
         /// 
         /// </summary>
@@ -354,7 +362,7 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of Metadata</returns>
-        System.Threading.Tasks.Task</*Metadata*/dynamic> GetMetadataAsync (string urn, string acceptEncoding = null);
+        System.Threading.Tasks.Task</*Metadata*/dynamic> GetMetadataAsync(string urn, string acceptEncoding = null);
 
         /// <summary>
         /// 
@@ -366,7 +374,7 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse (Metadata)</returns>
-        System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetMetadataAsyncWithHttpInfo (string urn, string acceptEncoding = null);
+        System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetMetadataAsyncWithHttpInfo(string urn, string acceptEncoding = null);
         /// <summary>
         /// 
         /// </summary>
@@ -378,7 +386,7 @@ namespace Autodesk.Forge
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of Metadata</returns>
-        System.Threading.Tasks.Task</*Metadata*/dynamic> GetModelviewMetadataAsync (string urn, string guid, string acceptEncoding = null);
+        System.Threading.Tasks.Task</*Metadata*/dynamic> GetModelviewMetadataAsync(string urn, string guid, string acceptEncoding = null);
 
         /// <summary>
         /// 
@@ -391,7 +399,7 @@ namespace Autodesk.Forge
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse (Metadata)</returns>
-        System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewMetadataAsyncWithHttpInfo (string urn, string guid, string acceptEncoding = null);
+        System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewMetadataAsyncWithHttpInfo(string urn, string guid, string acceptEncoding = null);
         /// <summary>
         /// 
         /// </summary>
@@ -403,7 +411,7 @@ namespace Autodesk.Forge
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of Metadata</returns>
-        System.Threading.Tasks.Task</*Metadata*/dynamic> GetModelviewPropertiesAsync (string urn, string guid, string acceptEncoding = null);
+        System.Threading.Tasks.Task</*Metadata*/dynamic> GetModelviewPropertiesAsync(string urn, string guid, string acceptEncoding = null);
 
         /// <summary>
         /// 
@@ -416,7 +424,7 @@ namespace Autodesk.Forge
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse (Metadata)</returns>
-        System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewPropertiesAsyncWithHttpInfo (string urn, string guid, string acceptEncoding = null);
+        System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewPropertiesAsyncWithHttpInfo(string urn, string guid, string acceptEncoding = null);
         /// <summary>
         /// 
         /// </summary>
@@ -428,7 +436,7 @@ namespace Autodesk.Forge
         /// <param name="width">The desired width of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <param name="height">The desired height of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <returns>Task of System.IO.Stream</returns>
-        System.Threading.Tasks.Task</*System.IO.Stream*/dynamic> GetThumbnailAsync (string urn, int? width = null, int? height = null);
+        System.Threading.Tasks.Task</*System.IO.Stream*/dynamic> GetThumbnailAsync(string urn, int? width = null, int? height = null);
 
         /// <summary>
         /// 
@@ -441,7 +449,7 @@ namespace Autodesk.Forge
         /// <param name="width">The desired width of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <param name="height">The desired height of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-        System.Threading.Tasks.Task<ApiResponse</*System.IO.Stream*/dynamic>> GetThumbnailAsyncWithHttpInfo (string urn, int? width = null, int? height = null);
+        System.Threading.Tasks.Task<ApiResponse</*System.IO.Stream*/dynamic>> GetThumbnailAsyncWithHttpInfo(string urn, int? width = null, int? height = null);
         /// <summary>
         /// 
         /// </summary>
@@ -452,7 +460,7 @@ namespace Autodesk.Forge
         /// <param name="job"></param>
         /// <param name="xAdsForce">&#x60;true&#x60;: the endpoint replaces previously translated output file types with the newly generated derivatives  &#x60;false&#x60; (default): previously created derivatives are not replaced  (optional, default to false)</param>
         /// <returns>Task of Job</returns>
-        System.Threading.Tasks.Task</*Job*/dynamic> TranslateAsync (JobPayload job, bool? xAdsForce = null);
+        System.Threading.Tasks.Task</*Job*/dynamic> TranslateAsync(JobPayload job, bool? xAdsForce = null);
 
         /// <summary>
         /// 
@@ -464,7 +472,7 @@ namespace Autodesk.Forge
         /// <param name="job"></param>
         /// <param name="xAdsForce">&#x60;true&#x60;: the endpoint replaces previously translated output file types with the newly generated derivatives  &#x60;false&#x60; (default): previously created derivatives are not replaced  (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Job)</returns>
-        System.Threading.Tasks.Task<ApiResponse</*Job*/dynamic>> TranslateAsyncWithHttpInfo (JobPayload job, bool? xAdsForce = null);
+        System.Threading.Tasks.Task<ApiResponse</*Job*/dynamic>> TranslateAsyncWithHttpInfo(JobPayload job, bool? xAdsForce = null);
         #endregion Asynchronous Operations
     }
 
@@ -473,6 +481,18 @@ namespace Autodesk.Forge
     /// </summary>
     public partial class DerivativesApi : IDerivativesApi
     {
+        private string Base64Decode(string base64EncodedData)
+        {
+            string incoming = base64EncodedData.Replace('_', '/').Replace('-', '+');
+            switch (base64EncodedData.Length % 4)
+            {
+                case 2: incoming += "=="; break;
+                case 3: incoming += "="; break;
+            }
+            var base64EncodedBytes = System.Convert.FromBase64String(incoming);
+            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+        }
+
         private Autodesk.Forge.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -537,7 +557,7 @@ namespace Autodesk.Forge
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Configuration Configuration {get; set;}
+        public Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -583,10 +603,10 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <returns>Result</returns>
-        public /*Result*/dynamic DeleteManifest (string urn)
+        public /*Result*/dynamic DeleteManifest(string urn)
         {
-             ApiResponse</*Result*/dynamic> localVarResponse = DeleteManifestWithHttpInfo(urn);
-             return localVarResponse.Data;
+            ApiResponse</*Result*/dynamic> localVarResponse = DeleteManifestWithHttpInfo(urn);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -595,13 +615,15 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <returns>ApiResponse of Result</returns>
-        public ApiResponse< /*Result*/dynamic > DeleteManifestWithHttpInfo (string urn)
+        public ApiResponse< /*Result*/dynamic> DeleteManifestWithHttpInfo(string urn)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
                 throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->DeleteManifest");
 
-            var localVarPath = "/modelderivative/v2/designdata/{urn}/manifest";
+            string region = Base64Decode(urn).IndexOf("wipemea") > -1 ? "regions/eu/" : string.Empty;
+
+            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/manifest";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -617,7 +639,7 @@ namespace Autodesk.Forge
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/vnd.api+json", 
+                "application/vnd.api+json",
                 "application/json"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
@@ -643,11 +665,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -658,7 +680,7 @@ namespace Autodesk.Forge
             return new ApiResponse</*Result*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(Result)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Result)));
-            
+
         }
 
         /// <summary>
@@ -667,10 +689,10 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <returns>Task of Result</returns>
-        public async System.Threading.Tasks.Task</*Result*/dynamic> DeleteManifestAsync (string urn)
+        public async System.Threading.Tasks.Task</*Result*/dynamic> DeleteManifestAsync(string urn)
         {
-             ApiResponse</*Result*/dynamic> localVarResponse = await DeleteManifestAsyncWithHttpInfo(urn);
-             return localVarResponse.Data;
+            ApiResponse</*Result*/dynamic> localVarResponse = await DeleteManifestAsyncWithHttpInfo(urn);
+            return localVarResponse.Data;
 
         }
 
@@ -680,13 +702,15 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <returns>Task of ApiResponse (Result)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*Result*/dynamic>> DeleteManifestAsyncWithHttpInfo (string urn)
+        public async System.Threading.Tasks.Task<ApiResponse</*Result*/dynamic>> DeleteManifestAsyncWithHttpInfo(string urn)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
                 throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->DeleteManifest");
 
-            var localVarPath = "/modelderivative/v2/designdata/{urn}/manifest";
+            string region = Base64Decode(urn).IndexOf("wipemea") > -1 ? "regions/eu/" : string.Empty;
+
+            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/manifest";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -702,7 +726,7 @@ namespace Autodesk.Forge
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/vnd.api+json", 
+                "application/vnd.api+json",
                 "application/json"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
@@ -728,11 +752,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -743,7 +767,7 @@ namespace Autodesk.Forge
             return new ApiResponse</*Result*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(Result)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Result)));
-            
+
         }
 
         /// <summary>
@@ -754,9 +778,9 @@ namespace Autodesk.Forge
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
         /// <returns></returns>
-        public void GetDerivativeManifest (string urn, string derivativeUrn, int? range = null)
+        public void GetDerivativeManifest(string urn, string derivativeUrn, int? range = null)
         {
-             GetDerivativeManifestWithHttpInfo(urn, derivativeUrn, range);
+            GetDerivativeManifestWithHttpInfo(urn, derivativeUrn, range);
         }
 
         /// <summary>
@@ -767,7 +791,7 @@ namespace Autodesk.Forge
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetDerivativeManifestWithHttpInfo (string urn, string derivativeUrn, int? range = null)
+        public ApiResponse<Object> GetDerivativeManifestWithHttpInfo(string urn, string derivativeUrn, int? range = null)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
@@ -776,7 +800,9 @@ namespace Autodesk.Forge
             if (derivativeUrn == null)
                 throw new ApiException(400, "Missing required parameter 'derivativeUrn' when calling DerivativesApi->GetDerivativeManifest");
 
-            var localVarPath = "/modelderivative/v2/designdata/{urn}/manifest/{derivativeUrn}";
+            string region = Base64Decode(urn).IndexOf("wipemea") > -1 ? "regions/eu/" : string.Empty;
+
+            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/manifest/{derivativeUrn}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -819,11 +845,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -831,7 +857,7 @@ namespace Autodesk.Forge
                 if (exception != null) throw exception;
             }
 
-            
+
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);
@@ -845,9 +871,9 @@ namespace Autodesk.Forge
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetDerivativeManifestAsync (string urn, string derivativeUrn, int? range = null)
+        public async System.Threading.Tasks.Task GetDerivativeManifestAsync(string urn, string derivativeUrn, int? range = null)
         {
-             await GetDerivativeManifestAsyncWithHttpInfo(urn, derivativeUrn, range);
+            await GetDerivativeManifestAsyncWithHttpInfo(urn, derivativeUrn, range);
 
         }
 
@@ -859,7 +885,7 @@ namespace Autodesk.Forge
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetDerivativeManifestAsyncWithHttpInfo (string urn, string derivativeUrn, int? range = null)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetDerivativeManifestAsyncWithHttpInfo(string urn, string derivativeUrn, int? range = null)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
@@ -868,7 +894,9 @@ namespace Autodesk.Forge
             if (derivativeUrn == null)
                 throw new ApiException(400, "Missing required parameter 'derivativeUrn' when calling DerivativesApi->GetDerivativeManifest");
 
-            var localVarPath = "/modelderivative/v2/designdata/{urn}/manifest/{derivativeUrn}";
+            string region = Base64Decode(urn).IndexOf("wipemea") > -1 ? "regions/eu/" : string.Empty;
+
+            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/manifest/{derivativeUrn}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -911,11 +939,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -923,7 +951,7 @@ namespace Autodesk.Forge
                 if (exception != null) throw exception;
             }
 
-            
+
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);
@@ -936,10 +964,10 @@ namespace Autodesk.Forge
         /// <param name="ifModifiedSince">The supported formats are only returned if they were modified since the specified date. An invalid date returns the latest supported format list. If the supported formats have not been modified since the specified date, the endpoint returns a &#x60;NOT MODIFIED&#x60; (304) response.  (optional)</param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Formats</returns>
-        public /*Formats*/dynamic GetFormats (DateTime? ifModifiedSince = null, string acceptEncoding = null)
+        public /*Formats*/dynamic GetFormats(DateTime? ifModifiedSince = null, string acceptEncoding = null)
         {
-             ApiResponse</*Formats*/dynamic> localVarResponse = GetFormatsWithHttpInfo(ifModifiedSince, acceptEncoding);
-             return localVarResponse.Data;
+            ApiResponse</*Formats*/dynamic> localVarResponse = GetFormatsWithHttpInfo(ifModifiedSince, acceptEncoding);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -949,9 +977,8 @@ namespace Autodesk.Forge
         /// <param name="ifModifiedSince">The supported formats are only returned if they were modified since the specified date. An invalid date returns the latest supported format list. If the supported formats have not been modified since the specified date, the endpoint returns a &#x60;NOT MODIFIED&#x60; (304) response.  (optional)</param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>ApiResponse of Formats</returns>
-        public ApiResponse< /*Formats*/dynamic > GetFormatsWithHttpInfo (DateTime? ifModifiedSince = null, string acceptEncoding = null)
+        public ApiResponse< /*Formats*/dynamic> GetFormatsWithHttpInfo(DateTime? ifModifiedSince = null, string acceptEncoding = null)
         {
-
             var localVarPath = "/modelderivative/v2/designdata/formats";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
@@ -968,7 +995,7 @@ namespace Autodesk.Forge
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/vnd.api+json", 
+                "application/vnd.api+json",
                 "application/json"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
@@ -995,11 +1022,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1010,7 +1037,7 @@ namespace Autodesk.Forge
             return new ApiResponse</*Formats*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(Formats)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Formats)));
-            
+
         }
 
         /// <summary>
@@ -1020,10 +1047,10 @@ namespace Autodesk.Forge
         /// <param name="ifModifiedSince">The supported formats are only returned if they were modified since the specified date. An invalid date returns the latest supported format list. If the supported formats have not been modified since the specified date, the endpoint returns a &#x60;NOT MODIFIED&#x60; (304) response.  (optional)</param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of Formats</returns>
-        public async System.Threading.Tasks.Task</*Formats*/dynamic> GetFormatsAsync (DateTime? ifModifiedSince = null, string acceptEncoding = null)
+        public async System.Threading.Tasks.Task</*Formats*/dynamic> GetFormatsAsync(DateTime? ifModifiedSince = null, string acceptEncoding = null)
         {
-             ApiResponse</*Formats*/dynamic> localVarResponse = await GetFormatsAsyncWithHttpInfo(ifModifiedSince, acceptEncoding);
-             return localVarResponse.Data;
+            ApiResponse</*Formats*/dynamic> localVarResponse = await GetFormatsAsyncWithHttpInfo(ifModifiedSince, acceptEncoding);
+            return localVarResponse.Data;
 
         }
 
@@ -1034,7 +1061,7 @@ namespace Autodesk.Forge
         /// <param name="ifModifiedSince">The supported formats are only returned if they were modified since the specified date. An invalid date returns the latest supported format list. If the supported formats have not been modified since the specified date, the endpoint returns a &#x60;NOT MODIFIED&#x60; (304) response.  (optional)</param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse (Formats)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*Formats*/dynamic>> GetFormatsAsyncWithHttpInfo (DateTime? ifModifiedSince = null, string acceptEncoding = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*Formats*/dynamic>> GetFormatsAsyncWithHttpInfo(DateTime? ifModifiedSince = null, string acceptEncoding = null)
         {
 
             var localVarPath = "/modelderivative/v2/designdata/formats";
@@ -1053,7 +1080,7 @@ namespace Autodesk.Forge
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/vnd.api+json", 
+                "application/vnd.api+json",
                 "application/json"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
@@ -1080,11 +1107,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1095,7 +1122,7 @@ namespace Autodesk.Forge
             return new ApiResponse</*Formats*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(Formats)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Formats)));
-            
+
         }
 
         /// <summary>
@@ -1105,10 +1132,10 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Manifest</returns>
-        public /*Manifest*/dynamic GetManifest (string urn, string acceptEncoding = null)
+        public /*Manifest*/dynamic GetManifest(string urn, string acceptEncoding = null)
         {
-             ApiResponse</*Manifest*/dynamic> localVarResponse = GetManifestWithHttpInfo(urn, acceptEncoding);
-             return localVarResponse.Data;
+            ApiResponse</*Manifest*/dynamic> localVarResponse = GetManifestWithHttpInfo(urn, acceptEncoding);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1118,13 +1145,15 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>ApiResponse of Manifest</returns>
-        public ApiResponse< /*Manifest*/dynamic > GetManifestWithHttpInfo (string urn, string acceptEncoding = null)
+        public ApiResponse< /*Manifest*/dynamic> GetManifestWithHttpInfo(string urn, string acceptEncoding = null)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
                 throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->GetManifest");
 
-            var localVarPath = "/modelderivative/v2/designdata/{urn}/manifest";
+            string region = Base64Decode(urn).IndexOf("wipemea") > -1 ? "regions/eu/" : string.Empty;
+
+            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/manifest";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1140,7 +1169,7 @@ namespace Autodesk.Forge
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/vnd.api+json", 
+                "application/vnd.api+json",
                 "application/json"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
@@ -1167,11 +1196,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1182,7 +1211,7 @@ namespace Autodesk.Forge
             return new ApiResponse</*Manifest*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(Manifest)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Manifest)));
-            
+
         }
 
         /// <summary>
@@ -1192,10 +1221,10 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of Manifest</returns>
-        public async System.Threading.Tasks.Task</*Manifest*/dynamic> GetManifestAsync (string urn, string acceptEncoding = null)
+        public async System.Threading.Tasks.Task</*Manifest*/dynamic> GetManifestAsync(string urn, string acceptEncoding = null)
         {
-             ApiResponse</*Manifest*/dynamic> localVarResponse = await GetManifestAsyncWithHttpInfo(urn, acceptEncoding);
-             return localVarResponse.Data;
+            ApiResponse</*Manifest*/dynamic> localVarResponse = await GetManifestAsyncWithHttpInfo(urn, acceptEncoding);
+            return localVarResponse.Data;
 
         }
 
@@ -1206,13 +1235,15 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse (Manifest)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*Manifest*/dynamic>> GetManifestAsyncWithHttpInfo (string urn, string acceptEncoding = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*Manifest*/dynamic>> GetManifestAsyncWithHttpInfo(string urn, string acceptEncoding = null)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
                 throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->GetManifest");
 
-            var localVarPath = "/modelderivative/v2/designdata/{urn}/manifest";
+            string region = Base64Decode(urn).IndexOf("wipemea") > -1 ? "regions/eu/" : string.Empty;
+
+            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/manifest";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1228,7 +1259,7 @@ namespace Autodesk.Forge
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/vnd.api+json", 
+                "application/vnd.api+json",
                 "application/json"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
@@ -1255,11 +1286,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1270,7 +1301,7 @@ namespace Autodesk.Forge
             return new ApiResponse</*Manifest*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(Manifest)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Manifest)));
-            
+
         }
 
         /// <summary>
@@ -1280,10 +1311,10 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Metadata</returns>
-        public /*Metadata*/dynamic GetMetadata (string urn, string acceptEncoding = null)
+        public /*Metadata*/dynamic GetMetadata(string urn, string acceptEncoding = null)
         {
-             ApiResponse</*Metadata*/dynamic> localVarResponse = GetMetadataWithHttpInfo(urn, acceptEncoding);
-             return localVarResponse.Data;
+            ApiResponse</*Metadata*/dynamic> localVarResponse = GetMetadataWithHttpInfo(urn, acceptEncoding);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1293,13 +1324,15 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>ApiResponse of Metadata</returns>
-        public ApiResponse< /*Metadata*/dynamic > GetMetadataWithHttpInfo (string urn, string acceptEncoding = null)
+        public ApiResponse< /*Metadata*/dynamic> GetMetadataWithHttpInfo(string urn, string acceptEncoding = null)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
                 throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->GetMetadata");
 
-            var localVarPath = "/modelderivative/v2/designdata/{urn}/metadata";
+            string region = Base64Decode(urn).IndexOf("wipemea") > -1 ? "regions/eu/" : string.Empty;
+
+            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/metadata";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1315,7 +1348,7 @@ namespace Autodesk.Forge
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/vnd.api+json", 
+                "application/vnd.api+json",
                 "application/json"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
@@ -1342,11 +1375,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1357,7 +1390,7 @@ namespace Autodesk.Forge
             return new ApiResponse</*Metadata*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(Metadata)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Metadata)));
-            
+
         }
 
         /// <summary>
@@ -1367,10 +1400,10 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of Metadata</returns>
-        public async System.Threading.Tasks.Task</*Metadata*/dynamic> GetMetadataAsync (string urn, string acceptEncoding = null)
+        public async System.Threading.Tasks.Task</*Metadata*/dynamic> GetMetadataAsync(string urn, string acceptEncoding = null)
         {
-             ApiResponse</*Metadata*/dynamic> localVarResponse = await GetMetadataAsyncWithHttpInfo(urn, acceptEncoding);
-             return localVarResponse.Data;
+            ApiResponse</*Metadata*/dynamic> localVarResponse = await GetMetadataAsyncWithHttpInfo(urn, acceptEncoding);
+            return localVarResponse.Data;
 
         }
 
@@ -1381,13 +1414,15 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse (Metadata)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetMetadataAsyncWithHttpInfo (string urn, string acceptEncoding = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetMetadataAsyncWithHttpInfo(string urn, string acceptEncoding = null)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
                 throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->GetMetadata");
 
-            var localVarPath = "/modelderivative/v2/designdata/{urn}/metadata";
+            string region = Base64Decode(urn).IndexOf("wipemea") > -1 ? "regions/eu/" : string.Empty;
+
+            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/metadata";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1403,7 +1438,7 @@ namespace Autodesk.Forge
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/vnd.api+json", 
+                "application/vnd.api+json",
                 "application/json"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
@@ -1430,11 +1465,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1445,7 +1480,7 @@ namespace Autodesk.Forge
             return new ApiResponse</*Metadata*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(Metadata)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Metadata)));
-            
+
         }
 
         /// <summary>
@@ -1456,10 +1491,10 @@ namespace Autodesk.Forge
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Metadata</returns>
-        public /*Metadata*/dynamic GetModelviewMetadata (string urn, string guid, string acceptEncoding = null)
+        public /*Metadata*/dynamic GetModelviewMetadata(string urn, string guid, string acceptEncoding = null)
         {
-             ApiResponse</*Metadata*/dynamic> localVarResponse = GetModelviewMetadataWithHttpInfo(urn, guid, acceptEncoding);
-             return localVarResponse.Data;
+            ApiResponse</*Metadata*/dynamic> localVarResponse = GetModelviewMetadataWithHttpInfo(urn, guid, acceptEncoding);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1470,7 +1505,7 @@ namespace Autodesk.Forge
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>ApiResponse of Metadata</returns>
-        public ApiResponse< /*Metadata*/dynamic > GetModelviewMetadataWithHttpInfo (string urn, string guid, string acceptEncoding = null)
+        public ApiResponse< /*Metadata*/dynamic> GetModelviewMetadataWithHttpInfo(string urn, string guid, string acceptEncoding = null)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
@@ -1479,7 +1514,9 @@ namespace Autodesk.Forge
             if (guid == null)
                 throw new ApiException(400, "Missing required parameter 'guid' when calling DerivativesApi->GetModelviewMetadata");
 
-            var localVarPath = "/modelderivative/v2/designdata/{urn}/metadata/{guid}";
+            string region = Base64Decode(urn).IndexOf("wipemea") > -1 ? "regions/eu/" : string.Empty;
+
+            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/metadata/{guid}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1495,7 +1532,7 @@ namespace Autodesk.Forge
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/vnd.api+json", 
+                "application/vnd.api+json",
                 "application/json"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
@@ -1523,11 +1560,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1538,7 +1575,7 @@ namespace Autodesk.Forge
             return new ApiResponse</*Metadata*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(Metadata)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Metadata)));
-            
+
         }
 
         /// <summary>
@@ -1549,10 +1586,10 @@ namespace Autodesk.Forge
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of Metadata</returns>
-        public async System.Threading.Tasks.Task</*Metadata*/dynamic> GetModelviewMetadataAsync (string urn, string guid, string acceptEncoding = null)
+        public async System.Threading.Tasks.Task</*Metadata*/dynamic> GetModelviewMetadataAsync(string urn, string guid, string acceptEncoding = null)
         {
-             ApiResponse</*Metadata*/dynamic> localVarResponse = await GetModelviewMetadataAsyncWithHttpInfo(urn, guid, acceptEncoding);
-             return localVarResponse.Data;
+            ApiResponse</*Metadata*/dynamic> localVarResponse = await GetModelviewMetadataAsyncWithHttpInfo(urn, guid, acceptEncoding);
+            return localVarResponse.Data;
 
         }
 
@@ -1564,7 +1601,7 @@ namespace Autodesk.Forge
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse (Metadata)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewMetadataAsyncWithHttpInfo (string urn, string guid, string acceptEncoding = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewMetadataAsyncWithHttpInfo(string urn, string guid, string acceptEncoding = null)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
@@ -1573,7 +1610,9 @@ namespace Autodesk.Forge
             if (guid == null)
                 throw new ApiException(400, "Missing required parameter 'guid' when calling DerivativesApi->GetModelviewMetadata");
 
-            var localVarPath = "/modelderivative/v2/designdata/{urn}/metadata/{guid}";
+            string region = Base64Decode(urn).IndexOf("wipemea") > -1 ? "regions/eu/" : string.Empty;
+
+            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/metadata/{guid}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1589,7 +1628,7 @@ namespace Autodesk.Forge
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/vnd.api+json", 
+                "application/vnd.api+json",
                 "application/json"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
@@ -1617,11 +1656,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1632,7 +1671,7 @@ namespace Autodesk.Forge
             return new ApiResponse</*Metadata*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(Metadata)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Metadata)));
-            
+
         }
 
         /// <summary>
@@ -1643,10 +1682,10 @@ namespace Autodesk.Forge
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Metadata</returns>
-        public /*Metadata*/dynamic GetModelviewProperties (string urn, string guid, string acceptEncoding = null)
+        public /*Metadata*/dynamic GetModelviewProperties(string urn, string guid, string acceptEncoding = null)
         {
-             ApiResponse</*Metadata*/dynamic> localVarResponse = GetModelviewPropertiesWithHttpInfo(urn, guid, acceptEncoding);
-             return localVarResponse.Data;
+            ApiResponse</*Metadata*/dynamic> localVarResponse = GetModelviewPropertiesWithHttpInfo(urn, guid, acceptEncoding);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1657,7 +1696,7 @@ namespace Autodesk.Forge
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>ApiResponse of Metadata</returns>
-        public ApiResponse< /*Metadata*/dynamic > GetModelviewPropertiesWithHttpInfo (string urn, string guid, string acceptEncoding = null)
+        public ApiResponse< /*Metadata*/dynamic> GetModelviewPropertiesWithHttpInfo(string urn, string guid, string acceptEncoding = null)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
@@ -1666,7 +1705,9 @@ namespace Autodesk.Forge
             if (guid == null)
                 throw new ApiException(400, "Missing required parameter 'guid' when calling DerivativesApi->GetModelviewProperties");
 
-            var localVarPath = "/modelderivative/v2/designdata/{urn}/metadata/{guid}/properties";
+            string region = Base64Decode(urn).IndexOf("wipemea") > -1 ? "regions/eu/" : string.Empty;
+
+            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/metadata/{guid}/properties";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             localVarQueryParams.Add("forceget", "true");
@@ -1683,7 +1724,7 @@ namespace Autodesk.Forge
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/vnd.api+json", 
+                "application/vnd.api+json",
                 "application/json"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
@@ -1711,11 +1752,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1726,7 +1767,7 @@ namespace Autodesk.Forge
             return new ApiResponse</*Metadata*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(Metadata)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Metadata)));
-            
+
         }
 
         /// <summary>
@@ -1737,10 +1778,10 @@ namespace Autodesk.Forge
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of Metadata</returns>
-        public async System.Threading.Tasks.Task</*Metadata*/dynamic> GetModelviewPropertiesAsync (string urn, string guid, string acceptEncoding = null)
+        public async System.Threading.Tasks.Task</*Metadata*/dynamic> GetModelviewPropertiesAsync(string urn, string guid, string acceptEncoding = null)
         {
-             ApiResponse</*Metadata*/dynamic> localVarResponse = await GetModelviewPropertiesAsyncWithHttpInfo(urn, guid, acceptEncoding);
-             return localVarResponse.Data;
+            ApiResponse</*Metadata*/dynamic> localVarResponse = await GetModelviewPropertiesAsyncWithHttpInfo(urn, guid, acceptEncoding);
+            return localVarResponse.Data;
 
         }
 
@@ -1752,7 +1793,7 @@ namespace Autodesk.Forge
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse (Metadata)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewPropertiesAsyncWithHttpInfo (string urn, string guid, string acceptEncoding = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewPropertiesAsyncWithHttpInfo(string urn, string guid, string acceptEncoding = null)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
@@ -1761,7 +1802,9 @@ namespace Autodesk.Forge
             if (guid == null)
                 throw new ApiException(400, "Missing required parameter 'guid' when calling DerivativesApi->GetModelviewProperties");
 
-            var localVarPath = "/modelderivative/v2/designdata/{urn}/metadata/{guid}/properties";
+            string region = Base64Decode(urn).IndexOf("wipemea") > -1 ? "regions/eu/" : string.Empty;
+
+            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/metadata/{guid}/properties";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             localVarQueryParams.Add("forceget", "true");
@@ -1778,7 +1821,7 @@ namespace Autodesk.Forge
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/vnd.api+json", 
+                "application/vnd.api+json",
                 "application/json"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
@@ -1806,11 +1849,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1821,7 +1864,7 @@ namespace Autodesk.Forge
             return new ApiResponse</*Metadata*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(Metadata)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Metadata)));
-            
+
         }
 
         /// <summary>
@@ -1832,10 +1875,10 @@ namespace Autodesk.Forge
         /// <param name="width">The desired width of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <param name="height">The desired height of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <returns>System.IO.Stream</returns>
-        public /*System.IO.Stream*/dynamic GetThumbnail (string urn, int? width = null, int? height = null)
+        public /*System.IO.Stream*/dynamic GetThumbnail(string urn, int? width = null, int? height = null)
         {
-             ApiResponse</*System.IO.Stream*/dynamic> localVarResponse = GetThumbnailWithHttpInfo(urn, width, height);
-             return localVarResponse.Data;
+            ApiResponse</*System.IO.Stream*/dynamic> localVarResponse = GetThumbnailWithHttpInfo(urn, width, height);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1846,13 +1889,15 @@ namespace Autodesk.Forge
         /// <param name="width">The desired width of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <param name="height">The desired height of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <returns>ApiResponse of System.IO.Stream</returns>
-        public ApiResponse< /*System.IO.Stream*/dynamic > GetThumbnailWithHttpInfo (string urn, int? width = null, int? height = null)
+        public ApiResponse< /*System.IO.Stream*/dynamic> GetThumbnailWithHttpInfo(string urn, int? width = null, int? height = null)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
                 throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->GetThumbnail");
 
-            var localVarPath = "/modelderivative/v2/designdata/{urn}/thumbnail";
+            string region = Base64Decode(urn).IndexOf("wipemea") > -1 ? "regions/eu/" : string.Empty;
+
+            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/thumbnail";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1895,11 +1940,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -1910,7 +1955,7 @@ namespace Autodesk.Forge
             return new ApiResponse</*System.IO.Stream*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(System.IO.Stream)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(System.IO.Stream)));
-            
+
         }
 
         /// <summary>
@@ -1921,10 +1966,10 @@ namespace Autodesk.Forge
         /// <param name="width">The desired width of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <param name="height">The desired height of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <returns>Task of System.IO.Stream</returns>
-        public async System.Threading.Tasks.Task</*System.IO.Stream*/dynamic> GetThumbnailAsync (string urn, int? width = null, int? height = null)
+        public async System.Threading.Tasks.Task</*System.IO.Stream*/dynamic> GetThumbnailAsync(string urn, int? width = null, int? height = null)
         {
-             ApiResponse</*System.IO.Stream*/dynamic> localVarResponse = await GetThumbnailAsyncWithHttpInfo(urn, width, height);
-             return localVarResponse.Data;
+            ApiResponse</*System.IO.Stream*/dynamic> localVarResponse = await GetThumbnailAsyncWithHttpInfo(urn, width, height);
+            return localVarResponse.Data;
 
         }
 
@@ -1936,13 +1981,15 @@ namespace Autodesk.Forge
         /// <param name="width">The desired width of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <param name="height">The desired height of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*System.IO.Stream*/dynamic>> GetThumbnailAsyncWithHttpInfo (string urn, int? width = null, int? height = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*System.IO.Stream*/dynamic>> GetThumbnailAsyncWithHttpInfo(string urn, int? width = null, int? height = null)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
                 throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->GetThumbnail");
 
-            var localVarPath = "/modelderivative/v2/designdata/{urn}/thumbnail";
+            string region = Base64Decode(urn).IndexOf("wipemea") > -1 ? "regions/eu/" : string.Empty;
+
+            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/thumbnail";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1985,11 +2032,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2000,7 +2047,7 @@ namespace Autodesk.Forge
             return new ApiResponse</*System.IO.Stream*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(System.IO.Stream)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(System.IO.Stream)));
-            
+
         }
 
         /// <summary>
@@ -2010,10 +2057,10 @@ namespace Autodesk.Forge
         /// <param name="job"></param>
         /// <param name="xAdsForce">&#x60;true&#x60;: the endpoint replaces previously translated output file types with the newly generated derivatives  &#x60;false&#x60; (default): previously created derivatives are not replaced  (optional, default to false)</param>
         /// <returns>Job</returns>
-        public /*Job*/dynamic Translate (JobPayload job, bool? xAdsForce = null)
+        public /*Job*/dynamic Translate(JobPayload job, bool? xAdsForce = null)
         {
-             ApiResponse</*Job*/dynamic> localVarResponse = TranslateWithHttpInfo(job, xAdsForce);
-             return localVarResponse.Data;
+            ApiResponse</*Job*/dynamic> localVarResponse = TranslateWithHttpInfo(job, xAdsForce);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2023,7 +2070,7 @@ namespace Autodesk.Forge
         /// <param name="job"></param>
         /// <param name="xAdsForce">&#x60;true&#x60;: the endpoint replaces previously translated output file types with the newly generated derivatives  &#x60;false&#x60; (default): previously created derivatives are not replaced  (optional, default to false)</param>
         /// <returns>ApiResponse of Job</returns>
-        public ApiResponse< /*Job*/dynamic > TranslateWithHttpInfo (JobPayload job, bool? xAdsForce = null)
+        public ApiResponse< /*Job*/dynamic> TranslateWithHttpInfo(JobPayload job, bool? xAdsForce = null)
         {
             // verify the required parameter 'job' is set
             if (job == null)
@@ -2045,7 +2092,7 @@ namespace Autodesk.Forge
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/vnd.api+json", 
+                "application/vnd.api+json",
                 "application/json"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
@@ -2060,18 +2107,18 @@ namespace Autodesk.Forge
             {
                 localVarPostBody = job; // byte array
             }
-            else if (   job != null
-                     && (   job.GetType() == typeof(System.IO.FileStream)
+            else if (job != null
+                     && (job.GetType() == typeof(System.IO.FileStream)
                          || job.GetType() == typeof(System.IO.BinaryReader)
                          || job.GetType() == typeof(System.IO.BufferedStream)
-                   	     || job.GetType() == typeof(System.IO.MemoryStream)
-                   	     || job.GetType() == typeof(System.IO.StreamReader)
-                   	    )
+                            || job.GetType() == typeof(System.IO.MemoryStream)
+                            || job.GetType() == typeof(System.IO.StreamReader)
+                           )
                     )
             {
-                localVarPostBody =Configuration.ApiClient.toByteArray(job); // byte array
+                localVarPostBody = Configuration.ApiClient.toByteArray(job); // byte array
             }
-            else if ( job != null )
+            else if (job != null)
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(job);
             }
@@ -2090,11 +2137,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2105,7 +2152,7 @@ namespace Autodesk.Forge
             return new ApiResponse</*Job*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(Job)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Job)));
-            
+
         }
 
         /// <summary>
@@ -2115,10 +2162,10 @@ namespace Autodesk.Forge
         /// <param name="job"></param>
         /// <param name="xAdsForce">&#x60;true&#x60;: the endpoint replaces previously translated output file types with the newly generated derivatives  &#x60;false&#x60; (default): previously created derivatives are not replaced  (optional, default to false)</param>
         /// <returns>Task of Job</returns>
-        public async System.Threading.Tasks.Task</*Job*/dynamic> TranslateAsync (JobPayload job, bool? xAdsForce = null)
+        public async System.Threading.Tasks.Task</*Job*/dynamic> TranslateAsync(JobPayload job, bool? xAdsForce = null)
         {
-             ApiResponse</*Job*/dynamic> localVarResponse = await TranslateAsyncWithHttpInfo(job, xAdsForce);
-             return localVarResponse.Data;
+            ApiResponse</*Job*/dynamic> localVarResponse = await TranslateAsyncWithHttpInfo(job, xAdsForce);
+            return localVarResponse.Data;
 
         }
 
@@ -2129,7 +2176,7 @@ namespace Autodesk.Forge
         /// <param name="job"></param>
         /// <param name="xAdsForce">&#x60;true&#x60;: the endpoint replaces previously translated output file types with the newly generated derivatives  &#x60;false&#x60; (default): previously created derivatives are not replaced  (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Job)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*Job*/dynamic>> TranslateAsyncWithHttpInfo (JobPayload job, bool? xAdsForce = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*Job*/dynamic>> TranslateAsyncWithHttpInfo(JobPayload job, bool? xAdsForce = null)
         {
             // verify the required parameter 'job' is set
             if (job == null)
@@ -2151,7 +2198,7 @@ namespace Autodesk.Forge
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/vnd.api+json", 
+                "application/vnd.api+json",
                 "application/json"
             };
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
@@ -2166,18 +2213,18 @@ namespace Autodesk.Forge
             {
                 localVarPostBody = job; // byte array
             }
-            else if (   job != null
-                     && (   job.GetType() == typeof(System.IO.FileStream)
+            else if (job != null
+                     && (job.GetType() == typeof(System.IO.FileStream)
                          || job.GetType() == typeof(System.IO.BinaryReader)
                          || job.GetType() == typeof(System.IO.BufferedStream)
-                   	     || job.GetType() == typeof(System.IO.MemoryStream)
-                   	     || job.GetType() == typeof(System.IO.StreamReader)
-                   	    )
+                            || job.GetType() == typeof(System.IO.MemoryStream)
+                            || job.GetType() == typeof(System.IO.StreamReader)
+                           )
                     )
             {
-                localVarPostBody =Configuration.ApiClient.toByteArray(job); // byte array
+                localVarPostBody = Configuration.ApiClient.toByteArray(job); // byte array
             }
-            else if ( job != null )
+            else if (job != null)
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(job);
             }
@@ -2196,11 +2243,11 @@ namespace Autodesk.Forge
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -2211,7 +2258,7 @@ namespace Autodesk.Forge
             return new ApiResponse</*Job*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(Job)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Job)));
-            
+
         }
 
     }
