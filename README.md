@@ -1,13 +1,14 @@
-[![build status](https://api.travis-ci.org/cyrillef/models.autodesk.io.png)](https://travis-ci.org/cyrillef/models.autodesk.io)
-[![nuget](https://img.shields.io/badge/nuget-3.5.0-blue.svg)](https://www.nuget.org/)
-![Platforms](https://img.shields.io/badge/platform-windows-lightgray.svg)
-[![License](http://img.shields.io/:license-mit-blue.svg)](http://opensource.org/licenses/MIT)
+![.NET Framework](https://img.shields.io/badge/.NET%20Framework-4.5.2-blue.svg)
+![.NET Framework](https://img.shields.io/badge/.NET%20Core-2.0-blue.svg)
+![Platforms](https://img.shields.io/badge/platform-windows|mac|linux-lightgray.svg)
+![License](http://img.shields.io/:license-Apache-blue.svg)
 
 *Forge API*:
 [![oAuth2](https://img.shields.io/badge/oAuth2-v1-green.svg)](http://autodesk-forge.github.io/)
 [![Data-Management](https://img.shields.io/badge/Data%20Management-v1-green.svg)](http://autodesk-forge.github.io/)
 [![OSS](https://img.shields.io/badge/OSS-v2-green.svg)](http://autodesk-forge.github.io/)
 [![Model-Derivative](https://img.shields.io/badge/Model%20Derivative-v2-green.svg)](http://autodesk-forge.github.io/)
+[![Design-Automation](https://img.shields.io/badge/Design%20Automation-v3-green.svg)](http://autodesk-forge.github.io/)
 
 # Forge .Net SDK
 
@@ -20,14 +21,15 @@ and <a href="https://developer.autodesk.com/en/docs/design-automation/v2/overvie
 
 
 ### Requirements
-* .NET 4.0 or later
+* .NET Framworks 4.5.2 or later
+* .NET Core 2.0 or later
 * A registered app on the <a href="https://developer.autodesk.com/myapps" target="_blank">Forge Developer portal</a>.
 * Building the API client library requires [Visual Studio 2015](https://www.visualstudio.com/downloads/) to be installed.
 
 
 ### Dependencies
-- [RestSharp](https://www.nuget.org/packages/RestSharp) 105.2.3 or later
-- [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) 9.0.1 or later
+- [RestSharp](https://www.nuget.org/packages/RestSharp) 106.3.1 or later
+- [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) 11.0.2 or later
 
 The DLLs included in the package may not be the latest version.
 We recommend using [NuGet](https://docs.nuget.org/consume/installing-nuget) to obtain the latest version of the packages:
@@ -60,6 +62,9 @@ Install-Package Autodesk.Forge
 ```
 
 ## Tutorial
+
+> For a complete tutorial, please visit [Learn Forge](http://learnforge.autodesk.io) tutorial.
+
 Follow this tutorial to see a step-by-step authentication guide, and examples of how to use the Forge APIs.
 
 ### Create an App
@@ -404,5 +409,4 @@ forge.help@autodesk.com
 
 ## License
 
-This sample is licensed under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-Please see the [LICENSE](LICENSE) file for full details.
+This sample is licensed under the terms of the [Apache License]. Please see the [LICENSE](LICENSE) file for full details.
