@@ -1,6 +1,6 @@
 # Autodesk.Forge .NET package
 
-# 1.5 (Alfa)
+# 1.5
 * Include support for Design Automation v3
 * Fix Derivative endpoints to support EMEA Region ([learn more](https://forge.autodesk.com/blog/bim-360-docs-api-changes-access-data-european-data-center))
 * Add IFC for `JobPayloadItem`
