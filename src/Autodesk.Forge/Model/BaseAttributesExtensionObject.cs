@@ -72,14 +72,14 @@ namespace Autodesk.Forge.Model
                 this.Version = Version;
             }
             // to ensure "Schema" is required (not null)
-            if (Schema == null)
+            /* if (Schema == null)
             {
                 throw new InvalidDataException("Schema is a required property for BaseAttributesExtensionObject and cannot be null");
             }
             else
             {
                 this.Schema = Schema;
-            }
+            }*/
             this.Data = Data;
         }
         
