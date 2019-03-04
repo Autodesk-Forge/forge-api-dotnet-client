@@ -221,7 +221,7 @@ namespace Autodesk.Forge
         /// <param name="projectId">the &#x60;project id&#x60;</param>
         /// <param name="body">describe the folder to be created</param>
         /// <returns></returns>
-        void PostFolder (string projectId, CreateFolder body);
+        dynamic PostFolder (string projectId, CreateFolder body);
 
         /// <summary>
         /// 
@@ -233,7 +233,7 @@ namespace Autodesk.Forge
         /// <param name="projectId">the &#x60;project id&#x60;</param>
         /// <param name="body">describe the folder to be created</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PostFolderWithHttpInfo (string projectId, CreateFolder body);
+        ApiResponse<dynamic> PostFolderWithHttpInfo (string projectId, CreateFolder body);
         /// <summary>
         /// 
         /// </summary>
@@ -448,7 +448,7 @@ namespace Autodesk.Forge
         /// <param name="projectId">the &#x60;project id&#x60;</param>
         /// <param name="body">describe the folder to be created</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PostFolderAsync (string projectId, CreateFolder body);
+        System.Threading.Tasks.Task<dynamic> PostFolderAsync (string projectId, CreateFolder body);
 
         /// <summary>
         /// 
@@ -460,7 +460,7 @@ namespace Autodesk.Forge
         /// <param name="projectId">the &#x60;project id&#x60;</param>
         /// <param name="body">describe the folder to be created</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PostFolderAsyncWithHttpInfo (string projectId, CreateFolder body);
+        System.Threading.Tasks.Task<ApiResponse<dynamic>> PostFolderAsyncWithHttpInfo (string projectId, CreateFolder body);
         /// <summary>
         /// 
         /// </summary>
@@ -1873,10 +1873,10 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="projectId">the &#x60;project id&#x60;</param>
         /// <param name="body">describe the folder to be created</param>
-        /// <returns></returns>
-        public void PostFolder (string projectId, CreateFolder body)
+        /// <returns>ApiResponse of Object</returns>
+        public dynamic PostFolder (string projectId, CreateFolder body)
         {
-             PostFolderWithHttpInfo(projectId, body);
+             return PostFolderWithHttpInfo(projectId, body);
         }
 
         /// <summary>
@@ -1885,8 +1885,8 @@ namespace Autodesk.Forge
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="projectId">the &#x60;project id&#x60;</param>
         /// <param name="body">describe the folder to be created</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PostFolderWithHttpInfo (string projectId, CreateFolder body)
+        /// <returns>ApiResponse of Object</returns>
+        public ApiResponse<dynamic> PostFolderWithHttpInfo (string projectId, CreateFolder body)
         {
             // verify the required parameter 'projectId' is set
             if (projectId == null)
@@ -1965,7 +1965,7 @@ namespace Autodesk.Forge
             
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                /*(JsonApiCollection)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonApiCollection)));
         }
 
         /// <summary>
@@ -1975,10 +1975,10 @@ namespace Autodesk.Forge
         /// <param name="projectId">the &#x60;project id&#x60;</param>
         /// <param name="body">describe the folder to be created</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PostFolderAsync (string projectId, CreateFolder body)
+        public async System.Threading.Tasks.Task<dynamic> PostFolderAsync (string projectId, CreateFolder body)
         {
-             await PostFolderAsyncWithHttpInfo(projectId, body);
-
+            ApiResponse<dynamic> localVarResponse = await PostFolderAsyncWithHttpInfo(projectId, body);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -1988,7 +1988,7 @@ namespace Autodesk.Forge
         /// <param name="projectId">the &#x60;project id&#x60;</param>
         /// <param name="body">describe the folder to be created</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PostFolderAsyncWithHttpInfo (string projectId, CreateFolder body)
+        public async System.Threading.Tasks.Task<ApiResponse<dynamic>> PostFolderAsyncWithHttpInfo (string projectId, CreateFolder body)
         {
             // verify the required parameter 'projectId' is set
             if (projectId == null)
@@ -2067,7 +2067,7 @@ namespace Autodesk.Forge
             
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                 /*(JsonApiCollection)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonApiCollection)));
         }
 
         /// <summary>

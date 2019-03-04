@@ -1890,7 +1890,7 @@ namespace Autodesk.Forge
         /// <param name="projectId">the &#x60;project id&#x60;</param>
         /// <param name="itemId">the &#x60;item id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
-        /// <returns></returns>
+        /// <returns>ApiResponse of Object(void)</returns>
         public void PostItemRelationshipsRef (string projectId, string itemId, CreateRef body)
         {
              PostItemRelationshipsRefWithHttpInfo(projectId, itemId, body);
@@ -2096,6 +2096,221 @@ namespace Autodesk.Forge
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);
+        }
+
+        /// <summary>
+        /// Updates the properties of the given item_id object 
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="itemId">the &#x60;item id&#x60;</param>
+        /// <param name="body">describe the ref to be created</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public dynamic PatchItem(string projectId, string itemId, CreateRef body)
+        {
+            return PatchItemWithHttpInfo(projectId, itemId, body);
+        }
+
+        /// <summary>
+        /// Updates the properties of the given item_id object
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="itemId">the &#x60;item id&#x60;</param>
+        /// <param name="body">describe the ref to be created</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<dynamic> PatchItemWithHttpInfo(string projectId, string itemId, CreateRef body)
+        {
+            // verify the required parameter 'projectId' is set
+            if (projectId == null)
+                throw new ApiException(400, "Missing required parameter 'projectId' when calling ItemsApi->PostItemRelationshipsRef");
+            // verify the required parameter 'itemId' is set
+            if (itemId == null)
+                throw new ApiException(400, "Missing required parameter 'itemId' when calling ItemsApi->PostItemRelationshipsRef");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling ItemsApi->PostItemRelationshipsRef");
+
+            var localVarPath = "/data/v1/projects/{project_id}/items/{item_id}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/vnd.api+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/vnd.api+json",
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (projectId != null) localVarPathParams.Add("project_id", Configuration.ApiClient.ParameterToString(projectId)); // path parameter
+            if (itemId != null) localVarPathParams.Add("item_id", Configuration.ApiClient.ParameterToString(itemId)); // path parameter
+            if (body != null && body.GetType() == typeof(byte[])) // http body (model) parameter
+            {
+                localVarPostBody = body; // byte array
+            }
+            else if (body != null
+                     && (body.GetType() == typeof(System.IO.FileStream)
+                         || body.GetType() == typeof(System.IO.BinaryReader)
+                         || body.GetType() == typeof(System.IO.BufferedStream)
+                            || body.GetType() == typeof(System.IO.MemoryStream)
+                            || body.GetType() == typeof(System.IO.StreamReader)
+                           )
+                    )
+            {
+                localVarPostBody = Configuration.ApiClient.toByteArray(body); // byte array
+            }
+            else if (body != null)
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body);
+            }
+
+            // authentication (oauth2_access_code) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
+                Method.PATCH, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PatchItem", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                /*(JsonApiCollection)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonApiCollection)));
+        }
+
+        /// <summary>
+        ///  Updates the properties of the given item_id object.
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="itemId">the &#x60;item id&#x60;</param>
+        /// <param name="body">describe the ref to be created</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task<dynamic> PatchItemAsync(string projectId, string itemId, CreateRef body)
+        {
+            return await PatchItemAsyncWithHttpInfo(projectId, itemId, body).Result.Data;
+
+        }
+
+        /// <summary>
+        /// Updates the properties of the given item_id object.
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="itemId">the &#x60;item id&#x60;</param>
+        /// <param name="body">describe the ref to be created</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<dynamic>> PatchItemAsyncWithHttpInfo(string projectId, string itemId, CreateRef body)
+        {
+            // verify the required parameter 'projectId' is set
+            if (projectId == null)
+                throw new ApiException(400, "Missing required parameter 'projectId' when calling ItemsApi->PostItemRelationshipsRef");
+            // verify the required parameter 'itemId' is set
+            if (itemId == null)
+                throw new ApiException(400, "Missing required parameter 'itemId' when calling ItemsApi->PostItemRelationshipsRef");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling ItemsApi->PostItemRelationshipsRef");
+
+            var localVarPath = "/data/v1/projects/{project_id}/items/{item_id}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/vnd.api+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/vnd.api+json",
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (projectId != null) localVarPathParams.Add("project_id", Configuration.ApiClient.ParameterToString(projectId)); // path parameter
+            if (itemId != null) localVarPathParams.Add("item_id", Configuration.ApiClient.ParameterToString(itemId)); // path parameter
+            if (body != null && body.GetType() == typeof(byte[])) // http body (model) parameter
+            {
+                localVarPostBody = body; // byte array
+            }
+            else if (body != null
+                     && (body.GetType() == typeof(System.IO.FileStream)
+                         || body.GetType() == typeof(System.IO.BinaryReader)
+                         || body.GetType() == typeof(System.IO.BufferedStream)
+                            || body.GetType() == typeof(System.IO.MemoryStream)
+                            || body.GetType() == typeof(System.IO.StreamReader)
+                           )
+                    )
+            {
+                localVarPostBody = Configuration.ApiClient.toByteArray(body); // byte array
+            }
+            else if (body != null)
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body);
+            }
+
+            // authentication (oauth2_access_code) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.PATCH, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PatchItem", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                /*(JsonApiCollection)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonApiCollection)));
         }
 
     }

@@ -194,7 +194,18 @@ namespace Autodesk.Forge.Test
             //instance.PostItemRelationshipsRef(projectId, itemId, body);
             
         }
-        
+
+        [Test]
+        public void PatchItemTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string projectId = null;
+            //string itemId = null;
+            //CreateRef body = null;
+            //instance.PatchItemWithHttpInfo(projectId, itemId, body);
+
+        }
+
     }
 
 }
