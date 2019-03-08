@@ -81,7 +81,13 @@ namespace Autodesk.Forge.Model
             /// Enum Obj for "obj"
             /// </summary>
             [EnumMember(Value = "obj")]
-            Obj
+            Obj,
+
+                        /// <summary>
+            /// Enum Obj for "obj"
+            /// </summary>
+            [EnumMember(Value = "ifc")]
+            Ifc
         }
 
 

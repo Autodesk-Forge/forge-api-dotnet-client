@@ -80,6 +80,12 @@ namespace Autodesk.Forge.Model
         [DataMember(Name="urn", EmitDefaultValue=false)]
         public string Urn { get; set; }
         /// <summary>
+        /// Use references specifed by [POST References](https://forge.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-references-POST/)
+        /// </summary>
+        /// <value>Set thi to true in order to check references during translation. </value>
+        [DataMember(Name= "checkReferences", EmitDefaultValue=false)]
+        public bool? CheckReferences { get; set; }
+        /// <summary>
         /// Set this to &#x60;true&#x60; if the source file is compressed. If set to &#x60;true&#x60;, you need to define the &#x60;rootFilename&#x60;.
         /// </summary>
         /// <value>Set this to &#x60;true&#x60; if the source file is compressed. If set to &#x60;true&#x60;, you need to define the &#x60;rootFilename&#x60;.</value>
@@ -100,6 +106,7 @@ namespace Autodesk.Forge.Model
             var sb = new StringBuilder();
             sb.Append("class JobPayloadInput {\n");
             sb.Append("  Urn: ").Append(Urn).Append("\n");
+            sb.Append("  CheckReferences: ").Append(CheckReferences).Append("\n");
             sb.Append("  CompressedUrn: ").Append(CompressedUrn).Append("\n");
             sb.Append("  RootFilename: ").Append(RootFilename).Append("\n");
             sb.Append("}\n");
@@ -142,7 +149,12 @@ namespace Autodesk.Forge.Model
                     this.Urn == other.Urn ||
                     this.Urn != null &&
                     this.Urn.Equals(other.Urn)
-                ) && 
+                ) &&
+                (
+                    this.CheckReferences == other.CheckReferences ||
+                    this.CheckReferences != null &&
+                    this.CheckReferences.Equals(other.CheckReferences)
+                ) &&
                 (
                     this.CompressedUrn == other.CompressedUrn ||
                     this.CompressedUrn != null &&
@@ -168,6 +180,8 @@ namespace Autodesk.Forge.Model
                 // Suitable nullity checks etc, of course :)
                 if (this.Urn != null)
                     hash = hash * 59 + this.Urn.GetHashCode();
+                if (this.CheckReferences != null)
+                    hash = hash * 59 + this.CheckReferences.GetHashCode();
                 if (this.CompressedUrn != null)
                     hash = hash * 59 + this.CompressedUrn.GetHashCode();
                 if (this.RootFilename != null)

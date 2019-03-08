@@ -1279,7 +1279,7 @@ namespace Autodesk.Forge.DesignAutomation.v3
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling AppBundlesApi->AppBundlesCreateItemVersion");
 
-            var localVarPath = "/da/us-east/v3/appbundles/{id}/versions";
+            var localVarPath = string.Format("/da/us-east/v3/appbundles/{0}/versions", id);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1308,8 +1308,8 @@ namespace Autodesk.Forge.DesignAutomation.v3
 
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-            if (id != null) localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
+            //localVarPathParams.Add("format", "json");
+            //if (id != null) localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
             if (item != null && item.GetType() == typeof(byte[])) // http body (model) parameter
             {
                 localVarPostBody = item; // byte array
@@ -2280,7 +2280,7 @@ namespace Autodesk.Forge.DesignAutomation.v3
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling AppBundlesApi->AppBundlesGetItem");
 
-            var localVarPath = "/da/us-east/v3/appbundles/{id}";
+            var localVarPath = "/da/us-east/v3/appbundles/" + id;
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2305,8 +2305,8 @@ namespace Autodesk.Forge.DesignAutomation.v3
 
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
-            localVarPathParams.Add("format", "json");
-            if (id != null) localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
+            //localVarPathParams.Add("format", "json");
+            //if (id != null) localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
 
             // authentication (oauth2_application) required
             // oauth required

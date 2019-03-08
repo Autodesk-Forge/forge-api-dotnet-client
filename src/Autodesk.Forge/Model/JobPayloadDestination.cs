@@ -1,4 +1,4 @@
-/* 
+﻿/* 
  * Forge SDK
  *
  * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
@@ -34,46 +34,55 @@ using Newtonsoft.Json.Converters;
 namespace Autodesk.Forge.Model
 {
     /// <summary>
-    /// Group of outputs
+    /// Destination region
     /// </summary>
     [DataContract]
-    public partial class JobPayloadOutput :  IEquatable<JobPayloadOutput>
+    public partial class JobPayloadDestination :  IEquatable<JobPayloadDestination>
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JobPayloadOutput" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected JobPayloadOutput() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="JobPayloadOutput" /> class.
-        /// </summary>
-        /// <param name="Formats">Group of requested formats/types. User can request multiple formats. (required).</param>
-        public JobPayloadOutput(List<JobPayloadItem> Formats = null)
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum RegionEnum
         {
-            // to ensure "Formats" is required (not null)
-            if (Formats == null)
-            {
-                throw new InvalidDataException("Formats is a required property for JobPayloadOutput and cannot be null");
-            }
-            else
-            {
-                this.Formats = Formats;
-            }
+            /// <summary>
+            /// Enum US for us
+            /// </summary>
+            [EnumMember(Value = "us")]
+            US,
+            
+            /// <summary>
+            /// Enum EMEA for emea
+            /// </summary>
+            [EnumMember(Value = "emea")]
+            EMEA
         }
 
         /// <summary>
-        /// Group of requested formats/types. User can request multiple formats.
+        /// Initializes a new instance of the <see cref="JobPayloadDestination" /> class.
         /// </summary>
-        /// <value>Group of requested formats/types. User can request multiple formats.</value>
-        [DataMember(Name="destination", EmitDefaultValue=false)]
-        public JobPayloadDestination Destination { get; set; }
+        [JsonConstructorAttribute]
+        protected JobPayloadDestination() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JobPayloadDestination" /> class.
+        /// </summary>
+        /// <param name="region">Region in which to store outputs. Possible values: US, EMEA. By default, it is set to US.</param>
+        public JobPayloadDestination(RegionEnum? region = null)
+        {
+            if (region == null)
+            {
+              throw new InvalidDataException("Region is a required property for JobPayloadDestination and cannot be null");
+            }
+            else
+            {
+              this.Region = region;
+            }
+        }
         
         /// <summary>
-        /// Group of requested formats/types. User can request multiple formats.
+        /// Region in which to store outputs. 
         /// </summary>
-        /// <value>Group of requested formats/types. User can request multiple formats.</value>
-        [DataMember(Name="formats", EmitDefaultValue=false)]
-        public List<JobPayloadItem> Formats { get; set; }
+        /// <value>Region in which to store outputs. Possible values: US, EMEA. By default, it is set to US.. </value>
+        [DataMember(Name="region", EmitDefaultValue=false)]
+        public RegionEnum? Region { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -81,9 +90,8 @@ namespace Autodesk.Forge.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class JobPayloadOutput {\n");
-            sb.Append("  Destination: ").Append(Destination).Append("\n");
-            sb.Append("  Formats: ").Append(Formats).Append("\n");
+            sb.Append("class JobPayloaDestination {\n");
+            sb.Append("  Region: ").Append(Region).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -105,15 +113,15 @@ namespace Autodesk.Forge.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as JobPayloadOutput);
+            return this.Equals(obj as JobPayloadMisc);
         }
 
         /// <summary>
-        /// Returns true if JobPayloadOutput instances are equal
+        /// Returns true if JobPayloadMisc instances are equal
         /// </summary>
-        /// <param name="other">Instance of JobPayloadOutput to be compared</param>
+        /// <param name="other">Instance of JobPayloadMisc to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(JobPayloadOutput other)
+        public bool Equals(JobPayloadDestination other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -121,9 +129,9 @@ namespace Autodesk.Forge.Model
 
             return 
                 (
-                    this.Formats == other.Formats ||
-                    this.Formats != null &&
-                    this.Formats.SequenceEqual(other.Formats)
+                    this.Region == other.Region ||
+                    this.Region != null &&
+                    this.Region.Equals(other.Region)
                 );
         }
 
@@ -138,8 +146,8 @@ namespace Autodesk.Forge.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Formats != null)
-                    hash = hash * 59 + this.Formats.GetHashCode();
+                if (this.Region != null)
+                    hash = hash * 59 + this.Region.GetHashCode();
                 return hash;
             }
         }

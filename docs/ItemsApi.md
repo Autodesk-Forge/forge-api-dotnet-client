@@ -4,15 +4,15 @@ All URIs are relative to *https://developer.api.autodesk.com/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetItem**](ItemsApi.md#getitem) | **GET** /data/v1/projects/{project_id}/items/{item_id} | 
-[**GetItemParentFolder**](ItemsApi.md#getitemparentfolder) | **GET** /data/v1/projects/{project_id}/items/{item_id}/parent | 
-[**GetItemRefs**](ItemsApi.md#getitemrefs) | **GET** /data/v1/projects/{project_id}/items/{item_id}/refs | 
-[**GetItemRelationshipsRefs**](ItemsApi.md#getitemrelationshipsrefs) | **GET** /data/v1/projects/{project_id}/items/{item_id}/relationships/refs | 
-[**GetItemTip**](ItemsApi.md#getitemtip) | **GET** /data/v1/projects/{project_id}/items/{item_id}/tip | 
-[**GetItemVersions**](ItemsApi.md#getitemversions) | **GET** /data/v1/projects/{project_id}/items/{item_id}/versions | 
-[**PostItem**](ItemsApi.md#postitem) | **POST** /data/v1/projects/{project_id}/items | 
-[**PostItemRelationshipsRef**](ItemsApi.md#postitemrelationshipsref) | **POST** /data/v1/projects/{project_id}/items/{item_id}/relationships/refs | 
-
+[**GetItem**](ItemsApi.md#getitem) | **GET** /data/v1/projects/{project_id}/items/{item_id} |
+[**GetItemParentFolder**](ItemsApi.md#getitemparentfolder) | **GET** /data/v1/projects/{project_id}/items/{item_id}/parent |
+[**GetItemRefs**](ItemsApi.md#getitemrefs) | **GET** /data/v1/projects/{project_id}/items/{item_id}/refs |
+[**GetItemRelationshipsRefs**](ItemsApi.md#getitemrelationshipsrefs) | **GET** /data/v1/projects/{project_id}/items/{item_id}/relationships/refs |
+[**GetItemTip**](ItemsApi.md#getitemtip) | **GET** /data/v1/projects/{project_id}/items/{item_id}/tip |
+[**GetItemVersions**](ItemsApi.md#getitemversions) | **GET** /data/v1/projects/{project_id}/items/{item_id}/versions |
+[**PostItem**](ItemsApi.md#postitem) | **POST** /data/v1/projects/{project_id}/items |
+[**PostItemRelationshipsRef**](ItemsApi.md#postitemrelationshipsref) | **POST** /data/v1/projects/{project_id}/items/{item_id}/relationships/refs |
+[**PatchItem**](ItemsApi.md#patchitem) | **PATCH** /data/v1/projects/{project_id}/items/{item_id} |
 
 <a name="getitem"></a>
 # **GetItem**
@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 
-Returns a resource item by ID for any item within a given project. Resource items represent word documents, fusion design files, drawings, spreadsheets, etc. 
+Returns a resource item by ID for any item within a given project. Resource items represent word documents, fusion design files, drawings, spreadsheets, etc.
 
 ### Example
 ```csharp
@@ -36,7 +36,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure OAuth2 access token for authorization: oauth2_access_code
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -62,8 +62,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **string**| the &#x60;project id&#x60; | 
- **itemId** | **string**| the &#x60;item id&#x60; | 
+ **projectId** | **string**| the &#x60;project id&#x60; |
+ **itemId** | **string**| the &#x60;item id&#x60; |
 
 ### Return type
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 
 
-Returns the \"parent\" folder for the given item. 
+Returns the \"parent\" folder for the given item.
 
 ### Example
 ```csharp
@@ -102,7 +102,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure OAuth2 access token for authorization: oauth2_access_code
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -128,8 +128,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **string**| the &#x60;project id&#x60; | 
- **itemId** | **string**| the &#x60;item id&#x60; | 
+ **projectId** | **string**| the &#x60;project id&#x60; |
+ **itemId** | **string**| the &#x60;item id&#x60; |
 
 ### Return type
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 
 
-Returns the resources (`items`, `folders`, and `versions`) which have a custom relationship with the given `item_id`. Custom relationships can be established between an item and other resources within the 'data' domain service (folders, items, and versions). 
+Returns the resources (`items`, `folders`, and `versions`) which have a custom relationship with the given `item_id`. Custom relationships can be established between an item and other resources within the 'data' domain service (folders, items, and versions).
 
 ### Example
 ```csharp
@@ -168,16 +168,16 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure OAuth2 access token for authorization: oauth2_access_code
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new ItemsApi();
             var projectId = projectId_example;  // string | the `project id`
             var itemId = itemId_example;  // string | the `item id`
-            var filterType = new List<string>(); // List<string> | filter by the `type` of the `ref` target (optional) 
-            var filterId = new List<string>(); // List<string> | filter by the `id` of the `ref` target (optional) 
-            var filterExtensionType = new List<string>(); // List<string> | filter by the extension type (optional) 
+            var filterType = new List<string>(); // List<string> | filter by the `type` of the `ref` target (optional)
+            var filterId = new List<string>(); // List<string> | filter by the `id` of the `ref` target (optional)
+            var filterExtensionType = new List<string>(); // List<string> | filter by the extension type (optional)
 
             try
             {
@@ -197,11 +197,11 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **string**| the &#x60;project id&#x60; | 
- **itemId** | **string**| the &#x60;item id&#x60; | 
- **filterType** | [**List<string>**](string.md)| filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target | [optional] 
- **filterId** | [**List<string>**](string.md)| filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target | [optional] 
- **filterExtensionType** | [**List<string>**](string.md)| filter by the extension type | [optional] 
+ **projectId** | **string**| the &#x60;project id&#x60; |
+ **itemId** | **string**| the &#x60;item id&#x60; |
+ **filterType** | [**List<string>**](string.md)| filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target | [optional]
+ **filterId** | [**List<string>**](string.md)| filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target | [optional]
+ **filterExtensionType** | [**List<string>**](string.md)| filter by the extension type | [optional]
 
 ### Return type
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 
 
-Returns the custom relationships that are associated to the given `item_id`. Custom relationships can be established between an item and other resources within the 'data' domain service (folders, items, and versions). 
+Returns the custom relationships that are associated to the given `item_id`. Custom relationships can be established between an item and other resources within the 'data' domain service (folders, items, and versions).
 
 ### Example
 ```csharp
@@ -240,18 +240,18 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure OAuth2 access token for authorization: oauth2_access_code
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new ItemsApi();
             var projectId = projectId_example;  // string | the `project id`
             var itemId = itemId_example;  // string | the `item id`
-            var filterType = new List<string>(); // List<string> | filter by the `type` of the `ref` target (optional) 
-            var filterId = new List<string>(); // List<string> | filter by the `id` of the `ref` target (optional) 
-            var filterRefType = new List<string>(); // List<string> | filter by `refType` (optional) 
-            var filterDirection = filterDirection_example;  // string | filter by the direction of the reference (optional) 
-            var filterExtensionType = new List<string>(); // List<string> | filter by the extension type (optional) 
+            var filterType = new List<string>(); // List<string> | filter by the `type` of the `ref` target (optional)
+            var filterId = new List<string>(); // List<string> | filter by the `id` of the `ref` target (optional)
+            var filterRefType = new List<string>(); // List<string> | filter by `refType` (optional)
+            var filterDirection = filterDirection_example;  // string | filter by the direction of the reference (optional)
+            var filterExtensionType = new List<string>(); // List<string> | filter by the extension type (optional)
 
             try
             {
@@ -271,13 +271,13 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **string**| the &#x60;project id&#x60; | 
- **itemId** | **string**| the &#x60;item id&#x60; | 
- **filterType** | [**List<string>**](string.md)| filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target | [optional] 
- **filterId** | [**List<string>**](string.md)| filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target | [optional] 
- **filterRefType** | [**List<string>**](string.md)| filter by &#x60;refType&#x60; | [optional] 
- **filterDirection** | **string**| filter by the direction of the reference | [optional] 
- **filterExtensionType** | [**List<string>**](string.md)| filter by the extension type | [optional] 
+ **projectId** | **string**| the &#x60;project id&#x60; |
+ **itemId** | **string**| the &#x60;item id&#x60; |
+ **filterType** | [**List<string>**](string.md)| filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target | [optional]
+ **filterId** | [**List<string>**](string.md)| filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target | [optional]
+ **filterRefType** | [**List<string>**](string.md)| filter by &#x60;refType&#x60; | [optional]
+ **filterDirection** | **string**| filter by the direction of the reference | [optional]
+ **filterExtensionType** | [**List<string>**](string.md)| filter by the extension type | [optional]
 
 ### Return type
 
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 
 
 
-Returns the \"tip\" version for the given item. Multiple versions of a resource item can be uploaded in a project. The tip version is the most recent one. 
+Returns the \"tip\" version for the given item. Multiple versions of a resource item can be uploaded in a project. The tip version is the most recent one.
 
 ### Example
 ```csharp
@@ -316,7 +316,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure OAuth2 access token for authorization: oauth2_access_code
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -342,8 +342,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **string**| the &#x60;project id&#x60; | 
- **itemId** | **string**| the &#x60;item id&#x60; | 
+ **projectId** | **string**| the &#x60;project id&#x60; |
+ **itemId** | **string**| the &#x60;item id&#x60; |
 
 ### Return type
 
@@ -366,7 +366,7 @@ Name | Type | Description  | Notes
 
 
 
-Returns versions for the given item. Multiple versions of a resource item can be uploaded in a project. 
+Returns versions for the given item. Multiple versions of a resource item can be uploaded in a project.
 
 ### Example
 ```csharp
@@ -382,19 +382,19 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure OAuth2 access token for authorization: oauth2_access_code
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new ItemsApi();
             var projectId = projectId_example;  // string | the `project id`
             var itemId = itemId_example;  // string | the `item id`
-            var filterType = new List<string>(); // List<string> | filter by the `type` of the `ref` target (optional) 
-            var filterId = new List<string>(); // List<string> | filter by the `id` of the `ref` target (optional) 
-            var filterExtensionType = new List<string>(); // List<string> | filter by the extension type (optional) 
-            var filterVersionNumber = new List<int?>(); // List<int?> | filter by `versionNumber` (optional) 
-            var pageNumber = 56;  // int? | specify the page number (optional) 
-            var pageLimit = 56;  // int? | specify the maximal number of elements per page (optional) 
+            var filterType = new List<string>(); // List<string> | filter by the `type` of the `ref` target (optional)
+            var filterId = new List<string>(); // List<string> | filter by the `id` of the `ref` target (optional)
+            var filterExtensionType = new List<string>(); // List<string> | filter by the extension type (optional)
+            var filterVersionNumber = new List<int?>(); // List<int?> | filter by `versionNumber` (optional)
+            var pageNumber = 56;  // int? | specify the page number (optional)
+            var pageLimit = 56;  // int? | specify the maximal number of elements per page (optional)
 
             try
             {
@@ -414,14 +414,14 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **string**| the &#x60;project id&#x60; | 
- **itemId** | **string**| the &#x60;item id&#x60; | 
- **filterType** | [**List<string>**](string.md)| filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target | [optional] 
- **filterId** | [**List<string>**](string.md)| filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target | [optional] 
- **filterExtensionType** | [**List<string>**](string.md)| filter by the extension type | [optional] 
- **filterVersionNumber** | [**List<int?>**](int?.md)| filter by &#x60;versionNumber&#x60; | [optional] 
- **pageNumber** | **int?**| specify the page number | [optional] 
- **pageLimit** | **int?**| specify the maximal number of elements per page | [optional] 
+ **projectId** | **string**| the &#x60;project id&#x60; |
+ **itemId** | **string**| the &#x60;item id&#x60; |
+ **filterType** | [**List<string>**](string.md)| filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target | [optional]
+ **filterId** | [**List<string>**](string.md)| filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target | [optional]
+ **filterExtensionType** | [**List<string>**](string.md)| filter by the extension type | [optional]
+ **filterVersionNumber** | [**List<int?>**](int?.md)| filter by &#x60;versionNumber&#x60; | [optional]
+ **pageNumber** | **int?**| specify the page number | [optional]
+ **pageLimit** | **int?**| specify the maximal number of elements per page | [optional]
 
 ### Return type
 
@@ -444,7 +444,7 @@ Name | Type | Description  | Notes
 
 
 
-Creates a new item in the 'data' domain service. 
+Creates a new item in the 'data' domain service.
 
 ### Example
 ```csharp
@@ -460,7 +460,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure OAuth2 access token for authorization: oauth2_access_code
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -486,8 +486,8 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **string**| the &#x60;project id&#x60; | 
- **body** | [**CreateItem**](CreateItem.md)| describe the item to be created | 
+ **projectId** | **string**| the &#x60;project id&#x60; |
+ **body** | [**CreateItem**](CreateItem.md)| describe the item to be created |
 
 ### Return type
 
@@ -510,7 +510,7 @@ Name | Type | Description  | Notes
 
 
 
-Creates a custom relationship between an item and another resource within the 'data' domain service (folder, item, or version). 
+Creates a custom relationship between an item and another resource within the 'data' domain service (folder, item, or version).
 
 ### Example
 ```csharp
@@ -526,7 +526,7 @@ namespace Example
     {
         public void main()
         {
-            
+
             // Configure OAuth2 access token for authorization: oauth2_access_code
             Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
@@ -552,9 +552,9 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **projectId** | **string**| the &#x60;project id&#x60; | 
- **itemId** | **string**| the &#x60;item id&#x60; | 
- **body** | [**CreateRef**](CreateRef.md)| describe the ref to be created | 
+ **projectId** | **string**| the &#x60;project id&#x60; |
+ **itemId** | **string**| the &#x60;item id&#x60; |
+ **body** | [**CreateRef**](CreateRef.md)| describe the ref to be created |
 
 ### Return type
 
@@ -571,3 +571,70 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a name="patchitem"></a>
+# **PatchItem**
+> Item PatchItem (string projectId, string itemId, Item body)
+
+
+
+Updates the properties of the given item_id object.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Autodesk.Forge;
+using Autodesk.Forge.Client;
+using Autodesk.Forge.Model;
+
+namespace Example
+{
+    public class PatchItemExample
+    {
+        public void main()
+        {
+
+            // Configure OAuth2 access token for authorization: oauth2_access_code
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ItemsApi();
+            var projectId = projectId_example;  // string | the `project id`
+            var itemId = itemId_example;  // string | the `item id`
+            var body = new CreateItem(); // CreateItem | describe the item to be created
+
+            try
+            {
+                Item result = apiInstance.PatchItem(projectId, itemId, body);
+                Debug.WriteLine(result)
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ItemsApi.PatchItem: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **projectId** | **string**| the &#x60;project id&#x60; |
+ **itemId** | **string**| the &#x60;item id&#x60; |
+ **body** | [**Item**](Item.md)| describe the item to be patched |
+
+### Return type
+
+[**Item**](Item.md)
+
+### Authorization
+
+[oauth2_access_code](../README.md#oauth2_access_code)
+
+### HTTP request headers
+
+ - **Content-Type**: application/vnd.api+json
+ - **Accept**: application/vnd.api+json, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
