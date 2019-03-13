@@ -55,7 +55,7 @@ namespace Autodesk.Forge.Model.DesignAutomation.v3
         /// <param name="Description">Human readable description of the object..</param>
         /// <param name="Version">Version.</param>
         /// <param name="Id">Id.</param>
-        public Activity(List<string> CommandLine = null, Dictionary<string, ModelParameter> Parameters = null, string Engine = null, List<string> Appbundles = null, Dictionary<string, string> Settings = null, string Description = null, int? Version = null, string Id = null)
+        public Activity(List<string> CommandLine = null, Dictionary<string, ModelParameter> Parameters = null, string Engine = null, List<string> Appbundles = null, Dictionary<string, dynamic> Settings = null, string Description = null, int? Version = null, string Id = null)
         {
             // to ensure "CommandLine" is required (not null)
             if (CommandLine == null)
@@ -109,7 +109,7 @@ namespace Autodesk.Forge.Model.DesignAutomation.v3
         /// </summary>
         /// <value>The url/string Settings for a given appbundles.</value>
         [DataMember(Name="settings", EmitDefaultValue=false)]
-        public Dictionary<string, string> Settings { get; set; }
+        public Dictionary<string, dynamic> Settings { get; set; }
         /// <summary>
         /// Human readable description of the object.
         /// </summary>

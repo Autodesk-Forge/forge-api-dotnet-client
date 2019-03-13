@@ -2106,7 +2106,7 @@ namespace Autodesk.Forge
         /// <param name="itemId">the &#x60;item id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public dynamic PatchItem(string projectId, string itemId, CreateRef body)
+        public dynamic PatchItem(string projectId, string itemId, PatchItem body)
         {
             return PatchItemWithHttpInfo(projectId, itemId, body);
         }
@@ -2119,7 +2119,7 @@ namespace Autodesk.Forge
         /// <param name="itemId">the &#x60;item id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<dynamic> PatchItemWithHttpInfo(string projectId, string itemId, CreateRef body)
+        public ApiResponse<dynamic> PatchItemWithHttpInfo(string projectId, string itemId, PatchItem body)
         {
             // verify the required parameter 'projectId' is set
             if (projectId == null)
@@ -2213,9 +2213,9 @@ namespace Autodesk.Forge
         /// <param name="itemId">the &#x60;item id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task<dynamic> PatchItemAsync(string projectId, string itemId, CreateRef body)
+        public async System.Threading.Tasks.Task PatchItemAsync(string projectId, string itemId, PatchItem body)
         {
-            return await PatchItemAsyncWithHttpInfo(projectId, itemId, body).Result.Data;
+            await PatchItemAsyncWithHttpInfo(projectId, itemId, body);
 
         }
 
@@ -2227,7 +2227,7 @@ namespace Autodesk.Forge
         /// <param name="itemId">the &#x60;item id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<dynamic>> PatchItemAsyncWithHttpInfo(string projectId, string itemId, CreateRef body)
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> PatchItemAsyncWithHttpInfo(string projectId, string itemId, PatchItem body)
         {
             // verify the required parameter 'projectId' is set
             if (projectId == null)
@@ -2307,10 +2307,13 @@ namespace Autodesk.Forge
                 if (exception != null) throw exception;
             }
 
-
             return new ApiResponse<Object>(localVarStatusCode,
+               localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+               null);
+
+            /*return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                /*(JsonApiCollection)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonApiCollection)));
+                (JsonApiCollection) Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonApiCollection)));*/
         }
 
     }

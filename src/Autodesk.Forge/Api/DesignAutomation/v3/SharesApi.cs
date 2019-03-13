@@ -87,6 +87,7 @@ namespace Autodesk.Forge.DesignAutomation.v3
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
+    [Obsolete("Please use NuGet package Autodesk.Forge.DesignAutomation instead")]
     public partial class SharesApi : ISharesApi
     {
         private Autodesk.Forge.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
