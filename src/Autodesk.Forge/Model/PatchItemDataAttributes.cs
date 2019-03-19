@@ -27,7 +27,7 @@ namespace Autodesk.Forge.Model
         public PatchItemDataAttributes(bool hidden = false, string name = null)
         {
             this.Hidden = hidden;
-            this.DisplayName = name;
+            this.Name = name;
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Autodesk.Forge.Model
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name = "displayName", EmitDefaultValue = false)]
-        public string DisplayName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -50,7 +50,7 @@ namespace Autodesk.Forge.Model
         {
             var sb = new StringBuilder();
             sb.Append("class PatchItemDataAttributes {\n");
-            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -90,9 +90,9 @@ namespace Autodesk.Forge.Model
 
             return
                 (
-                    this.DisplayName == other.DisplayName ||
-                    !String.IsNullOrEmpty(this.DisplayName) &&
-                    this.DisplayName.Equals(other.DisplayName)
+                    this.Name == other.Name ||
+                    !String.IsNullOrEmpty(this.Name) &&
+                    this.Name.Equals(other.Name)
                 ) &&
                 (
                     this.Hidden == other.Hidden ||
@@ -111,8 +111,8 @@ namespace Autodesk.Forge.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.DisplayName != null)
-                    hash = hash * 59 + this.DisplayName.GetHashCode();
+                if (this.Name != null)
+                    hash = hash * 59 + this.Name.GetHashCode();
                     hash = hash * 59 + this.Hidden.GetHashCode();
                 return hash;
             }
