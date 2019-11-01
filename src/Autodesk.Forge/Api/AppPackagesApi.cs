@@ -511,6 +511,7 @@ namespace Autodesk.Forge
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
+    [Obsolete("Design Automation v2 is now obsolete, please use v3 with package Autodesk.Forge.DesignAutomation")]
     public partial class AppPackagesApi : IAppPackagesApi
     {
         private Autodesk.Forge.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
