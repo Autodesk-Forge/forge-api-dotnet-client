@@ -1,8 +1,9 @@
 # Autodesk.Forge .NET package
 
-# (dev)
+# 1.6.0
 * ItemsApi.PatchItem & FoldersApi.PatchFolder, along with PatchFolder & PatchItem (rename BIM 360 Items is not supported)
 * Deprecating Design Automation v3 classes (please use [Autodesk.Forge.DesignAutomation](https://www.nuget.org/packages/Autodesk.Forge.DesignAutomation) instead)
+* Design Automation v2 obsolete
 
 # 1.5.2
 * Fixes on Design Automation endpoints
