@@ -675,12 +675,13 @@ namespace Example
             var contentRange = contentRange_example;  // string | Byte range of a segment being uploaded
             var sessionId = sessionId_example;  // string | Unique identifier of a session of a file being uploaded
             var body = /path/to/file.txt;  // System.IO.Stream | 
+            var contentType = contentType_example; // string| Content type for the upload
             var contentDisposition = contentDisposition_example;  // string | The suggested default filename when downloading this object to a file after it has been uploaded. (optional) 
             var ifMatch = ifMatch_example;  // string | If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional) 
 
             try
             {
-                ObjectDetails result = apiInstance.UploadChunk(bucketKey, objectName, contentLength, contentRange, sessionId, body, contentDisposition, ifMatch);
+                ObjectDetails result = apiInstance.UploadChunk(bucketKey, objectName, contentLength, contentRange, sessionId, body, contentType, contentDisposition, ifMatch);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -702,6 +703,7 @@ Name | Type | Description  | Notes
  **contentRange** | **string**| Byte range of a segment being uploaded | 
  **sessionId** | **string**| Unique identifier of a session of a file being uploaded | 
  **body** | **System.IO.Stream****System.IO.Stream**|  | 
+ **contentType** |  **string** | Content type for the upload | [optional] 
  **contentDisposition** | **string**| The suggested default filename when downloading this object to a file after it has been uploaded. | [optional] 
  **ifMatch** | **string**| If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  | [optional] 
 
@@ -751,12 +753,13 @@ namespace Example
             var objectName = objectName_example;  // string | URL-encoded object name
             var contentLength = 56;  // int? | Indicates the size of the request body.
             var body = /path/to/file.txt;  // System.IO.Stream | 
+            var contentType = contentType_example; // string| Content type for the upload
             var contentDisposition = contentDisposition_example;  // string | The suggested default filename when downloading this object to a file after it has been uploaded. (optional) 
             var ifMatch = ifMatch_example;  // string | If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional) 
 
             try
             {
-                ObjectDetails result = apiInstance.UploadObject(bucketKey, objectName, contentLength, body, contentDisposition, ifMatch);
+                ObjectDetails result = apiInstance.UploadObject(bucketKey, objectName, contentLength, body, contentType, contentDisposition, ifMatch);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -776,6 +779,7 @@ Name | Type | Description  | Notes
  **objectName** | **string**| URL-encoded object name | 
  **contentLength** | **int?**| Indicates the size of the request body. | 
  **body** | **System.IO.Stream****System.IO.Stream**|  | 
+ **contentType** |  **string** | Content type for the upload | [optional] 
  **contentDisposition** | **string**| The suggested default filename when downloading this object to a file after it has been uploaded. | [optional] 
  **ifMatch** | **string**| If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  | [optional] 
 
@@ -824,13 +828,14 @@ namespace Example
             var id = id_example;  // string | Id of signed resource
             var contentLength = 56;  // int? | Indicates the size of the request body.
             var body = /path/to/file.txt;  // System.IO.Stream | 
+            var contentType = contentType_example; // string| Content type for the upload
             var contentDisposition = contentDisposition_example;  // string | The suggested default filename when downloading this object to a file after it has been uploaded. (optional) 
             var xAdsRegion = xAdsRegion_example;  // string | The region where the bucket resides Acceptable values: `US`, `EMEA` Default is `US`  (optional)  (default to US)
             var ifMatch = ifMatch_example;  // string | If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional) 
 
             try
             {
-                ObjectDetails result = apiInstance.UploadSignedResource(id, contentLength, body, contentDisposition, xAdsRegion, ifMatch);
+                ObjectDetails result = apiInstance.UploadSignedResource(id, contentLength, body, contentType, contentDisposition, xAdsRegion, ifMatch);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -849,6 +854,7 @@ Name | Type | Description  | Notes
  **id** | **string**| Id of signed resource | 
  **contentLength** | **int?**| Indicates the size of the request body. | 
  **body** | **System.IO.Stream****System.IO.Stream**|  | 
+ **contentType** |  **string** | Content type for the upload | [optional] 
  **contentDisposition** | **string**| The suggested default filename when downloading this object to a file after it has been uploaded. | [optional] 
  **xAdsRegion** | **string**| The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  | [optional] [default to US]
  **ifMatch** | **string**| If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  | [optional] 
@@ -899,12 +905,13 @@ namespace Example
             var contentRange = contentRange_example;  // string | Byte range of a segment being uploaded
             var sessionId = sessionId_example;  // string | Unique identifier of a session of a file being uploaded
             var body = /path/to/file.txt;  // System.IO.Stream | 
+            var contentType = contentType_example; // string| Content type for the upload
             var contentDisposition = contentDisposition_example;  // string | The suggested default filename when downloading this object to a file after it has been uploaded. (optional) 
             var xAdsRegion = xAdsRegion_example;  // string | The region where the bucket resides Acceptable values: `US`, `EMEA` Default is `US`  (optional)  (default to US)
 
             try
             {
-                ObjectDetails result = apiInstance.UploadSignedResourcesChunk(id, contentRange, sessionId, body, contentDisposition, xAdsRegion);
+                ObjectDetails result = apiInstance.UploadSignedResourcesChunk(id, contentRange, sessionId, body, contentType, contentDisposition, xAdsRegion);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -924,6 +931,7 @@ Name | Type | Description  | Notes
  **contentRange** | **string**| Byte range of a segment being uploaded | 
  **sessionId** | **string**| Unique identifier of a session of a file being uploaded | 
  **body** | **System.IO.Stream****System.IO.Stream**|  | 
+ **contentType** |  **string** | Content type for the upload | [optional] 
  **contentDisposition** | **string**| The suggested default filename when downloading this object to a file after it has been uploaded. | [optional] 
  **xAdsRegion** | **string**| The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  | [optional] [default to US]
 

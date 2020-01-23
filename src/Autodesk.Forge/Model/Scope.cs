@@ -76,7 +76,7 @@ namespace Autodesk.Forge
 		[ForgeScope ("account:write")]
 		[Description ("For Product APIs, the application will be able to update the account data the end user has entitlements to.")]
 		AccountWrite,
-		[ForgeScope ("userprofile:read")]
+		[ForgeScope ("user-profile:read")]
 		[Description ("The application will be able to read the end user’s profile data.")]
 		UserProfileRead,
 		[ForgeScope ("viewables:read")]
