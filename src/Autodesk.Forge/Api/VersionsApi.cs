@@ -200,6 +200,30 @@ namespace Autodesk.Forge
         /// 
         /// </summary>
         /// <remarks>
+        /// Exports a single page from an uploaded PDF file into a new PDF file. You can also export the page’s markups (annotations) and hyperlinks.
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="versionId">the &#x60;version id&#x60;</param>
+        /// <param name="body">the instructions for the PDF</param>
+        /// <returns>CreatePdfResponse</returns>
+        System.Threading.Tasks.Task<CreatePdfResponse> PostPdfExportAsync(string projectId, string versionId, CreatePdf body);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Exports a single page from an uploaded PDF file into a new PDF file. You can also export the page’s markups (annotations) and hyperlinks.
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="versionId">the &#x60;version id&#x60;</param>
+        /// <param name="exportId">the &#x60;export id&#x60;</param>
+        /// <returns>GetPdfResponse</returns>
+        System.Threading.Tasks.Task<CreatePdfGetResponse> GetPdfExportAsync(string projectId, string versionId, string exportId);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Returns the version with the given &#x60;version_id&#x60;. 
         /// </remarks>
         /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1512,6 +1536,172 @@ namespace Autodesk.Forge
         {
              await PostVersionRelationshipsRefAsyncWithHttpInfo(projectId, versionId, body);
 
+        }
+
+        /// <summary>
+        ///  Exports a single page from an uploaded PDF file into a new PDF file. You can also export the page’s markups (annotations) and hyperlinks. 
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="versionId">the &#x60;version id&#x60;</param>
+        /// <param name="body">describe the ref to be created</param>
+        /// <returns>CreatePdfResponse</returns>
+        public async /*CreatePdfResponse*/ System.Threading.Tasks.Task<CreatePdfResponse> PostPdfExportAsync(string projectId, string versionId, CreatePdf body)
+        {
+            // verify the required parameter 'projectId' is set
+            if (projectId == null)
+                throw new ApiException(400, "Missing required parameter 'projectId' when calling VersionsApi->PostPdfExport");
+            // verify the required parameter 'versionId' is set
+            if (versionId == null)
+                throw new ApiException(400, "Missing required parameter 'versionId' when calling VersionsApi->PostPdfExport");
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling VersionsApi->PostPdfExport");
+
+            var localVarPath = "/bim360/docs/v1/projects/{project_id}/versions/{version_id}/exports";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/vnd.api+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/vnd.api+json",
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (projectId != null) localVarPathParams.Add("project_id", Configuration.ApiClient.ParameterToString(projectId)); // path parameter
+            if (versionId != null) localVarPathParams.Add("version_id", Configuration.ApiClient.ParameterToString(versionId)); // path parameter
+            if (body != null && body.GetType() == typeof(byte[])) // http body (model) parameter
+            {
+                localVarPostBody = body; // byte array
+            }
+            else if (body != null
+                     && (body.GetType() == typeof(System.IO.FileStream)
+                         || body.GetType() == typeof(System.IO.BinaryReader)
+                         || body.GetType() == typeof(System.IO.BufferedStream)
+                            || body.GetType() == typeof(System.IO.MemoryStream)
+                            || body.GetType() == typeof(System.IO.StreamReader)
+                           )
+                    )
+            {
+                localVarPostBody = Configuration.ApiClient.toByteArray(body); // byte array
+            }
+            else if (body != null)
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body);
+            }
+
+            // authentication (oauth2_access_code) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PostPdfExport", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            CreatePdfResponse resp = Newtonsoft.Json.JsonConvert.DeserializeObject<CreatePdfResponse>(localVarResponse.Content);
+
+            return resp;
+        }
+
+        /// <summary>
+        ///  Exports a single page from an uploaded PDF file into a new PDF file. You can also export the page’s markups (annotations) and hyperlinks. 
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="versionId">the &#x60;version id&#x60;</param>
+        /// <param name="exportId">the &#x60;version id&#x60;</param>
+        /// <returns>CreatePdfGetResponse</returns>
+        public async /*CreatePdfGetResponse*/ System.Threading.Tasks.Task<CreatePdfGetResponse> GetPdfExportAsync(string projectId, string versionId, string exportId)
+        {
+            // verify the required parameter 'projectId' is set
+            if (projectId == null)
+                throw new ApiException(400, "Missing required parameter 'projectId' when calling VersionsApi->GetPdfExport");
+            // verify the required parameter 'versionId' is set
+            if (versionId == null)
+                throw new ApiException(400, "Missing required parameter 'versionId' when calling VersionsApi->GetPdfExport");
+            // verify the required parameter 'body' is set
+            if (exportId == null)
+                throw new ApiException(400, "Missing required parameter 'exportId' when calling VersionsApi->GetPdfExport");
+
+            var localVarPath = "/bim360/docs/v1/projects/{project_id}/versions/{version_id}/exports/{export_id}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/vnd.api+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/vnd.api+json",
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (projectId != null) localVarPathParams.Add("project_id", Configuration.ApiClient.ParameterToString(projectId)); // path parameter
+            if (versionId != null) localVarPathParams.Add("version_id", Configuration.ApiClient.ParameterToString(versionId)); // path parameter
+            if (exportId != null) localVarPathParams.Add("export_id", Configuration.ApiClient.ParameterToString(exportId)); // path parameter
+
+            // authentication (oauth2_access_code) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetPdfExport", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            CreatePdfGetResponse response = Newtonsoft.Json.JsonConvert.DeserializeObject<CreatePdfGetResponse>(localVarResponse.Content);
+
+            return response;
         }
 
         /// <summary>
