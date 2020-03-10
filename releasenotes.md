@@ -1,5 +1,9 @@
 # Autodesk.Forge .NET package
 
+# 1.7.0
+* [POST](https://forge.autodesk.com/en/docs/bim360/v1/reference/http/document-management-projects-project_id-versions-version_id-exports-POST/) & [GET](https://forge.autodesk.com/en/docs/bim360/v1/reference/http/document-management-projects-project_id-versions-version_id-exports-export_id-GET/) for PDF Export
+* Fix scope typo: `user-profile:read`
+
 # 1.6.0
 * ItemsApi.PatchItem & FoldersApi.PatchFolder, along with PatchFolder & PatchItem (rename BIM 360 Items is not supported)
 * Deprecating Design Automation v3 classes (please use [Autodesk.Forge.DesignAutomation](https://www.nuget.org/packages/Autodesk.Forge.DesignAutomation) instead)
