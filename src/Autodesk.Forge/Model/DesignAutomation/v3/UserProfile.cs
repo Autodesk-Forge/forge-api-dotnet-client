@@ -37,6 +37,7 @@ namespace Autodesk.Forge.DesignAutomation.v3
     /// UserProfile
     /// </summary>
     [DataContract]
+    [Obsolete("Please use NuGet package Autodesk.Forge.DesignAutomation instead")]
     public partial class UserProfile :  IEquatable<UserProfile>
     {
         /// <summary>

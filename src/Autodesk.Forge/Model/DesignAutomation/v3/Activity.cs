@@ -37,6 +37,7 @@ namespace Autodesk.Forge.Model.DesignAutomation.v3
     /// Defines an Activity, a type of work, a function: input/outputs, instructions. An Activity is an action that can be executed within an engine. For example, for AutoCAD engine this might be plotting a DWG to PDF or update the CAD standards in a drawing file.
     /// </summary>
     [DataContract]
+    [Obsolete("Please use NuGet package Autodesk.Forge.DesignAutomation instead")]
     public partial class Activity :  IEquatable<Activity>
     {
         /// <summary>

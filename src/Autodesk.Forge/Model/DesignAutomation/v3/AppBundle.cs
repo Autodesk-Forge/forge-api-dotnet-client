@@ -37,6 +37,7 @@ namespace Autodesk.Forge.Model.DesignAutomation.v3
     /// An AppBundle is a module that is used by an Activity in order to perform a particular action.
     /// </summary>
     [DataContract]
+    [Obsolete("Please use NuGet package Autodesk.Forge.DesignAutomation instead")]
     public partial class AppBundle :  IEquatable<AppBundle>
     {
         /// <summary>

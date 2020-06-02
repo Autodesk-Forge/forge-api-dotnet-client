@@ -37,6 +37,7 @@ namespace Autodesk.Forge.Model.DesignAutomation.v3
     /// WorkItemStatus
     /// </summary>
     [DataContract]
+    [Obsolete("Please use NuGet package Autodesk.Forge.DesignAutomation instead")]
     public partial class WorkItemStatus :  IEquatable<WorkItemStatus>
     {
         /// <summary>
