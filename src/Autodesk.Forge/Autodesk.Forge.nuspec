@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Autodesk.Forge</id>
-    <version>1.7.0</version>
+    <version>1.7.1</version>
     <authors>adsk-forge</authors>
     <owners>adsk-forge</owners>
     <licenseUrl>https://github.com/Autodesk-Forge/forge-api-dotnet-client/blob/master/LICENSE</licenseUrl>

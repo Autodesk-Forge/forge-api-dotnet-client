@@ -1,5 +1,8 @@
 # Autodesk.Forge .NET package
 
+# 1.7.1
+* Adding support for BIM360 OSS bucket name change
+
 # 1.7.0
 * [POST](https://forge.autodesk.com/en/docs/bim360/v1/reference/http/document-management-projects-project_id-versions-version_id-exports-POST/) & [GET](https://forge.autodesk.com/en/docs/bim360/v1/reference/http/document-management-projects-project_id-versions-version_id-exports-export_id-GET/) for PDF Export
 * Fix scope typo: `user-profile:read`
