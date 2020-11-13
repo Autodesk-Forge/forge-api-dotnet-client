@@ -394,7 +394,30 @@ namespace Autodesk.Forge.Sample {
 				response = await Translate2Svf2(urn);
 				if (!response)
 					return;
-				Console.WriteLine("Please wait for translation to complete");
+				Console.WriteLine("Please wait for SVF2 translation to complete");
+				return;
+			}
+			if ( response.progress != "complete" )
+			{
+				Console.WriteLine(response.ToString());
+				Console.WriteLine("Still translating...");
+				return;
+			}
+			// Search for svf2
+			bool found = false;
+			for (int i = 0; i < response.derivatives.Count; i++)
+			{
+				dynamic derivatives = response.derivatives[i];
+				if (derivatives.progress == "complete" && derivatives.outputType == "svf2")
+				{
+					found = true;
+					break;
+				}
+			}
+			if ( !found )
+			{
+				Console.WriteLine(response.ToString());
+				Console.WriteLine("No SVF2 derivatives found...");
 				return;
 			}
 
@@ -411,6 +434,7 @@ namespace Autodesk.Forge.Sample {
 			if (response != null)
 				Console.WriteLine(response.ToString());
 
+			Console.WriteLine("Please wait for OBJ translation to complete");
 			Console.WriteLine("Done");
 		}
 
