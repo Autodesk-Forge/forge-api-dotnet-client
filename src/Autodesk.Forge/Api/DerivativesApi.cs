@@ -59,6 +59,7 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <returns>ApiResponse of Result</returns>
         ApiResponse</*Result*/dynamic> DeleteManifestWithHttpInfo(string urn);
+
         /// <summary>
         /// 
         /// </summary>
@@ -84,6 +85,7 @@ namespace Autodesk.Forge
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> GetDerivativeManifestWithHttpInfo(string urn, string derivativeUrn, int? range = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -108,6 +110,7 @@ namespace Autodesk.Forge
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>ApiResponse of Formats</returns>
         ApiResponse</*Formats*/dynamic> GetFormatsWithHttpInfo(DateTime? ifModifiedSince = null, string acceptEncoding = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -132,6 +135,7 @@ namespace Autodesk.Forge
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>ApiResponse of Manifest</returns>
         ApiResponse</*Manifest*/dynamic> GetManifestWithHttpInfo(string urn, string acceptEncoding = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -156,6 +160,7 @@ namespace Autodesk.Forge
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>ApiResponse of Metadata</returns>
         ApiResponse</*Metadata*/dynamic> GetMetadataWithHttpInfo(string urn, string acceptEncoding = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -182,6 +187,7 @@ namespace Autodesk.Forge
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>ApiResponse of Metadata</returns>
         ApiResponse</*Metadata*/dynamic> GetModelviewMetadataWithHttpInfo(string urn, string guid, string acceptEncoding = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -208,6 +214,7 @@ namespace Autodesk.Forge
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>ApiResponse of Metadata</returns>
         ApiResponse</*Metadata*/dynamic> GetModelviewPropertiesWithHttpInfo(string urn, string guid, string acceptEncoding = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -234,6 +241,7 @@ namespace Autodesk.Forge
         /// <param name="height">The desired height of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <returns>ApiResponse of System.IO.Stream</returns>
         ApiResponse</*System.IO.Stream*/dynamic> GetThumbnailWithHttpInfo(string urn, int? width = null, int? height = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -258,7 +266,9 @@ namespace Autodesk.Forge
         /// <param name="xAdsForce">&#x60;true&#x60;: the endpoint replaces previously translated output file types with the newly generated derivatives  &#x60;false&#x60; (default): previously created derivatives are not replaced  (optional, default to false)</param>
         /// <returns>ApiResponse of Job</returns>
         ApiResponse</*Job*/dynamic> TranslateWithHttpInfo(JobPayload job, bool? xAdsForce = null);
+
         #endregion Synchronous Operations
+
         #region Asynchronous Operations
         /// <summary>
         /// 
@@ -281,6 +291,7 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <returns>Task of ApiResponse (Result)</returns>
         System.Threading.Tasks.Task<ApiResponse</*Result*/dynamic>> DeleteManifestAsyncWithHttpInfo(string urn);
+
         /// <summary>
         /// 
         /// </summary>
@@ -306,6 +317,7 @@ namespace Autodesk.Forge
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> GetDerivativeManifestAsyncWithHttpInfo(string urn, string derivativeUrn, int? range = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -329,6 +341,7 @@ namespace Autodesk.Forge
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse (Formats)</returns>
         System.Threading.Tasks.Task<ApiResponse</*Formats*/dynamic>> GetFormatsAsyncWithHttpInfo(DateTime? ifModifiedSince = null, string acceptEncoding = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -352,6 +365,7 @@ namespace Autodesk.Forge
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse (Manifest)</returns>
         System.Threading.Tasks.Task<ApiResponse</*Manifest*/dynamic>> GetManifestAsyncWithHttpInfo(string urn, string acceptEncoding = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -375,6 +389,7 @@ namespace Autodesk.Forge
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse (Metadata)</returns>
         System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetMetadataAsyncWithHttpInfo(string urn, string acceptEncoding = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -400,6 +415,7 @@ namespace Autodesk.Forge
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse (Metadata)</returns>
         System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewMetadataAsyncWithHttpInfo(string urn, string guid, string acceptEncoding = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -425,6 +441,7 @@ namespace Autodesk.Forge
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse (Metadata)</returns>
         System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewPropertiesAsyncWithHttpInfo(string urn, string guid, string acceptEncoding = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -450,6 +467,7 @@ namespace Autodesk.Forge
         /// <param name="height">The desired height of the thumbnail. Possible values are 100, 200 and 400.  (optional)</param>
         /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
         System.Threading.Tasks.Task<ApiResponse</*System.IO.Stream*/dynamic>> GetThumbnailAsyncWithHttpInfo(string urn, int? width = null, int? height = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -473,6 +491,7 @@ namespace Autodesk.Forge
         /// <param name="xAdsForce">&#x60;true&#x60;: the endpoint replaces previously translated output file types with the newly generated derivatives  &#x60;false&#x60; (default): previously created derivatives are not replaced  (optional, default to false)</param>
         /// <returns>Task of ApiResponse (Job)</returns>
         System.Threading.Tasks.Task<ApiResponse</*Job*/dynamic>> TranslateAsyncWithHttpInfo(JobPayload job, bool? xAdsForce = null);
+
         #endregion Asynchronous Operations
     }
 
@@ -793,10 +812,12 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
-        /// <returns></returns>
-        public void GetDerivativeManifest(string urn, string derivativeUrn, int? range = null)
+        /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <returns>Object</returns>
+        public /*Object*/dynamic GetDerivativeManifest(string urn, string derivativeUrn, int? range = null, string acceptEncoding = null)
         {
-            GetDerivativeManifestWithHttpInfo(urn, derivativeUrn, range);
+            ApiResponse</*Object*/dynamic> localVarResponse = GetDerivativeManifestWithHttpInfo(urn, derivativeUrn, range, acceptEncoding);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -806,8 +827,9 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
+        /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetDerivativeManifestWithHttpInfo(string urn, string derivativeUrn, int? range = null)
+        public ApiResponse<Object> GetDerivativeManifestWithHttpInfo(string urn, string derivativeUrn, int? range = null, string acceptEncoding = null)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
@@ -846,6 +868,7 @@ namespace Autodesk.Forge
             if (urn != null) localVarPathParams.Add("urn", Configuration.ApiClient.ParameterToString(urn)); // path parameter
             if (derivativeUrn != null) localVarPathParams.Add("derivativeUrn", Configuration.ApiClient.ParameterToString(derivativeUrn)); // path parameter
             if (range != null) localVarHeaderParams.Add("Range", Configuration.ApiClient.ParameterToString(range)); // header parameter
+            if (acceptEncoding != null) localVarHeaderParams.Add("Accept-Encoding", Configuration.ApiClient.ParameterToString(acceptEncoding)); // header parameter
 
             // authentication (oauth2_access_code) required
             // oauth required
@@ -886,11 +909,12 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
+        /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task GetDerivativeManifestAsync(string urn, string derivativeUrn, int? range = null)
+        public async System.Threading.Tasks.Task</*Object*/dynamic> GetDerivativeManifestAsync(string urn, string derivativeUrn, int? range = null, string acceptEncoding = null)
         {
-            await GetDerivativeManifestAsyncWithHttpInfo(urn, derivativeUrn, range);
-
+            ApiResponse</*Object*/dynamic> localVarResponse = await GetDerivativeManifestAsyncWithHttpInfo(urn, derivativeUrn, range, acceptEncoding);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -900,8 +924,9 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
+        /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> GetDerivativeManifestAsyncWithHttpInfo(string urn, string derivativeUrn, int? range = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*Object*/dynamic>> GetDerivativeManifestAsyncWithHttpInfo(string urn, string derivativeUrn, int? range = null, string acceptEncoding = null)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
@@ -940,6 +965,7 @@ namespace Autodesk.Forge
             if (urn != null) localVarPathParams.Add("urn", Configuration.ApiClient.ParameterToString(urn)); // path parameter
             if (derivativeUrn != null) localVarPathParams.Add("derivativeUrn", Configuration.ApiClient.ParameterToString(derivativeUrn)); // path parameter
             if (range != null) localVarHeaderParams.Add("Range", Configuration.ApiClient.ParameterToString(range)); // header parameter
+            if (acceptEncoding != null) localVarHeaderParams.Add("Accept-Encoding", Configuration.ApiClient.ParameterToString(acceptEncoding)); // header parameter
 
             // authentication (oauth2_access_code) required
             // oauth required
@@ -1161,7 +1187,7 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>ApiResponse of Manifest</returns>
-        public ApiResponse< /*Manifest*/dynamic> GetManifestWithHttpInfo(string urn, string acceptEncoding = null)
+        public ApiResponse</*Manifest*/dynamic> GetManifestWithHttpInfo(string urn, string acceptEncoding = null)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
