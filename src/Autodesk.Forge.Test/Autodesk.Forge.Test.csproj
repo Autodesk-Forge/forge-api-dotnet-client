@@ -87,7 +87,7 @@ limitations under the License.
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Autodesk.Forge\Autodesk.Forge.csproj">
-      <Project>{EFA440A3-312F-4A38-A3AA-3A3CDAAB6AAD}</Project>
+      <Project>{1F96C009-0C16-429F-A3A9-1A96ECEA1F93}</Project>
       <Name>Autodesk.Forge</Name>
     </ProjectReference>
   </ItemGroup>

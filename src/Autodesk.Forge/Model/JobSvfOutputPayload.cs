@@ -1,4 +1,4 @@
-/* 
+﻿/* 
  * Forge SDK
  *
  * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
@@ -40,9 +40,9 @@ namespace Autodesk.Forge.Model
     public partial class JobSvfOutputPayload :  IEquatable<JobSvfOutputPayload>
     {
         /// <summary>
-        /// The requested output types. Possible values include `svf`, `thumbnai`, `stl`, `step`, `iges`, or `obj`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.
+        /// The requested output types. Possible values include `svf`, `svf2`, `thumbnail`, `stl`, `step`, `iges`, `obj`, `ifc` or `dwg`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.
         /// </summary>
-        /// <value>The requested output types. Possible values include `svf`, `thumbnai`, `stl`, `step`, `iges`, or `obj`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.</value>
+        /// <value>The requested output types. Possible values include `svf`, `svf2`, `thumbnail`, `stl`, `step`, `iges`, `obj`, `ifc` or `dwg`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TypeEnum
         {
@@ -52,7 +52,13 @@ namespace Autodesk.Forge.Model
             /// </summary>
             [EnumMember(Value = "svf")]
             Svf,
-            
+
+            /// <summary>
+            /// Enum Svf2 for "svf2"
+            /// </summary>
+            [EnumMember(Value = "svf2")]
+            Svf2,
+
             /// <summary>
             /// Enum Thumbnail for "thumbnail"
             /// </summary>
@@ -81,9 +87,20 @@ namespace Autodesk.Forge.Model
             /// Enum Obj for "obj"
             /// </summary>
             [EnumMember(Value = "obj")]
-            Obj
-        }
+            Obj,
 
+            /// <summary>
+            /// Enum Ifc for "ifc"
+            /// </summary>
+            [EnumMember(Value = "ifc")]
+            Ifc,
+
+            /// <summary>
+            /// Enum Dwg for "dwg"
+            /// </summary>
+            [EnumMember(Value = "dwg")]
+            Dwg
+        }
 
         /// <summary>
         /// Required options for SVF type. Possible values are `2d` and `3d`.
@@ -107,27 +124,36 @@ namespace Autodesk.Forge.Model
         }
 
         /// <summary>
-        /// The requested output types. Possible values include `svf`, `thumbnai`, `stl`, `step`, `iges`, or `obj`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.
+        /// The requested output types. Possible values include `svf`, `svf2`, `thumbnail`, `stl`, `step`, `iges`, `obj`, `ifc` or `dwg`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.
         /// </summary>
-        /// <value>The requested output types. Possible values include `svf`, `thumbnai`, `stl`, `step`, `iges`, or `obj`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.</value>
+        /// <value>The requested output types. Possible values include `svf`, `svf2`, `thumbnail`, `stl`, `step`, `iges`, `obj`, `ifc` or `dwg`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public TypeEnum? Type { get; set; }
+
         /// <summary>
         /// Gets or Sets Views
         /// </summary>
         [DataMember(Name="views", EmitDefaultValue=false)]
         public List<ViewsEnum> Views { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Advanced
+        /// </summary>
+        [DataMember(Name = "advanced", EmitDefaultValue = false)]
+        public JobSvfOutputPayloadAdvanced Advanced { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="JobSvfOutputPayload" /> class.
         /// </summary>
         [JsonConstructorAttribute]
         protected JobSvfOutputPayload() { }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="JobSvfOutputPayload" /> class.
         /// </summary>
         /// <param name="Type">The requested output types. Possible values include &#x60;svf&#x60;, &#x60;thumbnai&#x60;, &#x60;stl&#x60;, &#x60;step&#x60;, &#x60;iges&#x60;, or &#x60;obj&#x60;. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint. (required).</param>
         /// <param name="Views">Views.</param>
-        public JobSvfOutputPayload(TypeEnum? Type = null, List<ViewsEnum> Views = null)
+        public JobSvfOutputPayload(TypeEnum? Type = null, List<ViewsEnum> Views = null, JobSvfOutputPayloadAdvanced advanced = null)
         {
             // to ensure "Type" is required (not null)
             if (Type == null)
@@ -139,6 +165,7 @@ namespace Autodesk.Forge.Model
                 this.Type = Type;
             }
             this.Views = Views;
+            this.Advanced = advanced;
         }
         
         /// <summary>
@@ -151,6 +178,7 @@ namespace Autodesk.Forge.Model
             sb.Append("class JobSvfOutputPayload {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Views: ").Append(Views).Append("\n");
+            sb.Append("  Advanced: ").Append(Advanced).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -196,6 +224,11 @@ namespace Autodesk.Forge.Model
                     this.Views == other.Views ||
                     this.Views != null &&
                     this.Views.SequenceEqual(other.Views)
+                ) &&
+                (
+                    this.Advanced == other.Advanced ||
+                    this.Advanced != null &&
+                    this.Advanced.Equals(other.Advanced)
                 );
         }
 
@@ -214,6 +247,8 @@ namespace Autodesk.Forge.Model
                     hash = hash * 59 + this.Type.GetHashCode();
                 if (this.Views != null)
                     hash = hash * 59 + this.Views.GetHashCode();
+                if (this.Advanced != null)
+                    hash = hash * 59 + this.Advanced.GetHashCode();
                 return hash;
             }
         }

@@ -37,7 +37,7 @@ namespace Autodesk.Forge.Model
     /// Advanced options for &#x60;obj&#x60; type.
     /// </summary>
     [DataContract]
-    public partial class JobObjOutputPayloadAdvanced :  IEquatable<JobObjOutputPayloadAdvanced>
+    public partial class JobObjOutputPayloadAdvanced :  IEquatable<JobObjOutputPayloadAdvanced>, IJobPayloadItemAdvanced
     {
         /// <summary>
         /// `single` (default): creates one OBJ file for all the input files (assembly file)  `multiple`: creates a separate OBJ file for each object 
@@ -66,13 +66,14 @@ namespace Autodesk.Forge.Model
         /// <value>`single` (default): creates one OBJ file for all the input files (assembly file)  `multiple`: creates a separate OBJ file for each object </value>
         [DataMember(Name="exportFileStructure", EmitDefaultValue=false)]
         public ExportFileStructureEnum? ExportFileStructure { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="JobObjOutputPayloadAdvanced" /> class.
         /// </summary>
         /// <param name="ExportFileStructure">&#x60;single&#x60; (default): creates one OBJ file for all the input files (assembly file)  &#x60;multiple&#x60;: creates a separate OBJ file for each object  (default to &quot;single&quot;).</param>
         /// <param name="ModelGuid">Required for geometry extractions. The model view ID (guid)..</param>
         /// <param name="ObjectIds">Required for geometry extractions. List object ids to be translated. -1 will extract the entire model. .</param>
-        public JobObjOutputPayloadAdvanced(ExportFileStructureEnum? ExportFileStructure = null, string ModelGuid = null, List<int> ObjectIds = null)
+        public JobObjOutputPayloadAdvanced(ExportFileStructureEnum? ExportFileStructure = null, string ModelGuid = null, List<int> ObjectIds = null, UnitEnum? unit = null)
         {
             // use default value if no "ExportFileStructure" provided
             if (ExportFileStructure == null)
@@ -85,6 +86,7 @@ namespace Autodesk.Forge.Model
             }
             this.ModelGuid = ModelGuid;
             this.ObjectIds = ObjectIds;
+            this.Unit = unit;
         }
         
         /// <summary>
@@ -93,12 +95,82 @@ namespace Autodesk.Forge.Model
         /// <value>Required for geometry extractions. The model view ID (guid).</value>
         [DataMember(Name="modelGuid", EmitDefaultValue=false)]
         public string ModelGuid { get; set; }
+
         /// <summary>
         /// Required for geometry extractions. List object ids to be translated. -1 will extract the entire model. 
         /// </summary>
         /// <value>Required for geometry extractions. List object ids to be translated. -1 will extract the entire model. </value>
         [DataMember(Name="objectIds", EmitDefaultValue=false)]
         public List<int> ObjectIds { get; set; }
+
+        /// <summary>
+        /// Allowed values for the <code>unit</code> property.
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum UnitEnum {
+            /// <summary>
+            /// Enum Meter for "meter"
+            /// </summary>
+            [EnumMember(Value = "meter")]
+            Meter,
+            /// <summary>
+            /// Enum Decimeter for "decimeter"
+            /// </summary>
+            [EnumMember(Value = "decimeter")]
+            Decimeter,
+            /// <summary>
+            /// Enum Centimeter for "centimeter"
+            /// </summary>
+            [EnumMember(Value = "centimeter")]
+            Centimeter,
+            /// <summary>
+            /// Enum Millimeter for "millimeter"
+            /// </summary>
+            [EnumMember(Value = "millimeter")]
+            Millimeter,
+            /// <summary>
+            /// Enum Micrometer for "micrometer"
+            /// </summary>
+            [EnumMember(Value = "micrometer")]
+            Micrometer,
+            /// <summary>
+            /// Enum Nanometer for "nanometer"
+            /// </summary>
+            [EnumMember(Value = "nanometer")]
+            Nanometer,
+            /// <summary>
+            /// Enum Yard for "yard"
+            /// </summary>
+            [EnumMember(Value = "yard")]
+            Yard,
+            /// <summary>
+            /// Enum Foot for "foot"
+            /// </summary>
+            [EnumMember(Value = "foot")]
+            Foot,
+            /// <summary>
+            /// Enum Inch for "inch"
+            /// </summary>
+            [EnumMember(Value = "inch")]
+            Inch,
+            /// <summary>
+            /// Enum Mil for "mil"
+            /// </summary>
+            [EnumMember(Value = "mil")]
+            Mil,
+            /// <summary>
+            /// Enum Microinch for "microinch"
+            /// </summary>
+            [EnumMember(Value = "microinch")]
+            Microinch,
+        }
+
+        /// <summary>
+        /// Translate models into different units; this causes the values to change. For example, from millimeters (10, 123, 31) to centimeters (1.0, 12.3, 3.1). If the source unit or the unit you are translating into is not supported, the values remain unchanged.
+        /// </summary>
+        [DataMember(Name = "unit", EmitDefaultValue = false)]
+        public UnitEnum? Unit { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -110,6 +182,7 @@ namespace Autodesk.Forge.Model
             sb.Append("  ExportFileStructure: ").Append(ExportFileStructure).Append("\n");
             sb.Append("  ModelGuid: ").Append(ModelGuid).Append("\n");
             sb.Append("  ObjectIds: ").Append(ObjectIds).Append("\n");
+            sb.Append("  Unit: ").Append(Unit).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -160,6 +233,11 @@ namespace Autodesk.Forge.Model
                     this.ObjectIds == other.ObjectIds ||
                     this.ObjectIds != null &&
                     this.ObjectIds.SequenceEqual(other.ObjectIds)
+                ) &&
+                (
+                    this.Unit == other.Unit ||
+                    this.Unit != null &&
+                    this.Unit.Equals(other.Unit)
                 );
         }
 
@@ -180,6 +258,8 @@ namespace Autodesk.Forge.Model
                     hash = hash * 59 + this.ModelGuid.GetHashCode();
                 if (this.ObjectIds != null)
                     hash = hash * 59 + this.ObjectIds.GetHashCode();
+                if (this.Unit != null)
+                    hash = hash * 59 + this.Unit.GetHashCode();
                 return hash;
             }
         }

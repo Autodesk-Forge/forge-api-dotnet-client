@@ -34,10 +34,10 @@ using Newtonsoft.Json.Converters;
 namespace Autodesk.Forge.Model
 {
     /// <summary>
-    /// JobObjOutputPayload
+    /// JobSvfOutputPayload
     /// </summary>
     [DataContract]
-    public partial class JobObjOutputPayload :  IEquatable<JobObjOutputPayload>
+    public partial class JobSvf2OutputPayload :  IEquatable<JobSvf2OutputPayload>
     {
         /// <summary>
         /// The requested output types. Possible values include `svf`, `svf2`, `thumbnail`, `stl`, `step`, `iges`, `obj`, `ifc` or `dwg`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.
@@ -46,7 +46,7 @@ namespace Autodesk.Forge.Model
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TypeEnum
         {
-
+            
             /// <summary>
             /// Enum Svf for "svf"
             /// </summary>
@@ -56,7 +56,7 @@ namespace Autodesk.Forge.Model
             /// <summary>
             /// Enum Svf2 for "svf2"
             /// </summary>
-            [EnumMember(Value = "svf2")]
+            [EnumMember(Value = "svf")]
             Svf2,
 
             /// <summary>
@@ -64,25 +64,25 @@ namespace Autodesk.Forge.Model
             /// </summary>
             [EnumMember(Value = "thumbnail")]
             Thumbnail,
-
+            
             /// <summary>
             /// Enum Stl for "stl"
             /// </summary>
             [EnumMember(Value = "stl")]
             Stl,
-
+            
             /// <summary>
             /// Enum Step for "step"
             /// </summary>
             [EnumMember(Value = "step")]
             Step,
-
+            
             /// <summary>
             /// Enum Iges for "iges"
             /// </summary>
             [EnumMember(Value = "iges")]
             Iges,
-
+            
             /// <summary>
             /// Enum Obj for "obj"
             /// </summary>
@@ -103,6 +103,27 @@ namespace Autodesk.Forge.Model
         }
 
         /// <summary>
+        /// Required options for SVF type. Possible values are `2d` and `3d`.
+        /// </summary>
+        /// <value>Required options for SVF type. Possible values are `2d` and `3d`.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum ViewsEnum
+        {
+            
+            /// <summary>
+            /// Enum _2d for "2d"
+            /// </summary>
+            [EnumMember(Value = "2d")]
+            _2d,
+            
+            /// <summary>
+            /// Enum _3d for "3d"
+            /// </summary>
+            [EnumMember(Value = "3d")]
+            _3d
+        }
+
+        /// <summary>
         /// The requested output types. Possible values include `svf`, `svf2`, `thumbnail`, `stl`, `step`, `iges`, `obj`, `ifc` or `dwg`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.
         /// </summary>
         /// <value>The requested output types. Possible values include `svf`, `svf2`, `thumbnail`, `stl`, `step`, `iges`, `obj`, `ifc` or `dwg`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.</value>
@@ -110,36 +131,43 @@ namespace Autodesk.Forge.Model
         public TypeEnum? Type { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobObjOutputPayload" /> class.
+        /// Gets or Sets Views
         /// </summary>
-        [JsonConstructorAttribute]
-        protected JobObjOutputPayload() { }
+        [DataMember(Name="views", EmitDefaultValue=false)]
+        public List<ViewsEnum> Views { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobObjOutputPayload" /> class.
+        /// Gets or Sets Advanced
+        /// </summary>
+        [DataMember(Name = "advanced", EmitDefaultValue = false)]
+        public JobSvf2OutputPayload Advanced { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JobSvf2OutputPayload" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        protected JobSvf2OutputPayload() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JobSvf2OutputPayload" /> class.
         /// </summary>
         /// <param name="Type">The requested output types. Possible values include &#x60;svf&#x60;, &#x60;thumbnai&#x60;, &#x60;stl&#x60;, &#x60;step&#x60;, &#x60;iges&#x60;, or &#x60;obj&#x60;. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint. (required).</param>
-        /// <param name="Advanced">Advanced.</param>
-        public JobObjOutputPayload(TypeEnum? Type = null, JobObjOutputPayloadAdvanced Advanced = null)
+        /// <param name="Views">Views.</param>
+        public JobSvf2OutputPayload(TypeEnum? Type = null, List<ViewsEnum> Views = null, JobSvf2OutputPayload advanced = null)
         {
             // to ensure "Type" is required (not null)
             if (Type == null)
             {
-                throw new InvalidDataException("Type is a required property for JobObjOutputPayload and cannot be null");
+                throw new InvalidDataException("Type is a required property for JobSvfOutputPayload and cannot be null");
             }
             else
             {
                 this.Type = Type;
             }
-            this.Advanced = Advanced;
+            this.Views = Views;
+            this.Advanced = advanced;
         }
         
-        /// <summary>
-        /// Gets or Sets Advanced
-        /// </summary>
-        [DataMember(Name="advanced", EmitDefaultValue=false)]
-        public JobObjOutputPayloadAdvanced Advanced { get; set; }
-
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -147,8 +175,9 @@ namespace Autodesk.Forge.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class JobObjOutputPayload {\n");
+            sb.Append("class JobSvf2OutputPayload {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  Views: ").Append(Views).Append("\n");
             sb.Append("  Advanced: ").Append(Advanced).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -171,15 +200,15 @@ namespace Autodesk.Forge.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as JobObjOutputPayload);
+            return this.Equals(obj as JobSvf2OutputPayload);
         }
 
         /// <summary>
-        /// Returns true if JobObjOutputPayload instances are equal
+        /// Returns true if JobSvfOutputPayload instances are equal
         /// </summary>
-        /// <param name="other">Instance of JobObjOutputPayload to be compared</param>
+        /// <param name="other">Instance of JobSvfOutputPayload to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(JobObjOutputPayload other)
+        public bool Equals(JobSvf2OutputPayload other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -191,6 +220,11 @@ namespace Autodesk.Forge.Model
                     this.Type != null &&
                     this.Type.Equals(other.Type)
                 ) && 
+                (
+                    this.Views == other.Views ||
+                    this.Views != null &&
+                    this.Views.SequenceEqual(other.Views)
+                ) &&
                 (
                     this.Advanced == other.Advanced ||
                     this.Advanced != null &&
@@ -211,6 +245,8 @@ namespace Autodesk.Forge.Model
                 // Suitable nullity checks etc, of course :)
                 if (this.Type != null)
                     hash = hash * 59 + this.Type.GetHashCode();
+                if (this.Views != null)
+                    hash = hash * 59 + this.Views.GetHashCode();
                 if (this.Advanced != null)
                     hash = hash * 59 + this.Advanced.GetHashCode();
                 return hash;

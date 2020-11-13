@@ -34,49 +34,27 @@ using Newtonsoft.Json.Converters;
 namespace Autodesk.Forge.Model
 {
     /// <summary>
-    /// Group of outputs
+    /// Advanced options for &#x60;step&#x60; type.
     /// </summary>
     [DataContract]
-    public partial class JobPayloadOutput :  IEquatable<JobPayloadOutput>
+    public partial class JobIfcOutputPayloadAdvanced :  IEquatable<JobIfcOutputPayloadAdvanced>, IJobPayloadItemAdvanced
     {
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobPayloadOutput" /> class.
+        /// Initializes a new instance of the <see cref="JobIfcOutputPayloadAdvanced" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected JobPayloadOutput() { }
+        [DataMember(Name= "exportSettingName", EmitDefaultValue=false)]
+        public string ExportSettingName { get; set; }
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="JobPayloadOutput" /> class.
+        /// Initializes a new instance of the <see cref="JobIfcOutputPayloadAdvanced" /> class.
         /// </summary>
-        /// <param name="Formats">Group of requested formats/types. User can request multiple formats. (required).</param>
-        public JobPayloadOutput(List<JobPayloadItem> Formats = null, JobPayloadDestination destination = null)
+        /// <param name="exportSettingName">The export settings should be one of the DWG Export settings name pre-saved in the document.</param>
+        public JobIfcOutputPayloadAdvanced(string exportSettingName = null)
         {
-            // to ensure "Formats" is required (not null)
-            if (Formats == null)
-            {
-                throw new InvalidDataException("Formats is a required property for JobPayloadOutput and cannot be null");
-            }
-            else
-            {
-                this.Formats = Formats;
-            }
-
-            Destination = destination;
+            this.ExportSettingName = exportSettingName;
         }
-
-        /// <summary>
-        /// Group of requested formats/types. User can request multiple formats.
-        /// </summary>
-        /// <value>Group of requested formats/types. User can request multiple formats.</value>
-        [DataMember(Name="destination", EmitDefaultValue=false)]
-        public JobPayloadDestination Destination { get; set; }
         
-        /// <summary>
-        /// Group of requested formats/types. User can request multiple formats.
-        /// </summary>
-        /// <value>Group of requested formats/types. User can request multiple formats.</value>
-        [DataMember(Name="formats", EmitDefaultValue=false)]
-        public List<JobPayloadItem> Formats { get; set; }
-
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -84,9 +62,8 @@ namespace Autodesk.Forge.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class JobPayloadOutput {\n");
-            sb.Append("  Destination: ").Append(Destination).Append("\n");
-            sb.Append("  Formats: ").Append(Formats).Append("\n");
+            sb.Append("class JobIfcOutputPayloadAdvanced {\n");
+            sb.Append("  ExportSettingName: ").Append(ExportSettingName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -108,15 +85,15 @@ namespace Autodesk.Forge.Model
         public override bool Equals(object obj)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as JobPayloadOutput);
+            return this.Equals(obj as JobIfcOutputPayloadAdvanced);
         }
 
         /// <summary>
-        /// Returns true if JobPayloadOutput instances are equal
+        /// Returns true if JobStepOutputPayloadAdvanced instances are equal
         /// </summary>
-        /// <param name="other">Instance of JobPayloadOutput to be compared</param>
+        /// <param name="other">Instance of JobStepOutputPayloadAdvanced to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(JobPayloadOutput other)
+        public bool Equals(JobIfcOutputPayloadAdvanced other)
         {
             // credit: http://stackoverflow.com/a/10454552/677735
             if (other == null)
@@ -124,9 +101,9 @@ namespace Autodesk.Forge.Model
 
             return 
                 (
-                    this.Formats == other.Formats ||
-                    this.Formats != null &&
-                    this.Formats.SequenceEqual(other.Formats)
+                    this.ExportSettingName == other.ExportSettingName ||
+                    this.ExportSettingName != null &&
+                    this.ExportSettingName.Equals(other.ExportSettingName)
                 );
         }
 
@@ -141,8 +118,8 @@ namespace Autodesk.Forge.Model
             {
                 int hash = 41;
                 // Suitable nullity checks etc, of course :)
-                if (this.Formats != null)
-                    hash = hash * 59 + this.Formats.GetHashCode();
+                if (this.ExportSettingName != null)
+                    hash = hash * 59 + this.ExportSettingName.GetHashCode();
                 return hash;
             }
         }

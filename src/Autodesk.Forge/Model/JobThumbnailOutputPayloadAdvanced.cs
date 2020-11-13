@@ -37,7 +37,7 @@ namespace Autodesk.Forge.Model
     /// Advanced options for &#x60;thumbnail&#x60; type.
     /// </summary>
     [DataContract]
-    public partial class JobThumbnailOutputPayloadAdvanced :  IEquatable<JobThumbnailOutputPayloadAdvanced>
+    public partial class JobThumbnailOutputPayloadAdvanced :  IEquatable<JobThumbnailOutputPayloadAdvanced>, IJobPayloadItemAdvanced
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="JobThumbnailOutputPayloadAdvanced" /> class.

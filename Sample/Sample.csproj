@@ -5,4 +5,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\src\Autodesk.Forge\Autodesk.Forge.csproj" />
+  </ItemGroup>
 </Project>

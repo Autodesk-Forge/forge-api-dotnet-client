@@ -40,61 +40,81 @@ namespace Autodesk.Forge.Model
     public partial class JobIgesOutputPayload :  IEquatable<JobIgesOutputPayload>
     {
         /// <summary>
-        /// The requested output types. Possible values include `svf`, `thumbnai`, `stl`, `step`, `iges`, or `obj`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.
+        /// The requested output types. Possible values include `svf`, `svf2`, `thumbnail`, `stl`, `step`, `iges`, `obj`, `ifc` or `dwg`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.
         /// </summary>
-        /// <value>The requested output types. Possible values include `svf`, `thumbnai`, `stl`, `step`, `iges`, or `obj`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.</value>
+        /// <value>The requested output types. Possible values include `svf`, `svf2`, `thumbnail`, `stl`, `step`, `iges`, `obj`, `ifc` or `dwg`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TypeEnum
         {
-            
+
             /// <summary>
             /// Enum Svf for "svf"
             /// </summary>
             [EnumMember(Value = "svf")]
             Svf,
-            
+
+            /// <summary>
+            /// Enum Svf2 for "svf2"
+            /// </summary>
+            [EnumMember(Value = "svf2")]
+            Svf2,
+
             /// <summary>
             /// Enum Thumbnail for "thumbnail"
             /// </summary>
             [EnumMember(Value = "thumbnail")]
             Thumbnail,
-            
+
             /// <summary>
             /// Enum Stl for "stl"
             /// </summary>
             [EnumMember(Value = "stl")]
             Stl,
-            
+
             /// <summary>
             /// Enum Step for "step"
             /// </summary>
             [EnumMember(Value = "step")]
             Step,
-            
+
             /// <summary>
             /// Enum Iges for "iges"
             /// </summary>
             [EnumMember(Value = "iges")]
             Iges,
-            
+
             /// <summary>
             /// Enum Obj for "obj"
             /// </summary>
             [EnumMember(Value = "obj")]
-            Obj
+            Obj,
+
+            /// <summary>
+            /// Enum Ifc for "ifc"
+            /// </summary>
+            [EnumMember(Value = "ifc")]
+            Ifc,
+
+            /// <summary>
+            /// Enum Dwg for "dwg"
+            /// </summary>
+            [EnumMember(Value = "dwg")]
+            Dwg
         }
 
         /// <summary>
-        /// The requested output types. Possible values include `svf`, `thumbnai`, `stl`, `step`, `iges`, or `obj`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.
+        /// The requested output types. Possible values include `svf`, `svf2`, `thumbnail`, `stl`, `step`, `iges`, `obj`, `ifc` or `dwg`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.
         /// </summary>
-        /// <value>The requested output types. Possible values include `svf`, `thumbnai`, `stl`, `step`, `iges`, or `obj`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.</value>
+        /// <value>The requested output types. Possible values include `svf`, `svf2`, `thumbnail`, `stl`, `step`, `iges`, `obj`, `ifc` or `dwg`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public TypeEnum? Type { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="JobIgesOutputPayload" /> class.
         /// </summary>
         [JsonConstructorAttribute]
         protected JobIgesOutputPayload() { }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="JobIgesOutputPayload" /> class.
         /// </summary>
@@ -119,6 +139,7 @@ namespace Autodesk.Forge.Model
         /// </summary>
         [DataMember(Name="advanced", EmitDefaultValue=false)]
         public JobIgesOutputPayloadAdvanced Advanced { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

@@ -70,8 +70,10 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
-        /// <returns></returns>
-        void GetDerivativeManifest(string urn, string derivativeUrn, int? range = null);
+        /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <returns>System.IO.Stream</returns>
+        /*System.IO.Stream*/
+        dynamic GetDerivativeManifest(string urn, string derivativeUrn, string range = null, string acceptEncoding = null);
 
         /// <summary>
         /// 
@@ -83,8 +85,33 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> GetDerivativeManifestWithHttpInfo(string urn, string derivativeUrn, int? range = null);
+        /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <returns>ApiResponse of System.IO.Stream</returns>
+        ApiResponse</*System.IO.Stream*/dynamic> GetDerivativeManifestWithHttpInfo(string urn, string derivativeUrn, string range = null, string acceptEncoding = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns information about the specified derivative. This endpoint returns a set of headers similar to that returned by the Get Derivative endpoint.
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
+        /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
+        /// <returns>IDictionary<string, string></returns>
+        IDictionary<string, string> GetDerivativeManifestHeaders(string urn, string derivativeUrn);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns information about the specified derivative. This endpoint returns a set of headers similar to that returned by the Get Derivative endpoint.
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
+        /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
+        /// <returns>ApiResponse of System.IO.Stream</returns>
+        ApiResponse</*System.IO.Stream*/dynamic> GetDerivativeManifestHeadersWithHttpInfo(string urn, string derivativeUrn);
 
         /// <summary>
         /// 
@@ -302,8 +329,9 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task GetDerivativeManifestAsync(string urn, string derivativeUrn, int? range = null);
+        /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <returns>Task of System.IO.Stream</returns>
+        System.Threading.Tasks.Task</*System.IO.Stream*/dynamic> GetDerivativeManifestAsync(string urn, string derivativeUrn, string range = null, string acceptEncoding = null);
 
         /// <summary>
         /// 
@@ -315,8 +343,33 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
+        /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> GetDerivativeManifestAsyncWithHttpInfo(string urn, string derivativeUrn, int? range = null);
+        System.Threading.Tasks.Task<ApiResponse</*System.IO.Stream*/dynamic>> GetDerivativeManifestAsyncWithHttpInfo(string urn, string derivativeUrn, string range = null, string acceptEncoding = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns information about the specified derivative. This endpoint returns a set of headers similar to that returned by the Get Derivative endpoint.
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
+        /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
+        /// <returns>Task of IDictionary<string, string></returns>
+        System.Threading.Tasks.Task<IDictionary<string, string>> GetDerivativeManifestHeadersAsync(string urn, string derivativeUrn);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns information about the specified derivative. This endpoint returns a set of headers similar to that returned by the Get Derivative endpoint.
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
+        /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse</*System.IO.Stream*/dynamic>> GetDerivativeManifestHeadersAsyncWithHttpInfo(string urn, string derivativeUrn);
 
         /// <summary>
         /// 
@@ -500,7 +553,7 @@ namespace Autodesk.Forge
     /// </summary>
     public partial class DerivativesApi : IDerivativesApi
     {
-        private string Base64Decode(string base64EncodedData)
+        private static string Base64Decode(string base64EncodedData)
         {
             string incoming = base64EncodedData.Replace('_', '/').Replace('-', '+');
             switch (base64EncodedData.Length % 4)
@@ -813,10 +866,10 @@ namespace Autodesk.Forge
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
-        /// <returns>Object</returns>
-        public /*Object*/dynamic GetDerivativeManifest(string urn, string derivativeUrn, int? range = null, string acceptEncoding = null)
+        /// <returns>System.IO.Stream</returns>
+        public /*System.IO.Stream*/dynamic GetDerivativeManifest(string urn, string derivativeUrn, string range = null, string acceptEncoding = null)
         {
-            ApiResponse</*Object*/dynamic> localVarResponse = GetDerivativeManifestWithHttpInfo(urn, derivativeUrn, range, acceptEncoding);
+            ApiResponse</*System.IO.Stream*/dynamic> localVarResponse = GetDerivativeManifestWithHttpInfo(urn, derivativeUrn, range, acceptEncoding);
             return localVarResponse.Data;
         }
 
@@ -828,8 +881,8 @@ namespace Autodesk.Forge
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> GetDerivativeManifestWithHttpInfo(string urn, string derivativeUrn, int? range = null, string acceptEncoding = null)
+        /// <returns>ApiResponse of System.IO.Stream</returns>
+        public ApiResponse</*System.IO.Stream*/dynamic> GetDerivativeManifestWithHttpInfo(string urn, string derivativeUrn, string range = null, string acceptEncoding = null)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
@@ -896,10 +949,9 @@ namespace Autodesk.Forge
                 if (exception != null) throw exception;
             }
 
-
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse</*System.IO.Stream*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                /*(System.IO.Stream)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(System.IO.Stream)));
         }
 
         /// <summary>
@@ -910,10 +962,10 @@ namespace Autodesk.Forge
         /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task</*Object*/dynamic> GetDerivativeManifestAsync(string urn, string derivativeUrn, int? range = null, string acceptEncoding = null)
+        /// <returns>Task of System.IO.Stream</returns>
+        public async System.Threading.Tasks.Task</*System.IO.Stream*/dynamic> GetDerivativeManifestAsync(string urn, string derivativeUrn, string range = null, string acceptEncoding = null)
         {
-            ApiResponse</*Object*/dynamic> localVarResponse = await GetDerivativeManifestAsyncWithHttpInfo(urn, derivativeUrn, range, acceptEncoding);
+            ApiResponse</*System.IO.Stream*/dynamic> localVarResponse = await GetDerivativeManifestAsyncWithHttpInfo(urn, derivativeUrn, range, acceptEncoding);
             return localVarResponse.Data;
         }
 
@@ -926,7 +978,7 @@ namespace Autodesk.Forge
         /// <param name="range">This is the standard RFC 2616 range request header. It only supports one range specifier per request: 1. Range:bytes&#x3D;0-63 (returns the first 64 bytes) 2. Range:bytes&#x3D;64-127 (returns the second set of 64 bytes) 3. Range:bytes&#x3D;1022- (returns all the bytes from offset 1022 to the end) 4. If the range header is not specified, the whole content is returned.  (optional)</param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*Object*/dynamic>> GetDerivativeManifestAsyncWithHttpInfo(string urn, string derivativeUrn, int? range = null, string acceptEncoding = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*System.IO.Stream*/dynamic>> GetDerivativeManifestAsyncWithHttpInfo(string urn, string derivativeUrn, string range = null, string acceptEncoding = null)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
@@ -994,7 +1046,162 @@ namespace Autodesk.Forge
             }
 
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse</*System.IO.Stream*/dynamic>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                /*(System.IO.Stream)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(System.IO.Stream)));
+        }
+
+        /// <summary>
+        /// Returns information about the specified derivative. This endpoint returns a set of headers similar to that returned by the Get Derivative endpoint.
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
+        /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
+        /// <returns>System.IO.Stream</returns>
+        public IDictionary<string, string> GetDerivativeManifestHeaders(string urn, string derivativeUrn)
+        {
+            ApiResponse</*System.IO.Stream*/dynamic> localVarResponse = GetDerivativeManifestHeadersWithHttpInfo(urn, derivativeUrn);
+            return localVarResponse.Headers;
+        }
+
+        /// <summary>
+        /// Returns information about the specified derivative. This endpoint returns a set of headers similar to that returned by the Get Derivative endpoint.
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
+        /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
+        /// <returns>ApiResponse of System.IO.Stream</returns>
+        public ApiResponse</*System.IO.Stream*/dynamic> GetDerivativeManifestHeadersWithHttpInfo(string urn, string derivativeUrn)
+        {
+            // verify the required parameter 'urn' is set
+            if (urn == null)
+                throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->GetDerivativeManifestHeaders");
+            // verify the required parameter 'derivativeUrn' is set
+            if (derivativeUrn == null)
+                throw new ApiException(400, "Missing required parameter 'derivativeUrn' when calling DerivativesApi->GetDerivativeManifestHeaders");
+
+            string region = DerivativesApi.GetBIM360Region(urn);
+
+            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/manifest/{derivativeUrn}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {};
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {};
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            if (urn != null) localVarPathParams.Add("urn", Configuration.ApiClient.ParameterToString(urn)); // path parameter
+            if (derivativeUrn != null) localVarPathParams.Add("derivativeUrn", Configuration.ApiClient.ParameterToString(derivativeUrn)); // path parameter
+
+            // authentication (oauth2_application) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
+                Method.HEAD, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetDerivativeManifestHeaders", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse</*System.IO.Stream*/dynamic>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Returns information about the specified derivative. This endpoint returns a set of headers similar to that returned by the Get Derivative endpoint.
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
+        /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
+        /// <returns>Task of IDictionary<string, string></returns>
+        public async System.Threading.Tasks.Task<IDictionary<string, string>> GetDerivativeManifestHeadersAsync(string urn, string derivativeUrn)
+        {
+            ApiResponse</*System.IO.Stream*/dynamic> localVarResponse = await GetDerivativeManifestHeadersAsyncWithHttpInfo(urn, derivativeUrn);
+            return localVarResponse.Headers;
+        }
+
+        /// <summary>
+        /// Returns information about the specified derivative. This endpoint returns a set of headers similar to that returned by the Get Derivative endpoint.
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
+        /// <param name="derivativeUrn">The URL-encoded URN of the derivatives. The URN is retrieved from the GET :urn/manifest endpoint. </param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse</*System.IO.Stream*/dynamic>> GetDerivativeManifestHeadersAsyncWithHttpInfo(string urn, string derivativeUrn)
+        {
+            // verify the required parameter 'urn' is set
+            if (urn == null)
+                throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->GetDerivativeManifestHeaders");
+            // verify the required parameter 'derivativeUrn' is set
+            if (derivativeUrn == null)
+                throw new ApiException(400, "Missing required parameter 'derivativeUrn' when calling DerivativesApi->GetDerivativeManifestHeaders");
+
+            string region = DerivativesApi.GetBIM360Region(urn);
+
+            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/manifest/{derivativeUrn}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {};
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {};
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add("format", "json");
+            if (urn != null) localVarPathParams.Add("urn", Configuration.ApiClient.ParameterToString(urn)); // path parameter
+            if (derivativeUrn != null) localVarPathParams.Add("derivativeUrn", Configuration.ApiClient.ParameterToString(derivativeUrn)); // path parameter
+
+            // authentication (oauth2_application) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.HEAD, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetDerivativeManifestHeaders", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse</*System.IO.Stream*/dynamic>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);
         }

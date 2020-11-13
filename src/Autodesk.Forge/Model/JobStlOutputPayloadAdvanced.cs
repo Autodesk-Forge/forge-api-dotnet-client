@@ -37,7 +37,7 @@ namespace Autodesk.Forge.Model
     /// Advanced options for &#x60;stl&#x60; type.
     /// </summary>
     [DataContract]
-    public partial class JobStlOutputPayloadAdvanced :  IEquatable<JobStlOutputPayloadAdvanced>
+    public partial class JobStlOutputPayloadAdvanced : IEquatable<JobStlOutputPayloadAdvanced>, IJobPayloadItemAdvanced
     {
         /// <summary>
         /// Default format is `binary`. Possible values are `binary` or `ascii`.
@@ -87,12 +87,14 @@ namespace Autodesk.Forge.Model
         /// <value>Default format is `binary`. Possible values are `binary` or `ascii`.</value>
         [DataMember(Name="format", EmitDefaultValue=false)]
         public FormatEnum? Format { get; set; }
+
         /// <summary>
         /// `single` (default): creates one STL file for all the input files (assembly file)  `multiple`: creates a separate STL file for each object 
         /// </summary>
         /// <value>`single` (default): creates one STL file for all the input files (assembly file)  `multiple`: creates a separate STL file for each object </value>
         [DataMember(Name="exportFileStructure", EmitDefaultValue=false)]
         public ExportFileStructureEnum? ExportFileStructure { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="JobStlOutputPayloadAdvanced" /> class.
         /// </summary>
@@ -136,6 +138,7 @@ namespace Autodesk.Forge.Model
         /// <value>Color is exported by default. If set to &#x60;true&#x60;, color is exported. If set to &#x60;false&#x60;, color is not exported.</value>
         [DataMember(Name="exportColor", EmitDefaultValue=false)]
         public bool? ExportColor { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -199,6 +202,11 @@ namespace Autodesk.Forge.Model
                     this.ExportFileStructure.Equals(other.ExportFileStructure)
                 );
         }
+
+        //public bool Equals(IJobPayloadItemAdvanced other)
+        //{
+        //    return this.Equals ((JobStlOutputPayloadAdvanced)other);
+        //}
 
         /// <summary>
         /// Gets the hash code

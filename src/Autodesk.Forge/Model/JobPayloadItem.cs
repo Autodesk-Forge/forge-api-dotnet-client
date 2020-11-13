@@ -33,50 +33,68 @@ using Newtonsoft.Json.Converters;
 
 namespace Autodesk.Forge.Model
 {
+    public interface IJobPayloadItemAdvanced
+	{
+        string ToString();
+        string ToJson();
+        bool Equals(object obj);
+        //bool Equals(JobStlOutputPayloadAdvanced other);
+        //bool Equals(IJobPayloadItemAdvanced other);
+        int GetHashCode();
+
+    }
+
     /// <summary>
     /// Output description object, depends of the type
     /// </summary>
     [DataContract]
-    public partial class JobPayloadItem :  IEquatable<JobPayloadItem>
+    public partial class JobPayloadItem : IEquatable<JobPayloadItem>
     {
+
         /// <summary>
-        /// The requested output types. Possible values include `svf`, `thumbnai`, `stl`, `step`, `iges`, or `obj`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.
+        /// The requested output types. Possible values include `svf`, `svf2`, `thumbnail`, `stl`, `step`, `iges`, `obj`, `ifc` or `dwg`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.
         /// </summary>
-        /// <value>The requested output types. Possible values include `svf`, `thumbnai`, `stl`, `step`, `iges`, or `obj`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.</value>
+        /// <value>The requested output types. Possible values include `svf`, `svf2`, `thumbnail`, `stl`, `step`, `iges`, `obj`, `ifc` or `dwg`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.</value>
         [JsonConverter(typeof(StringEnumConverter))]
         public enum TypeEnum
         {
-            
+
             /// <summary>
             /// Enum Svf for "svf"
             /// </summary>
             [EnumMember(Value = "svf")]
             Svf,
-            
+
+            /// <summary>
+            /// Enum Svf2 for "svf2"
+            /// </summary>
+            [EnumMember(Value = "svf2")]
+            Svf2,
+
             /// <summary>
             /// Enum Thumbnail for "thumbnail"
             /// </summary>
             [EnumMember(Value = "thumbnail")]
             Thumbnail,
-            
+
             /// <summary>
             /// Enum Stl for "stl"
             /// </summary>
             [EnumMember(Value = "stl")]
             Stl,
-            
+
             /// <summary>
             /// Enum Step for "step"
             /// </summary>
             [EnumMember(Value = "step")]
             Step,
-            
+
             /// <summary>
             /// Enum Iges for "iges"
             /// </summary>
             [EnumMember(Value = "iges")]
             Iges,
-            
+
             /// <summary>
             /// Enum Obj for "obj"
             /// </summary>
@@ -96,6 +114,12 @@ namespace Autodesk.Forge.Model
             Dwg
         }
 
+        /// <summary>
+        /// The requested output types. Possible values include `svf`, `svf2`, `thumbnail`, `stl`, `step`, `iges`, `obj`, `ifc` or `dwg`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.
+        /// </summary>
+        /// <value>The requested output types. Possible values include `svf`, `svf2`, `thumbnail`, `stl`, `step`, `iges`, `obj`, `ifc` or `dwg`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.</value>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public TypeEnum? Type { get; set; }
 
         /// <summary>
         /// Required options for SVF type. Possible values are `2d` and `3d`.
@@ -104,13 +128,13 @@ namespace Autodesk.Forge.Model
         [JsonConverter(typeof(StringEnumConverter))]
         public enum ViewsEnum
         {
-            
+
             /// <summary>
             /// Enum _2d for "2d"
             /// </summary>
             [EnumMember(Value = "2d")]
             _2d,
-            
+
             /// <summary>
             /// Enum _3d for "3d"
             /// </summary>
@@ -119,28 +143,24 @@ namespace Autodesk.Forge.Model
         }
 
         /// <summary>
-        /// The requested output types. Possible values include `svf`, `thumbnai`, `stl`, `step`, `iges`, or `obj`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.
-        /// </summary>
-        /// <value>The requested output types. Possible values include `svf`, `thumbnai`, `stl`, `step`, `iges`, or `obj`. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint.</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public TypeEnum? Type { get; set; }
-        /// <summary>
         /// Gets or Sets Views
         /// </summary>
         [DataMember(Name="views", EmitDefaultValue=false)]
         public List<ViewsEnum> Views { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="JobPayloadItem" /> class.
         /// </summary>
         [JsonConstructorAttribute]
         protected JobPayloadItem() { }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="JobPayloadItem" /> class.
         /// </summary>
         /// <param name="Type">The requested output types. Possible values include &#x60;svf&#x60;, &#x60;thumbnai&#x60;, &#x60;stl&#x60;, &#x60;step&#x60;, &#x60;iges&#x60;, or &#x60;obj&#x60;. For a list of supported types, call the [GET formats](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/formats-GET) endpoint. (required).</param>
         /// <param name="Views">Views.</param>
         /// <param name="Advanced">Advanced.</param>
-        public JobPayloadItem(TypeEnum? Type = null, List<ViewsEnum> Views = null, JobObjOutputPayloadAdvanced Advanced = null)
+        public JobPayloadItem(TypeEnum? Type = null, List<ViewsEnum> Views = null, IJobPayloadItemAdvanced Advanced = null)
         {
             // to ensure "Type" is required (not null)
             if (Type == null)
@@ -159,7 +179,8 @@ namespace Autodesk.Forge.Model
         /// Gets or Sets Advanced
         /// </summary>
         [DataMember(Name="advanced", EmitDefaultValue=false)]
-        public JobObjOutputPayloadAdvanced Advanced { get; set; }
+        public IJobPayloadItemAdvanced Advanced { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>

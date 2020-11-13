@@ -37,7 +37,7 @@ namespace Autodesk.Forge.Model
     /// Advanced options for &#x60;iges&#x60; type.
     /// </summary>
     [DataContract]
-    public partial class JobIgesOutputPayloadAdvanced :  IEquatable<JobIgesOutputPayloadAdvanced>
+    public partial class JobIgesOutputPayloadAdvanced :  IEquatable<JobIgesOutputPayloadAdvanced>, IJobPayloadItemAdvanced
     {
         /// <summary>
         /// Possible values are `bounded`, `trimmed` and `wireframe`. By default it is set to bounded surface.
@@ -132,18 +132,21 @@ namespace Autodesk.Forge.Model
         /// <value>Possible values are `bounded`, `trimmed` and `wireframe`. By default it is set to bounded surface.</value>
         [DataMember(Name="surfaceType", EmitDefaultValue=false)]
         public SurfaceTypeEnum? SurfaceType { get; set; }
+
         /// <summary>
         /// Export the sheet body to IGES. `open`, `shell`, `surface` or `wireframe`. By default, it is set to `surface`.
         /// </summary>
         /// <value>Export the sheet body to IGES. `open`, `shell`, `surface` or `wireframe`. By default, it is set to `surface`.</value>
         [DataMember(Name="sheetType", EmitDefaultValue=false)]
         public SheetTypeEnum? SheetType { get; set; }
+
         /// <summary>
         /// Export the solid body to IGES `solid`, `surface` or `wireframe`. By default, it is set to `solid`.
         /// </summary>
         /// <value>Export the solid body to IGES `solid`, `surface` or `wireframe`. By default, it is set to `solid`.</value>
         [DataMember(Name="solidType", EmitDefaultValue=false)]
         public SolidTypeEnum? SolidType { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="JobIgesOutputPayloadAdvanced" /> class.
         /// </summary>
@@ -197,6 +200,7 @@ namespace Autodesk.Forge.Model
         /// <value>Possible values are between &#x60;0&#x60; and &#x60;1&#x60;. By default it is set at 0.001.</value>
         [DataMember(Name="tolerance", EmitDefaultValue=false)]
         public float? Tolerance { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
