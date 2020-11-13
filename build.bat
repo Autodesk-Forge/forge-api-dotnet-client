@@ -24,8 +24,8 @@ goto real_build
 
 if not exist ".\bin" mkdir bin
 
-copy packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll bin\Newtonsoft.Json.dll
-copy packages\RestSharp.105.2.3\lib\net45\RestSharp.dll bin\RestSharp.dll
+copy packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll bin\Newtonsoft.Json.dll
+copy packages\RestSharp.106.11.7\lib\net452\RestSharp.dll bin\RestSharp.dll
 
 :: /platform:anycpu - default
 :: /debug - not default
@@ -39,7 +39,7 @@ goto publishtonuget
 :real_build
 if not exist ".\src\Autodesk.Forge\bin" mkdir src\Autodesk.Forge\bin
 if not exist ".\src\Autodesk.Forge\bin\Release" mkdir src\Autodesk.Forge\bin\Release
-%CSCPATH%\csc /reference:packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll;packages\RestSharp.105.2.3\lib\net45\RestSharp.dll /target:library /out:src\Autodesk.Forge\bin\Release\Autodesk.Forge.dll /recurse:src\Autodesk.Forge\*.cs /doc:src\Autodesk.Forge\bin\Release\Autodesk.Forge.xml
+%CSCPATH%\csc /reference:packages\Newtonsoft.Json.12.0.3\lib\net452\Newtonsoft.Json.dll;packages\RestSharp.106.11.7\lib\net45\RestSharp.dll /target:library /out:src\Autodesk.Forge\bin\Release\Autodesk.Forge.dll /recurse:src\Autodesk.Forge\*.cs /doc:src\Autodesk.Forge\bin\Release\Autodesk.Forge.xml
 
 .\nuget pack src\Autodesk.Forge\Autodesk.Forge.csproj -Prop Platform=AnyCPU -Prop Configuration=Release
 

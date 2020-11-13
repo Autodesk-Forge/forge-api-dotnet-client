@@ -26,8 +26,8 @@ mono nuget.exe install src/Autodesk.Forge/packages.config -o packages;
 
 echo "[INFO] Copy DLLs to the 'bin' folder"
 mkdir -p bin;
-cp packages/Newtonsoft.Json.9.0.1/lib/net45/Newtonsoft.Json.dll bin/Newtonsoft.Json.dll;
-cp packages/RestSharp.105.2.3/lib/net45/RestSharp.dll bin/RestSharp.dll;
+cp packages/Newtonsoft.Json.12.0.3/lib/net45/Newtonsoft.Json.dll bin/Newtonsoft.Json.dll;
+cp packages/RestSharp.106.11.7/lib/net452/RestSharp.dll bin/RestSharp.dll;
 
 echo "[INFO] Run 'mcs' to build bin/Autodesk.Forge.dll"
 mcs -sdk:${netfx} -r:bin/Newtonsoft.Json.dll,\
