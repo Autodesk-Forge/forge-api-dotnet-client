@@ -372,6 +372,59 @@ namespace Autodesk.Forge.Sample {
 			}
 		}
 
+		private static IDictionary<string, string> GetDerivativesManifestHeaders(string urn, string derivativesUrn)
+		{
+			try
+			{
+				Console.WriteLine("**** Getting DerivativesManifest Headers of: " + derivativesUrn);
+				dynamic response = DerivativesAPI.GetDerivativeManifestHeaders(urn, derivativesUrn);
+				return (response);
+			}
+			catch (Exception)
+			{
+				Console.WriteLine("**** Failed getting DerivativesManifest Headers of: " + derivativesUrn);
+				return (null);
+			}
+		}
+
+		private static dynamic GetDerivativesManifest(string urn, string derivativesUrn)
+		{
+			try
+			{
+				Console.WriteLine("**** Getting DerivativesManifest of: " + derivativesUrn);
+				dynamic response = DerivativesAPI.GetDerivativeManifest(urn, derivativesUrn);
+				return (response);
+			}
+			catch (Exception)
+			{
+				Console.WriteLine("**** Failed getting DerivativesManifest of: " + derivativesUrn);
+				return (null);
+			}
+		}
+
+		private static dynamic FindDerivativesNode(string outputType, dynamic manifest)
+		{
+			if (manifest == null)
+				return (null);
+			for (int i = 0; i < manifest.derivatives.Count; i++)
+			{
+				dynamic derivatives = manifest.derivatives[i];
+				if (derivatives.outputType == outputType)
+					return (derivatives);
+			}
+			return (null);
+		}
+
+		private static string FindDerivativesNodeStatus (string outputType, dynamic manifest)
+		{
+			if (manifest == null)
+				return (null);
+			dynamic derivatives = FindDerivativesNode(outputType, manifest);
+			if ( derivatives != null )
+				return (derivatives.progress);
+			return (null);
+		}
+
 		#endregion
 
 		static async Task Main(string[] args) {
@@ -389,52 +442,64 @@ namespace Autodesk.Forge.Sample {
 
 			//DeleteManifest (urn);
 			response = GetManifest(urn);
-			if (response == null)
-			{
+			if ( response != null )
+				Console.WriteLine(response.ToString());
+			string found = FindDerivativesNodeStatus("svf2", response);
+			if (found == null) {
 				response = await Translate2Svf2(urn);
 				if (!response)
 					return;
 				Console.WriteLine("Please wait for SVF2 translation to complete");
 				return;
-			}
-			if ( response.progress != "complete" )
-			{
-				Console.WriteLine(response.ToString());
-				Console.WriteLine("Still translating...");
+			} else if ( found != "complete" ) {
+				Console.WriteLine("Translation Failed or Still translating...");
 				return;
 			}
-			// Search for svf2
-			bool found = false;
-			for (int i = 0; i < response.derivatives.Count; i++)
-			{
-				dynamic derivatives = response.derivatives[i];
-				if (derivatives.progress == "complete" && derivatives.outputType == "svf2")
-				{
-					found = true;
-					break;
-				}
-			}
-			if ( !found )
-			{
-				Console.WriteLine(response.ToString());
-				Console.WriteLine("No SVF2 derivatives found...");
+
+			found = FindDerivativesNodeStatus("obj", response);
+			string guid = null;
+			if (found == null) {
+				response = GetMetadata(urn);
+				if (response == null)
+					return;
+				guid = response.data.metadata[0].guid;
+
+
+				response = await Translate2Obj(urn, guid);
+				if (!response)
+					return;
+				Console.WriteLine("Please wait for OBJ translation to complete");
+				return;
+			} else if (found != "complete") {
+				Console.WriteLine("Translation Failed or Still translating...");
 				return;
 			}
+
+			dynamic node = FindDerivativesNode("obj", response);
 
 			response = GetMetadata(urn);
-			if ( response == null )
+			if (response == null)
 				return;
-			string guid = response.data.metadata[0].guid;
+			guid = response.data.metadata[0].guid;
 
-			response = await Translate2Obj(urn, guid);
-			if (!response)
-				return;
+			for (int i = 0; i < node.children.Count; i++ )
+			{
+				dynamic elt = node.children[i];
+				if (elt.type != "resource" || elt.status != "success" || elt.modelGuid != guid || elt.role != "obj")
+					continue;
+				Console.WriteLine(elt.urn);
 
-			response = GetManifest(urn);
-			if (response != null)
-				Console.WriteLine(response.ToString());
-
-			Console.WriteLine("Please wait for OBJ translation to complete");
+				IDictionary<string, string> headers = GetDerivativesManifestHeaders(urn, elt.urn);
+				Console.WriteLine("\t size: " + headers["Content-Length"]);
+				
+				System.IO.MemoryStream stream = GetDerivativesManifest(urn, elt.urn);
+				if (stream == null)
+					continue;
+				stream.Seek(0, SeekOrigin.Begin);
+				string name = elt.urn.Substring(elt.urn.LastIndexOf('/') + 1);
+				File.WriteAllBytes (name, stream.ToArray ());
+			}
+			
 			Console.WriteLine("Done");
 		}
 
