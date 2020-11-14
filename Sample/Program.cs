@@ -431,6 +431,8 @@ namespace Autodesk.Forge.Sample {
 			Console.WriteLine("Hello World!");
 			readConfigFromEnvOrSettings();
 			dynamic response = await oauthExecAsync();
+			if ( response == null )
+				return;
 			response = CreateBucketIfNotExist();
 			if ( !response )
 				return;

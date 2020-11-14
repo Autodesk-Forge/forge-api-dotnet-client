@@ -16,16 +16,21 @@
 
 SET CSCPATH=%SYSTEMROOT%\Microsoft.NET\Framework\v4.0.30319
 
+SET FORGESDK_VERSION=1.8.0
+SET RESTSHARP_VERSION=106.11.7
+SET NEWTOWNSOFT_VERSION=12.0.3
 
 if not exist ".\nuget.exe" powershell -Command "(new-object System.Net.WebClient).DownloadFile('https://nuget.org/nuget.exe', '.\nuget.exe')"
-.\nuget.exe install src\Autodesk.Forge\packages.config -o packages
+:: .\nuget.exe install src\Autodesk.Forge\packages.config -OutputDirectory packages
+.\nuget.exe install RestSharp -OutputDirectory packages
+.\nuget.exe install Newtonsoft.Json -OutputDirectory packages
 
 goto real_build
 
 if not exist ".\bin" mkdir bin
 
-copy packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll bin\Newtonsoft.Json.dll
-copy packages\RestSharp.106.11.7\lib\net452\RestSharp.dll bin\RestSharp.dll
+copy packages\Newtonsoft.Json.%NEWTOWNSOFT_VERSION%\lib\net452\Newtonsoft.Json.dll bin\Newtonsoft.Json.dll
+copy packages\RestSharp.%RESTSHARP_VERSION%\lib\net452\RestSharp.dll bin\RestSharp.dll
 
 :: /platform:anycpu - default
 :: /debug - not default
@@ -39,11 +44,11 @@ goto publishtonuget
 :real_build
 if not exist ".\src\Autodesk.Forge\bin" mkdir src\Autodesk.Forge\bin
 if not exist ".\src\Autodesk.Forge\bin\Release" mkdir src\Autodesk.Forge\bin\Release
-%CSCPATH%\csc /reference:packages\Newtonsoft.Json.12.0.3\lib\net452\Newtonsoft.Json.dll;packages\RestSharp.106.11.7\lib\net45\RestSharp.dll /target:library /out:src\Autodesk.Forge\bin\Release\Autodesk.Forge.dll /recurse:src\Autodesk.Forge\*.cs /doc:src\Autodesk.Forge\bin\Release\Autodesk.Forge.xml
+%CSCPATH%\csc /reference:packages\Newtonsoft.Json.%NEWTOWNSOFT_VERSION%\lib\net452\Newtonsoft.Json.dll;packages\RestSharp.%RESTSHARP_VERSION%\lib\net452\RestSharp.dll /target:library /out:src\Autodesk.Forge\bin\Release\Autodesk.Forge.dll /recurse:src\Autodesk.Forge\*.cs /doc:src\Autodesk.Forge\bin\Release\Autodesk.Forge.xml
 
 .\nuget pack src\Autodesk.Forge\Autodesk.Forge.csproj -Prop Platform=AnyCPU -Prop Configuration=Release
 
 :publishtonuget
 echo .
-echo ".\nuget push Autodesk.Forge.1.0.0.nupkg %NUGETAPIKEY% -Source https://www.nuget.org/api/v2/package"
+echo ".\nuget push Autodesk.Forge%FORGESDK_VERSION%.nupkg %NUGETAPIKEY% -Source https://www.nuget.org/api/v2/package"
 :: .\nuget push Autodesk.Forge.1.0.0.nupkg %NUGETAPIKEY% -Source https://www.nuget.org/api/v2/package
