@@ -37,6 +37,7 @@ namespace Autodesk.Forge.Model.DesignAutomation.v3
     /// An Engine executes a WorkItem job and processes the actions specified by an Activity. Engines are provided by Autodesk. AppBundles and Activities refer to Engines with their alias, e.g. Autodesk.Revit+23. ( request only ).
     /// </summary>
     [DataContract]
+    [Obsolete("Please use NuGet package Autodesk.Forge.DesignAutomation instead")]
     public partial class Engine :  IEquatable<Engine>
     {
         /// <summary>

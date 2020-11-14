@@ -37,6 +37,7 @@ namespace Autodesk.Forge.Model.DesignAutomation.v3
     /// UploadAppBundleParameteresFormData
     /// </summary>
     [DataContract]
+    [Obsolete("Please use NuGet package Autodesk.Forge.DesignAutomation instead")]
     public partial class UploadAppBundleParameteresFormData : Dictionary<String, Object>,  IEquatable<UploadAppBundleParameteresFormData>
     {
         /// <summary>
