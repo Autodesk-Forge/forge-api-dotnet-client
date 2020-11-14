@@ -49,8 +49,12 @@ Run the following command to generate the DLL:
 Install [nuget CLI](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools#nugetexe-cli), generate an API Key and [save](https://docs.microsoft.com/en-us/nuget/tools/cli-ref-setapikey). Build application in `Release` mode. Run the following (CLI):
 
 ```bash
-nuget pack \paht\to\forge-api-dotnet-client\src\Autodesk.Forge\Autodesk.Forge.nuspec -build
-nuget push \path\to\Autodesk.Forge.1.1.0.nupkg -Source \\mycompany\repo\
+nuget pack /path/to/forge-api-dotnet-client/src/Autodesk.Forge/Autodesk.Forge.nuspec -build
+# nuget pack "src/Autodesk.Forge/Autodesk.Forge.nuspec" -Prop Platform=AnyCPU -Prop Configuration=Release
+
+nuget push /path/to/Autodesk.Forge.1.1.0.nupkg -Source /mycompany/repo/
+# or on nuget.org
+# nuget push /path/to/Autodesk.Forge.1.1.0.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey %NUGETAPIKEY%
 ```
 
 
