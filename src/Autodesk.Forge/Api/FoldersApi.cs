@@ -245,7 +245,7 @@ namespace Autodesk.Forge
         /// <param name="folderId">the &#x60;folder id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns></returns>
-        void PostFolderRelationshipsRef (string projectId, string folderId, CreateRef body);
+        dynamic PostFolderRelationshipsRef (string projectId, string folderId, CreateRef body);
 
         /// <summary>
         /// 
@@ -258,7 +258,7 @@ namespace Autodesk.Forge
         /// <param name="folderId">the &#x60;folder id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PostFolderRelationshipsRefWithHttpInfo (string projectId, string folderId, CreateRef body);
+        ApiResponse<dynamic> PostFolderRelationshipsRefWithHttpInfo (string projectId, string folderId, CreateRef body);
         #endregion Synchronous Operations
         #region Asynchronous Operations    
         /// <summary>
@@ -472,7 +472,7 @@ namespace Autodesk.Forge
         /// <param name="folderId">the &#x60;folder id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PostFolderRelationshipsRefAsync (string projectId, string folderId, CreateRef body);
+        System.Threading.Tasks.Task<dynamic> PostFolderRelationshipsRefAsync (string projectId, string folderId, CreateRef body);
 
         /// <summary>
         /// 
@@ -485,7 +485,7 @@ namespace Autodesk.Forge
         /// <param name="folderId">the &#x60;folder id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PostFolderRelationshipsRefAsyncWithHttpInfo (string projectId, string folderId, CreateRef body);
+        System.Threading.Tasks.Task<ApiResponse<dynamic>> PostFolderRelationshipsRefAsyncWithHttpInfo (string projectId, string folderId, CreateRef body);
         #endregion Asynchronous Operations
     }
 
@@ -1031,7 +1031,6 @@ namespace Autodesk.Forge
         {
              ApiResponse</*JsonApiCollection*/dynamic> localVarResponse = await GetFolderContentsAsyncWithHttpInfo(projectId, folderId, filterType, filterId, filterExtensionType, pageNumber, pageLimit);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -1391,7 +1390,6 @@ namespace Autodesk.Forge
         {
              ApiResponse</*JsonApiCollection*/dynamic> localVarResponse = await GetFolderRefsAsyncWithHttpInfo(projectId, folderId, filterType, filterId, filterExtensionType);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -1586,7 +1584,6 @@ namespace Autodesk.Forge
         {
              ApiResponse</*Refs*/dynamic> localVarResponse = await GetFolderRelationshipsRefsAsyncWithHttpInfo(projectId, folderId, filterType, filterId, filterRefType, filterDirection, filterExtensionType);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -1759,8 +1756,6 @@ namespace Autodesk.Forge
                 /*(Folder)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Folder)));
         }
 
-
-
         /// <summary>
         ///  Deletes or renames a folder in the &#x60;data&#x60; domain service
         /// </summary>
@@ -1876,7 +1871,8 @@ namespace Autodesk.Forge
         /// <returns>ApiResponse of Object</returns>
         public dynamic PostFolder (string projectId, CreateFolder body)
         {
-             return PostFolderWithHttpInfo(projectId, body);
+            ApiResponse<dynamic> localVarResponse = PostFolderWithHttpInfo (projectId, body);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2078,9 +2074,10 @@ namespace Autodesk.Forge
         /// <param name="folderId">the &#x60;folder id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns></returns>
-        public void PostFolderRelationshipsRef (string projectId, string folderId, CreateRef body)
+        public dynamic PostFolderRelationshipsRef (string projectId, string folderId, CreateRef body)
         {
-             PostFolderRelationshipsRefWithHttpInfo(projectId, folderId, body);
+            ApiResponse<dynamic> localVarResponse = PostFolderRelationshipsRefWithHttpInfo (projectId, folderId, body);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2091,7 +2088,7 @@ namespace Autodesk.Forge
         /// <param name="folderId">the &#x60;folder id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PostFolderRelationshipsRefWithHttpInfo (string projectId, string folderId, CreateRef body)
+        public ApiResponse<dynamic> PostFolderRelationshipsRefWithHttpInfo (string projectId, string folderId, CreateRef body)
         {
             // verify the required parameter 'projectId' is set
             if (projectId == null)
@@ -2185,10 +2182,10 @@ namespace Autodesk.Forge
         /// <param name="folderId">the &#x60;folder id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PostFolderRelationshipsRefAsync (string projectId, string folderId, CreateRef body)
+        public async System.Threading.Tasks.Task<dynamic> PostFolderRelationshipsRefAsync (string projectId, string folderId, CreateRef body)
         {
-             await PostFolderRelationshipsRefAsyncWithHttpInfo(projectId, folderId, body);
-
+            ApiResponse<dynamic> localVarResponse = await PostFolderRelationshipsRefAsyncWithHttpInfo(projectId, folderId, body);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2199,7 +2196,7 @@ namespace Autodesk.Forge
         /// <param name="folderId">the &#x60;folder id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PostFolderRelationshipsRefAsyncWithHttpInfo (string projectId, string folderId, CreateRef body)
+        public async System.Threading.Tasks.Task<ApiResponse<dynamic>> PostFolderRelationshipsRefAsyncWithHttpInfo (string projectId, string folderId, CreateRef body)
         {
             // verify the required parameter 'projectId' is set
             if (projectId == null)

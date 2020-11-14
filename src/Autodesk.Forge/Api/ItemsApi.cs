@@ -84,6 +84,7 @@ namespace Autodesk.Forge
         /// <param name="itemId">the &#x60;item id&#x60;</param>
         /// <returns>ApiResponse of Folder</returns>
         ApiResponse</*Folder*/dynamic> GetItemParentFolderWithHttpInfo (string projectId, string itemId);
+
         /// <summary>
         /// 
         /// </summary>
@@ -113,6 +114,40 @@ namespace Autodesk.Forge
         /// <param name="filterExtensionType">filter by the extension type (optional)</param>
         /// <returns>ApiResponse of JsonApiCollection</returns>
         ApiResponse</*JsonApiCollection*/dynamic> GetItemRefsWithHttpInfo (string projectId, string itemId, List<string> filterType = null, List<string> filterId = null, List<string> filterExtensionType = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns a collection of links for the given item_id. Custom relationships can be established between an item and other external resources residing outside the data domain service. A link’s href defines the target URI to access a resource.
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="itemId">the &#x60;item id&#x60;</param>
+        /// <param name="filterType">filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target (optional)</param>
+        /// <param name="filterId">filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target (optional)</param>
+        /// <param name="filterMimeType">Filter by mime type. (optional)</param>
+        /// <param name="filterExtensionType">filter by the extension type (optional)</param>
+        /// <returns>Links</returns>
+        /*Links*/
+        dynamic GetItemRelationshipsLinks (string projectId, string itemId, List<string> filterType = null, List<string> filterId = null, List<string> filterMimeType = null, List<string> filterExtensionType = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns a collection of links for the given item_id. Custom relationships can be established between an item and other external resources residing outside the data domain service. A link’s href defines the target URI to access a resource.
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="itemId">the &#x60;item id&#x60;</param>
+        /// <param name="filterType">filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target (optional)</param>
+        /// <param name="filterId">filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target (optional)</param>
+        /// <param name="filterMimeType">Filter by mime type. (optional)</param>
+        /// <param name="filterExtensionType">filter by the extension type (optional)</param>
+        /// <returns>ApiResponse of Links</returns>
+        ApiResponse</*Refs*/dynamic> GetItemRelationshipsLinksWithHttpInfo (string projectId, string itemId, List<string> filterType = null, List<string> filterId = null, List<string> filterMimeType = null, List<string> filterExtensionType = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -128,7 +163,8 @@ namespace Autodesk.Forge
         /// <param name="filterDirection">filter by the direction of the reference (optional)</param>
         /// <param name="filterExtensionType">filter by the extension type (optional)</param>
         /// <returns>Refs</returns>
-        /*Refs*/dynamic GetItemRelationshipsRefs (string projectId, string itemId, List<string> filterType = null, List<string> filterId = null, List<string> filterRefType = null, string filterDirection = null, List<string> filterExtensionType = null);
+        /*Refs*/
+        dynamic GetItemRelationshipsRefs (string projectId, string itemId, List<string> filterType = null, List<string> filterId = null, List<string> filterRefType = null, string filterDirection = null, List<string> filterExtensionType = null);
 
         /// <summary>
         /// 
@@ -146,6 +182,7 @@ namespace Autodesk.Forge
         /// <param name="filterExtensionType">filter by the extension type (optional)</param>
         /// <returns>ApiResponse of Refs</returns>
         ApiResponse</*Refs*/dynamic> GetItemRelationshipsRefsWithHttpInfo (string projectId, string itemId, List<string> filterType = null, List<string> filterId = null, List<string> filterRefType = null, string filterDirection = null, List<string> filterExtensionType = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -238,7 +275,7 @@ namespace Autodesk.Forge
         /// <param name="itemId">the &#x60;item id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns></returns>
-        void PostItemRelationshipsRef (string projectId, string itemId, CreateRef body);
+        dynamic PostItemRelationshipsRef (string projectId, string itemId, CreateRef body);
 
         /// <summary>
         /// 
@@ -251,7 +288,28 @@ namespace Autodesk.Forge
         /// <param name="itemId">the &#x60;item id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PostItemRelationshipsRefWithHttpInfo (string projectId, string itemId, CreateRef body);
+        ApiResponse<dynamic> PostItemRelationshipsRefWithHttpInfo (string projectId, string itemId, CreateRef body);
+
+        /// <summary>
+        ///  Updates the properties of the given item_id object.
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="itemId">the &#x60;item id&#x60;</param>
+        /// <param name="body">describe the ref to be created</param>
+        /// <returns></returns>
+        dynamic PatchItem (string projectId, string itemId, PatchItem body);
+
+        /// <summary>
+        /// Updates the properties of the given item_id object
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="itemId">the &#x60;item id&#x60;</param>
+        /// <param name="body">describe the ref to be created</param>
+        /// <returns>ApiResponse</returns>
+        ApiResponse<dynamic> PatchItemWithHttpInfo (string projectId, string itemId, PatchItem body);
+
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -329,6 +387,39 @@ namespace Autodesk.Forge
         /// <param name="filterExtensionType">filter by the extension type (optional)</param>
         /// <returns>Task of ApiResponse (JsonApiCollection)</returns>
         System.Threading.Tasks.Task<ApiResponse</*JsonApiCollection*/dynamic>> GetItemRefsAsyncWithHttpInfo (string projectId, string itemId, List<string> filterType = null, List<string> filterId = null, List<string> filterExtensionType = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns a collection of links for the given item_id. Custom relationships can be established between an item and other external resources residing outside the data domain service. A link’s href defines the target URI to access a resource.
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="itemId">the &#x60;item id&#x60;</param>
+        /// <param name="filterType">filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target (optional)</param>
+        /// <param name="filterId">filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target (optional)</param>
+        /// <param name="filterMimeType">Filter by mime type. (optional)</param>
+        /// <param name="filterExtensionType">filter by the extension type (optional)</param>
+        /// <returns>Links</returns>
+        System.Threading.Tasks.Task<dynamic> GetItemRelationshipsLinksAsync (string projectId, string itemId, List<string> filterType = null, List<string> filterId = null, List<string> filterMimeType = null, List<string> filterExtensionType = null);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns a collection of links for the given item_id. Custom relationships can be established between an item and other external resources residing outside the data domain service. A link’s href defines the target URI to access a resource.
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="itemId">the &#x60;item id&#x60;</param>
+        /// <param name="filterType">filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target (optional)</param>
+        /// <param name="filterId">filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target (optional)</param>
+        /// <param name="filterMimeType">Filter by mime type. (optional)</param>
+        /// <param name="filterExtensionType">filter by the extension type (optional)</param>
+        /// <returns>ApiResponse of Links</returns>
+        System.Threading.Tasks.Task<ApiResponse<dynamic>> GetItemRelationshipsLinksAsyncWithHttpInfo (string projectId, string itemId, List<string> filterType = null, List<string> filterId = null, List<string> filterMimeType = null, List<string> filterExtensionType = null);
+
         /// <summary>
         /// 
         /// </summary>
@@ -454,7 +545,7 @@ namespace Autodesk.Forge
         /// <param name="itemId">the &#x60;item id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PostItemRelationshipsRefAsync (string projectId, string itemId, CreateRef body);
+        System.Threading.Tasks.Task<dynamic> PostItemRelationshipsRefAsync (string projectId, string itemId, CreateRef body);
 
         /// <summary>
         /// 
@@ -467,7 +558,28 @@ namespace Autodesk.Forge
         /// <param name="itemId">the &#x60;item id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PostItemRelationshipsRefAsyncWithHttpInfo (string projectId, string itemId, CreateRef body);
+        System.Threading.Tasks.Task<ApiResponse<dynamic>> PostItemRelationshipsRefAsyncWithHttpInfo (string projectId, string itemId, CreateRef body);
+
+        /// <summary>
+        ///  Updates the properties of the given item_id object.
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="itemId">the &#x60;item id&#x60;</param>
+        /// <param name="body">describe the ref to be created</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task<dynamic> PatchItemAsync (string projectId, string itemId, PatchItem body);
+
+        /// <summary>
+        /// Updates the properties of the given item_id object.
+        /// </summary>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="itemId">the &#x60;item id&#x60;</param>
+        /// <param name="body">describe the ref to be created</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<dynamic>> PatchItemAsyncWithHttpInfo (string projectId, string itemId, PatchItem body);
+
         #endregion Asynchronous Operations
     }
 
@@ -675,7 +787,6 @@ namespace Autodesk.Forge
         {
              ApiResponse</*Item*/dynamic> localVarResponse = await GetItemAsyncWithHttpInfo(projectId, itemId);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -844,7 +955,6 @@ namespace Autodesk.Forge
         {
              ApiResponse</*Folder*/dynamic> localVarResponse = await GetItemParentFolderAsyncWithHttpInfo(projectId, itemId);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -1025,7 +1135,6 @@ namespace Autodesk.Forge
         {
              ApiResponse</*JsonApiCollection*/dynamic> localVarResponse = await GetItemRefsAsyncWithHttpInfo(projectId, itemId, filterType, filterId, filterExtensionType);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -1103,6 +1212,216 @@ namespace Autodesk.Forge
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 /*(JsonApiCollection)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(JsonApiCollection)));
             
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns a collection of links for the given item_id. Custom relationships can be established between an item and other external resources residing outside the data domain service. A link’s href defines the target URI to access a resource.
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="itemId">the &#x60;item id&#x60;</param>
+        /// <param name="filterType">filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target (optional)</param>
+        /// <param name="filterId">filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target (optional)</param>
+        /// <param name="filterMimeType">Filter by mime type. (optional)</param>
+        /// <param name="filterExtensionType">filter by the extension type (optional)</param>
+        /// <returns>Links</returns>
+        /*Links*/
+        public dynamic GetItemRelationshipsLinks (string projectId, string itemId, List<string> filterType = null, List<string> filterId = null, List<string> filterMimeType = null, List<string> filterExtensionType = null) {
+            ApiResponse</*Refs*/dynamic> localVarResponse = GetItemRelationshipsLinksWithHttpInfo (projectId, itemId, filterType, filterId, filterMimeType, filterExtensionType);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns a collection of links for the given item_id. Custom relationships can be established between an item and other external resources residing outside the data domain service. A link’s href defines the target URI to access a resource.
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="itemId">the &#x60;item id&#x60;</param>
+        /// <param name="filterType">filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target (optional)</param>
+        /// <param name="filterId">filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target (optional)</param>
+        /// <param name="filterMimeType">Filter by mime type. (optional)</param>
+        /// <param name="filterExtensionType">filter by the extension type (optional)</param>
+        /// <returns>ApiResponse of Links</returns>
+        public ApiResponse</*Refs*/dynamic> GetItemRelationshipsLinksWithHttpInfo (string projectId, string itemId, List<string> filterType = null, List<string> filterId = null, List<string> filterMimeType = null, List<string> filterExtensionType = null) {
+            // verify the required parameter 'projectId' is set
+            if ( projectId == null )
+                throw new ApiException (400, "Missing required parameter 'projectId' when calling ItemsApi->GetItemRelationshipsLinks");
+            // verify the required parameter 'itemId' is set
+            if ( itemId == null )
+                throw new ApiException (400, "Missing required parameter 'itemId' when calling ItemsApi->GetItemRelationshipsLinks");
+
+            var localVarPath = "/data/v1/projects/{project_id}/items/{item_id}/relationships/links";
+            var localVarPathParams = new Dictionary<String, String> ();
+            var localVarQueryParams = new Dictionary<String, String> ();
+            var localVarHeaderParams = new Dictionary<String, String> (Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String> ();
+            var localVarFileParams = new Dictionary<String, FileParameter> ();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String [] localVarHttpContentTypes = new String [] {
+                "application/vnd.api+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType (localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String [] localVarHttpHeaderAccepts = new String [] {
+                "application/vnd.api+json",
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept (localVarHttpHeaderAccepts);
+            if ( localVarHttpHeaderAccept != null )
+                localVarHeaderParams.Add ("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add ("format", "json");
+            if ( projectId != null )
+                localVarPathParams.Add ("project_id", Configuration.ApiClient.ParameterToString (projectId)); // path parameter
+            if ( itemId != null )
+                localVarPathParams.Add ("item_id", Configuration.ApiClient.ParameterToString (itemId)); // path parameter
+            if ( filterType != null )
+                localVarQueryParams.Add ("filter[type]", Configuration.ApiClient.ParameterToString (filterType)); // query parameter
+            if ( filterId != null )
+                localVarQueryParams.Add ("filter[id]", Configuration.ApiClient.ParameterToString (filterId)); // query parameter
+            if ( filterMimeType != null )
+                localVarQueryParams.Add ("filter[mimeType]", Configuration.ApiClient.ParameterToString (filterMimeType)); // query parameter
+            if ( filterExtensionType != null )
+                localVarQueryParams.Add ("filter[extension.type]", Configuration.ApiClient.ParameterToString (filterExtensionType)); // query parameter
+
+            // authentication (oauth2_access_code) required
+            // oauth required
+            if ( !String.IsNullOrEmpty (Configuration.AccessToken) ) {
+                localVarHeaderParams ["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi (localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if ( ExceptionFactory != null ) {
+                Exception exception = ExceptionFactory ("GetItemRelationshipsLinks", localVarResponse);
+                if ( exception != null )
+                    throw exception;
+            }
+
+            return new ApiResponse</*Links*/dynamic> (localVarStatusCode,
+                localVarResponse.Headers.ToDictionary (x => x.Name, x => x.Value.ToString ()),
+                /*(Links)*/ Configuration.ApiClient.Deserialize (localVarResponse, typeof (Refs)));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns a collection of links for the given item_id. Custom relationships can be established between an item and other external resources residing outside the data domain service. A link’s href defines the target URI to access a resource.
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="itemId">the &#x60;item id&#x60;</param>
+        /// <param name="filterType">filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target (optional)</param>
+        /// <param name="filterId">filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target (optional)</param>
+        /// <param name="filterMimeType">Filter by mime type. (optional)</param>
+        /// <param name="filterExtensionType">filter by the extension type (optional)</param>
+        /// <returns>Links</returns>
+        public async System.Threading.Tasks.Task<dynamic> GetItemRelationshipsLinksAsync (string projectId, string itemId, List<string> filterType = null, List<string> filterId = null, List<string> filterMimeType = null, List<string> filterExtensionType = null)
+        {
+             ApiResponse</*Refs*/dynamic> localVarResponse = await GetItemRelationshipsLinksAsyncWithHttpInfo (projectId, itemId, filterType, filterId, filterMimeType, filterExtensionType);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns a collection of links for the given item_id. Custom relationships can be established between an item and other external resources residing outside the data domain service. A link’s href defines the target URI to access a resource.
+        /// </remarks>
+        /// <exception cref="Autodesk.Forge.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="projectId">the &#x60;project id&#x60;</param>
+        /// <param name="itemId">the &#x60;item id&#x60;</param>
+        /// <param name="filterType">filter by the &#x60;type&#x60; of the &#x60;ref&#x60; target (optional)</param>
+        /// <param name="filterId">filter by the &#x60;id&#x60; of the &#x60;ref&#x60; target (optional)</param>
+        /// <param name="filterMimeType">Filter by mime type. (optional)</param>
+        /// <param name="filterExtensionType">filter by the extension type (optional)</param>
+        /// <returns>ApiResponse of Links</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<dynamic>> GetItemRelationshipsLinksAsyncWithHttpInfo (string projectId, string itemId, List<string> filterType = null, List<string> filterId = null, List<string> filterMimeType = null, List<string> filterExtensionType = null) {
+            // verify the required parameter 'projectId' is set
+            if ( projectId == null )
+                throw new ApiException (400, "Missing required parameter 'projectId' when calling ItemsApi->GetItemRelationshipsLinks");
+            // verify the required parameter 'itemId' is set
+            if ( itemId == null )
+                throw new ApiException (400, "Missing required parameter 'itemId' when calling ItemsApi->GetItemRelationshipsLinks");
+
+            var localVarPath = "/data/v1/projects/{project_id}/items/{item_id}/relationships/links";
+            var localVarPathParams = new Dictionary<String, String> ();
+            var localVarQueryParams = new Dictionary<String, String> ();
+            var localVarHeaderParams = new Dictionary<String, String> (Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String> ();
+            var localVarFileParams = new Dictionary<String, FileParameter> ();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String [] localVarHttpContentTypes = new String [] {
+                "application/vnd.api+json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType (localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String [] localVarHttpHeaderAccepts = new String [] {
+                "application/vnd.api+json",
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept (localVarHttpHeaderAccepts);
+            if ( localVarHttpHeaderAccept != null )
+                localVarHeaderParams.Add ("Accept", localVarHttpHeaderAccept);
+
+            // set "format" to json by default
+            // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
+            localVarPathParams.Add ("format", "json");
+            if ( projectId != null )
+                localVarPathParams.Add ("project_id", Configuration.ApiClient.ParameterToString (projectId)); // path parameter
+            if ( itemId != null )
+                localVarPathParams.Add ("item_id", Configuration.ApiClient.ParameterToString (itemId)); // path parameter
+            if ( filterType != null )
+                localVarQueryParams.Add ("filter[type]", Configuration.ApiClient.ParameterToString (filterType)); // query parameter
+            if ( filterId != null )
+                localVarQueryParams.Add ("filter[id]", Configuration.ApiClient.ParameterToString (filterId)); // query parameter
+            if ( filterMimeType != null )
+                localVarQueryParams.Add ("filter[mimeType]", Configuration.ApiClient.ParameterToString (filterMimeType)); // query parameter
+           if ( filterExtensionType != null )
+                localVarQueryParams.Add ("filter[extension.type]", Configuration.ApiClient.ParameterToString (filterExtensionType)); // query parameter
+
+            // authentication (oauth2_access_code) required
+            // oauth required
+            if ( !String.IsNullOrEmpty (Configuration.AccessToken) ) {
+                localVarHeaderParams ["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync (localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if ( ExceptionFactory != null ) {
+                Exception exception = ExceptionFactory ("GetItemRelationshipsRefs", localVarResponse);
+                if ( exception != null )
+                    throw exception;
+            }
+
+            return new ApiResponse</*Links*/dynamic> (localVarStatusCode,
+                localVarResponse.Headers.ToDictionary (x => x.Name, x => x.Value.ToString ()),
+                /*(Links)*/ Configuration.ApiClient.Deserialize (localVarResponse, typeof (Refs)));
         }
 
         /// <summary>
@@ -1220,7 +1539,6 @@ namespace Autodesk.Forge
         {
              ApiResponse</*Refs*/dynamic> localVarResponse = await GetItemRelationshipsRefsAsyncWithHttpInfo(projectId, itemId, filterType, filterId, filterRefType, filterDirection, filterExtensionType);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -1399,7 +1717,6 @@ namespace Autodesk.Forge
         {
              ApiResponse</*Version*/dynamic> localVarResponse = await GetItemTipAsyncWithHttpInfo(projectId, itemId);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -1592,7 +1909,6 @@ namespace Autodesk.Forge
         {
              ApiResponse</*Versions*/dynamic> localVarResponse = await GetItemVersionsAsyncWithHttpInfo(projectId, itemId, filterType, filterId, filterExtensionType, filterVersionNumber, pageNumber, pageLimit);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -1791,7 +2107,6 @@ namespace Autodesk.Forge
         {
              ApiResponse</*ItemCreated*/dynamic> localVarResponse = await PostItemAsyncWithHttpInfo(projectId, body);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -1891,9 +2206,9 @@ namespace Autodesk.Forge
         /// <param name="itemId">the &#x60;item id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public void PostItemRelationshipsRef (string projectId, string itemId, CreateRef body)
+        public dynamic PostItemRelationshipsRef (string projectId, string itemId, CreateRef body)
         {
-             PostItemRelationshipsRefWithHttpInfo(projectId, itemId, body);
+             return PostItemRelationshipsRefWithHttpInfo(projectId, itemId, body).Data;
         }
 
         /// <summary>
@@ -1904,7 +2219,7 @@ namespace Autodesk.Forge
         /// <param name="itemId">the &#x60;item id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PostItemRelationshipsRefWithHttpInfo (string projectId, string itemId, CreateRef body)
+        public ApiResponse<dynamic> PostItemRelationshipsRefWithHttpInfo (string projectId, string itemId, CreateRef body)
         {
             // verify the required parameter 'projectId' is set
             if (projectId == null)
@@ -1998,10 +2313,10 @@ namespace Autodesk.Forge
         /// <param name="itemId">the &#x60;item id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PostItemRelationshipsRefAsync (string projectId, string itemId, CreateRef body)
+        public async System.Threading.Tasks.Task<dynamic> PostItemRelationshipsRefAsync (string projectId, string itemId, CreateRef body)
         {
-             await PostItemRelationshipsRefAsyncWithHttpInfo(projectId, itemId, body);
-
+            ApiResponse<dynamic> localVarResponse = await PostItemRelationshipsRefAsyncWithHttpInfo(projectId, itemId, body);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2012,7 +2327,7 @@ namespace Autodesk.Forge
         /// <param name="itemId">the &#x60;item id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PostItemRelationshipsRefAsyncWithHttpInfo (string projectId, string itemId, CreateRef body)
+        public async System.Threading.Tasks.Task<ApiResponse<dynamic>> PostItemRelationshipsRefAsyncWithHttpInfo (string projectId, string itemId, CreateRef body)
         {
             // verify the required parameter 'projectId' is set
             if (projectId == null)
@@ -2108,7 +2423,7 @@ namespace Autodesk.Forge
         /// <returns>ApiResponse of Object(void)</returns>
         public dynamic PatchItem(string projectId, string itemId, PatchItem body)
         {
-            return PatchItemWithHttpInfo(projectId, itemId, body);
+            return PatchItemWithHttpInfo(projectId, itemId, body).Data;
         }
 
         /// <summary>
@@ -2213,10 +2528,10 @@ namespace Autodesk.Forge
         /// <param name="itemId">the &#x60;item id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PatchItemAsync(string projectId, string itemId, PatchItem body)
+        public async System.Threading.Tasks.Task<dynamic> PatchItemAsync(string projectId, string itemId, PatchItem body)
         {
-            await PatchItemAsyncWithHttpInfo(projectId, itemId, body);
-
+            ApiResponse<dynamic> localVarResponse = await PatchItemAsyncWithHttpInfo(projectId, itemId, body);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -2227,7 +2542,7 @@ namespace Autodesk.Forge
         /// <param name="itemId">the &#x60;item id&#x60;</param>
         /// <param name="body">describe the ref to be created</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PatchItemAsyncWithHttpInfo(string projectId, string itemId, PatchItem body)
+        public async System.Threading.Tasks.Task<ApiResponse<dynamic>> PatchItemAsyncWithHttpInfo(string projectId, string itemId, PatchItem body)
         {
             // verify the required parameter 'projectId' is set
             if (projectId == null)

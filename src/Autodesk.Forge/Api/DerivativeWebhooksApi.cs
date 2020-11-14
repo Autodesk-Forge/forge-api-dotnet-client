@@ -55,7 +55,7 @@ namespace Autodesk.Forge
         /// <param name="workflow">The workflow ID of a group of jobs.</param>
         /// <param name="hookAttribute">Custom metadata which will be less than 1KB in size.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<dynamic> CreateHookAsyncWithHttpInfo(DerivativeWebhookEvent eventType, string callbackUrl, string workflow, dynamic hookAttribute);
+        System.Threading.Tasks.Task<ApiResponse<dynamic>> CreateHookAsyncWithHttpInfo(DerivativeWebhookEvent eventType, string callbackUrl, string workflow, dynamic hookAttribute);
         /// <summary>
         /// Returns hooks for model derivate events.
         /// </summary>
@@ -230,7 +230,7 @@ namespace Autodesk.Forge
         /// <param name="workflow">The workflow ID of a group of jobs.</param>
         /// <param name="hookAttribute">Custom metadata which will be less than 1KB in size.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<dynamic> CreateHookAsyncWithHttpInfo(DerivativeWebhookEvent eventType, string callbackUrl, string workflow, dynamic hookAttribute = null)
+        public async System.Threading.Tasks.Task<ApiResponse<dynamic>> CreateHookAsyncWithHttpInfo(DerivativeWebhookEvent eventType, string callbackUrl, string workflow, dynamic hookAttribute = null)
         {
             // verify the required parameter 'urn' is set
             if (callbackUrl == null)

@@ -293,7 +293,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>ObjectDetails</returns>
-        /*ObjectDetails*/dynamic UploadChunk (string bucketKey, string objectName, int? contentLength, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string ifMatch = null);
+        /*ObjectDetails*/dynamic UploadChunk (string bucketKey, string objectName, int? contentLength, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string ifMatch = null, string contentType = "application/octet-stream");
 
         /// <summary>
         /// 
@@ -311,7 +311,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>ApiResponse of ObjectDetails</returns>
-        ApiResponse</*ObjectDetails*/dynamic> UploadChunkWithHttpInfo (string bucketKey, string objectName, int? contentLength, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string ifMatch = null);
+        ApiResponse</*ObjectDetails*/dynamic> UploadChunkWithHttpInfo (string bucketKey, string objectName, int? contentLength, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string ifMatch = null, string contentType = "application/octet-stream");
         /// <summary>
         /// 
         /// </summary>
@@ -326,7 +326,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>ObjectDetails</returns>
-        /*ObjectDetails*/dynamic UploadObject (string bucketKey, string objectName, int? contentLength, System.IO.Stream body, string contentDisposition = null, string ifMatch = null);
+        /*ObjectDetails*/dynamic UploadObject (string bucketKey, string objectName, int? contentLength, System.IO.Stream body, string contentDisposition = null, string ifMatch = null, string contentType = "application/octet-stream");
 
         /// <summary>
         /// 
@@ -342,7 +342,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>ApiResponse of ObjectDetails</returns>
-        ApiResponse</*ObjectDetails*/dynamic> UploadObjectWithHttpInfo (string bucketKey, string objectName, int? contentLength, System.IO.Stream body, string contentDisposition = null, string ifMatch = null);
+        ApiResponse</*ObjectDetails*/dynamic> UploadObjectWithHttpInfo (string bucketKey, string objectName, int? contentLength, System.IO.Stream body, string contentDisposition = null, string ifMatch = null, string contentType = "application/octet-stream");
         /// <summary>
         /// 
         /// </summary>
@@ -357,7 +357,7 @@ namespace Autodesk.Forge
         /// <param name="xAdsRegion">The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>ObjectDetails</returns>
-        /*ObjectDetails*/dynamic UploadSignedResource (string id, int? contentLength, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string ifMatch = null);
+        /*ObjectDetails*/dynamic UploadSignedResource (string id, int? contentLength, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string ifMatch = null, string contentType = "application/octet-stream");
 
         /// <summary>
         /// 
@@ -373,7 +373,7 @@ namespace Autodesk.Forge
         /// <param name="xAdsRegion">The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>ApiResponse of ObjectDetails</returns>
-        ApiResponse</*ObjectDetails*/dynamic> UploadSignedResourceWithHttpInfo (string id, int? contentLength, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string ifMatch = null);
+        ApiResponse</*ObjectDetails*/dynamic> UploadSignedResourceWithHttpInfo (string id, int? contentLength, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string ifMatch = null, string contentType = "application/octet-stream");
         /// <summary>
         /// 
         /// </summary>
@@ -388,7 +388,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="xAdsRegion">The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)</param>
         /// <returns>ObjectDetails</returns>
-        /*ObjectDetails*/dynamic UploadSignedResourcesChunk (string id, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null);
+        /*ObjectDetails*/dynamic UploadSignedResourcesChunk (string id, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string contentType = "application/octet-stream");
 
         /// <summary>
         /// 
@@ -404,7 +404,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="xAdsRegion">The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)</param>
         /// <returns>ApiResponse of ObjectDetails</returns>
-        ApiResponse</*ObjectDetails*/dynamic> UploadSignedResourcesChunkWithHttpInfo (string id, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null);
+        ApiResponse</*ObjectDetails*/dynamic> UploadSignedResourcesChunkWithHttpInfo (string id, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string contentType = "application/octet-stream");
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -662,7 +662,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>Task of ObjectDetails</returns>
-        System.Threading.Tasks.Task</*ObjectDetails*/dynamic> UploadChunkAsync (string bucketKey, string objectName, int? contentLength, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string ifMatch = null);
+        System.Threading.Tasks.Task</*ObjectDetails*/dynamic> UploadChunkAsync (string bucketKey, string objectName, int? contentLength, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string ifMatch = null, string contentType = "application/octet-stream");
 
         /// <summary>
         /// 
@@ -680,7 +680,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>Task of ApiResponse (ObjectDetails)</returns>
-        System.Threading.Tasks.Task<ApiResponse</*ObjectDetails*/dynamic>> UploadChunkAsyncWithHttpInfo (string bucketKey, string objectName, int? contentLength, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string ifMatch = null);
+        System.Threading.Tasks.Task<ApiResponse</*ObjectDetails*/dynamic>> UploadChunkAsyncWithHttpInfo (string bucketKey, string objectName, int? contentLength, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string ifMatch = null, string contentType = "application/octet-stream");
         /// <summary>
         /// 
         /// </summary>
@@ -695,7 +695,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>Task of ObjectDetails</returns>
-        System.Threading.Tasks.Task</*ObjectDetails*/dynamic> UploadObjectAsync (string bucketKey, string objectName, int? contentLength, System.IO.Stream body, string contentDisposition = null, string ifMatch = null);
+        System.Threading.Tasks.Task</*ObjectDetails*/dynamic> UploadObjectAsync (string bucketKey, string objectName, int? contentLength, System.IO.Stream body, string contentDisposition = null, string ifMatch = null, string contentType = "application/octet-stream");
 
         /// <summary>
         /// 
@@ -711,7 +711,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>Task of ApiResponse (ObjectDetails)</returns>
-        System.Threading.Tasks.Task<ApiResponse</*ObjectDetails*/dynamic>> UploadObjectAsyncWithHttpInfo (string bucketKey, string objectName, int? contentLength, System.IO.Stream body, string contentDisposition = null, string ifMatch = null);
+        System.Threading.Tasks.Task<ApiResponse</*ObjectDetails*/dynamic>> UploadObjectAsyncWithHttpInfo (string bucketKey, string objectName, int? contentLength, System.IO.Stream body, string contentDisposition = null, string ifMatch = null, string contentType = "application/octet-stream");
         /// <summary>
         /// 
         /// </summary>
@@ -726,7 +726,7 @@ namespace Autodesk.Forge
         /// <param name="xAdsRegion">The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>Task of ObjectDetails</returns>
-        System.Threading.Tasks.Task</*ObjectDetails*/dynamic> UploadSignedResourceAsync (string id, int? contentLength, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string ifMatch = null);
+        System.Threading.Tasks.Task</*ObjectDetails*/dynamic> UploadSignedResourceAsync (string id, int? contentLength, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string ifMatch = null, string contentType = "application/octet-stream");
 
         /// <summary>
         /// 
@@ -742,7 +742,7 @@ namespace Autodesk.Forge
         /// <param name="xAdsRegion">The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>Task of ApiResponse (ObjectDetails)</returns>
-        System.Threading.Tasks.Task<ApiResponse</*ObjectDetails*/dynamic>> UploadSignedResourceAsyncWithHttpInfo (string id, int? contentLength, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string ifMatch = null);
+        System.Threading.Tasks.Task<ApiResponse</*ObjectDetails*/dynamic>> UploadSignedResourceAsyncWithHttpInfo (string id, int? contentLength, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string ifMatch = null, string contentType = "application/octet-stream");
         /// <summary>
         /// 
         /// </summary>
@@ -757,7 +757,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="xAdsRegion">The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)</param>
         /// <returns>Task of ObjectDetails</returns>
-        System.Threading.Tasks.Task</*ObjectDetails*/dynamic> UploadSignedResourcesChunkAsync (string id, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null);
+        System.Threading.Tasks.Task</*ObjectDetails*/dynamic> UploadSignedResourcesChunkAsync (string id, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string contentType = "application/octet-stream");
 
         /// <summary>
         /// 
@@ -773,7 +773,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="xAdsRegion">The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)</param>
         /// <returns>Task of ApiResponse (ObjectDetails)</returns>
-        System.Threading.Tasks.Task<ApiResponse</*ObjectDetails*/dynamic>> UploadSignedResourcesChunkAsyncWithHttpInfo (string id, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null);
+        System.Threading.Tasks.Task<ApiResponse</*ObjectDetails*/dynamic>> UploadSignedResourcesChunkAsyncWithHttpInfo (string id, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string contentType = "application/octet-stream");
         #endregion Asynchronous Operations
     }
 
@@ -2536,9 +2536,9 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>ObjectDetails</returns>
-        public /*ObjectDetails*/dynamic UploadChunk (string bucketKey, string objectName, int? contentLength, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string ifMatch = null)
+        public /*ObjectDetails*/dynamic UploadChunk (string bucketKey, string objectName, int? contentLength, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string ifMatch = null, string contentType = "application/octet-stream")
         {
-             ApiResponse</*ObjectDetails*/dynamic> localVarResponse = UploadChunkWithHttpInfo(bucketKey, objectName, contentLength, contentRange, sessionId, body, contentDisposition, ifMatch);
+             ApiResponse</*ObjectDetails*/dynamic> localVarResponse = UploadChunkWithHttpInfo(bucketKey, objectName, contentLength, contentRange, sessionId, body, contentDisposition, ifMatch, contentType);
              return localVarResponse.Data;
         }
 
@@ -2555,7 +2555,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>ApiResponse of ObjectDetails</returns>
-        public ApiResponse< /*ObjectDetails*/dynamic > UploadChunkWithHttpInfo (string bucketKey, string objectName, int? contentLength, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string ifMatch = null)
+        public ApiResponse< /*ObjectDetails*/dynamic > UploadChunkWithHttpInfo (string bucketKey, string objectName, int? contentLength, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string ifMatch = null, string contentType = "application/octet-stream")
         {
             // verify the required parameter 'bucketKey' is set
             if (bucketKey == null)
@@ -2586,7 +2586,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/octet-stream"
+                contentType
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -2668,9 +2668,9 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>Task of ObjectDetails</returns>
-        public async System.Threading.Tasks.Task</*ObjectDetails*/dynamic> UploadChunkAsync (string bucketKey, string objectName, int? contentLength, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string ifMatch = null)
+        public async System.Threading.Tasks.Task</*ObjectDetails*/dynamic> UploadChunkAsync (string bucketKey, string objectName, int? contentLength, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string ifMatch = null, string contentType = "application/octet-stream")
         {
-             ApiResponse</*ObjectDetails*/dynamic> localVarResponse = await UploadChunkAsyncWithHttpInfo(bucketKey, objectName, contentLength, contentRange, sessionId, body, contentDisposition, ifMatch);
+             ApiResponse</*ObjectDetails*/dynamic> localVarResponse = await UploadChunkAsyncWithHttpInfo(bucketKey, objectName, contentLength, contentRange, sessionId, body, contentDisposition, ifMatch, contentType);
              return localVarResponse.Data;
 
         }
@@ -2688,7 +2688,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>Task of ApiResponse (ObjectDetails)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*ObjectDetails*/dynamic>> UploadChunkAsyncWithHttpInfo (string bucketKey, string objectName, int? contentLength, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string ifMatch = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*ObjectDetails*/dynamic>> UploadChunkAsyncWithHttpInfo (string bucketKey, string objectName, int? contentLength, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string ifMatch = null, string contentType = "application/octet-stream")
         {
             // verify the required parameter 'bucketKey' is set
             if (bucketKey == null)
@@ -2719,7 +2719,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/octet-stream"
+                contentType
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -2799,9 +2799,9 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>ObjectDetails</returns>
-        public /*ObjectDetails*/dynamic UploadObject (string bucketKey, string objectName, int? contentLength, System.IO.Stream body, string contentDisposition = null, string ifMatch = null)
+        public /*ObjectDetails*/dynamic UploadObject (string bucketKey, string objectName, int? contentLength, System.IO.Stream body, string contentDisposition = null, string ifMatch = null, string contentType = "application/octet-stream")
         {
-             ApiResponse</*ObjectDetails*/dynamic> localVarResponse = UploadObjectWithHttpInfo(bucketKey, objectName, contentLength, body, contentDisposition, ifMatch);
+             ApiResponse</*ObjectDetails*/dynamic> localVarResponse = UploadObjectWithHttpInfo(bucketKey, objectName, contentLength, body, contentDisposition, ifMatch, contentType);
              return localVarResponse.Data;
         }
 
@@ -2816,7 +2816,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>ApiResponse of ObjectDetails</returns>
-        public ApiResponse< /*ObjectDetails*/dynamic > UploadObjectWithHttpInfo (string bucketKey, string objectName, int? contentLength, System.IO.Stream body, string contentDisposition = null, string ifMatch = null)
+        public ApiResponse< /*ObjectDetails*/dynamic > UploadObjectWithHttpInfo (string bucketKey, string objectName, int? contentLength, System.IO.Stream body, string contentDisposition = null, string ifMatch = null, string contentType = "application/octet-stream")
         {
             // verify the required parameter 'bucketKey' is set
             if (bucketKey == null)
@@ -2841,7 +2841,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/octet-stream"
+                contentType
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -2919,9 +2919,9 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>Task of ObjectDetails</returns>
-        public async System.Threading.Tasks.Task</*ObjectDetails*/dynamic> UploadObjectAsync (string bucketKey, string objectName, int? contentLength, System.IO.Stream body, string contentDisposition = null, string ifMatch = null)
+        public async System.Threading.Tasks.Task</*ObjectDetails*/dynamic> UploadObjectAsync (string bucketKey, string objectName, int? contentLength, System.IO.Stream body, string contentDisposition = null, string ifMatch = null, string contentType = "application/octet-stream")
         {
-             ApiResponse</*ObjectDetails*/dynamic> localVarResponse = await UploadObjectAsyncWithHttpInfo(bucketKey, objectName, contentLength, body, contentDisposition, ifMatch);
+             ApiResponse</*ObjectDetails*/dynamic> localVarResponse = await UploadObjectAsyncWithHttpInfo(bucketKey, objectName, contentLength, body, contentDisposition, ifMatch, contentType);
              return localVarResponse.Data;
 
         }
@@ -2937,7 +2937,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>Task of ApiResponse (ObjectDetails)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*ObjectDetails*/dynamic>> UploadObjectAsyncWithHttpInfo (string bucketKey, string objectName, int? contentLength, System.IO.Stream body, string contentDisposition = null, string ifMatch = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*ObjectDetails*/dynamic>> UploadObjectAsyncWithHttpInfo (string bucketKey, string objectName, int? contentLength, System.IO.Stream body, string contentDisposition = null, string ifMatch = null, string contentType = "application/octet-stream")
         {
             // verify the required parameter 'bucketKey' is set
             if (bucketKey == null)
@@ -2962,7 +2962,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/octet-stream"
+                contentType
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -3040,9 +3040,9 @@ namespace Autodesk.Forge
         /// <param name="xAdsRegion">The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>ObjectDetails</returns>
-        public /*ObjectDetails*/dynamic UploadSignedResource (string id, int? contentLength, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string ifMatch = null)
+        public /*ObjectDetails*/dynamic UploadSignedResource (string id, int? contentLength, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string ifMatch = null, string contentType = "application/octet-stream")
         {
-             ApiResponse</*ObjectDetails*/dynamic> localVarResponse = UploadSignedResourceWithHttpInfo(id, contentLength, body, contentDisposition, xAdsRegion, ifMatch);
+             ApiResponse</*ObjectDetails*/dynamic> localVarResponse = UploadSignedResourceWithHttpInfo(id, contentLength, body, contentDisposition, xAdsRegion, ifMatch, contentType);
              return localVarResponse.Data;
         }
 
@@ -3057,7 +3057,7 @@ namespace Autodesk.Forge
         /// <param name="xAdsRegion">The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>ApiResponse of ObjectDetails</returns>
-        public ApiResponse< /*ObjectDetails*/dynamic > UploadSignedResourceWithHttpInfo (string id, int? contentLength, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string ifMatch = null)
+        public ApiResponse< /*ObjectDetails*/dynamic > UploadSignedResourceWithHttpInfo (string id, int? contentLength, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string ifMatch = null, string contentType = "application/octet-stream")
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -3079,7 +3079,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/octet-stream"
+                contentType
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -3157,9 +3157,9 @@ namespace Autodesk.Forge
         /// <param name="xAdsRegion">The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>Task of ObjectDetails</returns>
-        public async System.Threading.Tasks.Task</*ObjectDetails*/dynamic> UploadSignedResourceAsync (string id, int? contentLength, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string ifMatch = null)
+        public async System.Threading.Tasks.Task</*ObjectDetails*/dynamic> UploadSignedResourceAsync (string id, int? contentLength, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string ifMatch = null, string contentType = "application/octet-stream")
         {
-             ApiResponse</*ObjectDetails*/dynamic> localVarResponse = await UploadSignedResourceAsyncWithHttpInfo(id, contentLength, body, contentDisposition, xAdsRegion, ifMatch);
+             ApiResponse</*ObjectDetails*/dynamic> localVarResponse = await UploadSignedResourceAsyncWithHttpInfo(id, contentLength, body, contentDisposition, xAdsRegion, ifMatch, contentType);
              return localVarResponse.Data;
 
         }
@@ -3175,7 +3175,7 @@ namespace Autodesk.Forge
         /// <param name="xAdsRegion">The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)</param>
         /// <param name="ifMatch">If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  (optional)</param>
         /// <returns>Task of ApiResponse (ObjectDetails)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*ObjectDetails*/dynamic>> UploadSignedResourceAsyncWithHttpInfo (string id, int? contentLength, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string ifMatch = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*ObjectDetails*/dynamic>> UploadSignedResourceAsyncWithHttpInfo (string id, int? contentLength, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string ifMatch = null, string contentType = "application/octet-stream")
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -3197,7 +3197,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/octet-stream"
+                contentType
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -3275,9 +3275,9 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="xAdsRegion">The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)</param>
         /// <returns>ObjectDetails</returns>
-        public /*ObjectDetails*/dynamic UploadSignedResourcesChunk (string id, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null)
+        public /*ObjectDetails*/dynamic UploadSignedResourcesChunk (string id, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string contentType = "application/octet-stream")
         {
-             ApiResponse</*ObjectDetails*/dynamic> localVarResponse = UploadSignedResourcesChunkWithHttpInfo(id, contentRange, sessionId, body, contentDisposition, xAdsRegion);
+             ApiResponse</*ObjectDetails*/dynamic> localVarResponse = UploadSignedResourcesChunkWithHttpInfo(id, contentRange, sessionId, body, contentDisposition, xAdsRegion, contentType);
              return localVarResponse.Data;
         }
 
@@ -3292,7 +3292,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="xAdsRegion">The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)</param>
         /// <returns>ApiResponse of ObjectDetails</returns>
-        public ApiResponse< /*ObjectDetails*/dynamic > UploadSignedResourcesChunkWithHttpInfo (string id, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null)
+        public ApiResponse< /*ObjectDetails*/dynamic > UploadSignedResourcesChunkWithHttpInfo (string id, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string contentType = "application/octet-stream")
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -3317,7 +3317,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/octet-stream"
+                contentType
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -3395,9 +3395,9 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="xAdsRegion">The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)</param>
         /// <returns>Task of ObjectDetails</returns>
-        public async System.Threading.Tasks.Task</*ObjectDetails*/dynamic> UploadSignedResourcesChunkAsync (string id, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null)
+        public async System.Threading.Tasks.Task</*ObjectDetails*/dynamic> UploadSignedResourcesChunkAsync (string id, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string contentType = "application/octet-stream")
         {
-             ApiResponse</*ObjectDetails*/dynamic> localVarResponse = await UploadSignedResourcesChunkAsyncWithHttpInfo(id, contentRange, sessionId, body, contentDisposition, xAdsRegion);
+             ApiResponse</*ObjectDetails*/dynamic> localVarResponse = await UploadSignedResourcesChunkAsyncWithHttpInfo(id, contentRange, sessionId, body, contentDisposition, xAdsRegion, contentType);
              return localVarResponse.Data;
 
         }
@@ -3413,7 +3413,7 @@ namespace Autodesk.Forge
         /// <param name="contentDisposition">The suggested default filename when downloading this object to a file after it has been uploaded. (optional)</param>
         /// <param name="xAdsRegion">The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  (optional, default to US)</param>
         /// <returns>Task of ApiResponse (ObjectDetails)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*ObjectDetails*/dynamic>> UploadSignedResourcesChunkAsyncWithHttpInfo (string id, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*ObjectDetails*/dynamic>> UploadSignedResourcesChunkAsyncWithHttpInfo (string id, string contentRange, string sessionId, System.IO.Stream body, string contentDisposition = null, string xAdsRegion = null, string contentType = "application/octet-stream")
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -3438,7 +3438,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/octet-stream"
+                contentType
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 

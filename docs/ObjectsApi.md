@@ -704,6 +704,7 @@ Name | Type | Description  | Notes
  **body** | **System.IO.Stream****System.IO.Stream**|  | 
  **contentDisposition** | **string**| The suggested default filename when downloading this object to a file after it has been uploaded. | [optional] 
  **ifMatch** | **string**| If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  | [optional] 
+ **contentType** |  **string** | Content type for the upload | [optional] 
 
 ### Return type
 
@@ -778,6 +779,7 @@ Name | Type | Description  | Notes
  **body** | **System.IO.Stream****System.IO.Stream**|  | 
  **contentDisposition** | **string**| The suggested default filename when downloading this object to a file after it has been uploaded. | [optional] 
  **ifMatch** | **string**| If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  | [optional] 
+ **contentType** |  **string** | Content type for the upload | [optional] 
 
 ### Return type
 
@@ -852,6 +854,7 @@ Name | Type | Description  | Notes
  **contentDisposition** | **string**| The suggested default filename when downloading this object to a file after it has been uploaded. | [optional] 
  **xAdsRegion** | **string**| The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  | [optional] [default to US]
  **ifMatch** | **string**| If-Match header containing a SHA-1 hash of the bytes in the request body can be sent by the calling service or client application with the request. If present, OSS will use the value of If-Match header to verify that a SHA-1 calculated for the uploaded bytes server side matches what was sent in the header. If not, the request is failed with a status 412 Precondition Failed and the data is not written.  | [optional] 
+ **contentType** |  **string** | Content type for the upload | [optional] 
 
 ### Return type
 
@@ -926,6 +929,7 @@ Name | Type | Description  | Notes
  **body** | **System.IO.Stream****System.IO.Stream**|  | 
  **contentDisposition** | **string**| The suggested default filename when downloading this object to a file after it has been uploaded. | [optional] 
  **xAdsRegion** | **string**| The region where the bucket resides Acceptable values: &#x60;US&#x60;, &#x60;EMEA&#x60; Default is &#x60;US&#x60;  | [optional] [default to US]
+ **contentType** |  **string** | Content type for the upload | [optional] 
 
 ### Return type
 

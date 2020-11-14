@@ -198,9 +198,11 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <param name="xAdsForce">If true - force retrieve the object tree even though it failed to be retrieved or got timeout (got 404 with error message) previously.</param>
+        /// <param name="forceget">If true - To force get the large resource even if it exceeded the expected maximum length (20 MB).</param>
         /// <returns>Metadata</returns>
         /*Metadata*/
-        dynamic GetModelviewMetadata(string urn, string guid, string acceptEncoding = null);
+        dynamic GetModelviewMetadata (string urn, string guid, string acceptEncoding = null, bool xAdsForce = false, bool forceget = false);
 
         /// <summary>
         /// 
@@ -212,8 +214,10 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <param name="xAdsForce">If true - force retrieve the object tree even though it failed to be retrieved or got timeout (got 404 with error message) previously.</param>
+        /// <param name="forceget">If true - To force get the large resource even if it exceeded the expected maximum length (20 MB).</param>
         /// <returns>ApiResponse of Metadata</returns>
-        ApiResponse</*Metadata*/dynamic> GetModelviewMetadataWithHttpInfo(string urn, string guid, string acceptEncoding = null);
+        ApiResponse</*Metadata*/dynamic> GetModelviewMetadataWithHttpInfo(string urn, string guid, string acceptEncoding = null, bool xAdsForce = false, bool forceget = false);
 
         /// <summary>
         /// 
@@ -225,9 +229,12 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <param name="objectid">Object id which you want to query properties for.</param>
+        /// <param name="xAdsForce">If true - force retrieve the object tree even though it failed to be retrieved or got timeout (got 404 with error message) previously.</param>
+        /// <param name="forceget">If true - To force get the large resource even if it exceeded the expected maximum length (20 MB).</param>
         /// <returns>Metadata</returns>
         /*Metadata*/
-        dynamic GetModelviewProperties(string urn, string guid, string acceptEncoding = null);
+        dynamic GetModelviewProperties (string urn, string guid, string acceptEncoding = null, List<int> objectIds = null, bool xAdsForce = false, bool forceget = false);
 
         /// <summary>
         /// 
@@ -239,8 +246,11 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <param name="objectid">Object id which you want to query properties for.</param>
+        /// <param name="xAdsForce">If true - force retrieve the object tree even though it failed to be retrieved or got timeout (got 404 with error message) previously.</param>
+        /// <param name="forceget">If true - To force get the large resource even if it exceeded the expected maximum length (20 MB).</param>
         /// <returns>ApiResponse of Metadata</returns>
-        ApiResponse</*Metadata*/dynamic> GetModelviewPropertiesWithHttpInfo(string urn, string guid, string acceptEncoding = null);
+        ApiResponse</*Metadata*/dynamic> GetModelviewPropertiesWithHttpInfo(string urn, string guid, string acceptEncoding = null, List<int> objectIds = null, bool xAdsForce = false, bool forceget = false);
 
         /// <summary>
         /// 
@@ -453,8 +463,10 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <param name="xAdsForce">If true - force retrieve the object tree even though it failed to be retrieved or got timeout (got 404 with error message) previously.</param>
+        /// <param name="forceget">If true - To force get the large resource even if it exceeded the expected maximum length (20 MB).</param>
         /// <returns>Task of Metadata</returns>
-        System.Threading.Tasks.Task</*Metadata*/dynamic> GetModelviewMetadataAsync(string urn, string guid, string acceptEncoding = null);
+        System.Threading.Tasks.Task</*Metadata*/dynamic> GetModelviewMetadataAsync(string urn, string guid, string acceptEncoding = null, bool xAdsForce = false, bool forceget = false);
 
         /// <summary>
         /// 
@@ -466,8 +478,10 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <param name="xAdsForce">If true - force retrieve the object tree even though it failed to be retrieved or got timeout (got 404 with error message) previously.</param>
+        /// <param name="forceget">If true - To force get the large resource even if it exceeded the expected maximum length (20 MB).</param>
         /// <returns>Task of ApiResponse (Metadata)</returns>
-        System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewMetadataAsyncWithHttpInfo(string urn, string guid, string acceptEncoding = null);
+        System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewMetadataAsyncWithHttpInfo(string urn, string guid, string acceptEncoding = null, bool xAdsForce = false, bool forceget = false);
 
         /// <summary>
         /// 
@@ -479,8 +493,11 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <param name="objectid">Object id which you want to query properties for.</param>
+        /// <param name="xAdsForce">If true - force retrieve the object tree even though it failed to be retrieved or got timeout (got 404 with error message) previously.</param>
+        /// <param name="forceget">If true - To force get the large resource even if it exceeded the expected maximum length (20 MB).</param>
         /// <returns>Task of Metadata</returns>
-        System.Threading.Tasks.Task</*Metadata*/dynamic> GetModelviewPropertiesAsync(string urn, string guid, string acceptEncoding = null);
+        System.Threading.Tasks.Task</*Metadata*/dynamic> GetModelviewPropertiesAsync(string urn, string guid, string acceptEncoding = null, List<int> objectIds = null, bool xAdsForce = false, bool forceget = false);
 
         /// <summary>
         /// 
@@ -492,8 +509,11 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <param name="objectid">Object id which you want to query properties for.</param>
+        /// <param name="xAdsForce">If true - force retrieve the object tree even though it failed to be retrieved or got timeout (got 404 with error message) previously.</param>
+        /// <param name="forceget">If true - To force get the large resource even if it exceeded the expected maximum length (20 MB).</param>
         /// <returns>Task of ApiResponse (Metadata)</returns>
-        System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewPropertiesAsyncWithHttpInfo(string urn, string guid, string acceptEncoding = null);
+        System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewPropertiesAsyncWithHttpInfo(string urn, string guid, string acceptEncoding = null, List<int> objectIds = null, bool xAdsForce = false, bool forceget = false);
 
         /// <summary>
         /// 
@@ -1739,10 +1759,12 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <param name="xAdsForce">If true - force retrieve the object tree even though it failed to be retrieved or got timeout (got 404 with error message) previously.</param>
+        /// <param name="forceget">If true - To force get the large resource even if it exceeded the expected maximum length (20 MB).</param>
         /// <returns>Metadata</returns>
-        public /*Metadata*/dynamic GetModelviewMetadata(string urn, string guid, string acceptEncoding = null)
+        public /*Metadata*/dynamic GetModelviewMetadata(string urn, string guid, string acceptEncoding = null, bool xAdsForce = false, bool forceget = false)
         {
-            ApiResponse</*Metadata*/dynamic> localVarResponse = GetModelviewMetadataWithHttpInfo(urn, guid, acceptEncoding);
+            ApiResponse</*Metadata*/dynamic> localVarResponse = GetModelviewMetadataWithHttpInfo(urn, guid, acceptEncoding, xAdsForce, forceget);
             return localVarResponse.Data;
         }
 
@@ -1753,8 +1775,10 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <param name="xAdsForce">If true - force retrieve the object tree even though it failed to be retrieved or got timeout (got 404 with error message) previously.</param>
+        /// <param name="forceget">If true - To force get the large resource even if it exceeded the expected maximum length (20 MB).</param>
         /// <returns>ApiResponse of Metadata</returns>
-        public ApiResponse< /*Metadata*/dynamic> GetModelviewMetadataWithHttpInfo(string urn, string guid, string acceptEncoding = null)
+        public ApiResponse< /*Metadata*/dynamic> GetModelviewMetadataWithHttpInfo(string urn, string guid, string acceptEncoding = null, bool xAdsForce = false, bool forceget = false)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
@@ -1795,6 +1819,10 @@ namespace Autodesk.Forge
             if (urn != null) localVarPathParams.Add("urn", Configuration.ApiClient.ParameterToString(urn)); // path parameter
             if (guid != null) localVarPathParams.Add("guid", Configuration.ApiClient.ParameterToString(guid)); // path parameter
             if (acceptEncoding != null) localVarHeaderParams.Add("Accept-Encoding", Configuration.ApiClient.ParameterToString(acceptEncoding)); // header parameter
+            if ( xAdsForce != false )
+                localVarHeaderParams.Add ("x-ads-force", Configuration.ApiClient.ParameterToString (xAdsForce)); // header parameter
+            if ( forceget != false )
+                localVarQueryParams.Add ("forceget", Configuration.ApiClient.ParameterToString (forceget)); // query parameter
 
             // authentication (oauth2_access_code) required
             // oauth required
@@ -1835,10 +1863,12 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <param name="xAdsForce">If true - force retrieve the object tree even though it failed to be retrieved or got timeout (got 404 with error message) previously.</param>
+        /// <param name="forceget">If true - To force get the large resource even if it exceeded the expected maximum length (20 MB).</param>
         /// <returns>Task of Metadata</returns>
-        public async System.Threading.Tasks.Task</*Metadata*/dynamic> GetModelviewMetadataAsync(string urn, string guid, string acceptEncoding = null)
+        public async System.Threading.Tasks.Task</*Metadata*/dynamic> GetModelviewMetadataAsync(string urn, string guid, string acceptEncoding = null, bool xAdsForce = false, bool forceget = false)
         {
-            ApiResponse</*Metadata*/dynamic> localVarResponse = await GetModelviewMetadataAsyncWithHttpInfo(urn, guid, acceptEncoding);
+            ApiResponse</*Metadata*/dynamic> localVarResponse = await GetModelviewMetadataAsyncWithHttpInfo(urn, guid, acceptEncoding, xAdsForce, forceget);
             return localVarResponse.Data;
 
         }
@@ -1850,8 +1880,10 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <param name="xAdsForce">If true - force retrieve the object tree even though it failed to be retrieved or got timeout (got 404 with error message) previously.</param>
+        /// <param name="forceget">If true - To force get the large resource even if it exceeded the expected maximum length (20 MB).</param>
         /// <returns>Task of ApiResponse (Metadata)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewMetadataAsyncWithHttpInfo(string urn, string guid, string acceptEncoding = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewMetadataAsyncWithHttpInfo(string urn, string guid, string acceptEncoding = null, bool xAdsForce = false, bool forceget = false)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
@@ -1892,6 +1924,10 @@ namespace Autodesk.Forge
             if (urn != null) localVarPathParams.Add("urn", Configuration.ApiClient.ParameterToString(urn)); // path parameter
             if (guid != null) localVarPathParams.Add("guid", Configuration.ApiClient.ParameterToString(guid)); // path parameter
             if (acceptEncoding != null) localVarHeaderParams.Add("Accept-Encoding", Configuration.ApiClient.ParameterToString(acceptEncoding)); // header parameter
+            if ( xAdsForce != false )
+                localVarHeaderParams.Add ("x-ads-force", Configuration.ApiClient.ParameterToString (xAdsForce)); // header parameter
+            if ( forceget != false )
+                localVarQueryParams.Add ("forceget", Configuration.ApiClient.ParameterToString (forceget)); // query parameter
 
             // authentication (oauth2_access_code) required
             // oauth required
@@ -1932,10 +1968,13 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <param name="objectid">Object id which you want to query properties for.</param>
+        /// <param name="xAdsForce">If true - force retrieve the object tree even though it failed to be retrieved or got timeout (got 404 with error message) previously.</param>
+        /// <param name="forceget">If true - To force get the large resource even if it exceeded the expected maximum length (20 MB).</param>
         /// <returns>Metadata</returns>
-        public /*Metadata*/dynamic GetModelviewProperties(string urn, string guid, string acceptEncoding = null)
+        public /*Metadata*/dynamic GetModelviewProperties(string urn, string guid, string acceptEncoding = null, List<int> objectIds = null, bool xAdsForce = false, bool forceget = false)
         {
-            ApiResponse</*Metadata*/dynamic> localVarResponse = GetModelviewPropertiesWithHttpInfo(urn, guid, acceptEncoding);
+            ApiResponse</*Metadata*/dynamic> localVarResponse = GetModelviewPropertiesWithHttpInfo(urn, guid, acceptEncoding, objectIds, xAdsForce, forceget);
             return localVarResponse.Data;
         }
 
@@ -1946,8 +1985,11 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <param name="objectid">Object id which you want to query properties for.</param>
+        /// <param name="xAdsForce">If true - force retrieve the object tree even though it failed to be retrieved or got timeout (got 404 with error message) previously.</param>
+        /// <param name="forceget">If true - To force get the large resource even if it exceeded the expected maximum length (20 MB).</param>
         /// <returns>ApiResponse of Metadata</returns>
-        public ApiResponse< /*Metadata*/dynamic> GetModelviewPropertiesWithHttpInfo(string urn, string guid, string acceptEncoding = null)
+        public ApiResponse< /*Metadata*/dynamic> GetModelviewPropertiesWithHttpInfo(string urn, string guid, string acceptEncoding = null, List<int> objectIds = null, bool xAdsForce = false, bool forceget = false)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
@@ -1988,10 +2030,16 @@ namespace Autodesk.Forge
             if (urn != null) localVarPathParams.Add("urn", Configuration.ApiClient.ParameterToString(urn)); // path parameter
             if (guid != null) localVarPathParams.Add("guid", Configuration.ApiClient.ParameterToString(guid)); // path parameter
             if (acceptEncoding != null) localVarHeaderParams.Add("Accept-Encoding", Configuration.ApiClient.ParameterToString(acceptEncoding)); // header parameter
+            if ( xAdsForce != false )
+                localVarHeaderParams.Add ("x-ads-force", Configuration.ApiClient.ParameterToString (xAdsForce)); // header parameter
+            if ( forceget != false )
+                localVarQueryParams.Add ("forceget", Configuration.ApiClient.ParameterToString (forceget)); // query parameter
+            if ( objectIds != null )
+                localVarQueryParams.Add ("objectid", Configuration.ApiClient.ParameterToString (objectIds)); // query parameter
 
             // authentication (oauth2_access_code) required
             // oauth required
-            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            if ( !String.IsNullOrEmpty(Configuration.AccessToken))
             {
                 localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
             }
@@ -2028,10 +2076,13 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <param name="objectid">Object id which you want to query properties for.</param>
+        /// <param name="xAdsForce">If true - force retrieve the object tree even though it failed to be retrieved or got timeout (got 404 with error message) previously.</param>
+        /// <param name="forceget">If true - To force get the large resource even if it exceeded the expected maximum length (20 MB).</param>
         /// <returns>Task of Metadata</returns>
-        public async System.Threading.Tasks.Task</*Metadata*/dynamic> GetModelviewPropertiesAsync(string urn, string guid, string acceptEncoding = null)
+        public async System.Threading.Tasks.Task</*Metadata*/dynamic> GetModelviewPropertiesAsync(string urn, string guid, string acceptEncoding = null, List<int> objectIds = null, bool xAdsForce = false, bool forceget = false)
         {
-            ApiResponse</*Metadata*/dynamic> localVarResponse = await GetModelviewPropertiesAsyncWithHttpInfo(urn, guid, acceptEncoding);
+            ApiResponse</*Metadata*/dynamic> localVarResponse = await GetModelviewPropertiesAsyncWithHttpInfo(urn, guid, acceptEncoding, objectIds, xAdsForce, forceget);
             return localVarResponse.Data;
 
         }
@@ -2043,8 +2094,11 @@ namespace Autodesk.Forge
         /// <param name="urn">The Base64 (URL Safe) encoded design URN </param>
         /// <param name="guid">Unique model view ID. Call [GET {urn}/metadata](https://developer.autodesk.com/en/docs/model-derivative/v2/reference/http/urn-metadata-GET) to get the ID </param>
         /// <param name="acceptEncoding">If specified with &#x60;gzip&#x60; or &#x60;*&#x60;, content will be compressed and returned in a GZIP format.  (optional)</param>
+        /// <param name="objectid">Object id which you want to query properties for.</param>
+        /// <param name="xAdsForce">If true - force retrieve the object tree even though it failed to be retrieved or got timeout (got 404 with error message) previously.</param>
+        /// <param name="forceget">If true - To force get the large resource even if it exceeded the expected maximum length (20 MB).</param>
         /// <returns>Task of ApiResponse (Metadata)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewPropertiesAsyncWithHttpInfo(string urn, string guid, string acceptEncoding = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*Metadata*/dynamic>> GetModelviewPropertiesAsyncWithHttpInfo(string urn, string guid, string acceptEncoding = null, List<int> objectIds = null, bool xAdsForce = false, bool forceget = false)
         {
             // verify the required parameter 'urn' is set
             if (urn == null)
@@ -2085,6 +2139,12 @@ namespace Autodesk.Forge
             if (urn != null) localVarPathParams.Add("urn", Configuration.ApiClient.ParameterToString(urn)); // path parameter
             if (guid != null) localVarPathParams.Add("guid", Configuration.ApiClient.ParameterToString(guid)); // path parameter
             if (acceptEncoding != null) localVarHeaderParams.Add("Accept-Encoding", Configuration.ApiClient.ParameterToString(acceptEncoding)); // header parameter
+            if ( xAdsForce != false )
+                localVarHeaderParams.Add ("x-ads-force", Configuration.ApiClient.ParameterToString (xAdsForce)); // header parameter
+            if ( forceget != false )
+                localVarQueryParams.Add ("forceget", Configuration.ApiClient.ParameterToString (forceget)); // query parameter
+            if ( objectIds != null )
+                localVarQueryParams.Add ("objectid", Configuration.ApiClient.ParameterToString (objectIds)); // query parameter
 
             // authentication (oauth2_access_code) required
             // oauth required
