@@ -37,6 +37,7 @@ namespace Autodesk.Forge.Model.DesignAutomation.v3
     /// StatusCodeResult
     /// </summary>
     [DataContract]
+    [Obsolete("Please use NuGet package Autodesk.Forge.DesignAutomation instead")]
     public partial class StatusCodeResult :  IEquatable<StatusCodeResult>
     {
         /// <summary>

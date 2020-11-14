@@ -37,6 +37,7 @@ namespace Autodesk.Forge.Model.DesignAutomation.v3
     /// BadRequestObjectResult
     /// </summary>
     [DataContract]
+    [Obsolete("Please use NuGet package Autodesk.Forge.DesignAutomation instead")]
     public partial class BadRequestObjectResult :  IEquatable<BadRequestObjectResult>
     {
         /// <summary>

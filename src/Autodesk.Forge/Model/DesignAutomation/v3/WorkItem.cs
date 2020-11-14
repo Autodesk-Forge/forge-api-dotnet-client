@@ -38,6 +38,7 @@ namespace Autodesk.Forge.Model.DesignAutomation.v3
     /// A WorkItem is a specification of the processing job for an Activity, and it is submitted to and executed by an engine. Note that a WorkItem cannot be modified after it has been created. ( request only ).
     /// </summary>
     [DataContract]
+    [Obsolete("Please use NuGet package Autodesk.Forge.DesignAutomation instead")]
     public partial class WorkItem :  IEquatable<WorkItem>
     {
         /// <summary>

@@ -37,6 +37,7 @@ namespace Autodesk.Forge.Model.DesignAutomation.v3
     /// Signatures for various attributes in WorkItem.
     /// </summary>
     [DataContract]
+    [Obsolete("Please use NuGet package Autodesk.Forge.DesignAutomation instead")]
     public partial class WorkItemSignatures :  IEquatable<WorkItemSignatures>
     {
         /// <summary>
