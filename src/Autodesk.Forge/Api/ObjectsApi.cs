@@ -575,7 +575,7 @@ namespace Autodesk.Forge
         /// <param name="beginsWith">Provides a way to filter the based on object key name (optional)</param>
         /// <param name="startAt">Key to use as an offset to continue pagination This is typically the last bucket key found in a preceding GET buckets response  (optional)</param>
         /// <returns>Task of BucketObjects</returns>
-        System.Threading.Tasks.Task</*BucketObjects*/dynamic> GetObjectsAsync (string bucketKey, int? limit = null, string beginsWith = null, string startAt = null);
+        System.Threading.Tasks.Task</*BucketObjects*/dynamic> GetObjectsAsync (string bucketKey, long? limit = null, string beginsWith = null, string startAt = null);
 
         /// <summary>
         /// 
@@ -589,7 +589,7 @@ namespace Autodesk.Forge
         /// <param name="beginsWith">Provides a way to filter the based on object key name (optional)</param>
         /// <param name="startAt">Key to use as an offset to continue pagination This is typically the last bucket key found in a preceding GET buckets response  (optional)</param>
         /// <returns>Task of ApiResponse (BucketObjects)</returns>
-        System.Threading.Tasks.Task<ApiResponse</*BucketObjects*/dynamic>> GetObjectsAsyncWithHttpInfo (string bucketKey, int? limit = null, string beginsWith = null, string startAt = null);
+        System.Threading.Tasks.Task<ApiResponse</*BucketObjects*/dynamic>> GetObjectsAsyncWithHttpInfo (string bucketKey, long? limit = null, string beginsWith = null, string startAt = null);
         /// <summary>
         /// 
         /// </summary>
@@ -2080,7 +2080,7 @@ namespace Autodesk.Forge
         /// <param name="beginsWith">Provides a way to filter the based on object key name (optional)</param>
         /// <param name="startAt">Key to use as an offset to continue pagination This is typically the last bucket key found in a preceding GET buckets response  (optional)</param>
         /// <returns>Task of BucketObjects</returns>
-        public async System.Threading.Tasks.Task</*BucketObjects*/dynamic> GetObjectsAsync (string bucketKey, int? limit = null, string beginsWith = null, string startAt = null)
+        public async System.Threading.Tasks.Task</*BucketObjects*/dynamic> GetObjectsAsync (string bucketKey, long? limit = null, string beginsWith = null, string startAt = null)
         {
              ApiResponse</*BucketObjects*/dynamic> localVarResponse = await GetObjectsAsyncWithHttpInfo(bucketKey, limit, beginsWith, startAt);
              return localVarResponse.Data;
@@ -2096,7 +2096,7 @@ namespace Autodesk.Forge
         /// <param name="beginsWith">Provides a way to filter the based on object key name (optional)</param>
         /// <param name="startAt">Key to use as an offset to continue pagination This is typically the last bucket key found in a preceding GET buckets response  (optional)</param>
         /// <returns>Task of ApiResponse (BucketObjects)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*BucketObjects*/dynamic>> GetObjectsAsyncWithHttpInfo (string bucketKey, int? limit = null, string beginsWith = null, string startAt = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*BucketObjects*/dynamic>> GetObjectsAsyncWithHttpInfo (string bucketKey, long? limit = null, string beginsWith = null, string startAt = null)
         {
             // verify the required parameter 'bucketKey' is set
             if (bucketKey == null)

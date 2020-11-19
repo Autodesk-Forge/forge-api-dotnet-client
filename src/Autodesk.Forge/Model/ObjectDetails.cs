@@ -49,7 +49,7 @@ namespace Autodesk.Forge.Model
         /// <param name="Size">Object size.</param>
         /// <param name="ContentType">Object content-type.</param>
         /// <param name="Location">URL to download the object.</param>
-        public ObjectDetails(string BucketKey = null, string ObjectId = null, string ObjectKey = null, byte[] Sha1 = null, int? Size = null, string ContentType = null, string Location = null)
+        public ObjectDetails(string BucketKey = null, string ObjectId = null, string ObjectKey = null, byte[] Sha1 = null, long? Size = null, string ContentType = null, string Location = null)
         {
             this.BucketKey = BucketKey;
             this.ObjectId = ObjectId;
@@ -89,7 +89,7 @@ namespace Autodesk.Forge.Model
         /// </summary>
         /// <value>Object size</value>
         [DataMember(Name="size", EmitDefaultValue=false)]
-        public int? Size { get; set; }
+        public long? Size { get; set; }
         /// <summary>
         /// Object content-type
         /// </summary>
