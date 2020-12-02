@@ -21,7 +21,7 @@ and <a href="https://developer.autodesk.com/en/docs/design-automation/v2/overvie
 
 
 ### Requirements
-* .NET Framworks 4.5.2 or later
+* .NET Frameworks 4.5.2 or later
 * .NET Core 2.0 or later
 * A registered app on the <a href="https://developer.autodesk.com/myapps" target="_blank">Forge Developer portal</a>.
 * Building the API client library requires [Visual Studio 2015](https://www.visualstudio.com/downloads/) to be installed.
