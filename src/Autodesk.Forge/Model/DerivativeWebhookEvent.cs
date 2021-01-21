@@ -1,7 +1,7 @@
 /* 
  * Forge SDK
  *
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk?s expertise in design and engineering.
  *
  * OpenAPI spec version: 0.1.0
  * Contact: forge.help@autodesk.com
@@ -46,7 +46,8 @@ namespace Autodesk.Forge
 	
     public enum DerivativeWebhookEvent
     {
-        ExtractionFinished
+        ExtractionFinished,
+        ExtractionUpdated
     }
 }
 #pragma warning restore 1591

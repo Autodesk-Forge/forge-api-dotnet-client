@@ -1,0 +1,20 @@
+{
+  "profiles": {
+    "Sample": {
+      "commandName": "Project",
+      "commandLineArgs": "cleanup US US"
+    },
+    "Sample - cleanup US US": {
+      "commandName": "Project",
+      "commandLineArgs": "cleanup US US"
+    },
+    "Sample US US US": {
+      "commandName": "Project",
+      "commandLineArgs": "US US US"
+    },
+    "Sample EMEA EMEA EMEA": {
+      "commandName": "Project",
+      "commandLineArgs": "EMEA EMEA EMEA"
+    }
+  }
+}

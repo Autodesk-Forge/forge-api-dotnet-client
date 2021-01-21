@@ -591,9 +591,10 @@ namespace Autodesk.Forge
         /// Initializes a new instance of the <see cref="DerivativesApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public DerivativesApi(String basePath)
+        public DerivativesApi(String basePath, bool emeaRegion = false)
 		{
             this.Configuration = new Configuration(new ApiClient(basePath));
+            this.RegionIsEMEA = emeaRegion;
 
             ExceptionFactory = Autodesk.Forge.Client.Configuration.DefaultExceptionFactory;
 
@@ -610,12 +611,13 @@ namespace Autodesk.Forge
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public DerivativesApi(Configuration configuration = null)
+        public DerivativesApi(Configuration configuration = null, bool emeaRegion = false)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
             else
                 this.Configuration = configuration;
+			this.RegionIsEMEA = emeaRegion;
 
             ExceptionFactory = Autodesk.Forge.Client.Configuration.DefaultExceptionFactory;
 
@@ -631,15 +633,19 @@ namespace Autodesk.Forge
 		/// </summary>
 		/// <param name="urn">The resource URN on BIM360</param>
 		/// <returns>Path region fragment (string)</returns>
-        public static string GetBIM360Region (string urn)
-        {
-            string region = string.Empty;
-            if ( 
+        public static bool GetBIM360Region (string urn) {
+            return (
                    Base64Decode(urn).IndexOf("wipemea") > -1 // Old OSS bucket name
                 || Base64Decode(urn).IndexOf("wip.dm.emea") > -1 // New OSS bucket name
-            )
-                region = "regions/eu/";
-            return (region);
+            );
+        }
+
+        public static string GetRegionalizedURL (string url, string urn, bool regionIsEMEA) {
+            return (
+                regionIsEMEA || GetBIM360Region (urn) ? 
+                   url.Replace ("/modelderivative/v2/", "/modelderivative/v2/regions/eu/")
+                 : url
+            );
         }
 
 		/// <summary>
@@ -666,6 +672,12 @@ namespace Autodesk.Forge
         /// </summary>
         /// <value>An instance of the Configuration</value>
         public Configuration Configuration { get; set; }
+
+		/// <summary>
+		/// Gets or sets the cregion US / EMEA
+		/// </summary>
+		/// <value>EMEA = true, US = false - default to false</value>
+		public bool RegionIsEMEA { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -729,9 +741,7 @@ namespace Autodesk.Forge
             if (urn == null)
                 throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->DeleteManifest");
 
-            string region = DerivativesApi.GetBIM360Region(urn);
-
-            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/manifest";
+            var localVarPath = DerivativesApi.GetRegionalizedURL ("/modelderivative/v2/designdata/{urn}/manifest", urn, this.RegionIsEMEA);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -816,9 +826,7 @@ namespace Autodesk.Forge
             if (urn == null)
                 throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->DeleteManifest");
 
-            string region = DerivativesApi.GetBIM360Region(urn);
-
-            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/manifest";
+            var localVarPath = DerivativesApi.GetRegionalizedURL("/modelderivative/v2/designdata/{urn}/manifest", urn, this.RegionIsEMEA);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -911,9 +919,7 @@ namespace Autodesk.Forge
             if (derivativeUrn == null)
                 throw new ApiException(400, "Missing required parameter 'derivativeUrn' when calling DerivativesApi->GetDerivativeManifest");
 
-            string region = DerivativesApi.GetBIM360Region(urn);
-
-            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/manifest/{derivativeUrn}";
+            var localVarPath = DerivativesApi.GetRegionalizedURL ("/modelderivative/v2/designdata/{urn}/manifest/{derivativeUrn}", urn, this.RegionIsEMEA);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1007,9 +1013,7 @@ namespace Autodesk.Forge
             if (derivativeUrn == null)
                 throw new ApiException(400, "Missing required parameter 'derivativeUrn' when calling DerivativesApi->GetDerivativeManifest");
 
-            string region = DerivativesApi.GetBIM360Region(urn);
-
-            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/manifest/{derivativeUrn}";
+            var localVarPath = DerivativesApi.GetRegionalizedURL ("/modelderivative/v2/designdata/{urn}/manifest/{derivativeUrn}", urn, this.RegionIsEMEA);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1100,9 +1104,7 @@ namespace Autodesk.Forge
             if (derivativeUrn == null)
                 throw new ApiException(400, "Missing required parameter 'derivativeUrn' when calling DerivativesApi->GetDerivativeManifestHeaders");
 
-            string region = DerivativesApi.GetBIM360Region(urn);
-
-            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/manifest/{derivativeUrn}";
+            var localVarPath = DerivativesApi.GetRegionalizedURL("/modelderivative/v2/designdata/{urn}/manifest/{derivativeUrn}", urn, this.RegionIsEMEA);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1177,9 +1179,7 @@ namespace Autodesk.Forge
             if (derivativeUrn == null)
                 throw new ApiException(400, "Missing required parameter 'derivativeUrn' when calling DerivativesApi->GetDerivativeManifestHeaders");
 
-            string region = DerivativesApi.GetBIM360Region(urn);
-
-            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/manifest/{derivativeUrn}";
+            var localVarPath = DerivativesApi.GetRegionalizedURL("/modelderivative/v2/designdata/{urn}/manifest/{derivativeUrn}", urn, this.RegionIsEMEA);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1420,9 +1420,7 @@ namespace Autodesk.Forge
             if (urn == null)
                 throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->GetManifest");
 
-            string region = DerivativesApi.GetBIM360Region(urn);
-
-            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/manifest";
+            var localVarPath = DerivativesApi.GetRegionalizedURL("/modelderivative/v2/designdata/{urn}/manifest", urn, this.RegionIsEMEA);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1510,9 +1508,7 @@ namespace Autodesk.Forge
             if (urn == null)
                 throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->GetManifest");
 
-            string region = DerivativesApi.GetBIM360Region(urn);
-
-            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/manifest";
+            var localVarPath = DerivativesApi.GetRegionalizedURL("/modelderivative/v2/designdata/{urn}/manifest", urn, this.RegionIsEMEA);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1599,9 +1595,7 @@ namespace Autodesk.Forge
             if (urn == null)
                 throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->GetMetadata");
 
-            string region = DerivativesApi.GetBIM360Region(urn);
-
-            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/metadata";
+            var localVarPath = DerivativesApi.GetRegionalizedURL("/modelderivative/v2/designdata/{urn}/metadata", urn, this.RegionIsEMEA);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1689,9 +1683,7 @@ namespace Autodesk.Forge
             if (urn == null)
                 throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->GetMetadata");
 
-            string region = DerivativesApi.GetBIM360Region(urn);
-
-            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/metadata";
+            var localVarPath = DerivativesApi.GetRegionalizedURL("/modelderivative/v2/designdata/{urn}/metadata", urn, this.RegionIsEMEA);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -1787,9 +1779,7 @@ namespace Autodesk.Forge
             if (guid == null)
                 throw new ApiException(400, "Missing required parameter 'guid' when calling DerivativesApi->GetModelviewMetadata");
 
-            string region = DerivativesApi.GetBIM360Region(urn);
-
-            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/metadata/{guid}";
+            var localVarPath = DerivativesApi.GetRegionalizedURL("/modelderivative/v2/designdata/{urn}/metadata/{guid}", urn, this.RegionIsEMEA);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             localVarQueryParams.Add("forceget", "true");
@@ -1892,9 +1882,7 @@ namespace Autodesk.Forge
             if (guid == null)
                 throw new ApiException(400, "Missing required parameter 'guid' when calling DerivativesApi->GetModelviewMetadata");
 
-            string region = DerivativesApi.GetBIM360Region(urn);
-
-            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/metadata/{guid}";
+            var localVarPath = DerivativesApi.GetRegionalizedURL("/modelderivative/v2/designdata/{urn}/metadata/{guid}", urn, this.RegionIsEMEA);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             localVarQueryParams.Add("forceget", "true");
@@ -1998,9 +1986,7 @@ namespace Autodesk.Forge
             if (guid == null)
                 throw new ApiException(400, "Missing required parameter 'guid' when calling DerivativesApi->GetModelviewProperties");
 
-            string region = DerivativesApi.GetBIM360Region(urn);
-
-            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/metadata/{guid}/properties";
+            var localVarPath = DerivativesApi.GetRegionalizedURL("/modelderivative/v2/designdata/{urn}/metadata/{guid}/properties", urn, this.RegionIsEMEA);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             localVarQueryParams.Add("forceget", "true");
@@ -2107,9 +2093,7 @@ namespace Autodesk.Forge
             if (guid == null)
                 throw new ApiException(400, "Missing required parameter 'guid' when calling DerivativesApi->GetModelviewProperties");
 
-            string region = DerivativesApi.GetBIM360Region(urn);
-
-            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/metadata/{guid}/properties";
+            var localVarPath = DerivativesApi.GetRegionalizedURL("/modelderivative/v2/designdata/{urn}/metadata/{guid}/properties", urn, this.RegionIsEMEA);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             localVarQueryParams.Add("forceget", "true");
@@ -2206,9 +2190,7 @@ namespace Autodesk.Forge
             if (urn == null)
                 throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->GetThumbnail");
 
-            string region = DerivativesApi.GetBIM360Region(urn);
-
-            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/thumbnail";
+            var localVarPath = DerivativesApi.GetRegionalizedURL("/modelderivative/v2/designdata/{urn}/thumbnail", urn, this.RegionIsEMEA);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -2298,9 +2280,7 @@ namespace Autodesk.Forge
             if (urn == null)
                 throw new ApiException(400, "Missing required parameter 'urn' when calling DerivativesApi->GetThumbnail");
 
-            string region = DerivativesApi.GetBIM360Region(urn);
-
-            var localVarPath = "/modelderivative/v2/" + region + "designdata/{urn}/thumbnail";
+            var localVarPath = DerivativesApi.GetRegionalizedURL("/modelderivative/v2/designdata/{urn}/thumbnail", urn, this.RegionIsEMEA);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
