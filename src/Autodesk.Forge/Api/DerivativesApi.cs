@@ -2096,7 +2096,6 @@ namespace Autodesk.Forge
             var localVarPath = DerivativesApi.GetRegionalizedURL("/modelderivative/v2/designdata/{urn}/metadata/{guid}/properties", urn, this.RegionIsEMEA);
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
-            localVarQueryParams.Add("forceget", "true");
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
