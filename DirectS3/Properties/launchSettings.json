@@ -1,0 +1,17 @@
+{
+  "profiles": {
+    "WSL": {
+      "commandName": "WSL2",
+      "environmentVariables": {},
+      "distributionName": ""
+    },
+    "DirectS3 - cleanup US US": {
+      "commandName": "Project",
+      "commandLineArgs": "cleanup US US"
+    },
+    "DirectS3 - US US": {
+      "commandName": "Project",
+      "commandLineArgs": "US US"
+    }
+  }
+}

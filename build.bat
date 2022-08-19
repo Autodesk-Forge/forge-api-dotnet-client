@@ -14,16 +14,18 @@
 
 @echo off
 
-set FORGESDK_VERSION=1.9.0
-set RESTSHARP_VERSION=106.11.7
-set NEWTOWNSOFT_VERSION=12.0.3
+set FORGESDK_VERSION=1.9.1
+set RESTSHARP_VERSION=108.0.1
+set NEWTOWNSOFT_VERSION=13.0.1
 
 if "%VCINSTALLDIR%" == ""^
-  call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\Tools\VsDevCmd.bat"
+  call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
 ::set CSCPATH=%SYSTEMROOT%\Microsoft.NET\Framework\v4.0.30319
 
 if not exist ".\nuget.exe"^
   powershell -Command "(new-object System.Net.WebClient).DownloadFile('https://nuget.org/nuget.exe', '.\nuget.exe')"
+  
+nuget restore Autodesk.Forge.sln
 ::if not exist ".\packages\RestSharp.%RESTSHARP_VERSION%"^
 ::  .\nuget.exe install RestSharp -Version %RESTSHARP_VERSION% -OutputDirectory packages
 ::if not exist ".\packages\Newtonsoft.Json.%NEWTOWNSOFT_VERSION%"^

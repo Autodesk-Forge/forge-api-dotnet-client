@@ -29,8 +29,8 @@ limitations under the License.
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Autodesk.Forge.Test</RootNamespace>
     <AssemblyName>Autodesk.Forge.Test</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-	<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -208,8 +208,6 @@ limitations under the License.
     <Compile Include="Model\VersionRelationshipsTests.cs" />
     <Compile Include="Model\VersionsTests.cs" />
     <Compile Include="Model\VersionTests.cs" />
-    <Compile Include="obj\Debug\.NETFramework,Version=v4.6.AssemblyAttributes.cs" />
-    <Compile Include="obj\Release\.NETFramework,Version=v4.6.AssemblyAttributes.cs" />
   </ItemGroup>
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -220,13 +218,18 @@ limitations under the License.
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>12.0.3</Version>
+      <Version>13.0.1</Version>
     </PackageReference>
     <PackageReference Include="NUnit">
-      <Version>2.6.4</Version>
+      <Version>3.13.3</Version>
     </PackageReference>
     <PackageReference Include="RestSharp">
-      <Version>106.11.7</Version>
+      <Version>108.0.1</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\.editorconfig">
+      <Link>.editorconfig</Link>
+    </None>
   </ItemGroup>
 </Project>

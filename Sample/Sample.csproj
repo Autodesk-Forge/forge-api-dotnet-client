@@ -8,4 +8,10 @@
   <ItemGroup>
     <ProjectReference Include="..\src\Autodesk.Forge\Autodesk.Forge.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="test.nwd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

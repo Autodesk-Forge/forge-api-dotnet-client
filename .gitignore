@@ -18,6 +18,7 @@ build/
 .vs/
 
 # NuGet Packages
+nuget.exe
 *.nupkg
 # The packages folder can be ignored because of Package Restore
 **/packages/*

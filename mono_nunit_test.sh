@@ -26,7 +26,7 @@ mozroots --import --sync
 mono nuget.exe install src/Autodesk.Forge.Test/packages.config -o packages
 
 echo "[INFO] Install NUnit runners via NuGet"
-mono nuget.exe install NUnit.Runners -Version 2.6.4 -OutputDirectory packages 
+mono nuget.exe install NUnit.Runners -Version 3.13.3 -OutputDirectory packages 
 
 echo "[INFO] Build the solution and run the unit test"
 xbuild Autodesk.Forge.sln && \

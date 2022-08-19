@@ -1,5 +1,5 @@
-![.NET Framework](https://img.shields.io/badge/.NET%20Framework-4.5.2-blue.svg)
-![.NET Framework](https://img.shields.io/badge/.NET%20Core-2.0-blue.svg)
+![.NET Framework](https://img.shields.io/badge/.NET%20Framework-4.8.0-blue.svg)
+![.NET Framework](https://img.shields.io/badge/.NET%20Standard-2.0-blue.svg)
 ![Platforms](https://img.shields.io/badge/platform-windows|mac|linux-lightgray.svg)
 ![License](http://img.shields.io/:license-Apache-blue.svg)
 
@@ -21,15 +21,16 @@ and <a href="https://developer.autodesk.com/en/docs/design-automation/v2/overvie
 
 
 ### Requirements
-* .NET Frameworks 4.5.2 or later
-* .NET Core 2.0 or later
+* .NET Frameworks 4.8 or later
+* .NET Core 3.1 or later
+* .Net Standard 2.0 or later
 * A registered app on the <a href="https://developer.autodesk.com/myapps" target="_blank">Forge Developer portal</a>.
 * Building the API client library requires [Visual Studio 2015](https://www.visualstudio.com/downloads/) to be installed.
 
 
 ### Dependencies
-- [RestSharp](https://www.nuget.org/packages/RestSharp) 106.3.1 or later
-- [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) 11.0.2 or later
+- [RestSharp](https://www.nuget.org/packages/RestSharp) 108.0.1 or later
+- [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) 13.0.1 or later
 
 The DLLs included in the package may not be the latest version.
 We recommend using [NuGet](https://docs.nuget.org/consume/installing-nuget) to obtain the latest version of the packages:
@@ -46,15 +47,16 @@ Run the following command to generate the DLL:
 
 #### NuGet Deployment
 
-Install [nuget CLI](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools#nugetexe-cli), generate an API Key and [save](https://docs.microsoft.com/en-us/nuget/tools/cli-ref-setapikey). Build application in `Release` mode. Run the following (CLI):
+Install [nuget CLI](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools#nugetexe-cli), generate an API Key and [save](https://docs.microsoft.com/en-us/nuget/tools/cli-ref-setapikey). 
+Build application in `Release` mode. Run the following (CLI):
 
 ```bash
 nuget pack /path/to/forge-api-dotnet-client/src/Autodesk.Forge/Autodesk.Forge.nuspec -build
 # nuget pack "src/Autodesk.Forge/Autodesk.Forge.nuspec" -Prop Platform=AnyCPU -Prop Configuration=Release
 
-nuget push /path/to/Autodesk.Forge.1.1.0.nupkg -Source /mycompany/repo/
+nuget push /path/to/Autodesk.Forge.1.9.1.nupkg -Source /mycompany/repo/
 # or on nuget.org
-# nuget push /path/to/Autodesk.Forge.1.1.0.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey %NUGETAPIKEY%
+# nuget push /path/to/Autodesk.Forge.1.9.1.nupkg -Source https://api.nuget.org/v3/index.json -ApiKey %NUGETAPIKEY%
 ```
 
 

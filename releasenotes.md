@@ -1,8 +1,15 @@
 # Autodesk.Forge .NET package
 
+# 1.9.1
+* Moved to .Net Standard 2.0, and .Net Framework 4.8
+* Added support for .Net Core 3, .Net6.0
+* Added Direct S3 endpoints
+* Added uploadResource / downloadResources method to obfuscate Direct S3 workflows
+* Various bugfixes
+
 # 1.9.0
-* Added support for .NET Core 3 and 5
-* Added support for .NET Franwork 4.7.2 and 4.8
+* Added support for .Net Core 3 and 5
+* Added support for .Net Framework 4.7.2 and 4.8
 
 # 1.8.0
 * [DerivativeWebhooksApi.CreateHookAsyncWithHttpInfo should return Task<ApiResponse<dynamic>>](DerivativeWebhooksApi.CreateHookAsyncWithHttpInfo should return Task<ApiResponse<dynamic>>)
@@ -21,6 +28,7 @@
 * [FoldersApi.PostFolder should return ItemCreated ](https://github.com/Autodesk-Forge/forge-api-dotnet-client/issues/41)
 * []()
 * Various bugfixes
+
 # 1.7.1
 * Adding support for BIM360 OSS bucket name change
 

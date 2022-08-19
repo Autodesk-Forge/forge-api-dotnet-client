@@ -42,6 +42,11 @@ namespace Autodesk.Forge.Model {
 		}
 
 		#region Get/Set
+
+		public bool ContainsKey (string key) {
+			return (Dictionary.ContainsKey (key)) ;
+		}
+
 		public override bool TryGetMember (GetMemberBinder binder, out object result) {
 			// Converting the property name to lowercase so that property names become case-insensitive.
 			string name =binder.Name/*.ToLower ()*/ ;

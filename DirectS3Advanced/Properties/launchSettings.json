@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "WSL": {
+      "commandName": "WSL2",
+      "environmentVariables": {},
+      "distributionName": ""
+    },
+    "DirectS3Advanced - US US": {
+      "commandName": "Project",
+      "commandLineArgs": "US US"
+    }
+  }
+}
