@@ -273,7 +273,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/vnd.api+json"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -352,7 +352,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/vnd.api+json"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -429,7 +429,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/vnd.api+json"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -508,7 +508,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/vnd.api+json"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 

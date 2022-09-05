@@ -1,5 +1,9 @@
 # Autodesk.Forge .NET package
 
+# 1.9.2
+* Fixed Resharp vnd.api+json support in the API calls
+* Fixed ToJson() ProjectAPI AttributeExtension missing
+
 # 1.9.1
 * Moved to .Net Standard 2.0, and .Net Framework 4.8
 * Added support for .Net Core 3, .Net6.0

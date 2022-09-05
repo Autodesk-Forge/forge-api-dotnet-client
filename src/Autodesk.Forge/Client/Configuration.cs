@@ -86,8 +86,8 @@ namespace Autodesk.Forge.Client
 		}
 
 		public static int DefaultTimeout = 100000;
-		public static string DefaultUserAgent = "forge-apis/1.9.1 (.net)";
-		public const string Version = "1.9.1";
+		public static string DefaultUserAgent = "forge-apis/1.9.2 (.net)";
+		public const string Version = "1.9.2";
 
 		/// <summary>
 		/// Initializes a new instance of the Configuration class.
@@ -109,8 +109,26 @@ namespace Autodesk.Forge.Client
 		public static readonly ExceptionFactory DefaultExceptionFactory = (methodName, response) =>
 		{
 			int status = (int) response.StatusCode;
-			if (status >= 400) return new ApiException(status, String.Format("Error calling {0}: {1}", methodName, response.Content), response.Content);
-			if (status == 0) return new ApiException(status, String.Format("Error calling {0}: {1}", methodName, response.ErrorMessage), response.ErrorMessage);
+			if (status >= 400)
+				return (new ApiException(
+					status,
+					String.Format("Error calling {0}: {1}",
+						methodName,
+						String.IsNullOrEmpty(response.Content) ?
+							response.ErrorException.Message
+							: response.Content
+					),
+					response.Content
+				));
+			if (status == 0)
+				return (new ApiException (
+					status,
+					String.Format("Error calling {0}: {1}",
+						methodName,
+						response.ErrorMessage
+					),
+					response.ErrorMessage
+				));
 			return null;
 		};
 

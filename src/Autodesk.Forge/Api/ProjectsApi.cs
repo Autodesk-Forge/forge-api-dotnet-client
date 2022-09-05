@@ -424,7 +424,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/vnd.api+json"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -509,7 +509,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/vnd.api+json"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -594,7 +594,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/vnd.api+json"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -679,7 +679,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/vnd.api+json"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -763,7 +763,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/vnd.api+json"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -848,7 +848,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/vnd.api+json"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -932,7 +932,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/vnd.api+json"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1017,7 +1017,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/vnd.api+json"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1101,7 +1101,7 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/vnd.api+json"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1204,7 +1204,8 @@ namespace Autodesk.Forge
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/vnd.api+json"
+                //"application/vnd.api+json"
+                "application/json"
             };
             String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1258,7 +1259,8 @@ namespace Autodesk.Forge
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("PostStorage", localVarResponse);
-                if (exception != null) throw exception;
+                if (exception != null)
+                    throw exception;
             }
 
             return new ApiResponse</*StorageCreated*/dynamic>(localVarStatusCode,

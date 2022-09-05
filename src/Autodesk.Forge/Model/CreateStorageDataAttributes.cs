@@ -61,14 +61,14 @@ namespace Autodesk.Forge.Model
                 this.Name = Name;
             }
             // to ensure "Extension" is required (not null)
-            if (Extension == null)
-            {
-                throw new InvalidDataException("Extension is a required property for CreateStorageDataAttributes and cannot be null");
-            }
-            else
-            {
+            //if (Extension == null)
+            //{
+            //    throw new InvalidDataException("Extension is a required property for CreateStorageDataAttributes and cannot be null");
+            //}
+            //else
+            //{
                 this.Extension = Extension;
-            }
+            //}
         }
         
         /// <summary>
@@ -101,7 +101,13 @@ namespace Autodesk.Forge.Model
         /// <returns>JSON string presentation of the object</returns>
         public string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return (
+                JsonConvert.SerializeObject(
+                    this,
+                    Formatting.Indented,
+                    new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }
+                )
+            );
         }
 
         /// <summary>
