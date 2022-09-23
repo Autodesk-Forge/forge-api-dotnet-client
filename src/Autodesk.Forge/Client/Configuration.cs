@@ -36,8 +36,8 @@ namespace Autodesk.Forge.Client {
 	public class Configuration {
 
 		public static int DefaultTimeout = 100000;
-		public static string DefaultUserAgent = "forge-apis/1.9.6 (.net)";
-		public const string Version = "1.9.6";
+		public static string DefaultUserAgent = "forge-apis/1.9.7 (.net)";
+		public const string Version = "1.9.7";
 
 		/// <summary>
 		/// Gets or sets the default Configuration.

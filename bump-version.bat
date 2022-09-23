@@ -1,6 +1,6 @@
 @echo off
 
-set current_version=1.9.6
+set current_version=1.9.7
 for /f "tokens=1-3 delims=." %%i in ("%current_version%") do (
     set "pre=%%i"
     set "number=%%j"

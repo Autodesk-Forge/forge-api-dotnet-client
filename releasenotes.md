@@ -1,5 +1,8 @@
 # Autodesk.Forge .NET package
 
+# 1.9.7
+* Added IFC v3 pipeline option to SVF and SVF2 payloads
+
 # 1.9.6
 * Fixed the directs3 batch complete body size from int to long (large files)
 * Fixed the uploadResources method to keep the same uploadKey across multiples batches
