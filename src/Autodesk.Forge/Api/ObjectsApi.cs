@@ -4898,7 +4898,11 @@ namespace Autodesk.Forge {
 								record.objectKey,
 								record.uploadKey,
 								record.Length,
-								record.eTags
+								record.eTags,
+								record.xAdsMetaContentType,
+								record.xAdsMetaContentDisposition,
+								record.xAdsMetaContentEncoding,
+								record.xAdsMetaCacheControl
 							)
 						),
 						opts

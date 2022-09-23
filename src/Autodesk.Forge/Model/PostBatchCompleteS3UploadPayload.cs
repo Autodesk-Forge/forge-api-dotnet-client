@@ -69,7 +69,13 @@ namespace Autodesk.Forge.Model {
 		[JsonConstructorAttribute]
 		protected PostBatchCompleteS3UploadPayloadItem () { }
 
-		public PostBatchCompleteS3UploadPayloadItem (string objectKey, string uploadKey, long? size, List<string> eTags = null) {
+		public PostBatchCompleteS3UploadPayloadItem (
+			string objectKey, string uploadKey, long? size, List<string> eTags = null,
+			string xAdsMetaContentType = null,
+			string xAdsMetaContentDisposition = null,
+			string xAdsMetaContentEncoding = null,
+			string xAdsMetaCacheControl = null
+		) {
 			if ( String.IsNullOrEmpty (objectKey) )
 				throw new InvalidDataException ("objectKey is a required property for PostBatchCompleteS3UploadPayloadItem and cannot be null or empty");
 			if ( String.IsNullOrEmpty (uploadKey) )
@@ -78,6 +84,10 @@ namespace Autodesk.Forge.Model {
 			this.uploadKey = uploadKey;
 			this.size = size;
 			this.eTags = eTags;
+			this.xAdsMetaContentType = xAdsMetaContentType;
+			this.xAdsMetaContentDisposition = xAdsMetaContentDisposition;
+			this.xAdsMetaContentEncoding = xAdsMetaContentEncoding;
+			this.xAdsMetaCacheControl = xAdsMetaCacheControl;
 		}
 
 		public override string ToString () {

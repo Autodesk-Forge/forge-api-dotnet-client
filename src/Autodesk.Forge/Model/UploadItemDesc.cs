@@ -42,7 +42,11 @@ namespace Autodesk.Forge.Model {
 
 		public string objectKey { get; set; }
 		public string uploadKey { get; set; }
-		public List<string> eTags { get; set;}
+		public List<string> eTags { get; set; }
+		public string xAdsMetaContentType { get; set; }
+		public string xAdsMetaContentDisposition { get; set; }
+		public string xAdsMetaContentEncoding { get; set; }
+		public string xAdsMetaCacheControl { get; set; }
 
 		protected Stream dataStream = null;
 		protected byte [] dataBytes = null;
@@ -88,7 +92,11 @@ namespace Autodesk.Forge.Model {
 
 		public UploadItemDesc (
 			string objectKey,
-			dynamic data = null
+			dynamic data = null,
+			string xAdsMetaContentType = null,
+			string xAdsMetaContentDisposition = null,
+			string xAdsMetaContentEncoding = null,
+			string xAdsMetaCacheControl = null
 		) {
 			if ( objectKey == null )
 				throw new InvalidDataException ("objectKey is a required property for UploadItemDesc and cannot be null");
@@ -97,6 +105,11 @@ namespace Autodesk.Forge.Model {
 			this.objectKey = objectKey;
 			this.data = data;
 			this.uploadKey = null;
+
+			this.xAdsMetaContentType = xAdsMetaContentType;
+			this.xAdsMetaContentDisposition = xAdsMetaContentDisposition;
+			this.xAdsMetaContentEncoding = xAdsMetaContentEncoding;
+			this.xAdsMetaCacheControl = xAdsMetaCacheControl;
 		}
 
 		public byte[] chunk { get; set; }

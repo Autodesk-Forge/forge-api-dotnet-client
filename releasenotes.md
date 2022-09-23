@@ -1,5 +1,8 @@
 # Autodesk.Forge .NET package
 
+# 1.9.8
+* Added ADS optional modifiers for UploadItemDesc / uploadResources
+
 # 1.9.7
 * Added IFC v3 pipeline option to SVF and SVF2 payloads
 
