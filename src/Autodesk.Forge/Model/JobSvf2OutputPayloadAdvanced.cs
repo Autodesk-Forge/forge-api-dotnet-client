@@ -75,7 +75,12 @@ namespace Autodesk.Forge.Model
             /// Enum Modern for "modern"
             /// </summary>
             [EnumMember(Value = "modern")]
-            Modern
+            Modern,
+            /// <summary>
+            /// Enum Modern for "v3"
+            /// </summary>
+            [EnumMember(Value = "v3")]
+            V3
         }
 
         /// <summary>
