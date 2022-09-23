@@ -46,7 +46,7 @@ namespace Autodesk.Forge.Model {
 		public string uploadKey { get; set; }
 
 		[DataMember (Name = "size", EmitDefaultValue = false)]
-		public int? size { get; set; }
+		public long? size { get; set; }
 
 		[DataMember (Name = "eTags", EmitDefaultValue = false)]
 		public List<String> eTags { get; set; }
@@ -69,7 +69,7 @@ namespace Autodesk.Forge.Model {
 		[JsonConstructorAttribute]
 		protected PostBatchCompleteS3UploadPayloadItem () { }
 
-		public PostBatchCompleteS3UploadPayloadItem (string objectKey, string uploadKey, int? size, List<string> eTags = null) {
+		public PostBatchCompleteS3UploadPayloadItem (string objectKey, string uploadKey, long? size, List<string> eTags = null) {
 			if ( String.IsNullOrEmpty (objectKey) )
 				throw new InvalidDataException ("objectKey is a required property for PostBatchCompleteS3UploadPayloadItem and cannot be null or empty");
 			if ( String.IsNullOrEmpty (uploadKey) )

@@ -33,6 +33,7 @@ using System.Security.Cryptography;
 using System.Net.Http;
 using System.Diagnostics;
 using System.IO;
+using System.Net.Http.Headers;
 
 namespace Autodesk.Forge {
 	/// <summary>
@@ -40,6 +41,7 @@ namespace Autodesk.Forge {
 	/// </summary>
 	public interface IObjectsApi : IApiAccessor {
 		#region Synchronous Operations
+
 		/// <summary>
 		/// 
 		/// </summary>
@@ -1098,7 +1100,7 @@ namespace Autodesk.Forge {
 		/// <returns>Task of ApiResponse (dynamic)</returns>
 		System.Threading.Tasks.Task<ApiResponse<dynamic>> getS3UploadURLsAsyncWithHttpInfo (string bucketKey, PostBatchSignedS3UploadPayload body, Dictionary<string, object> opts = null);
 
-		// Workflows
+		// Workflow implementations
 
 		/// <summary>Download a resource.</summary>
 		/// <param name="bucketKey">{String} bucket key (will be URL-encoded automatically)</param>
@@ -1111,9 +1113,11 @@ namespace Autodesk.Forge {
 		/// <param name="opts.publicResourceFallback">{Boolean=false} Allows fallback to OSS signed URLs in case of unmerged resumable uploads.</param>
 		/// <param name="opts.useCdn">{Boolean=true} Will generate a CloudFront URL for the S3 object.</param>
 		/// <param name="opts.minutesExpiration">{Integer=2} The custom expiration time within the 1 to 60 minutes range, if not specified, default is 2 minutes.</param>
-		/// <param name="opts.onDownloadProgress">{Integer=2} (progressEvent) => {}</param>
+		/// <param name="opts.chunkSize">{Integer=0} Chunk size in Mb. Should not be below 5Mb. Default is 0, download file in one piece.</param>
+		/// <param name="onDownloadProgress">{DownloadItemsCallBack} (progressEvent) => {}</param>
+		/// <param name="onRefreshToken">{RefreshTokenCallBack} () => {}</param>
 		/// <returns>Task of ApiResponse (dynamic[])</returns>
-		System.Threading.Tasks.Task<List<DownloadItemDesc>> downloadResources (string bucketKey, List<DownloadItemDesc> objects, Dictionary<string, object> opts = null, DownloadItemsCallBack onDownloadProgress = null);
+		System.Threading.Tasks.Task<List<DownloadItemDesc>> downloadResources (string bucketKey, List<DownloadItemDesc> objects, Dictionary<string, object> opts = null, DownloadItemsCallBack onDownloadProgress = null, RefreshTokenCallBack onRefreshToken = null);
 
 		/// <summary>Upload a resource. If the specified object name already exists in the bucket, the uploaded content will overwrite the existing content for the bucket name/object name combination.</summary>
 		/// <param name="bucketKey">{String} bucket key (will be URL-encoded automatically)</param>
@@ -1135,9 +1139,12 @@ namespace Autodesk.Forge {
 		/// the form …s3-accelerate.amazonaws.com… vs …s3.amazonaws.com…).
 		/// When not specified, defaults to true. Providing non-boolean values will result in a 400 error.</param>
 		/// <param name="opts.minutesExpiration">{Integer=2} The custom expiration time within the 1 to 60 minutes range, if not specified, default is 2 minutes.</param>
-		/// <param name="opts.onUploadProgress">{Integer=2} (progressEvent) => {}</param>
+		/// <param name="onDownloadProgress">{DownloadItemsCallBack} (progressEvent) => {}</param>
+		/// <param name="onRefreshToken">{RefreshTokenCallBack} () => {}</param>
 		/// <returns>Task of ApiResponse (dynamic[])</returns>
-		System.Threading.Tasks.Task<List<UploadItemDesc>> uploadResources (string bucketKey, List<UploadItemDesc> objects, Dictionary<string, object> opts = null, UploadItemsCallBack onUploadProgress = null);
+		System.Threading.Tasks.Task<List<UploadItemDesc>> uploadResources (string bucketKey, List<UploadItemDesc> objects, Dictionary<string, object> opts = null, UploadItemsCallBack onUploadProgress = null, RefreshTokenCallBack onRefreshToken = null);
+
+		// Workflow implementations
 
 		#endregion Asynchronous Operations
 
@@ -4635,9 +4642,11 @@ namespace Autodesk.Forge {
 		/// <param name="opts.publicResourceFallback">{Boolean=false} Allows fallback to OSS signed URLs in case of unmerged resumable uploads.</param>
 		/// <param name="opts.useCdn">{Boolean=true} Will generate a CloudFront URL for the S3 object.</param>
 		/// <param name="opts.minutesExpiration">{Integer=2} The custom expiration time within the 1 to 60 minutes range, if not specified, default is 2 minutes.</param>
-		/// <param name="opts.onDownloadProgress">{Integer=2} (progressEvent) => {}</param>
+		/// <param name="opts.chunkSize">{Integer=0} Chunk size in Mb. Should not be below 5Mb. Default is 0, download file in one piece.</param>
+		/// <param name="onDownloadProgress">{DownloadItemsCallBack} (progressEvent) => {}</param>
+		/// <param name="onRefreshToken">{RefreshTokenCallBack} () => {}</param>
 		/// <returns>Task of ApiResponse (dynamic[])</returns>
-		public async System.Threading.Tasks.Task<List<DownloadItemDesc>> downloadResources (string bucketKey, List<DownloadItemDesc> objects, Dictionary<string, object> opts = null, DownloadItemsCallBack onDownloadProgress = null) {
+		public async System.Threading.Tasks.Task<List<DownloadItemDesc>> downloadResources (string bucketKey, List<DownloadItemDesc> objects, Dictionary<string, object> opts = null, DownloadItemsCallBack onDownloadProgress = null, RefreshTokenCallBack onRefreshToken = null) {
 			if ( String.IsNullOrEmpty (bucketKey) )
 				throw new ApiException (400, "Missing the required parameter 'bucketKey' when calling downloadResources");
 			if ( objects == null )
@@ -4656,15 +4665,18 @@ namespace Autodesk.Forge {
 
 			async System.Threading.Tasks.Task<long> requestSize (string _bucketKey, List<DownloadItemDesc> _objects) {
 				try {
+					if ( _this.Configuration.Bearer.isAboutToExpire () && onRefreshToken != null ) {
+						Bearer bearer = await onRefreshToken ();
+						if ( bearer != null )
+							_this.Configuration.Bearer = bearer;
+					}
 					PostBatchSignedS3DownloadPayload payload = new PostBatchSignedS3DownloadPayload ();
 					foreach ( DownloadItemDesc entry in _objects )
 						payload.requests.Add (new PostBatchSignedS3DownloadPayloadItem (entry.objectKey));
 					dynamic downloadParams = await _this.getS3DownloadURLsAsync (
 						_bucketKey,
 						payload,
-						new Dictionary<string, object> () {
-							{ "minutesExpiration", 1 }
-						}
+						opts
 					); // Automatically retries 429 and 500-599 responses
 
 					DynamicDictionary results = downloadParams ["results"];
@@ -4687,6 +4699,11 @@ namespace Autodesk.Forge {
 
 			async System.Threading.Tasks.Task<DownloadItemDesc> requestURL (string _bucketKey, DownloadItemDesc record) {
 				try {
+					if ( _this.Configuration.Bearer.isAboutToExpire () && onRefreshToken != null ) {
+						Bearer bearer = await onRefreshToken ();
+						if ( bearer != null )
+							_this.Configuration.Bearer = bearer;
+					}
 					record.downloadParams = await _this.getS3DownloadURLsAsync (
 						_bucketKey,
 						new PostBatchSignedS3DownloadPayload (
@@ -4717,7 +4734,7 @@ namespace Autodesk.Forge {
 					string responseType = "json";
 					if ( record.isStream )
 						responseType = "stream";
-					else if ( String.IsNullOrEmpty (record.responseType) )
+					else if ( !String.IsNullOrEmpty (record.responseType) )
 						responseType = record.responseType;
 
 					//HttpRequestMessage request = new HttpRequestMessage (HttpMethod.Get, record.downloadUrl);
@@ -4729,11 +4746,19 @@ namespace Autodesk.Forge {
 					//await httpClient.SendAsync (request);
 
 					HttpClient httpClient = new HttpClient ();
-					HttpResponseMessage response = await httpClient.GetAsync (record.downloadUrl);
+					//HttpResponseMessage response = await httpClient.GetAsync (record.downloadUrl);
+					HttpRequestMessage request = new HttpRequestMessage {
+						RequestUri = new Uri (record.downloadUrl),
+						Method = HttpMethod.Get
+					};
+					if ( record.headers != null && record.headers.ContainsKey ("Range") == true )
+						request.Headers.Range = record.headers ["Range"] as RangeHeaderValue;
+					HttpResponseMessage response = await httpClient.SendAsync (request);
+
 					if ( response.StatusCode == System.Net.HttpStatusCode.Forbidden ) {
 						record.downloadUrl = null;
 						return (null);
-					} else if ( response.StatusCode == System.Net.HttpStatusCode.OK ) {
+					} else if ( response.StatusCode == System.Net.HttpStatusCode.OK || (record.headers != null && record.headers.ContainsKey ("Range") == true && response.StatusCode == System.Net.HttpStatusCode.PartialContent) ) {
 					} else {
 						throw new ApiException (400, "Unexpected value");
 					}
@@ -4773,6 +4798,7 @@ namespace Autodesk.Forge {
 				onDownloadProgress (0f, TimeSpan.Zero, objects);
 			long totalSize = await requestSize (bucketKey, objects);
 			long dataRead = 0;
+			long ChunkSize = opts.ContainsKey ("chunkSize") ? (int)opts ["chunkSize"] << 20 : 5 << 20;
 			for ( int entry = 0 ; entry < objects.Count ; entry++ ) {
 				DownloadItemDesc record = objects [entry];
 			
@@ -4803,15 +4829,16 @@ namespace Autodesk.Forge {
 		/// <param name="object[].xAdsMetaContentEncoding">{String=} (x-ads-meta-Content-Encoding) The Content-Encoding value that OSS will store in the record for the uploaded object.</param>
 		/// <param name="object[].xAdsMetaCacheControl">{String=} (x-ads-meta-Cache-Control) The Cache-Control value that OSS will store in the record for the uploaded object.</param>
 		/// <param name="opts">{Object=} Optional parameters</param>
-		/// <param name="chunkSize">{Integer=5} Chunk size in Mb. Should not be below 5Mb.</param>
-		/// <param name="maxBatches">{Integer=25} Maximum batch to produces. Should not be above 25 or below 1.</param>
+		/// <param name="opts.chunkSize">{Integer=5} Chunk size in Mb. Should not be below 5Mb.</param>
+		/// <param name="opts.maxBatches">{Integer=25} Maximum batch to produces. Should not be above 25 or below 1.</param>
 		/// <param name="opts.useAcceleration">{Boolean=true} Whether or not to generate an accelerated signed URL (ie: URLs of 
 		/// the form …s3-accelerate.amazonaws.com… vs …s3.amazonaws.com…).
 		/// When not specified, defaults to true. Providing non-boolean values will result in a 400 error.</param>
 		/// <param name="opts.minutesExpiration">{Integer=2} The custom expiration time within the 1 to 60 minutes range, if not specified, default is 2 minutes.</param>
-		/// <param name="opts.onUploadProgress">{Integer=2} (progressEvent) => {}</param>
+		/// <param name="onDownloadProgress">{DownloadItemsCallBack} (progressEvent) => {}</param>
+		/// <param name="onRefreshToken">{RefreshTokenCallBack} () => {}</param>
 		/// <returns>Task of ApiResponse (dynamic[])</returns>
-		public async System.Threading.Tasks.Task<List<UploadItemDesc>> uploadResources (string bucketKey, List<UploadItemDesc> objects, Dictionary<string, object> opts = null, UploadItemsCallBack onUploadProgress = null) {
+		public async System.Threading.Tasks.Task<List<UploadItemDesc>> uploadResources (string bucketKey, List<UploadItemDesc> objects, Dictionary<string, object> opts = null, UploadItemsCallBack onUploadProgress = null, RefreshTokenCallBack onRefreshToken = null) {
 			if ( String.IsNullOrEmpty (bucketKey) )
 				throw new ApiException (400, "Missing the required parameter 'bucketKey' when calling uploadResources");
 			if ( objects == null )
@@ -4833,17 +4860,23 @@ namespace Autodesk.Forge {
 
 			async System.Threading.Tasks.Task<UploadItemDesc> requestURLs (string _bucketKey, UploadItemDesc record, int firstPart, int parts) {
 				try {
+					if ( _this.Configuration.Bearer.isAboutToExpire () && onRefreshToken != null ) {
+						Bearer bearer = await onRefreshToken ();
+						if ( bearer != null )
+							_this.Configuration.Bearer = bearer;
+					}
 					dynamic uploadParams = await _this.getS3UploadURLsAsync (
 						_bucketKey,
 						new PostBatchSignedS3UploadPayload (
-							new PostBatchSignedS3UploadPayloadItem (record.objectKey, firstPart, parts)
+							new PostBatchSignedS3UploadPayloadItem (record.objectKey, firstPart, parts, record.uploadKey)
 						),
 						opts
 					); // Automatically retries 429 and 500-599 responses
 
 					DynamicDictionary test = uploadParams ["results"] [record.objectKey] ["urls"];
 					record.uploadUrls = test.Items ().Select (x => (string)x.Value).ToList<string> ();
-					record.uploadKey = uploadParams ["results"] [record.objectKey] ["uploadKey"];
+					if ( record.uploadKey == null )
+						record.uploadKey = uploadParams ["results"] [record.objectKey] ["uploadKey"];
 				} catch ( Exception ex ) {
 					record.Error = true;
 					record.uploads = ex;
@@ -4853,13 +4886,18 @@ namespace Autodesk.Forge {
 
 			async System.Threading.Tasks.Task<dynamic> completeObjects (string _bucketKey, UploadItemDesc record) {
 				try {
+					if ( _this.Configuration.Bearer.isAboutToExpire () && onRefreshToken != null ) {
+						Bearer bearer = await onRefreshToken ();
+						if ( bearer != null )
+							_this.Configuration.Bearer = bearer;
+					}
 					record.completedResponse = await _this.completeS3UploadsAsync (
 						_bucketKey,
 						new PostBatchCompleteS3UploadPayload (
 							new PostBatchCompleteS3UploadPayloadItem (
 								record.objectKey,
 								record.uploadKey,
-								(int)record.Length,
+								record.Length,
 								record.eTags
 							)
 						),
@@ -4891,6 +4929,7 @@ namespace Autodesk.Forge {
 						record.uploadUrls = new List<string> ();
 						return (null);
 					} else if ( response.StatusCode == System.Net.HttpStatusCode.OK ) {
+						record.eTags.Add (response.Headers.ETag.Tag.Trim(new char [] { '\"' }));
 					} else {
 						throw new ApiException (400, "Unexpected value");
 					}
@@ -4902,11 +4941,11 @@ namespace Autodesk.Forge {
 				//return (null);
 			}
 
-			async System.Threading.Tasks.Task processChunk (string _bucketKey, UploadItemDesc record, int partsUploaded, int totalParts, int _MaxBatches, TimeSpan _timeOut) {
+			async System.Threading.Tasks.Task processChunk (string _bucketKey, UploadItemDesc record, long partsUploaded, long totalParts, long _MaxBatches, TimeSpan _timeOut) {
 				while ( true ) {
 					Debug.WriteLine ("Uploading part {0} {1} {2}/{3}", _bucketKey, record.objectKey, partsUploaded + 1, '/', totalParts);
 					if ( record.uploadUrls == null || record.uploadUrls.Count == 0 )
-						await requestURLs (_bucketKey, record, partsUploaded + 1, Math.Min (totalParts - partsUploaded, _MaxBatches));
+						await requestURLs (_bucketKey, record, (int)partsUploaded + 1, (int)Math.Min (totalParts - partsUploaded, _MaxBatches));
 
 					string url = record.uploadUrls [0];
 					record.uploadUrls.RemoveAt (0);
@@ -4919,8 +4958,8 @@ namespace Autodesk.Forge {
 			DateTime startTS = DateTime.Now;
 			long totalSize = objects.Sum (f => f.Length);
 			long dataSent = 0;
-			int ChunkSize = opts.ContainsKey ("chunkSize") ? (int)opts ["chunkSize"] << 20 : 5 << 20;
-			int MaxBatches = opts.ContainsKey ("maxBatches") ? (int)opts ["maxBatches"] : 25;
+			long ChunkSize = opts.ContainsKey ("chunkSize") ? (int)opts ["chunkSize"] << 20 : 5 << 20;
+			long MaxBatches = opts.ContainsKey ("maxBatches") ? (int)opts ["maxBatches"] : 25;
 			if ( onUploadProgress != null )
 				onUploadProgress (0f, TimeSpan.Zero, objects);
 			TimeSpan timeOut = opts.ContainsKey ("TimeOut") ? (TimeSpan)opts ["TimeOut"] : TimeSpan.FromSeconds (100);
@@ -4928,8 +4967,9 @@ namespace Autodesk.Forge {
 				UploadItemDesc record = objects [entry];
 				if ( record.isStream && record.Length == 0 )
 					throw new ApiException (400, "Missing parameter length for a stream object");
-				int totalParts = (int)Math.Ceiling ((decimal)record.Length / ChunkSize);
-				int partsUploaded = 0;
+				long totalParts = (int)Math.Ceiling ((decimal)record.Length / ChunkSize);
+				record.eTags = new List<string> ((int)totalParts);
+				long partsUploaded = 0;
 				if ( record.isStream ) {
 					while ( partsUploaded < totalParts ) {
 						//record.chunk = record.data;
@@ -4963,11 +5003,11 @@ namespace Autodesk.Forge {
 				await completeObjects (bucketKey, record);
 			}
 			if ( onUploadProgress != null )
-				onUploadProgress (1f, DateTime.Now - startTS, objects);
+				onUploadProgress (1.0f, DateTime.Now - startTS, objects);
 			return (objects);
 		}
 
-		// Workflows
+		// Workflow implementations
 
 		#endregion
 

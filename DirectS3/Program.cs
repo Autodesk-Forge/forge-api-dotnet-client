@@ -42,12 +42,13 @@ namespace DirectS3 {
 			Scope.DataRead, Scope.DataWrite, Scope.DataCreate, Scope.DataSearch,
 			Scope.BucketCreate, Scope.BucketRead, Scope.BucketUpdate, Scope.BucketDelete
 		};
-		protected static string AccessToken { get; private set; } = "";
 		protected static string BucketKey { get { return ("forge_sample_" + FORGE_CLIENT_ID.ToLower () + "-" + region.ToString ().ToLower ()); } }
 		protected static string ObjectKey { get { return ("test.nwd"); } }
 
 		protected static Region region { get; set; } = Region.US;
 
+		// We use the same Bearer token for upload and download here,
+		// but we should usually have different bearers with different scopes
 		protected static BucketsApi BucketAPI = new BucketsApi ();
 		protected static ObjectsApi ObjectsAPI = new ObjectsApi ();
 
@@ -56,16 +57,13 @@ namespace DirectS3 {
 		#region Forge
 		private async static Task<ApiResponse<dynamic>?> oauthExecAsync () {
 			try {
-				AccessToken = "";
 				TwoLeggedApi _twoLeggedApi = new TwoLeggedApi ();
-				ApiResponse<dynamic> bearer = await _twoLeggedApi.AuthenticateAsyncWithHttpInfo (
-					FORGE_CLIENT_ID, FORGE_CLIENT_SECRET, oAuthConstants.CLIENT_CREDENTIALS, SCOPES);
+				ApiResponse<dynamic> bearer = await _twoLeggedApi.AuthenticateAsyncWithHttpInfo (FORGE_CLIENT_ID, FORGE_CLIENT_SECRET, oAuthConstants.CLIENT_CREDENTIALS, SCOPES);
 				httpErrorHandler (bearer, "Failed to get your token");
 
-				AccessToken = bearer.Data.access_token;
-				BucketAPI.Configuration.AccessToken = AccessToken;
-				ObjectsAPI.Configuration.AccessToken = AccessToken;
-				
+				BucketAPI.Configuration.Bearer = new Bearer (bearer);
+				ObjectsAPI.Configuration.Bearer = new Bearer (bearer);
+
 				return (bearer);
 			} catch ( Exception ex ) {
 				Console.WriteLine ("Exception when calling TwoLeggedApi.AuthenticateAsyncWithHttpInfo : " + ex.Message);
@@ -145,11 +143,11 @@ namespace DirectS3 {
 		private async static Task<string?> UploadObject2Bucket () {
 			try {
 				Console.WriteLine ("**** Uploading object: " + ObjectKey);
-				dynamic response = await ObjectsAPI.getS3UploadURLAsyncWithHttpInfo(BucketKey, ObjectKey);
+				dynamic response = await ObjectsAPI.getS3UploadURLAsyncWithHttpInfo (BucketKey, ObjectKey);
 				httpErrorHandler (response, "Failed to request a upload url");
 				//response.Data ['uploadKey']
 				//response.Data ['urls'] [0]
-				response = await UploadBinaryContent(response.Data ["urls"] [0], ObjectKey);
+				response = await UploadBinaryContent (response.Data ["urls"] [0], ObjectKey);
 				if ( response != true )
 					Console.WriteLine ("Failed to upload file");
 				return (BuildURN (BucketKey, ObjectKey));
@@ -192,7 +190,7 @@ namespace DirectS3 {
 			try {
 				Console.WriteLine ("**** Getting Direct S3 URLs: " + ObjectKey);
 
-				List<PostBatchSignedS3DownloadPayloadItem> items = new List<PostBatchSignedS3DownloadPayloadItem>() {
+				List<PostBatchSignedS3DownloadPayloadItem> items = new List<PostBatchSignedS3DownloadPayloadItem> () {
 					new PostBatchSignedS3DownloadPayloadItem(ObjectKey)
 				};
 				PostBatchSignedS3DownloadPayload payload = new PostBatchSignedS3DownloadPayload (items);
@@ -295,7 +293,7 @@ namespace DirectS3 {
 		#region US / EMEA processes
 		static async Task CleanUP () {
 			Console.WriteLine ("Running cleanup");
-			
+
 			dynamic? response = await oauthExecAsync ();
 			if ( response == null )
 				return;
@@ -306,7 +304,7 @@ namespace DirectS3 {
 		static async Task<string?> TryWorkflow (Region storage = Region.US) {
 			Console.WriteLine ("Running with Storage: " + storage.ToString ());
 			region = storage;
-			
+
 			dynamic? response = await oauthExecAsync ();
 			if ( response == null )
 				return (null);
@@ -320,15 +318,15 @@ namespace DirectS3 {
 			//response = BuildURN(BucketKey, ObjectKey);
 			string urn = SafeBase64Encode (response);
 
-			response = await GetBrowserURL2Download();
+			response = await GetBrowserURL2Download ();
 			if ( response != null )
 				Console.WriteLine ("You can download the file from your browser using " + response);
 			// Same idea but using multiple uRL approach
-			response = await GetObjectURLs();
+			response = await GetObjectURLs ();
 			if ( response == null )
 				return (null);
 			response = await DownloadBinaryContent (response, ObjectKey);
-			
+
 			// Now do whatever you want...
 
 			return (urn);

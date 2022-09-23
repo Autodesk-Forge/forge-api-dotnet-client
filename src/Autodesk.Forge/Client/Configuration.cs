@@ -1,7 +1,7 @@
 /* 
  * Forge SDK
  *
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk?s expertise in design and engineering.
  *
 
  * Contact: forge.help@autodesk.com
@@ -26,76 +26,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Autodesk.Forge.Model;
 
-namespace Autodesk.Forge.Client
-{
+namespace Autodesk.Forge.Client {
+
 	/// <summary>
 	/// Represents a set of configuration settings
 	/// </summary>
-	public class Configuration
-	{
-		/// <summary>
-		/// Initializes a new instance of the Configuration class with different settings
-		/// </summary>
-		/// <param name="apiClient">Api client</param>
-		/// <param name="defaultHeader">Dictionary of default HTTP header</param>
-		/// <param name="username">Username</param>
-		/// <param name="password">Password</param>
-		/// <param name="accessToken">accessToken</param>
-		/// <param name="apiKey">Dictionary of API key</param>
-		/// <param name="apiKeyPrefix">Dictionary of API key prefix</param>
-		/// <param name="tempFolderPath">Temp folder path</param>
-		/// <param name="dateTimeFormat">DateTime format string</param>
-		/// <param name="timeout">HTTP connection timeout (in milliseconds)</param>
-		/// <param name="userAgent">HTTP user agent</param>
-		public Configuration(
-			ApiClient apiClient = null,
-			Dictionary<String, String> defaultHeader = null,
-			string username = null,
-			string password = null,
-			string accessToken = null,
-			Dictionary<String, String> apiKey = null,
-			Dictionary<String, String> apiKeyPrefix = null,
-			string tempFolderPath = null,
-			string dateTimeFormat = null,
-			int timeout = 0,
-			string userAgent = null
-		) {
-			if (timeout == 0)
-				timeout = DefaultTimeout;
-			if ( userAgent == null )
-				userAgent = "forge-apis/" + Version + " (.net)";
-
-			setApiClientUsingDefault (apiClient);
-
-			Username = username;
-			Password = password;
-			AccessToken = accessToken;
-			UserAgent = userAgent;
-
-			if (defaultHeader != null)
-				DefaultHeader = defaultHeader;
-			if (apiKey != null)
-				ApiKey = apiKey;
-			if (apiKeyPrefix != null)
-				ApiKeyPrefix = apiKeyPrefix;
-
-			TempFolderPath = tempFolderPath;
-			DateTimeFormat = dateTimeFormat;
-			Timeout = timeout;
-		}
+	public class Configuration {
 
 		public static int DefaultTimeout = 100000;
-		public static string DefaultUserAgent = "forge-apis/1.9.2 (.net)";
-		public const string Version = "1.9.2";
-
-		/// <summary>
-		/// Initializes a new instance of the Configuration class.
-		/// </summary>
-		/// <param name="apiClient">Api client.</param>
-		public Configuration (ApiClient apiClient) {
-			setApiClientUsingDefault(apiClient);
-		}
+		public static string DefaultUserAgent = "forge-apis/1.9.6 (.net)";
+		public const string Version = "1.9.6";
 
 		/// <summary>
 		/// Gets or sets the default Configuration.
@@ -104,45 +46,14 @@ namespace Autodesk.Forge.Client
 		public static Configuration Default = new Configuration ();
 
 		/// <summary>
-		/// Default creation of exceptions for a given method name and response object
-		/// </summary>
-		public static readonly ExceptionFactory DefaultExceptionFactory = (methodName, response) =>
-		{
-			int status = (int) response.StatusCode;
-			if (status >= 400)
-				return (new ApiException(
-					status,
-					String.Format("Error calling {0}: {1}",
-						methodName,
-						String.IsNullOrEmpty(response.Content) ?
-							response.ErrorException.Message
-							: response.Content
-					),
-					response.Content
-				));
-			if (status == 0)
-				return (new ApiException (
-					status,
-					String.Format("Error calling {0}: {1}",
-						methodName,
-						response.ErrorMessage
-					),
-					response.ErrorMessage
-				));
-			return null;
-		};
-
-		/// <summary>
 		/// Gets or sets the HTTP timeout (milliseconds) of ApiClient. Default to 100000 milliseconds.
 		/// </summary>
 		/// <value>Timeout.</value>
-		public int Timeout
-		{
+		public int Timeout {
 			get { return ApiClient.RestClient.Options.MaxTimeout; }
 
-			set
-			{
-				if (ApiClient != null)
+			set {
+				if ( ApiClient != null )
 					ApiClient.RestClient.Options.MaxTimeout = value;
 			}
 		}
@@ -152,29 +63,6 @@ namespace Autodesk.Forge.Client
 		/// </summary>
 		/// <value>The API client.</value>
 		public ApiClient ApiClient { get; set; }
-
-		/// <summary>
-		/// Set the ApiClient using Default or ApiClient instance.
-		/// </summary>
-		/// <param name="apiClient">An instance of ApiClient.</param>
-		/// <returns></returns>
-		public void setApiClientUsingDefault (ApiClient apiClient = null)
-		{
-			if (apiClient == null)
-			{
-				if (Default != null && Default.ApiClient == null)
-					Default.ApiClient = new ApiClient();
-
-				ApiClient = Default != null ? Default.ApiClient : new ApiClient();
-			}
-			else
-			{
-				if (Default != null && Default.ApiClient == null)
-					Default.ApiClient = apiClient;
-
-				ApiClient = apiClient;
-			}
-		}
 
 		private Dictionary<String, String> _defaultHeaderMap = new Dictionary<String, String> ();
 
@@ -187,38 +75,6 @@ namespace Autodesk.Forge.Client
 			set {
 				_defaultHeaderMap = value;
 			}
-		}
-
-		/// <summary>
-		/// Add default header.
-		/// </summary>
-		/// <param name="key">Header field name.</param>
-		/// <param name="value">Header field value.</param>
-		/// <returns></returns>
-		public void AddDefaultHeader(string key, string value)
-		{
-			_defaultHeaderMap[key] = value;
-		}
-
-		/// <summary>
-		/// Add Api Key Header.
-		/// </summary>
-		/// <param name="key">Api Key name.</param>
-		/// <param name="value">Api Key value.</param>
-		/// <returns></returns>
-		public void AddApiKey(string key, string value)
-		{
-			ApiKey[key] = value;
-		}
-
-		/// <summary>
-		/// Sets the API key prefix.
-		/// </summary>
-		/// <param name="key">Api Key name.</param>
-		/// <param name="value">Api Key value.</param>
-		public void AddApiKeyPrefix(string key, string value)
-		{
-			ApiKeyPrefix[key] = value;
 		}
 
 		/// <summary>
@@ -240,10 +96,22 @@ namespace Autodesk.Forge.Client
 		public String Password { get; set; }
 
 		/// <summary>
+		/// Gets or sets the bearer for OAuth2 authentication.
+		/// </summary>
+		/// <value>The bearer token.</value>
+		public Bearer Bearer { get; set; }
+
+		/// <summary>
 		/// Gets or sets the access token for OAuth2 authentication.
 		/// </summary>
 		/// <value>The access token.</value>
-		public String AccessToken { get; set; }
+		public String AccessToken {
+			get { return (this.Bearer.AccessToken); }
+			set {
+				this.Bearer.AccessToken = value;
+				this.Bearer.ExpiresAt = DateTimeOffset.Now.ToUnixTimeSeconds () + this.Bearer.ExpiresIn * 1000;
+			}
+		}
 
 		/// <summary>
 		/// Gets or sets the API key based on the authentication name.
@@ -257,55 +125,187 @@ namespace Autodesk.Forge.Client
 		/// <value>The prefix of the API key.</value>
 		public Dictionary<String, String> ApiKeyPrefix = new Dictionary<String, String> ();
 
+		private const string ISO8601_DATETIME_FORMAT = "o";
+
+		private string _dateTimeFormat = ISO8601_DATETIME_FORMAT;
+
+		/// <summary>
+		/// Initializes a new instance of the Configuration class with different settings
+		/// </summary>
+		/// <param name="apiClient">Api client</param>
+		/// <param name="defaultHeader">Dictionary of default HTTP header</param>
+		/// <param name="username">Username</param>
+		/// <param name="password">Password</param>
+		/// <param name="accessToken">accessToken</param>
+		/// <param name="apiKey">Dictionary of API key</param>
+		/// <param name="apiKeyPrefix">Dictionary of API key prefix</param>
+		/// <param name="tempFolderPath">Temp folder path</param>
+		/// <param name="dateTimeFormat">DateTime format string</param>
+		/// <param name="timeout">HTTP connection timeout (in milliseconds)</param>
+		/// <param name="userAgent">HTTP user agent</param>
+		public Configuration (
+			ApiClient apiClient = null,
+			Dictionary<String, String> defaultHeader = null,
+			string username = null,
+			string password = null,
+			string accessToken = null,
+			Dictionary<String, String> apiKey = null,
+			Dictionary<String, String> apiKeyPrefix = null,
+			string tempFolderPath = null,
+			string dateTimeFormat = null,
+			int timeout = 0,
+			string userAgent = null
+		) {
+			if ( timeout == 0 )
+				timeout = DefaultTimeout;
+			if ( userAgent == null )
+				userAgent = "forge-apis/" + Version + " (.net)";
+
+			setApiClientUsingDefault (apiClient);
+
+			Bearer = new Bearer ("Bearer", 3599, "", null, null);
+			Username = username;
+			Password = password;
+			AccessToken = accessToken;
+			UserAgent = userAgent;
+
+			if ( defaultHeader != null )
+				DefaultHeader = defaultHeader;
+			if ( apiKey != null )
+				ApiKey = apiKey;
+			if ( apiKeyPrefix != null )
+				ApiKeyPrefix = apiKeyPrefix;
+
+			TempFolderPath = tempFolderPath;
+			DateTimeFormat = dateTimeFormat;
+			Timeout = timeout;
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the Configuration class.
+		/// </summary>
+		/// <param name="apiClient">Api client.</param>
+		public Configuration (ApiClient apiClient) {
+			setApiClientUsingDefault (apiClient);
+		}
+
+		/// <summary>
+		/// Default creation of exceptions for a given method name and response object
+		/// </summary>
+		public static readonly ExceptionFactory DefaultExceptionFactory = (methodName, response) => {
+			int status = (int)response.StatusCode;
+			if ( status >= 400 )
+				return (new ApiException (
+					status,
+					String.Format ("Error calling {0}: {1}",
+						methodName,
+						String.IsNullOrEmpty (response.Content) ?
+							response.ErrorException.Message
+							: response.Content
+					),
+					response.Content
+				));
+			if ( status == 0 )
+				return (new ApiException (
+					status,
+					String.Format ("Error calling {0}: {1}",
+						methodName,
+						response.ErrorMessage
+					),
+					response.ErrorMessage
+				));
+			return null;
+		};
+
+		/// <summary>
+		/// Set the ApiClient using Default or ApiClient instance.
+		/// </summary>
+		/// <param name="apiClient">An instance of ApiClient.</param>
+		/// <returns></returns>
+		public void setApiClientUsingDefault (ApiClient apiClient = null) {
+			if ( apiClient == null ) {
+				if ( Default != null && Default.ApiClient == null )
+					Default.ApiClient = new ApiClient ();
+
+				ApiClient = Default != null ? Default.ApiClient : new ApiClient ();
+			} else {
+				if ( Default != null && Default.ApiClient == null )
+					Default.ApiClient = apiClient;
+
+				ApiClient = apiClient;
+			}
+		}
+
+		/// <summary>
+		/// Add default header.
+		/// </summary>
+		/// <param name="key">Header field name.</param>
+		/// <param name="value">Header field value.</param>
+		/// <returns></returns>
+		public void AddDefaultHeader (string key, string value) {
+			_defaultHeaderMap [key] = value;
+		}
+
+		/// <summary>
+		/// Add Api Key Header.
+		/// </summary>
+		/// <param name="key">Api Key name.</param>
+		/// <param name="value">Api Key value.</param>
+		/// <returns></returns>
+		public void AddApiKey (string key, string value) {
+			ApiKey [key] = value;
+		}
+
+		/// <summary>
+		/// Sets the API key prefix.
+		/// </summary>
+		/// <param name="key">Api Key name.</param>
+		/// <param name="value">Api Key value.</param>
+		public void AddApiKeyPrefix (string key, string value) {
+			ApiKeyPrefix [key] = value;
+		}
+
 		/// <summary>
 		/// Get the API key with prefix.
 		/// </summary>
 		/// <param name="apiKeyIdentifier">API key identifier (authentication scheme).</param>
 		/// <returns>API key with prefix.</returns>
-		public string GetApiKeyWithPrefix (string apiKeyIdentifier)
-		{
+		public string GetApiKeyWithPrefix (string apiKeyIdentifier) {
 			var apiKeyValue = "";
 			ApiKey.TryGetValue (apiKeyIdentifier, out apiKeyValue);
 			var apiKeyPrefix = "";
-			if (ApiKeyPrefix.TryGetValue (apiKeyIdentifier, out apiKeyPrefix))
+			if ( ApiKeyPrefix.TryGetValue (apiKeyIdentifier, out apiKeyPrefix) )
 				return apiKeyPrefix + " " + apiKeyValue;
 			else
 				return apiKeyValue;
 		}
 
-		private string _tempFolderPath = Path.GetTempPath();
+		private string _tempFolderPath = Path.GetTempPath ();
 
 		/// <summary>
 		/// Gets or sets the temporary folder path to store the files downloaded from the server.
 		/// </summary>
 		/// <value>Folder path.</value>
-		public String TempFolderPath
-		{
+		public String TempFolderPath {
 			get { return _tempFolderPath; }
 
-			set
-			{
-				if (String.IsNullOrEmpty(value))
-				{
+			set {
+				if ( String.IsNullOrEmpty (value) ) {
 					_tempFolderPath = value;
 					return;
 				}
 
 				// create the directory if it does not exist
-				if (!Directory.Exists(value))
-					Directory.CreateDirectory(value);
+				if ( !Directory.Exists (value) )
+					Directory.CreateDirectory (value);
 
 				// check if the path contains directory separator at the end
-				if (value[value.Length - 1] == Path.DirectorySeparatorChar)
+				if ( value [value.Length - 1] == Path.DirectorySeparatorChar )
 					_tempFolderPath = value;
 				else
-					_tempFolderPath = value  + Path.DirectorySeparatorChar;
+					_tempFolderPath = value + Path.DirectorySeparatorChar;
 			}
 		}
-
-		private const string ISO8601_DATETIME_FORMAT = "o";
-
-		private string _dateTimeFormat = ISO8601_DATETIME_FORMAT;
 
 		/// <summary>
 		/// Gets or sets the the date time format used when serializing in the ApiClient
@@ -315,16 +315,12 @@ namespace Autodesk.Forge.Client
 		/// No validation is done to ensure that the string you're providing is valid
 		/// </summary>
 		/// <value>The DateTimeFormat string</value>
-		public String DateTimeFormat
-		{
-			get
-			{
+		public String DateTimeFormat {
+			get {
 				return _dateTimeFormat;
 			}
-			set
-			{
-				if (string.IsNullOrEmpty(value))
-				{
+			set {
+				if ( string.IsNullOrEmpty (value) ) {
 					// Never allow a blank or null string, go back to the default
 					_dateTimeFormat = ISO8601_DATETIME_FORMAT;
 					return;
@@ -339,17 +335,18 @@ namespace Autodesk.Forge.Client
 		/// <summary>
 		/// Returns a string with essential information for debugging.
 		/// </summary>
-		public static String ToDebugReport()
-		{
+		public static String ToDebugReport () {
 			String report = "C# SDK (Autodesk.Forge) Debug Report:\n";
 			report += "    OS: " + Environment.OSVersion + "\n";
 			report += "    .NET Framework Version: " + Assembly
-					 .GetExecutingAssembly()
-					 .GetReferencedAssemblies()
-					 .Where(x => x.Name == "System.Core").First().Version.ToString()  + "\n";
+					 .GetExecutingAssembly ()
+					 .GetReferencedAssemblies ()
+					 .Where (x => x.Name == "System.Core").First ().Version.ToString () + "\n";
 			report += "    SDK Package Version: " + Configuration.Version + "\n";
 
 			return report;
 		}
+
 	}
+
 }

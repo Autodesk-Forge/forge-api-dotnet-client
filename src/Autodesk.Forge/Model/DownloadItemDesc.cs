@@ -30,9 +30,11 @@ using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System.Threading.Tasks;
 
 namespace Autodesk.Forge.Model {
 
+	public delegate Task<Bearer> RefreshTokenCallBack ();
 	public delegate void DownloadItemsCallBack (float progress, TimeSpan elapsed, List<DownloadItemDesc> objects);
 
 	/// <summary>
@@ -42,6 +44,7 @@ namespace Autodesk.Forge.Model {
 
 		public string objectKey { get; set; }
 		public string responseType { get; set; }
+		public Dictionary<string, object> headers { get; set; }
 
 		protected Stream dataStream = null;
 		protected byte [] dataBytes = null;
@@ -80,7 +83,8 @@ namespace Autodesk.Forge.Model {
 		public DownloadItemDesc (
 			string objectKey,
 			string responseType,
-			Stream data = null
+			Stream data = null,
+			Dictionary<string, object> headers = null
 		) {
 			if ( objectKey == null )
 				throw new InvalidDataException ("objectKey is a required property for DownloadItemDesc and cannot be null");
@@ -91,6 +95,7 @@ namespace Autodesk.Forge.Model {
 			this.objectKey = objectKey;
 			this.responseType = responseType;
 			this.data = data;
+			this.headers = headers;
 		}
 
 		public override string ToString () {

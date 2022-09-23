@@ -23,6 +23,7 @@ using Autodesk.Forge;
 using Autodesk.Forge.Client;
 using Autodesk.Forge.Model;
 using System.Diagnostics;
+using System.Net.Http.Headers;
 
 namespace DirectS3Advanced {
 
@@ -43,11 +44,12 @@ namespace DirectS3Advanced {
 			Scope.DataRead, Scope.DataWrite, Scope.DataCreate, Scope.DataSearch,
 			Scope.BucketCreate, Scope.BucketRead, Scope.BucketUpdate, Scope.BucketDelete
 		};
-		protected static string AccessToken { get; private set; } = "";
 		protected static string BucketKey { get { return ("forge_sample_" + FORGE_CLIENT_ID.ToLower () + "-" + region.ToString ().ToLower ()); } }
 
 		protected static Region region { get; set; } = Region.US;
 
+		// We use the same Bearer token for upload and download here,
+		// but we should usually have different bearers with different scopes
 		protected static BucketsApi BucketAPI = new BucketsApi ();
 		protected static ObjectsApi ObjectsAPI = new ObjectsApi ();
 
@@ -115,15 +117,12 @@ namespace DirectS3Advanced {
 		#region Forge
 		private async static Task<ApiResponse<dynamic>?> oauthExecAsync () {
 			try {
-				AccessToken = "";
 				TwoLeggedApi _twoLeggedApi = new TwoLeggedApi ();
-				ApiResponse<dynamic> bearer = await _twoLeggedApi.AuthenticateAsyncWithHttpInfo (
-					FORGE_CLIENT_ID, FORGE_CLIENT_SECRET, oAuthConstants.CLIENT_CREDENTIALS, SCOPES);
+				ApiResponse<dynamic> bearer = await _twoLeggedApi.AuthenticateAsyncWithHttpInfo (FORGE_CLIENT_ID, FORGE_CLIENT_SECRET, oAuthConstants.CLIENT_CREDENTIALS, SCOPES);
 				httpErrorHandler (bearer, "Failed to get your token");
 
-				AccessToken = bearer.Data.access_token;
-				BucketAPI.Configuration.AccessToken = AccessToken;
-				ObjectsAPI.Configuration.AccessToken = AccessToken;
+				BucketAPI.Configuration.Bearer = new Bearer (bearer);
+				ObjectsAPI.Configuration.Bearer = new Bearer (bearer);
 
 				return (bearer);
 			} catch ( Exception ex ) {
@@ -248,6 +247,14 @@ namespace DirectS3Advanced {
 			if ( !response )
 				return;
 
+			// We use the same Bearer token for upload and download here,
+			// but we should usually have different bearers with different scopes
+			async Task<Bearer> onRefreshToken () {
+				ApiResponse<dynamic>? bearer = await oauthExecAsync ();
+				// Note our oauthExecAsync method already updates the API wrappers
+				// returning the bearer isn't stricly required (we could have returned null)
+				return (new Bearer (bearer));
+			}
 			void onUploadProgress (float progress, TimeSpan elapsed, List<UploadItemDesc> objects) {
 				Console.WriteLine ("progress: {0} elapsed: {1} objects: {2}", progress, elapsed, string.Join (", ", objects));
 			}
@@ -272,13 +279,14 @@ namespace DirectS3Advanced {
 					//{ "minutesExpiration", 2 },
 					//{ "useAcceleration", true }
 				},
-				onUploadProgress
+				onUploadProgress,
+				onRefreshToken
 			);
 			Console.WriteLine ("**** Upload object(s) response(s):");
 			foreach ( var resp in uploadRes )
 				Console.WriteLine ("{0} {1}{2}", resp.objectKey, resp.Error ? "Error: " : "", resp.completed.ToString ());
 
-			Console.WriteLine ("'**** Verifying SHA1 codes"); // re-assembling files takes times, but we uploaded these files in 1 part :)
+			Console.WriteLine ("**** Verifying SHA1 codes"); // re-assembling files takes times, but we uploaded these files in 1 part :)
 			await verifyServerObjectsSha1 (BucketKey, uploadRes);
 
 			FileStream _streamOut = File.Open (FILE_NAME1 + ".out", FileMode.Create);
@@ -289,13 +297,15 @@ namespace DirectS3Advanced {
 					new DownloadItemDesc (FILE_NAME1 + ".txt", "arraybuffer"), // Buffer
 					new DownloadItemDesc (FILE_NAME1, "arraybuffer"), // Buffer
 					new DownloadItemDesc (FILE_NAME1 + ".bin", "stream", _streamOut), // file:// test, but as WritableStream this time
+					new DownloadItemDesc (FILE_NAME0, "text", null, new Dictionary<string, object> () { { "Range", new RangeHeaderValue (5, 10) } } ), // with range
 				},
 				new Dictionary<string, object> () {
 					//{ "publicResourceFallback", true }, // use 3Mb to make it fails, use a debug ApiClient, objectsApi.apiClient.isDebugMode = true
 					//{ "minutesExpiration", 2 },
 					//{ "useCdn", true }
 				},
-				onDownloadProgress
+				onDownloadProgress,
+				onRefreshToken
 			);
 
 			Console.WriteLine ("**** Verifying SHA1 codes with downloads");

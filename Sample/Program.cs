@@ -45,7 +45,6 @@ namespace Autodesk.Forge.Sample {
 			Scope.DataRead, Scope.DataWrite, Scope.DataCreate, Scope.DataSearch,
 			Scope.BucketCreate, Scope.BucketRead, Scope.BucketUpdate, Scope.BucketDelete
 		};
-		protected static string AccessToken { get; private set; } = "";
 		protected static string BucketKey { get { return ("forge_sample_" + FORGE_CLIENT_ID.ToLower () + "-" + region.ToString ().ToLower ()); } }
 		protected static string ObjectKey { get { return ("test.nwd"); } }
 
@@ -64,17 +63,14 @@ namespace Autodesk.Forge.Sample {
 		#region Forge
 		private async static Task<ApiResponse<dynamic>> oauthExecAsync () {
 			try {
-				AccessToken = "";
 				TwoLeggedApi _twoLeggedApi = new TwoLeggedApi ();
-				ApiResponse<dynamic> bearer = await _twoLeggedApi.AuthenticateAsyncWithHttpInfo (
-					FORGE_CLIENT_ID, FORGE_CLIENT_SECRET, oAuthConstants.CLIENT_CREDENTIALS, SCOPES);
+				ApiResponse<dynamic> bearer = await _twoLeggedApi.AuthenticateAsyncWithHttpInfo (FORGE_CLIENT_ID, FORGE_CLIENT_SECRET, oAuthConstants.CLIENT_CREDENTIALS, SCOPES);
 				httpErrorHandler (bearer, "Failed to get your token");
 
-				AccessToken = bearer.Data.access_token;
-				BucketAPI.Configuration.AccessToken = AccessToken;
-				ObjectsAPI.Configuration.AccessToken = AccessToken;
-				USDerivativesAPI.Configuration.AccessToken = AccessToken;
-				EMEADerivativesAPI.Configuration.AccessToken = AccessToken;
+				BucketAPI.Configuration.Bearer = new Bearer (bearer);
+				ObjectsAPI.Configuration.Bearer = new Bearer (bearer);
+				USDerivativesAPI.Configuration.Bearer = new Bearer (bearer);
+				EMEADerivativesAPI.Configuration.Bearer = new Bearer (bearer);
 
 				return (bearer);
 			} catch ( Exception ex ) {
@@ -544,8 +540,8 @@ namespace Autodesk.Forge.Sample {
 						endpoint == Region.US ? USDerivativesAPI : EMEADerivativesAPI,
 						storage
 					);
-				} catch ( Exception) {}
-				
+				} catch ( Exception ) { }
+
 			} else {
 				try {
 					Region endpoint = Enum.Parse<Region> (args [0], true);
@@ -553,11 +549,11 @@ namespace Autodesk.Forge.Sample {
 					JobPayloadDestination.RegionEnum target = Enum.Parse<JobPayloadDestination.RegionEnum> (args [2], true);
 
 					urn = await TryWorkflow (
-						endpoint == Region.US ? USDerivativesAPI: EMEADerivativesAPI,
+						endpoint == Region.US ? USDerivativesAPI : EMEADerivativesAPI,
 						storage,
 						target
 					);
-				} catch ( Exception ) {}
+				} catch ( Exception ) { }
 			}
 			Console.WriteLine ("Done");
 		}

@@ -30,175 +30,200 @@ using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Autodesk.Forge.Client;
 
-namespace Autodesk.Forge.Model
-{
-    /// <summary>
-    /// Bearer
-    /// </summary>
-    [DataContract]
-    public partial class Bearer :  IEquatable<Bearer>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Bearer" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected Bearer() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Bearer" /> class.
-        /// </summary>
-        /// <param name="TokenType">Will always be Bearer (required).</param>
-        /// <param name="ExpiresIn">Access token expiration time (in seconds) (required).</param>
-        /// <param name="AccessToken">The access token (required).</param>
-        /// <param name="RefreshToken">The refresh token.</param>
-        public Bearer(string TokenType = null, int? ExpiresIn = null, string AccessToken = null, string RefreshToken = null)
-        {
-            // to ensure "TokenType" is required (not null)
-            if (TokenType == null)
-            {
-                throw new InvalidDataException("TokenType is a required property for Bearer and cannot be null");
-            }
-            else
-            {
-                this.TokenType = TokenType;
-            }
-            // to ensure "ExpiresIn" is required (not null)
-            if (ExpiresIn == null)
-            {
-                throw new InvalidDataException("ExpiresIn is a required property for Bearer and cannot be null");
-            }
-            else
-            {
-                this.ExpiresIn = ExpiresIn;
-            }
-            // to ensure "AccessToken" is required (not null)
-            if (AccessToken == null)
-            {
-                throw new InvalidDataException("AccessToken is a required property for Bearer and cannot be null");
-            }
-            else
-            {
-                this.AccessToken = AccessToken;
-            }
-            this.RefreshToken = RefreshToken;
-        }
+namespace Autodesk.Forge.Model {
 
-        /// <summary>
-        /// Will always be Bearer
-        /// </summary>
-        /// <value>Will always be Bearer</value>
-        [DataMember(Name="token_type", EmitDefaultValue=false)]
-        public string TokenType { get; set; }
-        /// <summary>
-        /// Access token expiration time (in seconds)
-        /// </summary>
-        /// <value>Access token expiration time (in seconds)</value>
-        [DataMember(Name="expires_in", EmitDefaultValue=false)]
-        public int? ExpiresIn { get; set; }
-        /// <summary>
-        /// The access token
-        /// </summary>
-        /// <value>The access token</value>
-        [DataMember(Name="access_token", EmitDefaultValue=false)]
-        public string AccessToken { get; set; }
-        /// <summary>
-        /// The refresh token
-        /// </summary>
-        /// <value>The refresh token</value>
-        [DataMember(Name="refresh_token", EmitDefaultValue=false)]
-        public string RefreshToken { get; set; }
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            var sb = new StringBuilder();
-            sb.Append("class Bearer {\n");
-            sb.Append("  TokenType: ").Append(TokenType).Append("\n");
-            sb.Append("  ExpiresIn: ").Append(ExpiresIn).Append("\n");
-            sb.Append("  AccessToken: ").Append(AccessToken).Append("\n");
-            sb.Append("  RefreshToken: ").Append(RefreshToken).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
+	/// <summary>
+	/// Bearer
+	/// </summary>
+	[DataContract]
+	public partial class Bearer : IEquatable<Bearer> {
 
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
-        {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
-        }
+		/// <summary>
+		/// Will always be Bearer
+		/// </summary>
+		/// <value>Will always be Bearer</value>
+		[DataMember (Name = "token_type", EmitDefaultValue = false)]
+		public string TokenType { get; set; }
 
-        /// <summary>
-        /// Returns true if objects are equal
-        /// </summary>
-        /// <param name="obj">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object obj)
-        {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            return this.Equals(obj as Bearer);
-        }
+		/// <summary>
+		/// Access token expiration time (in seconds)
+		/// </summary>
+		/// <value>Access token expiration time (in seconds)</value>
+		[DataMember (Name = "expires_in", EmitDefaultValue = false)]
+		public int? ExpiresIn { get; set; }
 
-        /// <summary>
-        /// Returns true if Bearer instances are equal
-        /// </summary>
-        /// <param name="other">Instance of Bearer to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(Bearer other)
-        {
-            // credit: http://stackoverflow.com/a/10454552/677735
-            if (other == null)
-                return false;
+		/// <summary>
+		/// Access token expiration time (in seconds)
+		/// </summary>
+		/// <value>Access token expiration time (in seconds)</value>
+		[DataMember (Name = "expires_at", EmitDefaultValue = false)]
+		public long? ExpiresAt { get; set; }
 
-            return
-                (
-                    this.TokenType == other.TokenType ||
-                    this.TokenType != null &&
-                    this.TokenType.Equals(other.TokenType)
-                ) &&
-                (
-                    this.ExpiresIn == other.ExpiresIn ||
-                    this.ExpiresIn != null &&
-                    this.ExpiresIn.Equals(other.ExpiresIn)
-                ) &&
-                (
-                    this.AccessToken == other.AccessToken ||
-                    this.AccessToken != null &&
-                    this.AccessToken.Equals(other.AccessToken)
-                ) &&
-                (
-                    this.RefreshToken == other.RefreshToken ||
-                    this.RefreshToken != null &&
-                    this.RefreshToken.Equals(other.RefreshToken)
-                );
-        }
+		/// <summary>
+		/// The access token
+		/// </summary>
+		/// <value>The access token</value>
+		[DataMember (Name = "access_token", EmitDefaultValue = false)]
+		public string AccessToken { get; set; }
 
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            // credit: http://stackoverflow.com/a/263416/677735
-            unchecked // Overflow is fine, just wrap
-            {
-                int hash = 41;
-                // Suitable nullity checks etc, of course :)
-                if (this.TokenType != null)
-                    hash = hash * 59 + this.TokenType.GetHashCode();
-                if (this.ExpiresIn != null)
-                    hash = hash * 59 + this.ExpiresIn.GetHashCode();
-                if (this.AccessToken != null)
-                    hash = hash * 59 + this.AccessToken.GetHashCode();
-                if (this.RefreshToken != null)
-                    hash = hash * 59 + this.RefreshToken.GetHashCode();
-                return hash;
-            }
-        }
-    }
+		/// <summary>
+		/// The refresh token
+		/// </summary>
+		/// <value>The refresh token</value>
+		[DataMember (Name = "refresh_token", EmitDefaultValue = false)]
+		public string RefreshToken { get; set; }
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Bearer" /> class.
+		/// </summary>
+		[JsonConstructorAttribute]
+		protected Bearer () { }
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Bearer" /> class.
+		/// </summary>
+		/// <param name="TokenType">Will always be Bearer (required).</param>
+		/// <param name="ExpiresIn">Access token expiration lifespan (in seconds) (required).</param>
+		/// <param name="AccessToken">The access token (required).</param>
+		/// <param name="RefreshToken">The refresh token.</param>
+		/// <param name="ExpiresAt">Access token expiration time (unix timestamp (Unix Epoch on January 1st, 1970 at UTC)) (default: calculated from ExpiresIn).</param>
+		public Bearer (string TokenType = null, int? ExpiresIn = null, string AccessToken = null, string RefreshToken = null, long? ExpiresAt = null) {
+			// to ensure "TokenType" is required (not null)
+			if ( TokenType == null )
+				throw new InvalidDataException ("TokenType is a required property for Bearer and cannot be null");
+			this.TokenType = TokenType;
+			// to ensure "ExpiresIn" is required (not null)
+			if ( ExpiresIn == null )
+				throw new InvalidDataException ("ExpiresIn is a required property for Bearer and cannot be null");
+			this.ExpiresIn = ExpiresIn;
+			// to ensure "ExpiresAt" (not null)
+			this.ExpiresAt = ExpiresAt;
+			if ( ExpiresAt == null )
+				this.ExpiresAt = DateTimeOffset.Now.ToUnixTimeSeconds () + this.ExpiresIn * 1000;
+			// to ensure "AccessToken" is required (not null)
+			if ( AccessToken == null )
+				throw new InvalidDataException ("AccessToken is a required property for Bearer and cannot be null");
+			this.AccessToken = AccessToken;
+
+			this.RefreshToken = RefreshToken;
+		}
+
+		public Bearer (ApiResponse<dynamic> bearer) {
+			this.TokenType = bearer.Data.token_type;
+			this.ExpiresIn = (int?)bearer.Data.expires_in;
+			this.ExpiresAt = DateTimeOffset.Now.ToUnixTimeSeconds () + this.ExpiresIn * 1000;
+			this.AccessToken = bearer.Data.access_token;
+			try {
+				this.RefreshToken = bearer.Data.refresh_token;
+			} catch (Exception) {
+				this.RefreshToken = null;
+			}
+		}
+
+		/// <summary>
+		/// Returns the string presentation of the object
+		/// </summary>
+		/// <returns>String presentation of the object</returns>
+		public override string ToString () {
+			var sb = new StringBuilder ();
+			sb.Append ("class Bearer {\n");
+			sb.Append ("  TokenType: ").Append (TokenType).Append ("\n");
+			sb.Append ("  ExpiresIn: ").Append (ExpiresIn).Append ("\n");
+			sb.Append ("  ExpiresAt: ").Append (ExpiresAt).Append ("\n");
+			sb.Append ("  AccessToken: ").Append (AccessToken).Append ("\n");
+			sb.Append ("  RefreshToken: ").Append (RefreshToken).Append ("\n");
+			sb.Append ("}\n");
+			return (sb.ToString ());
+		}
+
+		/// <summary>
+		/// Returns the JSON string presentation of the object
+		/// </summary>
+		/// <returns>JSON string presentation of the object</returns>
+		public string ToJson () {
+			return (JsonConvert.SerializeObject (this, Formatting.Indented));
+		}
+
+		/// <summary>
+		/// Returns true if objects are equal
+		/// </summary>
+		/// <param name="obj">Object to be compared</param>
+		/// <returns>Boolean</returns>
+		public override bool Equals (object obj) {
+			// credit: http://stackoverflow.com/a/10454552/677735
+			return (this.Equals (obj as Bearer));
+		}
+
+		/// <summary>
+		/// Returns true if Bearer instances are equal
+		/// </summary>
+		/// <param name="other">Instance of Bearer to be compared</param>
+		/// <returns>Boolean</returns>
+		public bool Equals (Bearer other) {
+			// credit: http://stackoverflow.com/a/10454552/677735
+			if ( other == null )
+				return (false);
+
+			return (
+				(
+					this.TokenType == other.TokenType ||
+					this.TokenType != null &&
+					this.TokenType.Equals (other.TokenType)
+				) &&
+				(
+					this.ExpiresIn == other.ExpiresIn ||
+					this.ExpiresIn != null &&
+					this.ExpiresIn.Equals (other.ExpiresIn)
+				) &&
+				(
+					this.AccessToken == other.AccessToken ||
+					this.AccessToken != null &&
+					this.AccessToken.Equals (other.AccessToken)
+				) &&
+				(
+					this.RefreshToken == other.RefreshToken ||
+					this.RefreshToken != null &&
+					this.RefreshToken.Equals (other.RefreshToken)
+				)
+			);
+		}
+
+		/// <summary>
+		/// Gets the hash code
+		/// </summary>
+		/// <returns>Hash code</returns>
+		public override int GetHashCode () {
+			// credit: http://stackoverflow.com/a/263416/677735
+			unchecked // Overflow is fine, just wrap
+			{
+				int hash = 41;
+				// Suitable nullity checks etc, of course :)
+				if ( this.TokenType != null )
+					hash = hash * 59 + this.TokenType.GetHashCode ();
+				if ( this.ExpiresIn != null )
+					hash = hash * 59 + this.ExpiresIn.GetHashCode ();
+				if ( this.AccessToken != null )
+					hash = hash * 59 + this.AccessToken.GetHashCode ();
+				if ( this.RefreshToken != null )
+					hash = hash * 59 + this.RefreshToken.GetHashCode ();
+				return (hash);
+			}
+		}
+	
+		public bool hasExpired () {
+			return (this.ExpiresAt <= DateTimeOffset.Now.ToUnixTimeSeconds ());
+		}
+
+		public bool isAboutToExpire (int threadHoldInSeconds = 300 /*5 minutes*/) {
+			return (this.ExpiresAt - threadHoldInSeconds * 1000 < DateTimeOffset.Now.ToUnixTimeSeconds ());
+		}
+
+		public bool is3legged () {
+			return (!String.IsNullOrEmpty (this.RefreshToken));
+		}
+
+	}
 
 }

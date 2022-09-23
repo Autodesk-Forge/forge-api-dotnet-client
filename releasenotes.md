@@ -1,6 +1,13 @@
 # Autodesk.Forge .NET package
 
-# 1.9.2
+# 1.9.6
+* Fixed the directs3 batch complete body size from int to long (large files)
+* Fixed the uploadResources method to keep the same uploadKey across multiples batches
+* Changed the Configuation object to store a complete Bearer vs only the accessToken (backward compatible)
+* Added an optional Range download for the downloadResources method
+* Added a refreshToken callback for both the uploadResources and downloadResources metohds in case the token is about to expire
+
+# 1.9.3
 * Fixed Resharp vnd.api+json support in the API calls
 * Fixed ToJson() ProjectAPI AttributeExtension missing
 

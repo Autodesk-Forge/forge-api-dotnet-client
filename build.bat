@@ -14,12 +14,12 @@
 
 @echo off
 
-set FORGESDK_VERSION=1.9.2
+set FORGESDK_VERSION=1.9.6
 set RESTSHARP_VERSION=108.0.1
 set NEWTOWNSOFT_VERSION=13.0.1
 
-if "%VCINSTALLDIR%" == ""^
-  call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
+:: if "%VCINSTALLDIR%" == ""
+call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
 ::set CSCPATH=%SYSTEMROOT%\Microsoft.NET\Framework\v4.0.30319
 
 if not exist ".\nuget.exe"^
@@ -47,10 +47,7 @@ nuget restore Autodesk.Forge.sln
 ::  /out:src\Autodesk.Forge\bin\Release\Autodesk.Forge.dll
 ::  /recurse:src\Autodesk.Forge\*.cs
 ::  /doc:src\Autodesk.Forge\bin\Release\Autodesk.Forge.xml
-msbuild^
-  Autodesk.Forge.sln^
-  /p:Platform="Any CPU"^
-  /p:Configuration=Release
+msbuild Autodesk.Forge.sln /p:Platform="Any CPU" /p:Configuration=Release
 
 :: if not exist ".\bin\Release\Autodesk.Forge\bin\Release"
 ::  mkdir ".\bin\Release\Autodesk.Forge\bin\Release"

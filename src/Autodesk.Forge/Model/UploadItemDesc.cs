@@ -96,11 +96,12 @@ namespace Autodesk.Forge.Model {
 				throw new InvalidDataException ("data is a required property for UploadItemDesc and cannot be null");
 			this.objectKey = objectKey;
 			this.data = data;
+			this.uploadKey = null;
 		}
 
 		public byte[] chunk { get; set; }
 
-		public byte[] Chunk (int start, long length) {
+		public byte[] Chunk (long start, long length) {
 			//return (dataBytes.Skip(start).Take(length).ToArray()); // slow
 			byte[] chunk = new byte [length];
 			Array.Copy (dataBytes, start, chunk, 0, length);
