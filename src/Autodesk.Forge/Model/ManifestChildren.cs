@@ -93,6 +93,12 @@ namespace Autodesk.Forge.Model
             _3d,
             
             /// <summary>
+            /// Enum Autodesk_CloudPlatform_PropertyDatabase for "Autodesk.CloudPlatform.PropertyDatabase"
+            /// </summary>
+            [EnumMember(Value = "Autodesk.CloudPlatform.PropertyDatabase")]
+            Autodesk_CloudPlatform_PropertyDatabase,
+            
+            /// <summary>
             /// Enum Graphics for "graphics"
             /// </summary>
             [EnumMember(Value = "graphics")]
