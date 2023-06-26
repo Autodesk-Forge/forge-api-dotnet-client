@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>Autodesk.Forge</id>
-		<version>1.9.7</version>
+		<version>1.9.8</version>
 		<authors>adsk-forge</authors>
 		<owners>adsk-forge</owners>
 		<license type="expression">Apache-2.0</license>

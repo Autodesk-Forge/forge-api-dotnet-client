@@ -14,7 +14,7 @@
 
 @echo off
 
-set FORGESDK_VERSION=1.9.7
+set FORGESDK_VERSION=1.9.8
 set RESTSHARP_VERSION=108.0.1
 set NEWTOWNSOFT_VERSION=13.0.1
 
@@ -58,4 +58,4 @@ nuget pack src\Autodesk.Forge\Autodesk.Forge.nuspec
 
 echo .
 echo ".\nuget push Autodesk.Forge.%FORGESDK_VERSION%.nupkg %NUGETAPIKEY% -Source https://www.nuget.org/api/v2/package"
-:: .\nuget push Autodesk.Forge.1.0.0.nupkg %NUGETAPIKEY% -Source https://www.nuget.org/api/v2/package
+:: .\nuget push Autodesk.Forge.%FORGESDK_VERSION%.nupkg %NUGETAPIKEY% -Source https://www.nuget.org/api/v2/package
