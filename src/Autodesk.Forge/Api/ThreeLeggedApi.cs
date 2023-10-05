@@ -306,7 +306,7 @@ namespace Autodesk.Forge
             if (redirectUri == null)
                 throw new ApiException(400, "Missing required parameter 'redirectUri' when calling ThreeLeggedApi->Authorize");
 
-            var localVarPath = "/authentication/v1/authorize";
+            var localVarPath = "/authentication/v2/authorize";
             var localVarFormParams = new Dictionary<String, String>();
             if (clientId != null) localVarFormParams.Add("client_id", Configuration.ApiClient.ParameterToString(clientId)); // form parameter
             if (responseType != null) localVarFormParams.Add("response_type", Configuration.ApiClient.ParameterToString(responseType)); // form parameter
@@ -367,7 +367,7 @@ namespace Autodesk.Forge
             if (redirectUri == null)
                 throw new ApiException(400, "Missing required parameter 'redirectUri' when calling ThreeLeggedApi->Gettoken");
 
-            var localVarPath = "/authentication/v1/gettoken";
+            var localVarPath = "/authentication/v2/token";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -388,12 +388,14 @@ namespace Autodesk.Forge
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            String localVarAuthorizationHeader = Configuration.ApiClient.SetAuthorizationHeader(client_id: clientId, client_secret: clientSecret);
+
+            if (localVarAuthorizationHeader != null)
+                localVarHeaderParams.Add("Authorization", localVarAuthorizationHeader);
 
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (clientId != null) localVarFormParams.Add("client_id", Configuration.ApiClient.ParameterToString(clientId)); // form parameter
-            if (clientSecret != null) localVarFormParams.Add("client_secret", Configuration.ApiClient.ParameterToString(clientSecret)); // form parameter
             if (grantType != null) localVarFormParams.Add("grant_type", Configuration.ApiClient.ParameterToString(grantType)); // form parameter
             if (code != null) localVarFormParams.Add("code", Configuration.ApiClient.ParameterToString(code)); // form parameter
             if (redirectUri != null) localVarFormParams.Add("redirect_uri", Configuration.ApiClient.ParameterToString(redirectUri)); // form parameter
@@ -463,7 +465,7 @@ namespace Autodesk.Forge
             if (redirectUri == null)
                 throw new ApiException(400, "Missing required parameter 'redirectUri' when calling ThreeLeggedApi->Gettoken");
 
-            var localVarPath = "/authentication/v1/gettoken";
+            var localVarPath = "/authentication/v2/token";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -484,12 +486,13 @@ namespace Autodesk.Forge
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            String localVarAuthorizationHeader = Configuration.ApiClient.SetAuthorizationHeader(client_id: clientId, client_secret: clientSecret);
 
+            if (localVarAuthorizationHeader != null)
+                localVarHeaderParams.Add("Authorization", localVarAuthorizationHeader);
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (clientId != null) localVarFormParams.Add("client_id", Configuration.ApiClient.ParameterToString(clientId)); // form parameter
-            if (clientSecret != null) localVarFormParams.Add("client_secret", Configuration.ApiClient.ParameterToString(clientSecret)); // form parameter
             if (grantType != null) localVarFormParams.Add("grant_type", Configuration.ApiClient.ParameterToString(grantType)); // form parameter
             if (code != null) localVarFormParams.Add("code", Configuration.ApiClient.ParameterToString(code)); // form parameter
             if (redirectUri != null) localVarFormParams.Add("redirect_uri", Configuration.ApiClient.ParameterToString(redirectUri)); // form parameter
@@ -555,7 +558,7 @@ namespace Autodesk.Forge
             if (refreshToken == null)
                 throw new ApiException(400, "Missing required parameter 'refreshToken' when calling ThreeLeggedApi->Refreshtoken");
 
-            var localVarPath = "/authentication/v1/refreshtoken";
+            var localVarPath = "/authentication/v2/token";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -576,12 +579,13 @@ namespace Autodesk.Forge
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            String localVarAuthorizationHeader = Configuration.ApiClient.SetAuthorizationHeader(client_id: clientId, client_secret: clientSecret);
 
+            if (localVarAuthorizationHeader != null)
+                localVarHeaderParams.Add("Authorization", localVarAuthorizationHeader);
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (clientId != null) localVarFormParams.Add("client_id", Configuration.ApiClient.ParameterToString(clientId)); // form parameter
-            if (clientSecret != null) localVarFormParams.Add("client_secret", Configuration.ApiClient.ParameterToString(clientSecret)); // form parameter
             if (grantType != null) localVarFormParams.Add("grant_type", Configuration.ApiClient.ParameterToString(grantType)); // form parameter
             if (refreshToken != null) localVarFormParams.Add("refresh_token", Configuration.ApiClient.ParameterToString(refreshToken)); // form parameter
             if (scope != null) localVarFormParams.Add("scope", Configuration.ApiClient.ParameterToString(scope.AsString ())); // form parameter
@@ -648,7 +652,7 @@ namespace Autodesk.Forge
             if (refreshToken == null)
                 throw new ApiException(400, "Missing required parameter 'refreshToken' when calling ThreeLeggedApi->Refreshtoken");
 
-            var localVarPath = "/authentication/v1/refreshtoken";
+            var localVarPath = "/authentication/v2/token";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -669,12 +673,13 @@ namespace Autodesk.Forge
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            String localVarAuthorizationHeader = Configuration.ApiClient.SetAuthorizationHeader(client_id: clientId, client_secret: clientSecret);
 
+            if (localVarAuthorizationHeader != null)
+                localVarHeaderParams.Add("Authorization", localVarAuthorizationHeader);
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (clientId != null) localVarFormParams.Add("client_id", Configuration.ApiClient.ParameterToString(clientId)); // form parameter
-            if (clientSecret != null) localVarFormParams.Add("client_secret", Configuration.ApiClient.ParameterToString(clientSecret)); // form parameter
             if (grantType != null) localVarFormParams.Add("grant_type", Configuration.ApiClient.ParameterToString(grantType)); // form parameter
             if (refreshToken != null) localVarFormParams.Add("refresh_token", Configuration.ApiClient.ParameterToString(refreshToken)); // form parameter
             if (scope != null) localVarFormParams.Add("scope", Configuration.ApiClient.ParameterToString(scope.AsString ())); // form parameter
