@@ -14,7 +14,7 @@
 
 @echo off
 
-set FORGESDK_VERSION=1.9.8
+set FORGESDK_VERSION=1.9.9
 set RESTSHARP_VERSION=108.0.1
 set NEWTOWNSOFT_VERSION=13.0.1
 
@@ -24,7 +24,7 @@ call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsD
 
 if not exist ".\nuget.exe"^
   powershell -Command "(new-object System.Net.WebClient).DownloadFile('https://nuget.org/nuget.exe', '.\nuget.exe')"
-  
+
 nuget restore Autodesk.Forge.sln
 ::if not exist ".\packages\RestSharp.%RESTSHARP_VERSION%"^
 ::  .\nuget.exe install RestSharp -Version %RESTSHARP_VERSION% -OutputDirectory packages
@@ -41,7 +41,7 @@ nuget restore Autodesk.Forge.sln
 :: .\nuget pack Autodesk.Forge.nuspec
 
 ::%CSCPATH%\csc
-::  -platform:anycpu 
+::  -platform:anycpu
 ::  /reference:packages\Newtonsoft.Json.%NEWTOWNSOFT_VERSION%\lib\net452\Newtonsoft.Json.dll;packages\RestSharp.%RESTSHARP_VERSION%\lib\net452\RestSharp.dll
 ::  /target:library
 ::  /out:src\Autodesk.Forge\bin\Release\Autodesk.Forge.dll

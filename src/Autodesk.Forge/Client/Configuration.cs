@@ -1,4 +1,4 @@
-/* 
+/*
  * Forge SDK
  *
  * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk?s expertise in design and engineering.
@@ -36,8 +36,8 @@ namespace Autodesk.Forge.Client {
 	public class Configuration {
 
 		public static int DefaultTimeout = 100000;
-		public static string DefaultUserAgent = "forge-apis/1.9.8 (.net)";
-		public const string Version = "1.9.8";
+		public static string DefaultUserAgent = "forge-apis/1.9.9 (.net)";
+		public const string Version = "1.998";
 
 		/// <summary>
 		/// Gets or sets the default Configuration.
