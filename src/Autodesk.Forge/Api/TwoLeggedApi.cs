@@ -22,19 +22,19 @@
 
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
-
 using Autodesk.Forge.Client;
 using Autodesk.Forge.Model;
 
 namespace Autodesk.Forge
 {
-	/// <summary>
-	/// Represents a collection of functions to interact with the API endpoints
-	/// </summary>
-	public interface ITwoLeggedApi : IApiAccessor
+    /// <summary>
+    /// Represents a collection of functions to interact with the API endpoints
+    /// </summary>
+    public interface ITwoLeggedApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -49,7 +49,8 @@ namespace Autodesk.Forge
         /// <param name="grantType">Must be &#x60;&#x60;client_credentials&#x60;&#x60;</param>
         /// <param name="scope">Space-separated list of required scopes Note: A URL-encoded space is* &#x60;&#x60;%20&#x60;&#x60;. See the* &#x60;Scopes &lt;/en/docs/oauth/v2/overview/scopes&gt;&#x60; *page for more information on when scopes are required.  (optional)</param>
         /// <returns>Bearer</returns>
-        /*Bearer*/dynamic Authenticate (string clientId, string clientSecret, string grantType, Scope[] scope = null);
+        /*Bearer*/
+        dynamic Authenticate(string clientId, string clientSecret, string grantType, Scope[] scope = null);
 
         /// <summary>
         /// POST authenticate
@@ -63,7 +64,7 @@ namespace Autodesk.Forge
         /// <param name="grantType">Must be &#x60;&#x60;client_credentials&#x60;&#x60;</param>
         /// <param name="scope">Space-separated list of required scopes Note: A URL-encoded space is* &#x60;&#x60;%20&#x60;&#x60;. See the* &#x60;Scopes &lt;/en/docs/oauth/v2/overview/scopes&gt;&#x60; *page for more information on when scopes are required.  (optional)</param>
         /// <returns>ApiResponse of Bearer</returns>
-        ApiResponse</*Bearer*/dynamic> AuthenticateWithHttpInfo (string clientId, string clientSecret, string grantType, Scope[] scope = null);
+        ApiResponse</*Bearer*/dynamic> AuthenticateWithHttpInfo(string clientId, string clientSecret, string grantType, Scope[] scope = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -78,7 +79,7 @@ namespace Autodesk.Forge
         /// <param name="grantType">Must be &#x60;&#x60;client_credentials&#x60;&#x60;</param>
         /// <param name="scope">Space-separated list of required scopes Note: A URL-encoded space is* &#x60;&#x60;%20&#x60;&#x60;. See the* &#x60;Scopes &lt;/en/docs/oauth/v2/overview/scopes&gt;&#x60; *page for more information on when scopes are required.  (optional)</param>
         /// <returns>Task of Bearer</returns>
-        System.Threading.Tasks.Task</*Bearer*/dynamic> AuthenticateAsync (string clientId, string clientSecret, string grantType, Scope[] scope = null);
+        System.Threading.Tasks.Task</*Bearer*/dynamic> AuthenticateAsync(string clientId, string clientSecret, string grantType, Scope[] scope = null);
 
         /// <summary>
         /// POST authenticate
@@ -92,7 +93,7 @@ namespace Autodesk.Forge
         /// <param name="grantType">Must be &#x60;&#x60;client_credentials&#x60;&#x60;</param>
         /// <param name="scope">Space-separated list of required scopes Note: A URL-encoded space is* &#x60;&#x60;%20&#x60;&#x60;. See the* &#x60;Scopes &lt;/en/docs/oauth/v2/overview/scopes&gt;&#x60; *page for more information on when scopes are required.  (optional)</param>
         /// <returns>Task of ApiResponse (Bearer)</returns>
-        System.Threading.Tasks.Task<ApiResponse</*Bearer*/dynamic>> AuthenticateAsyncWithHttpInfo (string clientId, string clientSecret, string grantType, Scope[] scope = null);
+        System.Threading.Tasks.Task<ApiResponse</*Bearer*/dynamic>> AuthenticateAsyncWithHttpInfo(string clientId, string clientSecret, string grantType, Scope[] scope = null);
         #endregion Asynchronous Operations
     }
 
@@ -165,7 +166,7 @@ namespace Autodesk.Forge
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Configuration Configuration {get; set;}
+        public Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -214,10 +215,10 @@ namespace Autodesk.Forge
         /// <param name="grantType">Must be &#x60;&#x60;client_credentials&#x60;&#x60;</param>
         /// <param name="scope">Space-separated list of required scopes Note: A URL-encoded space is* &#x60;&#x60;%20&#x60;&#x60;. See the* &#x60;Scopes &lt;/en/docs/oauth/v2/overview/scopes&gt;&#x60; *page for more information on when scopes are required.  (optional)</param>
         /// <returns>Bearer</returns>
-        public /*Bearer*/dynamic Authenticate (string clientId, string clientSecret, string grantType, Scope[] scope = null)
+        public /*Bearer*/dynamic Authenticate(string clientId, string clientSecret, string grantType, Scope[] scope = null)
         {
-             ApiResponse</*Bearer*/dynamic> localVarResponse = AuthenticateWithHttpInfo(clientId, clientSecret, grantType, scope);
-             return localVarResponse.Data;
+            ApiResponse</*Bearer*/dynamic> localVarResponse = AuthenticateWithHttpInfo(clientId, clientSecret, grantType, scope);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -229,7 +230,7 @@ namespace Autodesk.Forge
         /// <param name="grantType">Must be &#x60;&#x60;client_credentials&#x60;&#x60;</param>
         /// <param name="scope">Space-separated list of required scopes Note: A URL-encoded space is* &#x60;&#x60;%20&#x60;&#x60;. See the* &#x60;Scopes &lt;/en/docs/oauth/v2/overview/scopes&gt;&#x60; *page for more information on when scopes are required.  (optional)</param>
         /// <returns>ApiResponse of Bearer</returns>
-        public ApiResponse< /*Bearer*/dynamic > AuthenticateWithHttpInfo (string clientId, string clientSecret, string grantType, Scope[] scope = null)
+        public ApiResponse< /*Bearer*/dynamic> AuthenticateWithHttpInfo(string clientId, string clientSecret, string grantType, Scope[] scope = null)
         {
             // verify the required parameter 'clientId' is set
             if (clientId == null)
@@ -241,7 +242,7 @@ namespace Autodesk.Forge
             if (grantType == null)
                 throw new ApiException(400, "Missing required parameter 'grantType' when calling TwoLeggedApi->Authenticate");
 
-            var localVarPath = "/authentication/v1/authenticate";
+            var localVarPath = "/authentication/v2/token";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -263,21 +264,23 @@ namespace Autodesk.Forge
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            String localVarAuthorizationHeader = Configuration.ApiClient.SetAuthorizationHeader(client_id: clientId, client_secret: clientSecret);
+
+            if (localVarAuthorizationHeader != null)
+                localVarHeaderParams.Add("Authorization", localVarAuthorizationHeader);
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (clientId != null) localVarFormParams.Add("client_id", Configuration.ApiClient.ParameterToString(clientId)); // form parameter
-            if (clientSecret != null) localVarFormParams.Add("client_secret", Configuration.ApiClient.ParameterToString(clientSecret)); // form parameter
             if (grantType != null) localVarFormParams.Add("grant_type", Configuration.ApiClient.ParameterToString(grantType)); // form parameter
-            if (scope != null) localVarFormParams.Add("scope", Configuration.ApiClient.ParameterToString(scope.AsString ())); // form parameter
+            if (scope != null) localVarFormParams.Add("scope", Configuration.ApiClient.ParameterToString(scope.AsString())); // form parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            RestResponse localVarResponse = (RestResponse)Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -300,10 +303,10 @@ namespace Autodesk.Forge
         /// <param name="grantType">Must be &#x60;&#x60;client_credentials&#x60;&#x60;</param>
         /// <param name="scope">Space-separated list of required scopes Note: A URL-encoded space is* &#x60;&#x60;%20&#x60;&#x60;. See the* &#x60;Scopes &lt;/en/docs/oauth/v2/overview/scopes&gt;&#x60; *page for more information on when scopes are required.  (optional)</param>
         /// <returns>Task of Bearer</returns>
-        public async System.Threading.Tasks.Task</*Bearer*/dynamic> AuthenticateAsync (string clientId, string clientSecret, string grantType, Scope[] scope = null)
+        public async System.Threading.Tasks.Task</*Bearer*/dynamic> AuthenticateAsync(string clientId, string clientSecret, string grantType, Scope[] scope = null)
         {
-             ApiResponse</*Bearer*/dynamic> localVarResponse = await AuthenticateAsyncWithHttpInfo(clientId, clientSecret, grantType, scope);
-             return localVarResponse.Data;
+            ApiResponse</*Bearer*/dynamic> localVarResponse = await AuthenticateAsyncWithHttpInfo(clientId, clientSecret, grantType, scope);
+            return localVarResponse.Data;
 
         }
 
@@ -316,7 +319,7 @@ namespace Autodesk.Forge
         /// <param name="grantType">Must be &#x60;&#x60;client_credentials&#x60;&#x60;</param>
         /// <param name="scope">Space-separated list of required scopes Note: A URL-encoded space is* &#x60;&#x60;%20&#x60;&#x60;. See the* &#x60;Scopes &lt;/en/docs/oauth/v2/overview/scopes&gt;&#x60; *page for more information on when scopes are required.  (optional)</param>
         /// <returns>Task of ApiResponse (Bearer)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse</*Bearer*/dynamic>> AuthenticateAsyncWithHttpInfo (string clientId, string clientSecret, string grantType, Scope[] scope = null)
+        public async System.Threading.Tasks.Task<ApiResponse</*Bearer*/dynamic>> AuthenticateAsyncWithHttpInfo(string clientId, string clientSecret, string grantType, Scope[] scope = null)
         {
             // verify the required parameter 'clientId' is set
             if (clientId == null)
@@ -328,7 +331,7 @@ namespace Autodesk.Forge
             if (grantType == null)
                 throw new ApiException(400, "Missing required parameter 'grantType' when calling TwoLeggedApi->Authenticate");
 
-            var localVarPath = "/authentication/v1/authenticate";
+            var localVarPath = "/authentication/v2/token";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
@@ -350,21 +353,23 @@ namespace Autodesk.Forge
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            String localVarAuthorizationHeader = Configuration.ApiClient.SetAuthorizationHeader(client_id: clientId, client_secret: clientSecret);
+
+            if (localVarAuthorizationHeader != null)
+                localVarHeaderParams.Add("Authorization", localVarAuthorizationHeader);
             // set "format" to json by default
             // e.g. /pet/{petId}.{format} becomes /pet/{petId}.json
             localVarPathParams.Add("format", "json");
-            if (clientId != null) localVarFormParams.Add("client_id", Configuration.ApiClient.ParameterToString(clientId)); // form parameter
-            if (clientSecret != null) localVarFormParams.Add("client_secret", Configuration.ApiClient.ParameterToString(clientSecret)); // form parameter
             if (grantType != null) localVarFormParams.Add("grant_type", Configuration.ApiClient.ParameterToString(grantType)); // form parameter
-            if (scope != null) localVarFormParams.Add("scope", Configuration.ApiClient.ParameterToString(scope.AsString ())); // form parameter
+            if (scope != null) localVarFormParams.Add("scope", Configuration.ApiClient.ParameterToString(scope.AsString())); // form parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse = (RestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -377,7 +382,10 @@ namespace Autodesk.Forge
                 /*(Bearer)*/ Configuration.ApiClient.Deserialize(localVarResponse, typeof(Bearer)));
 
         }
+        public static string Base64Encode(string text)
+        {
+            return System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(text));
+        }
 
     }
-
 }
