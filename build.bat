@@ -18,8 +18,11 @@ set FORGESDK_VERSION=1.9.9
 set RESTSHARP_VERSION=108.0.1
 set NEWTOWNSOFT_VERSION=13.0.1
 
+set VS_VERSION=2022
+set VS_FLAVOR=Community :: Community / Enterprise
+
 :: if "%VCINSTALLDIR%" == ""
-call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat"
+call "C:\Program Files\Microsoft Visual Studio\%VS_VERSION%\%VS_FLAVOR%\Common7\Tools\VsDevCmd.bat"
 ::set CSCPATH=%SYSTEMROOT%\Microsoft.NET\Framework\v4.0.30319
 
 if not exist ".\nuget.exe"^
