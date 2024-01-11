@@ -1,7 +1,7 @@
 /* 
  * Forge SDK
  *
- * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodesk’s expertise in design and engineering.
+ * The Forge Platform contains an expanding collection of web service components that can be used with Autodesk cloud-based products or your own technologies. Take advantage of Autodeskâ€™s expertise in design and engineering.
  *
 
  * Contact: forge.help@autodesk.com
@@ -464,6 +464,8 @@ namespace Autodesk.Forge {
 			switch ( webhookEvent ) {
 				case DerivativeWebhookEvent.ExtractionFinished:
 					return "extraction.finished";
+				case DerivativeWebhookEvent.ExtractionUpdated:
+					return "extraction.updated";
 				default:
 					throw new ApiException (400, "Webhook event type {webhookEvent} is not implemented.");
 			}
